@@ -1,0 +1,280 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/datatables.css" rel="stylesheet" />
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Content/CSSpropio.css" rel="stylesheet" />
+<h2>Cotizacion</h2>
+
+
+<br />
+<button type="button" onclick="abrirModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
+<button type="button" onclick="abrirModalr(0)" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal2">Agregar Renglon</button>
+<br />
+<br />
+<label>Nro de cotizacion</label>
+<input id="txtnrocotizacion" type="text" />
+<label>Condicion</label>
+<select id="cbocondicion"></select>
+<label>Fecha</label>
+<input id="dtfechainicio" type="text" />
+<br />
+
+<label>Cliente </label>
+<select id="cbocliente"></select>
+<label>Vencimento</label>
+<input id="dtfechavenci" type="text" />
+<br />
+<label>Venededor</label>
+<select id="cbovendedor"></select>
+<label>Transporte</label>
+<select id="cbotransporte"></select>
+<br />
+
+<div id="tabla">
+
+</div>
+
+<!---modal1-->
+<!-- Trigger the modal with a button -->
+<!-- Modal -->
+<div id="myModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <table style="width:80%; margin:auto">
+                    <tr>
+                        <td width="40%">Id cotizacion</td>
+                        <td width="60%"><input class="borrar" type="text" id="txtidcotipop" readonly /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese Codigo profit</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtcodigpop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese decripcion</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtdescotipop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese idclientes</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtidclientepop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo cliente</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtcoclipop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese idtransporte </td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtidtranspop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo transporte </td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtcotranspop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo moneda </td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtcomonepop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese id vendedor</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtidvendepop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo vendedor</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtcovendepop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese id condicion</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtidcondipop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo condicion</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtcocodipop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese fecha de emision</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="tdemisionpop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese fecha vencimiento</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="tdvencimipop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo fecha de registro</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="tdregispop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese total bruto</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txttbrutopop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese monto de iva</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtmontoivapop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese total neto</td>
+                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtnetopop" /></td>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button onclick="Agregar()" type="button" class="btn btn-success">Aceptar</button>
+                <button id="btnCancelar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+ <!--modal2-->
+<!-- Trigger the modal with a button -->
+<!-- Modal -->
+<div id="myModal2" class="modal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <table style="width:80%; margin:auto">
+                    <tr>
+                        <td width="40%">Id renglonesde cotizacion</td>
+                        <td width="60%"><input  type="text" id="txtidcotipoop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese Codigo profit</td>
+                        <td width="60%"><input  type="text" id="txtcodigpoop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese renglon</td>
+                        <td width="60%"><input  type="text" id="txtrenglonpop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese Articulo</td>
+                        <td width="60%"><input  type="text" id="txtidarticulopop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo Articulo</td>
+                        <td width="60%"><input  type="text" id="txtcoartpop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese Descrip Articulo</td>
+                        <td width="60%"><input  type="text" id="txtartdescripop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo almacen </td>
+                        <td width="60%"><input  type="text" id="txtcodalmapop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo alamacenprofit</td>
+                        <td width="60%"><input type="text" id="txtcodalmapropop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese cantidad </td>
+                        <td width="60%"><input  type="text" id="txtcatidadpop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese cantidadacumulada</td>
+                        <td width="60%"><input  type="text" id="txtcantidadacumpop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo Unidad</td>
+                        <td width="60%"><input  type="text" id="txtcounipop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese id precios</td>
+                        <td width="60%"><input  type="text" id="txtidpreciospop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese codigo precio</td>
+                        <td width="60%"><input  type="text" id="txtcopreciopop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese precio bs</td>
+                        <td width="60%"><input  type="text" id="txtpreciospop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese precio om</td>
+                        <td width="60%"><input  type="text" id="txtpreciosompop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese porcentaje</td>
+                        <td width="60%"><input  type="text" id="txtporcentajepop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese monto impuesto</td>
+                        <td width="60%"><input  type="text" id="txtmontopop" /></td>
+
+                    </tr>
+                    <tr>
+                        <td width="40%">Ingrese total renglon</td>
+                        <td width="60%"><input type="text" id="txttotalrenglonpop" /></td>
+
+                    </tr>
+
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button onclick="Agregarr()" type="button" class="btn btn-success">Aceptar</button>
+                <button id="btnCancelar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/cotizacion.js"></script>
+<script src="~/Scripts/datatables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+

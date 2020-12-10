@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PAGONET_A" Class="profitDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=TECNODEX;Initial Catalog=PAGONET_A;User ID=tecno;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PAGONET_AConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.saZona" Member="saZona">
+    <Type Name="saZona">
+      <Column Name="co_zon" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="zon_des" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="numcom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="feccom" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="dis_cen" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" />
+      <Column Name="campo1" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo2" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo3" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo4" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo5" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo6" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo7" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo8" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="co_us_in" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="co_sucu_in" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="fe_us_in" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="co_us_mo" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="co_sucu_mo" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="fe_us_mo" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="revisado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="trasnfe" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="validador" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="rowguid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="saZona_saVendedor" Member="saVendedor" ThisKey="co_zon" OtherKey="co_zon" Type="saVendedor" />
+    </Type>
+  </Table>
+  <Table Name="dbo.saVendedor" Member="saVendedor">
+    <Type Name="saVendedor">
+      <Column Name="co_ven" Type="System.String" DbType="Char(6) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tipo" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="ven_des" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="numcom" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="feccom" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="dis_cen" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" />
+      <Column Name="cedula" Type="System.String" DbType="Char(16)" CanBeNull="true" />
+      <Column Name="direc1" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="direc2" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="telefonos" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="fecha_reg" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="inactivo" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="comision" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="comentario" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="fun_cob" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="fun_ven" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="comisionv" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="login" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="PSW_M" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="campo1" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo2" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo3" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo4" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo5" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo6" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo7" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="campo8" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="co_us_in" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="co_sucu_in" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="fe_us_in" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="co_us_mo" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
+      <Column Name="co_sucu_mo" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="fe_us_mo" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="revisado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="trasnfe" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="validador" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="rowguid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="co_zon" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Association Name="saZona_saVendedor" Member="saZona" ThisKey="co_zon" OtherKey="co_zon" Type="saZona" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
