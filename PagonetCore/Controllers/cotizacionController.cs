@@ -473,5 +473,81 @@ namespace PagonetCore.Controllers
 
 
         }
+        // Formato del JSON.
+        // resultado: {
+        //    "cotizacion": {
+        //        ...
+        //    },
+        //    "renglon": {
+        //        ...
+        //    }
+        // }
+
+        /*public JsonResult guardarDatosCompletos(Object jsonCompleto)
+        {
+            Adcotizacion cotizacion = jsonCompleto.cotizacion;
+            AdCotizacionreg renglon = jsonCompleto.renglon;
+            return this.guardarDatosCompletosSeparado(cotizacion, renglon);
+        }
+
+        public JsonResult guardarDatosCompletosSeparado(Adcotizacion Oadcotizacion, AdCotizacionreg OadCotizacionreg)
+        {
+            // Invocar los métodos individuales para guardar AdCotizacion y AdCotizacionreg.
+            int cotizacion = this.guardarDatos(Oadcotizacion);
+            int renglon = this.guardarDatosreng(OadCotizacionreg);
+
+           
+
+            //return Json({ "cotizacion": cotizacion, "renglon": renglon }, JsonRequestBehavior.AllowPost );
+            return cotizacion, renglon
+            
+        }*/
+        public int Guardate(Adcotizacion Oadcotizacion, AdCotizacionreg OadCotizacionreg)
+        {
+            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
+            int cantidadrenglon = OadCotizacionreg.reng_num;
+            int nroregistros = 0;
+            int nrorenglones = 0;
+
+            try
+            {   
+                bdsql.Adcotizacion.InsertOnSubmit(Oadcotizacion);
+                bdsql.SubmitChanges();
+                nroregistros = 1;
+                if (nroregistros == 1)
+                {
+                    Adcotizacion adcotizacionSel = bdsql.Adcotizacion.Where(p => p.id_doc_num.Equals(Oadcotizacion.id_doc_num)).First();
+                    if (adcotizacionSel.id_doc_num == Oadcotizacion.id_doc_num)
+                    {
+                        (bdsql.Adcotizacion.Where(p => p.doc_num.Equals(Oadcotizacion.doc_num))).Count();
+                        for (int i = 0; i >= nrorenglones; i++ )
+                        {
+                            bdsql.AdCotizacionreg.InsertOnSubmit(OadCotizacionreg);
+                            bdsql.SubmitChanges();
+                            nrorenglones = nrorenglones + 1;
+
+                        }
+                    }
+                    else
+                    {
+                       return nrorenglones = 0;
+                    }
+
+                }
+                else
+                {
+                    return nroregistros = 0;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                nroregistros = 0;
+                nrorenglones = 0;
+            }
+             string nrocotizacion =  Oadcotizacion.doc_num;
+            return (nroregistros + nrorenglones) + int.Parse(nrocotizacion);    
+
+        }
     }
 }
