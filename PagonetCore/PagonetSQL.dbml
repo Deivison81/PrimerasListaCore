@@ -114,38 +114,6 @@
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Adcotizacion" Member="Adcotizacion">
-    <Type Name="Adcotizacion">
-      <Column Name="id_doc_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="doc_num" Type="System.String" DbType="Char(20)" CanBeNull="true" />
-      <Column Name="descrip" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
-      <Column Name="id_clientes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="co_cli" Type="System.String" DbType="NChar(16)" CanBeNull="true" />
-      <Column Name="idtransporte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="co_tran" Type="System.String" DbType="Char(6)" CanBeNull="true" />
-      <Column Name="co_mone" Type="System.String" DbType="Char(6)" CanBeNull="true" />
-      <Column Name="id_vendedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="co_ven" Type="System.String" DbType="Char(6)" CanBeNull="true" />
-      <Column Name="id_condicion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="co_cond" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
-      <Column Name="fec_emis" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="fec_venc" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="fec_reg" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="anulado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="status" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="total_bruto" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="monto_imp" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="monto_imp2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="monto_imp3" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="total_neto" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="saldo" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Column Name="Diasvencimiento" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="nro_pedido" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="vencida" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Adimg_art" Member="Adimg_art">
     <Type Name="Adimg_art">
       <Column Name="id_imgart" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
@@ -375,10 +343,42 @@
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Adcotizacion" Member="Adcotizacion">
+    <Type Name="Adcotizacion">
+      <Column Name="id_doc_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="doc_num" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="descrip" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="id_clientes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="co_cli" Type="System.String" DbType="NChar(16)" CanBeNull="true" />
+      <Column Name="idtransporte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="co_tran" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="co_mone" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="id_vendedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="co_ven" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="id_condicion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="co_cond" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="fec_emis" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="fec_venc" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="fec_reg" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="anulado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="status" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="total_bruto" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="monto_imp" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="monto_imp2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="monto_imp3" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="total_neto" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="saldo" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="Diasvencimiento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nro_pedido" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vencida" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.AdCotizacionreg" Member="AdCotizacionreg">
     <Type Name="AdCotizacionreg">
       <Column Name="id_doc_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="doc_num" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="doc_num" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="reng_num" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_art" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="co_art" Type="System.String" DbType="NChar(30)" CanBeNull="true" />

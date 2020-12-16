@@ -48,9 +48,6 @@ namespace PagonetCore
     partial void InsertAdcondiciondepago(Adcondiciondepago instance);
     partial void UpdateAdcondiciondepago(Adcondiciondepago instance);
     partial void DeleteAdcondiciondepago(Adcondiciondepago instance);
-    partial void InsertAdcotizacion(Adcotizacion instance);
-    partial void UpdateAdcotizacion(Adcotizacion instance);
-    partial void DeleteAdcotizacion(Adcotizacion instance);
     partial void InsertAdIngreso(AdIngreso instance);
     partial void UpdateAdIngreso(AdIngreso instance);
     partial void DeleteAdIngreso(AdIngreso instance);
@@ -90,6 +87,9 @@ namespace PagonetCore
     partial void InsertTasa_IVA(Tasa_IVA instance);
     partial void UpdateTasa_IVA(Tasa_IVA instance);
     partial void DeleteTasa_IVA(Tasa_IVA instance);
+    partial void InsertAdcotizacion(Adcotizacion instance);
+    partial void UpdateAdcotizacion(Adcotizacion instance);
+    partial void DeleteAdcotizacion(Adcotizacion instance);
     partial void InsertAdCotizacionreg(AdCotizacionreg instance);
     partial void UpdateAdCotizacionreg(AdCotizacionreg instance);
     partial void DeleteAdCotizacionreg(AdCotizacionreg instance);
@@ -178,14 +178,6 @@ namespace PagonetCore
 			get
 			{
 				return this.GetTable<Adcondiciondepago>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Adcotizacion> Adcotizacion
-		{
-			get
-			{
-				return this.GetTable<Adcotizacion>();
 			}
 		}
 		
@@ -306,6 +298,14 @@ namespace PagonetCore
 			get
 			{
 				return this.GetTable<Tasa_IVA>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Adcotizacion> Adcotizacion
+		{
+			get
+			{
+				return this.GetTable<Adcotizacion>();
 			}
 		}
 		
@@ -2598,716 +2598,6 @@ namespace PagonetCore
 					this._importado_pro = value;
 					this.SendPropertyChanged("importado_pro");
 					this.Onimportado_proChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Adcotizacion")]
-	public partial class Adcotizacion : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _id_doc_num;
-		
-		private string _doc_num;
-		
-		private string _descrip;
-		
-		private int _id_clientes;
-		
-		private string _co_cli;
-		
-		private int _idtransporte;
-		
-		private string _co_tran;
-		
-		private string _co_mone;
-		
-		private int _id_vendedor;
-		
-		private string _co_ven;
-		
-		private int _id_condicion;
-		
-		private string _co_cond;
-		
-		private System.Nullable<System.DateTime> _fec_emis;
-		
-		private System.Nullable<System.DateTime> _fec_venc;
-		
-		private System.Nullable<System.DateTime> _fec_reg;
-		
-		private System.Nullable<char> _anulado;
-		
-		private System.Nullable<char> _status;
-		
-		private System.Nullable<decimal> _total_bruto;
-		
-		private System.Nullable<decimal> _monto_imp;
-		
-		private System.Nullable<decimal> _monto_imp2;
-		
-		private System.Nullable<decimal> _monto_imp3;
-		
-		private System.Nullable<decimal> _total_neto;
-		
-		private System.Nullable<decimal> _saldo;
-		
-		private System.Nullable<char> _importado_web;
-		
-		private System.Nullable<char> _importado_pro;
-		
-		private System.Nullable<int> _Diasvencimiento;
-		
-		private System.Nullable<int> _nro_pedido;
-		
-		private System.Nullable<char> _vencida;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onid_doc_numChanging(int value);
-    partial void Onid_doc_numChanged();
-    partial void Ondoc_numChanging(string value);
-    partial void Ondoc_numChanged();
-    partial void OndescripChanging(string value);
-    partial void OndescripChanged();
-    partial void Onid_clientesChanging(int value);
-    partial void Onid_clientesChanged();
-    partial void Onco_cliChanging(string value);
-    partial void Onco_cliChanged();
-    partial void OnidtransporteChanging(int value);
-    partial void OnidtransporteChanged();
-    partial void Onco_tranChanging(string value);
-    partial void Onco_tranChanged();
-    partial void Onco_moneChanging(string value);
-    partial void Onco_moneChanged();
-    partial void Onid_vendedorChanging(int value);
-    partial void Onid_vendedorChanged();
-    partial void Onco_venChanging(string value);
-    partial void Onco_venChanged();
-    partial void Onid_condicionChanging(int value);
-    partial void Onid_condicionChanged();
-    partial void Onco_condChanging(string value);
-    partial void Onco_condChanged();
-    partial void Onfec_emisChanging(System.Nullable<System.DateTime> value);
-    partial void Onfec_emisChanged();
-    partial void Onfec_vencChanging(System.Nullable<System.DateTime> value);
-    partial void Onfec_vencChanged();
-    partial void Onfec_regChanging(System.Nullable<System.DateTime> value);
-    partial void Onfec_regChanged();
-    partial void OnanuladoChanging(System.Nullable<char> value);
-    partial void OnanuladoChanged();
-    partial void OnstatusChanging(System.Nullable<char> value);
-    partial void OnstatusChanged();
-    partial void Ontotal_brutoChanging(System.Nullable<decimal> value);
-    partial void Ontotal_brutoChanged();
-    partial void Onmonto_impChanging(System.Nullable<decimal> value);
-    partial void Onmonto_impChanged();
-    partial void Onmonto_imp2Changing(System.Nullable<decimal> value);
-    partial void Onmonto_imp2Changed();
-    partial void Onmonto_imp3Changing(System.Nullable<decimal> value);
-    partial void Onmonto_imp3Changed();
-    partial void Ontotal_netoChanging(System.Nullable<decimal> value);
-    partial void Ontotal_netoChanged();
-    partial void OnsaldoChanging(System.Nullable<decimal> value);
-    partial void OnsaldoChanged();
-    partial void Onimportado_webChanging(System.Nullable<char> value);
-    partial void Onimportado_webChanged();
-    partial void Onimportado_proChanging(System.Nullable<char> value);
-    partial void Onimportado_proChanged();
-    partial void OnDiasvencimientoChanging(System.Nullable<int> value);
-    partial void OnDiasvencimientoChanged();
-    partial void Onnro_pedidoChanging(System.Nullable<int> value);
-    partial void Onnro_pedidoChanged();
-    partial void OnvencidaChanging(System.Nullable<char> value);
-    partial void OnvencidaChanged();
-    #endregion
-		
-		public Adcotizacion()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_doc_num", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int id_doc_num
-		{
-			get
-			{
-				return this._id_doc_num;
-			}
-			set
-			{
-				if ((this._id_doc_num != value))
-				{
-					this.Onid_doc_numChanging(value);
-					this.SendPropertyChanging();
-					this._id_doc_num = value;
-					this.SendPropertyChanged("id_doc_num");
-					this.Onid_doc_numChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_doc_num", DbType="Char(20)")]
-		public string doc_num
-		{
-			get
-			{
-				return this._doc_num;
-			}
-			set
-			{
-				if ((this._doc_num != value))
-				{
-					this.Ondoc_numChanging(value);
-					this.SendPropertyChanging();
-					this._doc_num = value;
-					this.SendPropertyChanged("doc_num");
-					this.Ondoc_numChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descrip", DbType="NChar(60)")]
-		public string descrip
-		{
-			get
-			{
-				return this._descrip;
-			}
-			set
-			{
-				if ((this._descrip != value))
-				{
-					this.OndescripChanging(value);
-					this.SendPropertyChanging();
-					this._descrip = value;
-					this.SendPropertyChanged("descrip");
-					this.OndescripChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_clientes", DbType="Int NOT NULL")]
-		public int id_clientes
-		{
-			get
-			{
-				return this._id_clientes;
-			}
-			set
-			{
-				if ((this._id_clientes != value))
-				{
-					this.Onid_clientesChanging(value);
-					this.SendPropertyChanging();
-					this._id_clientes = value;
-					this.SendPropertyChanged("id_clientes");
-					this.Onid_clientesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_cli", DbType="NChar(16)")]
-		public string co_cli
-		{
-			get
-			{
-				return this._co_cli;
-			}
-			set
-			{
-				if ((this._co_cli != value))
-				{
-					this.Onco_cliChanging(value);
-					this.SendPropertyChanging();
-					this._co_cli = value;
-					this.SendPropertyChanged("co_cli");
-					this.Onco_cliChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idtransporte", DbType="Int NOT NULL")]
-		public int idtransporte
-		{
-			get
-			{
-				return this._idtransporte;
-			}
-			set
-			{
-				if ((this._idtransporte != value))
-				{
-					this.OnidtransporteChanging(value);
-					this.SendPropertyChanging();
-					this._idtransporte = value;
-					this.SendPropertyChanged("idtransporte");
-					this.OnidtransporteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_tran", DbType="Char(6)")]
-		public string co_tran
-		{
-			get
-			{
-				return this._co_tran;
-			}
-			set
-			{
-				if ((this._co_tran != value))
-				{
-					this.Onco_tranChanging(value);
-					this.SendPropertyChanging();
-					this._co_tran = value;
-					this.SendPropertyChanged("co_tran");
-					this.Onco_tranChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_mone", DbType="Char(6)")]
-		public string co_mone
-		{
-			get
-			{
-				return this._co_mone;
-			}
-			set
-			{
-				if ((this._co_mone != value))
-				{
-					this.Onco_moneChanging(value);
-					this.SendPropertyChanging();
-					this._co_mone = value;
-					this.SendPropertyChanged("co_mone");
-					this.Onco_moneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_vendedor", DbType="Int NOT NULL")]
-		public int id_vendedor
-		{
-			get
-			{
-				return this._id_vendedor;
-			}
-			set
-			{
-				if ((this._id_vendedor != value))
-				{
-					this.Onid_vendedorChanging(value);
-					this.SendPropertyChanging();
-					this._id_vendedor = value;
-					this.SendPropertyChanged("id_vendedor");
-					this.Onid_vendedorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_ven", DbType="Char(6)")]
-		public string co_ven
-		{
-			get
-			{
-				return this._co_ven;
-			}
-			set
-			{
-				if ((this._co_ven != value))
-				{
-					this.Onco_venChanging(value);
-					this.SendPropertyChanging();
-					this._co_ven = value;
-					this.SendPropertyChanged("co_ven");
-					this.Onco_venChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_condicion", DbType="Int NOT NULL")]
-		public int id_condicion
-		{
-			get
-			{
-				return this._id_condicion;
-			}
-			set
-			{
-				if ((this._id_condicion != value))
-				{
-					this.Onid_condicionChanging(value);
-					this.SendPropertyChanging();
-					this._id_condicion = value;
-					this.SendPropertyChanged("id_condicion");
-					this.Onid_condicionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_cond", DbType="NChar(6)")]
-		public string co_cond
-		{
-			get
-			{
-				return this._co_cond;
-			}
-			set
-			{
-				if ((this._co_cond != value))
-				{
-					this.Onco_condChanging(value);
-					this.SendPropertyChanging();
-					this._co_cond = value;
-					this.SendPropertyChanged("co_cond");
-					this.Onco_condChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fec_emis", DbType="SmallDateTime")]
-		public System.Nullable<System.DateTime> fec_emis
-		{
-			get
-			{
-				return this._fec_emis;
-			}
-			set
-			{
-				if ((this._fec_emis != value))
-				{
-					this.Onfec_emisChanging(value);
-					this.SendPropertyChanging();
-					this._fec_emis = value;
-					this.SendPropertyChanged("fec_emis");
-					this.Onfec_emisChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fec_venc", DbType="SmallDateTime")]
-		public System.Nullable<System.DateTime> fec_venc
-		{
-			get
-			{
-				return this._fec_venc;
-			}
-			set
-			{
-				if ((this._fec_venc != value))
-				{
-					this.Onfec_vencChanging(value);
-					this.SendPropertyChanging();
-					this._fec_venc = value;
-					this.SendPropertyChanged("fec_venc");
-					this.Onfec_vencChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fec_reg", DbType="SmallDateTime")]
-		public System.Nullable<System.DateTime> fec_reg
-		{
-			get
-			{
-				return this._fec_reg;
-			}
-			set
-			{
-				if ((this._fec_reg != value))
-				{
-					this.Onfec_regChanging(value);
-					this.SendPropertyChanging();
-					this._fec_reg = value;
-					this.SendPropertyChanged("fec_reg");
-					this.Onfec_regChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anulado", DbType="Char(1)")]
-		public System.Nullable<char> anulado
-		{
-			get
-			{
-				return this._anulado;
-			}
-			set
-			{
-				if ((this._anulado != value))
-				{
-					this.OnanuladoChanging(value);
-					this.SendPropertyChanging();
-					this._anulado = value;
-					this.SendPropertyChanged("anulado");
-					this.OnanuladoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Char(1)")]
-		public System.Nullable<char> status
-		{
-			get
-			{
-				return this._status;
-			}
-			set
-			{
-				if ((this._status != value))
-				{
-					this.OnstatusChanging(value);
-					this.SendPropertyChanging();
-					this._status = value;
-					this.SendPropertyChanged("status");
-					this.OnstatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_bruto", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> total_bruto
-		{
-			get
-			{
-				return this._total_bruto;
-			}
-			set
-			{
-				if ((this._total_bruto != value))
-				{
-					this.Ontotal_brutoChanging(value);
-					this.SendPropertyChanging();
-					this._total_bruto = value;
-					this.SendPropertyChanged("total_bruto");
-					this.Ontotal_brutoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monto_imp", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> monto_imp
-		{
-			get
-			{
-				return this._monto_imp;
-			}
-			set
-			{
-				if ((this._monto_imp != value))
-				{
-					this.Onmonto_impChanging(value);
-					this.SendPropertyChanging();
-					this._monto_imp = value;
-					this.SendPropertyChanged("monto_imp");
-					this.Onmonto_impChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monto_imp2", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> monto_imp2
-		{
-			get
-			{
-				return this._monto_imp2;
-			}
-			set
-			{
-				if ((this._monto_imp2 != value))
-				{
-					this.Onmonto_imp2Changing(value);
-					this.SendPropertyChanging();
-					this._monto_imp2 = value;
-					this.SendPropertyChanged("monto_imp2");
-					this.Onmonto_imp2Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monto_imp3", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> monto_imp3
-		{
-			get
-			{
-				return this._monto_imp3;
-			}
-			set
-			{
-				if ((this._monto_imp3 != value))
-				{
-					this.Onmonto_imp3Changing(value);
-					this.SendPropertyChanging();
-					this._monto_imp3 = value;
-					this.SendPropertyChanged("monto_imp3");
-					this.Onmonto_imp3Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_neto", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> total_neto
-		{
-			get
-			{
-				return this._total_neto;
-			}
-			set
-			{
-				if ((this._total_neto != value))
-				{
-					this.Ontotal_netoChanging(value);
-					this.SendPropertyChanging();
-					this._total_neto = value;
-					this.SendPropertyChanged("total_neto");
-					this.Ontotal_netoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_saldo", DbType="Decimal(18,2)")]
-		public System.Nullable<decimal> saldo
-		{
-			get
-			{
-				return this._saldo;
-			}
-			set
-			{
-				if ((this._saldo != value))
-				{
-					this.OnsaldoChanging(value);
-					this.SendPropertyChanging();
-					this._saldo = value;
-					this.SendPropertyChanged("saldo");
-					this.OnsaldoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_importado_web", DbType="NChar(1)")]
-		public System.Nullable<char> importado_web
-		{
-			get
-			{
-				return this._importado_web;
-			}
-			set
-			{
-				if ((this._importado_web != value))
-				{
-					this.Onimportado_webChanging(value);
-					this.SendPropertyChanging();
-					this._importado_web = value;
-					this.SendPropertyChanged("importado_web");
-					this.Onimportado_webChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_importado_pro", DbType="NChar(1)")]
-		public System.Nullable<char> importado_pro
-		{
-			get
-			{
-				return this._importado_pro;
-			}
-			set
-			{
-				if ((this._importado_pro != value))
-				{
-					this.Onimportado_proChanging(value);
-					this.SendPropertyChanging();
-					this._importado_pro = value;
-					this.SendPropertyChanged("importado_pro");
-					this.Onimportado_proChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diasvencimiento", DbType="Int")]
-		public System.Nullable<int> Diasvencimiento
-		{
-			get
-			{
-				return this._Diasvencimiento;
-			}
-			set
-			{
-				if ((this._Diasvencimiento != value))
-				{
-					this.OnDiasvencimientoChanging(value);
-					this.SendPropertyChanging();
-					this._Diasvencimiento = value;
-					this.SendPropertyChanged("Diasvencimiento");
-					this.OnDiasvencimientoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nro_pedido", DbType="Int")]
-		public System.Nullable<int> nro_pedido
-		{
-			get
-			{
-				return this._nro_pedido;
-			}
-			set
-			{
-				if ((this._nro_pedido != value))
-				{
-					this.Onnro_pedidoChanging(value);
-					this.SendPropertyChanging();
-					this._nro_pedido = value;
-					this.SendPropertyChanged("nro_pedido");
-					this.Onnro_pedidoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vencida", DbType="NChar(1)")]
-		public System.Nullable<char> vencida
-		{
-			get
-			{
-				return this._vencida;
-			}
-			set
-			{
-				if ((this._vencida != value))
-				{
-					this.OnvencidaChanging(value);
-					this.SendPropertyChanging();
-					this._vencida = value;
-					this.SendPropertyChanged("vencida");
-					this.OnvencidaChanged();
 				}
 			}
 		}
@@ -7812,6 +7102,716 @@ namespace PagonetCore
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Adcotizacion")]
+	public partial class Adcotizacion : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_doc_num;
+		
+		private System.Nullable<int> _doc_num;
+		
+		private string _descrip;
+		
+		private int _id_clientes;
+		
+		private string _co_cli;
+		
+		private int _idtransporte;
+		
+		private string _co_tran;
+		
+		private string _co_mone;
+		
+		private int _id_vendedor;
+		
+		private string _co_ven;
+		
+		private int _id_condicion;
+		
+		private string _co_cond;
+		
+		private System.Nullable<System.DateTime> _fec_emis;
+		
+		private System.Nullable<System.DateTime> _fec_venc;
+		
+		private System.Nullable<System.DateTime> _fec_reg;
+		
+		private System.Nullable<char> _anulado;
+		
+		private System.Nullable<char> _status;
+		
+		private System.Nullable<decimal> _total_bruto;
+		
+		private System.Nullable<decimal> _monto_imp;
+		
+		private System.Nullable<decimal> _monto_imp2;
+		
+		private System.Nullable<decimal> _monto_imp3;
+		
+		private System.Nullable<decimal> _total_neto;
+		
+		private System.Nullable<decimal> _saldo;
+		
+		private System.Nullable<char> _importado_web;
+		
+		private System.Nullable<char> _importado_pro;
+		
+		private System.Nullable<int> _Diasvencimiento;
+		
+		private System.Nullable<int> _nro_pedido;
+		
+		private System.Nullable<char> _vencida;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_doc_numChanging(int value);
+    partial void Onid_doc_numChanged();
+    partial void Ondoc_numChanging(System.Nullable<int> value);
+    partial void Ondoc_numChanged();
+    partial void OndescripChanging(string value);
+    partial void OndescripChanged();
+    partial void Onid_clientesChanging(int value);
+    partial void Onid_clientesChanged();
+    partial void Onco_cliChanging(string value);
+    partial void Onco_cliChanged();
+    partial void OnidtransporteChanging(int value);
+    partial void OnidtransporteChanged();
+    partial void Onco_tranChanging(string value);
+    partial void Onco_tranChanged();
+    partial void Onco_moneChanging(string value);
+    partial void Onco_moneChanged();
+    partial void Onid_vendedorChanging(int value);
+    partial void Onid_vendedorChanged();
+    partial void Onco_venChanging(string value);
+    partial void Onco_venChanged();
+    partial void Onid_condicionChanging(int value);
+    partial void Onid_condicionChanged();
+    partial void Onco_condChanging(string value);
+    partial void Onco_condChanged();
+    partial void Onfec_emisChanging(System.Nullable<System.DateTime> value);
+    partial void Onfec_emisChanged();
+    partial void Onfec_vencChanging(System.Nullable<System.DateTime> value);
+    partial void Onfec_vencChanged();
+    partial void Onfec_regChanging(System.Nullable<System.DateTime> value);
+    partial void Onfec_regChanged();
+    partial void OnanuladoChanging(System.Nullable<char> value);
+    partial void OnanuladoChanged();
+    partial void OnstatusChanging(System.Nullable<char> value);
+    partial void OnstatusChanged();
+    partial void Ontotal_brutoChanging(System.Nullable<decimal> value);
+    partial void Ontotal_brutoChanged();
+    partial void Onmonto_impChanging(System.Nullable<decimal> value);
+    partial void Onmonto_impChanged();
+    partial void Onmonto_imp2Changing(System.Nullable<decimal> value);
+    partial void Onmonto_imp2Changed();
+    partial void Onmonto_imp3Changing(System.Nullable<decimal> value);
+    partial void Onmonto_imp3Changed();
+    partial void Ontotal_netoChanging(System.Nullable<decimal> value);
+    partial void Ontotal_netoChanged();
+    partial void OnsaldoChanging(System.Nullable<decimal> value);
+    partial void OnsaldoChanged();
+    partial void Onimportado_webChanging(System.Nullable<char> value);
+    partial void Onimportado_webChanged();
+    partial void Onimportado_proChanging(System.Nullable<char> value);
+    partial void Onimportado_proChanged();
+    partial void OnDiasvencimientoChanging(System.Nullable<int> value);
+    partial void OnDiasvencimientoChanged();
+    partial void Onnro_pedidoChanging(System.Nullable<int> value);
+    partial void Onnro_pedidoChanged();
+    partial void OnvencidaChanging(System.Nullable<char> value);
+    partial void OnvencidaChanged();
+    #endregion
+		
+		public Adcotizacion()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_doc_num", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_doc_num
+		{
+			get
+			{
+				return this._id_doc_num;
+			}
+			set
+			{
+				if ((this._id_doc_num != value))
+				{
+					this.Onid_doc_numChanging(value);
+					this.SendPropertyChanging();
+					this._id_doc_num = value;
+					this.SendPropertyChanged("id_doc_num");
+					this.Onid_doc_numChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_doc_num", DbType="Int")]
+		public System.Nullable<int> doc_num
+		{
+			get
+			{
+				return this._doc_num;
+			}
+			set
+			{
+				if ((this._doc_num != value))
+				{
+					this.Ondoc_numChanging(value);
+					this.SendPropertyChanging();
+					this._doc_num = value;
+					this.SendPropertyChanged("doc_num");
+					this.Ondoc_numChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_descrip", DbType="NChar(60)")]
+		public string descrip
+		{
+			get
+			{
+				return this._descrip;
+			}
+			set
+			{
+				if ((this._descrip != value))
+				{
+					this.OndescripChanging(value);
+					this.SendPropertyChanging();
+					this._descrip = value;
+					this.SendPropertyChanged("descrip");
+					this.OndescripChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_clientes", DbType="Int NOT NULL")]
+		public int id_clientes
+		{
+			get
+			{
+				return this._id_clientes;
+			}
+			set
+			{
+				if ((this._id_clientes != value))
+				{
+					this.Onid_clientesChanging(value);
+					this.SendPropertyChanging();
+					this._id_clientes = value;
+					this.SendPropertyChanged("id_clientes");
+					this.Onid_clientesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_cli", DbType="NChar(16)")]
+		public string co_cli
+		{
+			get
+			{
+				return this._co_cli;
+			}
+			set
+			{
+				if ((this._co_cli != value))
+				{
+					this.Onco_cliChanging(value);
+					this.SendPropertyChanging();
+					this._co_cli = value;
+					this.SendPropertyChanged("co_cli");
+					this.Onco_cliChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idtransporte", DbType="Int NOT NULL")]
+		public int idtransporte
+		{
+			get
+			{
+				return this._idtransporte;
+			}
+			set
+			{
+				if ((this._idtransporte != value))
+				{
+					this.OnidtransporteChanging(value);
+					this.SendPropertyChanging();
+					this._idtransporte = value;
+					this.SendPropertyChanged("idtransporte");
+					this.OnidtransporteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_tran", DbType="Char(6)")]
+		public string co_tran
+		{
+			get
+			{
+				return this._co_tran;
+			}
+			set
+			{
+				if ((this._co_tran != value))
+				{
+					this.Onco_tranChanging(value);
+					this.SendPropertyChanging();
+					this._co_tran = value;
+					this.SendPropertyChanged("co_tran");
+					this.Onco_tranChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_mone", DbType="Char(6)")]
+		public string co_mone
+		{
+			get
+			{
+				return this._co_mone;
+			}
+			set
+			{
+				if ((this._co_mone != value))
+				{
+					this.Onco_moneChanging(value);
+					this.SendPropertyChanging();
+					this._co_mone = value;
+					this.SendPropertyChanged("co_mone");
+					this.Onco_moneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_vendedor", DbType="Int NOT NULL")]
+		public int id_vendedor
+		{
+			get
+			{
+				return this._id_vendedor;
+			}
+			set
+			{
+				if ((this._id_vendedor != value))
+				{
+					this.Onid_vendedorChanging(value);
+					this.SendPropertyChanging();
+					this._id_vendedor = value;
+					this.SendPropertyChanged("id_vendedor");
+					this.Onid_vendedorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_ven", DbType="Char(6)")]
+		public string co_ven
+		{
+			get
+			{
+				return this._co_ven;
+			}
+			set
+			{
+				if ((this._co_ven != value))
+				{
+					this.Onco_venChanging(value);
+					this.SendPropertyChanging();
+					this._co_ven = value;
+					this.SendPropertyChanged("co_ven");
+					this.Onco_venChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_condicion", DbType="Int NOT NULL")]
+		public int id_condicion
+		{
+			get
+			{
+				return this._id_condicion;
+			}
+			set
+			{
+				if ((this._id_condicion != value))
+				{
+					this.Onid_condicionChanging(value);
+					this.SendPropertyChanging();
+					this._id_condicion = value;
+					this.SendPropertyChanged("id_condicion");
+					this.Onid_condicionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_co_cond", DbType="NChar(6)")]
+		public string co_cond
+		{
+			get
+			{
+				return this._co_cond;
+			}
+			set
+			{
+				if ((this._co_cond != value))
+				{
+					this.Onco_condChanging(value);
+					this.SendPropertyChanging();
+					this._co_cond = value;
+					this.SendPropertyChanged("co_cond");
+					this.Onco_condChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fec_emis", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> fec_emis
+		{
+			get
+			{
+				return this._fec_emis;
+			}
+			set
+			{
+				if ((this._fec_emis != value))
+				{
+					this.Onfec_emisChanging(value);
+					this.SendPropertyChanging();
+					this._fec_emis = value;
+					this.SendPropertyChanged("fec_emis");
+					this.Onfec_emisChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fec_venc", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> fec_venc
+		{
+			get
+			{
+				return this._fec_venc;
+			}
+			set
+			{
+				if ((this._fec_venc != value))
+				{
+					this.Onfec_vencChanging(value);
+					this.SendPropertyChanging();
+					this._fec_venc = value;
+					this.SendPropertyChanged("fec_venc");
+					this.Onfec_vencChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fec_reg", DbType="SmallDateTime")]
+		public System.Nullable<System.DateTime> fec_reg
+		{
+			get
+			{
+				return this._fec_reg;
+			}
+			set
+			{
+				if ((this._fec_reg != value))
+				{
+					this.Onfec_regChanging(value);
+					this.SendPropertyChanging();
+					this._fec_reg = value;
+					this.SendPropertyChanged("fec_reg");
+					this.Onfec_regChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_anulado", DbType="Char(1)")]
+		public System.Nullable<char> anulado
+		{
+			get
+			{
+				return this._anulado;
+			}
+			set
+			{
+				if ((this._anulado != value))
+				{
+					this.OnanuladoChanging(value);
+					this.SendPropertyChanging();
+					this._anulado = value;
+					this.SendPropertyChanged("anulado");
+					this.OnanuladoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="Char(1)")]
+		public System.Nullable<char> status
+		{
+			get
+			{
+				return this._status;
+			}
+			set
+			{
+				if ((this._status != value))
+				{
+					this.OnstatusChanging(value);
+					this.SendPropertyChanging();
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_bruto", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> total_bruto
+		{
+			get
+			{
+				return this._total_bruto;
+			}
+			set
+			{
+				if ((this._total_bruto != value))
+				{
+					this.Ontotal_brutoChanging(value);
+					this.SendPropertyChanging();
+					this._total_bruto = value;
+					this.SendPropertyChanged("total_bruto");
+					this.Ontotal_brutoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monto_imp", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> monto_imp
+		{
+			get
+			{
+				return this._monto_imp;
+			}
+			set
+			{
+				if ((this._monto_imp != value))
+				{
+					this.Onmonto_impChanging(value);
+					this.SendPropertyChanging();
+					this._monto_imp = value;
+					this.SendPropertyChanged("monto_imp");
+					this.Onmonto_impChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monto_imp2", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> monto_imp2
+		{
+			get
+			{
+				return this._monto_imp2;
+			}
+			set
+			{
+				if ((this._monto_imp2 != value))
+				{
+					this.Onmonto_imp2Changing(value);
+					this.SendPropertyChanging();
+					this._monto_imp2 = value;
+					this.SendPropertyChanged("monto_imp2");
+					this.Onmonto_imp2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_monto_imp3", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> monto_imp3
+		{
+			get
+			{
+				return this._monto_imp3;
+			}
+			set
+			{
+				if ((this._monto_imp3 != value))
+				{
+					this.Onmonto_imp3Changing(value);
+					this.SendPropertyChanging();
+					this._monto_imp3 = value;
+					this.SendPropertyChanged("monto_imp3");
+					this.Onmonto_imp3Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_total_neto", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> total_neto
+		{
+			get
+			{
+				return this._total_neto;
+			}
+			set
+			{
+				if ((this._total_neto != value))
+				{
+					this.Ontotal_netoChanging(value);
+					this.SendPropertyChanging();
+					this._total_neto = value;
+					this.SendPropertyChanged("total_neto");
+					this.Ontotal_netoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_saldo", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> saldo
+		{
+			get
+			{
+				return this._saldo;
+			}
+			set
+			{
+				if ((this._saldo != value))
+				{
+					this.OnsaldoChanging(value);
+					this.SendPropertyChanging();
+					this._saldo = value;
+					this.SendPropertyChanged("saldo");
+					this.OnsaldoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_importado_web", DbType="NChar(1)")]
+		public System.Nullable<char> importado_web
+		{
+			get
+			{
+				return this._importado_web;
+			}
+			set
+			{
+				if ((this._importado_web != value))
+				{
+					this.Onimportado_webChanging(value);
+					this.SendPropertyChanging();
+					this._importado_web = value;
+					this.SendPropertyChanged("importado_web");
+					this.Onimportado_webChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_importado_pro", DbType="NChar(1)")]
+		public System.Nullable<char> importado_pro
+		{
+			get
+			{
+				return this._importado_pro;
+			}
+			set
+			{
+				if ((this._importado_pro != value))
+				{
+					this.Onimportado_proChanging(value);
+					this.SendPropertyChanging();
+					this._importado_pro = value;
+					this.SendPropertyChanged("importado_pro");
+					this.Onimportado_proChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diasvencimiento", DbType="Int")]
+		public System.Nullable<int> Diasvencimiento
+		{
+			get
+			{
+				return this._Diasvencimiento;
+			}
+			set
+			{
+				if ((this._Diasvencimiento != value))
+				{
+					this.OnDiasvencimientoChanging(value);
+					this.SendPropertyChanging();
+					this._Diasvencimiento = value;
+					this.SendPropertyChanged("Diasvencimiento");
+					this.OnDiasvencimientoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nro_pedido", DbType="Int")]
+		public System.Nullable<int> nro_pedido
+		{
+			get
+			{
+				return this._nro_pedido;
+			}
+			set
+			{
+				if ((this._nro_pedido != value))
+				{
+					this.Onnro_pedidoChanging(value);
+					this.SendPropertyChanging();
+					this._nro_pedido = value;
+					this.SendPropertyChanged("nro_pedido");
+					this.Onnro_pedidoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_vencida", DbType="NChar(1)")]
+		public System.Nullable<char> vencida
+		{
+			get
+			{
+				return this._vencida;
+			}
+			set
+			{
+				if ((this._vencida != value))
+				{
+					this.OnvencidaChanging(value);
+					this.SendPropertyChanging();
+					this._vencida = value;
+					this.SendPropertyChanged("vencida");
+					this.OnvencidaChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AdCotizacionreg")]
 	public partial class AdCotizacionreg : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -7820,7 +7820,7 @@ namespace PagonetCore
 		
 		private int _id_doc_num;
 		
-		private string _doc_num;
+		private System.Nullable<int> _doc_num;
 		
 		private int _reng_num;
 		
@@ -7882,7 +7882,7 @@ namespace PagonetCore
     partial void OnCreated();
     partial void Onid_doc_numChanging(int value);
     partial void Onid_doc_numChanged();
-    partial void Ondoc_numChanging(string value);
+    partial void Ondoc_numChanging(System.Nullable<int> value);
     partial void Ondoc_numChanged();
     partial void Onreng_numChanging(int value);
     partial void Onreng_numChanged();
@@ -7965,8 +7965,8 @@ namespace PagonetCore
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_doc_num", DbType="Char(20)")]
-		public string doc_num
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_doc_num", DbType="Int")]
+		public System.Nullable<int> doc_num
 		{
 			get
 			{

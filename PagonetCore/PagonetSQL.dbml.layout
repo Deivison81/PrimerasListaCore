@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 20, 23.375" name="PagonetSQL">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 21.75, 23.375" name="PagonetSQL">
   <DataContextMoniker Name="/PagonetSQLDataContext" />
   <nestedChildShapes>
     <classShape Id="af010d0a-5a30-4e98-96f5-f95288bccf0c" absoluteBounds="0.75, 17.75, 2, 1.7708968098958309">
@@ -8,8 +8,11 @@
         <elementListCompartment Id="42115fd7-28f1-469c-90aa-e98c99336b4d" absoluteBounds="0.765, 18.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="f82d0915-3512-4649-95b5-c0b1e10e3f4a" absoluteBounds="3.75, 17.75, 2, 0.125">
+    <classShape Id="f82d0915-3512-4649-95b5-c0b1e10e3f4a" absoluteBounds="3.75, 17.75, 2, 2.3478011067708344">
       <DataClassMoniker Name="/PagonetSQLDataContext/Adusuarios" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9337a069-3066-4b29-a5c9-7f98ccb831c9" absoluteBounds="3.765, 18.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
     </classShape>
     <classShape Id="c7bf81d5-9098-4352-9460-98d764107f18" absoluteBounds="6.75, 11.75, 2, 2.1554996744791666">
       <DataClassMoniker Name="/PagonetSQLDataContext/AdAlmacen" />
@@ -39,12 +42,6 @@
       <DataClassMoniker Name="/PagonetSQLDataContext/Adcondiciondepago" />
       <nestedChildShapes>
         <elementListCompartment Id="1ee039a4-c756-4927-9b59-da179c7f90f9" absoluteBounds="14.765, 4.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="58ffd0d3-5f03-4d4e-85db-8d5784b9de30" absoluteBounds="14.75, 6.75, 2, 6.1938297526041666">
-      <DataClassMoniker Name="/PagonetSQLDataContext/Adcotizacion" />
-      <nestedChildShapes>
-        <elementListCompartment Id="eaec29a4-4804-48b3-b3cb-2e4f475318df" absoluteBounds="14.765, 7.21, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="d5c91f4b-ade8-42f4-b262-68267d5849de" absoluteBounds="11.5, 1.5, 2, 2.3478011067708335">
@@ -137,56 +134,56 @@
         <elementListCompartment Id="2941c3b8-7aa1-4836-89c6-874b20de0066" absoluteBounds="17.765, 8.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(9.75 : 6.375); (9.75 : 2.67390055338542); (11.5 : 2.67390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(9.75 : 6.375); (9.75 : 2.67390055338542); (11.5 : 2.67390055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/AdArticulo/AdArticulo_Adimg_art" />
       <nodes>
         <classShapeMoniker Id="74593502-b7af-415c-b2fb-56d39d89c155" />
         <classShapeMoniker Id="d5c91f4b-ade8-42f4-b262-68267d5849de" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 14.75); (5.875 : 14.375); (5.875 : 5.97191487630208); (6.25 : 5.97191487630208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 14.75); (5.875 : 14.375); (5.875 : 5.97191487630208); (6.25 : 5.97191487630208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/AdIngreso/AdIngreso_Adclientes" />
       <nodes>
         <classShapeMoniker Id="0fa4eab4-88b2-4ba2-8e6f-79c9acbf7fb0" />
         <classShapeMoniker Id="ed04bdde-17ae-43e3-9d91-aa7bfeda6342" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 1.9999995); (7.25 : 1.9999995); (7.25 : 2.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 1.9999995); (7.25 : 1.9999995); (7.25 : 2.875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/Adpais/Adpais_Adclientes" />
       <nodes>
         <classShapeMoniker Id="914976b4-7d1d-48da-8044-bea5ae082b6c" />
         <classShapeMoniker Id="ed04bdde-17ae-43e3-9d91-aa7bfeda6342" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(9.78125 : 10.2612125651042); (9.78125 : 13.0392569986979); (11.5 : 13.0392569986979)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(9.78125 : 10.2612125651042); (9.78125 : 13.0392569986979); (11.5 : 13.0392569986979)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/AdArticulo/AdArticulo_adpreciosart" />
       <nodes>
         <classShapeMoniker Id="74593502-b7af-415c-b2fb-56d39d89c155" />
         <classShapeMoniker Id="d15279b1-b3a4-4bc3-9c7d-a284ce21e90a" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 10.6354484049479); (5.79166666666667 : 10.6354484049479 : JumpStart); (5.95833333333333 : 10.6354484049479 : JumpEnd); (6.38541666666667 : 10.6354484049479 : JumpStart); (6.55208333333333 : 10.6354484049479 : JumpEnd); (7.25 : 10.6354484049479); (7.25 : 9.06882975260417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 10.6354484049479); (6.38541666666667 : 10.6354484049479 : JumpStart); (6.55208333333333 : 10.6354484049479 : JumpEnd); (7.25 : 10.6354484049479); (7.25 : 9.06882975260417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/AdSegmento/AdSegmento_Adclientes" />
       <nodes>
         <classShapeMoniker Id="89b3644d-f902-4bfd-a5e4-4675d7c29b2e" />
         <classShapeMoniker Id="ed04bdde-17ae-43e3-9d91-aa7bfeda6342" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 9.00560628255208); (11.5 : 9.00560628255208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 9.00560628255208); (11.5 : 9.00560628255208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/AdArticulo/AdArticulo_AdSerial" />
       <nodes>
         <classShapeMoniker Id="74593502-b7af-415c-b2fb-56d39d89c155" />
         <classShapeMoniker Id="f5588b2e-4de1-4fce-a8fc-f42bd8c29c0d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 13.9944482421875); (5.79166666666667 : 13.9944482421875 : JumpStart); (5.95833333333333 : 13.9944482421875 : JumpEnd); (6.46875 : 13.9944482421875); (6.46875 : 9.06882975260417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 13.9944482421875); (6.46875 : 13.9944482421875); (6.46875 : 9.06882975260417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/Adtipo_cliente/Adtipo_cliente_Adclientes" />
       <nodes>
         <classShapeMoniker Id="4502313a-dd7f-4cc9-bc8d-fbb4a002bc63" />
         <classShapeMoniker Id="ed04bdde-17ae-43e3-9d91-aa7bfeda6342" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 5.29845743815104); (6.25 : 5.29845743815104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 5.29845743815104); (6.25 : 5.29845743815104)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/Advendedor/Advendedor_Adclientes" />
       <nodes>
         <classShapeMoniker Id="ef2f7e6b-33c9-464c-a6ca-4ef3e6cd5f59" />
@@ -207,24 +204,30 @@
         <classShapeMoniker Id="ef2f7e6b-33c9-464c-a6ca-4ef3e6cd5f59" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 6.67390055338542); (11.5 : 6.67390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 6.67390055338542); (11.5 : 6.67390055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/AdArticulo/AdArticulo_StockAlma" />
       <nodes>
         <classShapeMoniker Id="74593502-b7af-415c-b2fb-56d39d89c155" />
         <classShapeMoniker Id="c6958a40-6161-49c4-b6aa-5e39f1b77118" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(10.75 : 6.46195027669271); (11.5 : 6.46195027669271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(10.75 : 6.46195027669271); (11.5 : 6.46195027669271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PagonetSQLDataContext/AdArticulo/AdArticulo_StockAlma1" />
       <nodes>
         <classShapeMoniker Id="74593502-b7af-415c-b2fb-56d39d89c155" />
         <classShapeMoniker Id="c6958a40-6161-49c4-b6aa-5e39f1b77118" />
       </nodes>
     </associationConnector>
-    <classShape Id="565fce48-8872-4702-8a9c-c7c22ea99acf" absoluteBounds="17.25, 13.875, 2, 6.3861311848958326">
+    <classShape Id="d02b1c57-a872-4a9f-8851-f90038765f23" absoluteBounds="19.5, 14, 2, 6.1938297526041657">
+      <DataClassMoniker Name="/PagonetSQLDataContext/Adcotizacion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="be19bf5b-126b-44e4-af83-9be56f0addd6" absoluteBounds="19.515, 14.46, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0930f4e3-2c8f-4192-874a-7734428bc4a6" absoluteBounds="17.5, 13.875, 2, 6.3861311848958326">
       <DataClassMoniker Name="/PagonetSQLDataContext/AdCotizacionreg" />
       <nestedChildShapes>
-        <elementListCompartment Id="0df0a1e3-8db3-4f78-8354-62452bf0482a" absoluteBounds="17.265, 14.335, 1.9700000000000002, 5.826131184895833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="96f59e8c-d234-4fbb-b671-28bfba74ca2b" absoluteBounds="17.515, 14.335, 1.9700000000000002, 5.826131184895833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
