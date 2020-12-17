@@ -21,7 +21,7 @@ function listarcodigos(){
 
 function crearlistado(arrayColumna, data) {
     var contenido = "";
-    contenido += "<table id='tablas' class='table'>";
+    contenido += "<table id='tablas' class='table table-bordered table-striped'>";
     contenido += "<thead>";
     contenido += "<tr>";
     for (var i = 0; i < arrayColumna.length; i++) {

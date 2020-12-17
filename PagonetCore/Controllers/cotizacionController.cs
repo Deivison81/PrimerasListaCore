@@ -356,30 +356,6 @@ namespace PagonetCore.Controllers
             return nroregistros;
         }
 
-        // Formato del JSON.
-        // result: {
-        //   "cotizacion": {
-        //       ...
-        //   },
-        //   "renglon": {
-        //       ...
-        //   }
-        // }
-
-        public JsonResult guardarDatosCompletos(Object jsonCompleto) {
-            Adcotizacion cotizacion = jsonCompleto.cotizacion;
-            AdCotizacionreg renglon = jsonCompleto.renglon;
-            return this.guardarDatosCompletosSeparado(cotizacion, renglon);
-        }
-
-        public JsonResult guardarDatosCompletosSeparado(Adcotizacion Oadcotizacion, AdCotizacionreg OadCotizacionreg) {
-            // Invocar a los métodos individuales para guardar AdCotizacion y AdCotizacionreg.
-            int cotizacion = this.guardarDatos(Oadcotizacion);
-            int renglon = this.guardarDatosreng(OadCotizacionreg);
-
-            return Json({ "cotizacion": cotizacion, "renglon": renglon }, JsonRequestBehavior.AllowPost);
-        }
-
         //cabecera y renglones
         public JsonResult listarCotizacionCompleta()
         {

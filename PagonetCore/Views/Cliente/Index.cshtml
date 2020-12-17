@@ -6,54 +6,84 @@
 <link href="~/Content/datatables.css" rel="stylesheet" />
 <link href="~/Content/CSSpropio.css" rel="stylesheet" />
 
-<h2>Clientes</h2>
-
-<br />
-<button type="button" onclick="abrirModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
-
-<div id="tabla">
-
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Clientes</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+            <span>Esta sección le permite realizar operaciones sobre los Clientes.</span>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+            <button type="button" onclick="abrirModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="tabla" class="table-responsive"></div>
+        </div>
+    </div>
 </div>
-
 
 <!-- Trigger the modal with a button -->
 <!-- Modal -->
 <div id="myModal" class="modal" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title">Agregar un Cliente</h4>
             </div>
             <div class="modal-body">
-                <table style="width:80%; margin:auto">
-                    <tr>
-                        <td width="40%">ID de Clientes</td>
-                        <td width="60%"><input class="borrar" type="text" id="txtidclientes" readonly /></td>
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-2 col-md-9 col-md-offset-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="txtidclientes">ID de Cliente</label>
+                                <input type="text" class="form-control borrar" id="txtidclientes" placeholder="ID de Cliente" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="txtco_cli">Código de Cliente</label>
+                                <input type="text" class="form-control borrar obligatorio" id="txtco_cli" placeholder="Ingrese Código de Cliente" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txtzonades">Zona</label>
+                                <input type="text" class="form-control borrar obligatorio" id="txtzonades" placeholder="Ingrese Zona" />
+                            </div>
+                        </form>
+                        <!--<table style="width:80%; margin:auto">
+                            <tr>
+                                <td width="40%">ID de Cliente</td>
+                                <td width="60%"><input class="borrar" type="text" id="txtidclientes" readonly /></td>
 
-                    </tr>
-                    <tr>
-                        <td width="40%">Ingrese Codigo Clientes</td>
-                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtco_cli" /></td>
+                            </tr>
+                            <tr>
+                                <td width="40%">Código de Cliente</td>
+                                <td width="60%"><input class="borrar obligatorio" type="text" id="txtco_cli" /></td>
 
-                    </tr>
-                    <tr>
-                        <td width="40%">Ingrese Zona Des</td>
-                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtzonades" /></td>
+                            </tr>
+                            <tr>
+                                <td width="40%">Zona Destino</td>
+                                <td width="60%"><input class="borrar obligatorio" type="text" id="txtzonades" /></td>
 
-                    </tr>
-                    <!--* id_tipocliente, tip_cli, cli_des, direc1, dir_ent2, telefonos, inactivo, respons, id_zona, co_zon, id_segmento, co_seg, id_vendedor, co_ven, idingre, co_cta_ingr_egr, rif, email, juridico, ciudad, zip,
-    id_pais, co_pais, cod_comercio, importado_web, importado_pro*/-->
-                </table>
+                            </tr>
+                        </table>-->
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button onclick="Agregar()" type="button" class="btn btn-success">Aceptar</button>
+                <button onclick="Agregar()" type="button" class="btn btn-success">Agregar</button>
                 <button id="btnCancelar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
-
     </div>
 </div>
 
