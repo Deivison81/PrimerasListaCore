@@ -38,7 +38,6 @@ function crearlistado(arrayColumna, data) {
         contenido += "<td>";
         contenido += arrayColumna[i];
         contenido += "</td>";
-
     }
 
     contenido += "<td>Operaciones</td>";
@@ -66,10 +65,9 @@ function crearlistado(arrayColumna, data) {
         contenido += "</tr>";
     }
 
-
     contenido += "</tbody>";
-
     contenido += "</table>";
+
     document.getElementById("tabla").innerHTML = contenido;
     $("#tablas").dataTable(
         {

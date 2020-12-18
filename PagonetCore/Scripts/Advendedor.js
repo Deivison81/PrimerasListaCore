@@ -1,9 +1,13 @@
-﻿listar();
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID Vendedor", "Código Vendedor", "Tipo", "Descripción", "ID Zona", "Código Zona", "¿Importado Web?", "¿Importado Profit?"
+];
+
+listar();
 
 function listar() {
     $.get("Vendedor/listarVendedor", function (data) {
 
-        crearlistado(["id_vendedor", "co_ven", "tipo", "ven_des", "id_zona", "co_zon", "importado_web", "importado_pro"], data);
+        crearlistado(HEADER_TABLA_COMPLETA, data);
 
     });
 }
@@ -20,7 +24,7 @@ $.get("Vendedor/listarzonaid", function (data) {
 
 function crearlistado(arrayColumna, data) {
     var contenido = "";
-    contenido += "<table id='tablas' class='table'>";
+    contenido += "<table id='tablas' class='table table-bordered table-striped'>";
     contenido += "<thead>";
     contenido += "<tr>";
     for (var i = 0; i < arrayColumna.length; i++) {
@@ -30,7 +34,7 @@ function crearlistado(arrayColumna, data) {
 
     }
 
-    contenido += "<td>Operaciones<td>";
+    contenido += "<td>Operaciones</td>";
     contenido += "</tr>";
     contenido += "</thead>";
     var llaves = Object.keys(data[0]);
@@ -155,11 +159,11 @@ function llenarCombo(data, control, primerelemento) {
     var contenido = "";
 
     if (primerelemento == true) {
-        contenido += "<option value= ''>--selecione--</option>";
+        contenido += "<option value=''>Seleccione una Zona</option>";
 
     }
     for (i = 0; i < data.length; i++) {
-        contenido += "<option value ='" + data[i].IID + "'>";
+        contenido += "<option value='" + data[i].IID + "'>";
 
         contenido += data[i].CODIGO;
 

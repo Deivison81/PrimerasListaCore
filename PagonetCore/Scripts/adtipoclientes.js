@@ -1,15 +1,20 @@
-﻿lista();
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID", "Código Tipo de Cliente", "Descripción", "Página Web", "Profit"
+];
+
+lista();
+
 function lista() {
 $.get("Tipocliente/listatipot", function (data) {
 
-    crearlistado(["id", "Codigo Tipo de cliente", "Descripcion", "Pagina Web", "Profit"], data);
+    crearlistado(HEADER_TABLA_COMPLETA, data);
 
  });
 }
 
 function crearlistado(arrayColumna, data) {
     var contenido = "";
-    contenido += "<table id='tablas' class='table'>";
+    contenido += "<table id='tablas' class='table table-bordered table-striped'>";
     contenido += "<thead>";
     contenido += "<tr>";
     for (var i = 0; i < arrayColumna.length; i++) {
@@ -19,7 +24,7 @@ function crearlistado(arrayColumna, data) {
 
     }
 
-    contenido += "<td>Operaciones<td>";
+    contenido += "<td>Operaciones</td>";
     contenido += "</tr>";
     contenido += "</thead>";
     var llaves = Object.keys(data[0]);
@@ -56,10 +61,6 @@ function crearlistado(arrayColumna, data) {
 
 }
 
-
-
-
-
 function abrirModal(id) {
     var controlesObligatorios = document.getElementsByClassName("obligatorio");
     var ncontroles = controlesObligatorios.length;
@@ -88,7 +89,6 @@ function borrarDatos() {
         controles[i].value = "";
     }
 }
-
 
 function datosObligatorios() {
 

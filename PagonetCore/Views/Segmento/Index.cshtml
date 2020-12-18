@@ -6,15 +6,31 @@
 <link href="~/Content/datatables.css" rel="stylesheet" />
 <link href="~/Content/CSSpropio.css" rel="stylesheet" />
 
-<h2>Segmento</h2>
-<br />
-<button type="button" onclick="abrirModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
-
-<div id="tabla">
-
-
+<div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Segmento</h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+            <span>Esta sección le permite realizar operaciones sobre los Segmentos.</span>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+            <button type="button" onclick="abrirModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+            <div id="tabla" class="table-responsive"></div>
+        </div>
+    </div>
 </div>
-
 
 <!-- Trigger the modal with a button -->
 <!-- Modal -->
@@ -25,10 +41,28 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
+                <h4 class="modal-title">Agregar un Segmento</h4>
             </div>
             <div class="modal-body">
-                <table style="width:80%; margin:auto">
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-2 col-md-9 col-md-offset-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="txtIdsegmento">ID Segmento</label>
+                                <input type="text" class="form-control borrar" id="txtIdsegmento" placeholder="ID Segmento" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txtcodigoS">Código de Segmento</label>
+                                <input type="text" class="form-control borrar obligatorio" id="txtcodigoS" placeholder="Ingrese Código de Segmento" />
+                            </div>
+                            <div class="form-group">
+                                <label for="txtseegmento">Ingreso de Segmento</label>
+                                <input type="text" class="form-control borrar obligatorio" id="txtseegmento" placeholder="Ingreso de Segmento" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                @*<table style="width:80%; margin:auto">
                     <tr>
                         <td width="40%">Id</td>
                         <td width="60%"><input class="borrar" type="text" id="txtIdsegmento" /></td>
@@ -44,7 +78,7 @@
                         <td width="60%"><input class="borrar obligatorio" type="text" id="txtseegmento" /></td>
 
                     </tr>
-                </table>
+                </table>*@
             </div>
             <div class="modal-footer">
                 <button onclick="Agregar()" type="button" class="btn btn-success">Aceptar</button>
