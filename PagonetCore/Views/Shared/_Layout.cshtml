@@ -21,8 +21,8 @@
             </div>
             <div class="navbar-collapse collapse" style="max-height: unset;">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Cotización", "Index", "cotizacion")</li>
                     <li class="active">@Html.ActionLink("Clientes", "Index", "Cliente")</li>
+                    <li>@Html.ActionLink("Cotización", "Index", "cotizacion")</li>
                     <li>@Html.ActionLink("Almacén", "Index", "Almacen")</li>
                     <li>@Html.ActionLink("Tipo de Cliente", "Index", "Tipocliente")</li>
                     <li>@Html.ActionLink("Ingresos", "Index", "Ingresos")</li>
@@ -37,7 +37,7 @@
             </div>
         </div>
     </nav>
-    <div class="body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
         <hr />
         <footer>

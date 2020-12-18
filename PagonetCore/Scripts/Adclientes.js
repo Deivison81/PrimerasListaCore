@@ -1,11 +1,21 @@
-﻿
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID Cliente", "Código Cliente", "ID Tipo Cliente", "Tipo Cliente", "Descripción Cliente",
+    "Dirección 1", "Dirección 2", "Teléfono", "¿Inactivo?", "Responsable", "ID Zona",
+    "Código Zona", "ID Segmento", "Código Segmento", "ID Vendedor", "Código Vendedor",
+    "ID Ingresoe", "Código Cuenta Ingreso/Egreso", "RIF", "E-mail", "¿Jurídico?",
+    "Ciudad", "ZIP", "Código País", "TIP", "Código Comercio", "¿Importado Web?", "¿Importado Profit?"
+];
+
+const HEADER_TABLA_CODIGO = [
+    "ID Cliente", "Código Cliente"
+];
+
 listar();
 
 function listar() {
     $.get("Cliente/listaCliente", function (data) {
 
-        crearlistado(["id_clientes", "co_cli", "id_tipocliente", "tip_cli", "cli_des", "direc1", "dir_ent2", "telefonos", "inactivo", "respons", "id_zona", "co_zon", "id_segmento", "co_seg", "id_vendedor", "co_ven", "idingre", "co_cta_ingr_egr", "rif", "email", "juridico", "ciudad", "zip",
-            "co_pais", "TIP", "cod_comercio", "importado_web", "importado_pro"], data);
+        crearlistado(HEADER_TABLA_COMPLETA, data);
 
     });
 }
@@ -13,7 +23,7 @@ function listar() {
 function listarcodigos(){
     $.get("Cliente/Validacodigo", function (data) {
 
-    crearlistado(["id_clientes", "co_cli"], data);
+        crearlistado(HEADER_TABLA_CODIGO, data);
 
     });
 }
@@ -31,7 +41,7 @@ function crearlistado(arrayColumna, data) {
 
     }
 
-    contenido += "<td>Operaciones<td>";
+    contenido += "<td>Operaciones</td>";
     contenido += "</tr>";
     contenido += "</thead>";
     var llaves = Object.keys(data[0]);
