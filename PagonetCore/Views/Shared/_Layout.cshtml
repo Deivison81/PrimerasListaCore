@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,29 +17,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                @Html.ActionLink("Cotizacion", "Index", "cotizacion", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Clientes", "Index", "Cliente", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Almacen", "Index", "Almacen", new { area = "" }, new { @class = "navbar-brand" })
-
+                <a class="navbar-brand hidden-sm hidden-md hidden-lg" href="/">Página Principal</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="max-height: unset;">
                 <ul class="nav navbar-nav">
+                    <li class="active">@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Clientes", "Index", "Cliente")</li>
+                    <li>@Html.ActionLink("Cotización", "Index", "cotizacion")</li>
+                    <li>@Html.ActionLink("Almacén", "Index", "Almacen")</li>
                     <li>@Html.ActionLink("Tipo de Cliente", "Index", "Tipocliente")</li>
                     <li>@Html.ActionLink("Ingresos", "Index", "Ingresos")</li>
                     <li>@Html.ActionLink("Segmento", "Index", "Segmento")</li>
-                    <li>@Html.ActionLink("Pais", "Index", "Adpais")</li>
+                    <li>@Html.ActionLink("País", "Index", "Adpais")</li>
                     <li>@Html.ActionLink("Vendedor", "Index", "Vendedor")</li>
-                    <li>@Html.ActionLink("zona", "Index", "zona")</li>
+                    <li>@Html.ActionLink("Zona", "Index", "zona")</li>
                     <li>@Html.ActionLink("Condiciones", "Index", "Condicion")</li>
                     <li>@Html.ActionLink("Transporte", "Index", "transporte")</li>
-                    <li>@Html.ActionLink("Articulos", "Index", "Articulo")</li>
-
+                    <li>@Html.ActionLink("Artículos", "Index", "Articulo")</li>
                 </ul>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
+    </nav>
+    <div class="container-fluid body-content">
         @RenderBody()
         <hr />
         <footer>

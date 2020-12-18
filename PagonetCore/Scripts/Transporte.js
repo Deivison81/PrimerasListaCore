@@ -1,16 +1,20 @@
-﻿listar();
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID Transporte", "Código Transporte", "Descripción", "¿Importado Web?", "¿Importado Profit?"
+];
+
+listar();
 
 function listar() {
     $.get("Transporte/listarTransportes", function (data) {
 
-        crearlistado(["idtransporte", "co_tran", "des_tran", "importado_web", "importado_pro"], data);
+        crearlistado(HEADER_TABLA_COMPLETA, data);
 
     });
 }
 
 function crearlistado(arrayColumna, data) {
     var contenido = "";
-    contenido += "<table id='tablas' class='table'>";
+    contenido += "<table id='tablas' class='table table-bordered table-striped'>";
     contenido += "<thead>";
     contenido += "<tr>";
     for (var i = 0; i < arrayColumna.length; i++) {
@@ -20,7 +24,7 @@ function crearlistado(arrayColumna, data) {
 
     }
 
-    contenido += "<td>Operaciones<td>";
+    contenido += "<td>Operaciones</td>";
     contenido += "</tr>";
     contenido += "</thead>";
     var llaves = Object.keys(data[0]);

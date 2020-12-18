@@ -1,4 +1,6 @@
-﻿
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID", "Código Cuenta Ingreso", "Descripción Ingreso", "Código Usuario Profit", "¿Importada Web?", "¿Importada Profit?"
+];
 
 
 listar();
@@ -6,14 +8,14 @@ listar();
 function listar() {
     $.get("Ingresos/listaIngreso", function (data) {
 
-        crearlistado(["id", "co_ctaIng_egr", "descrip_ingre", "co_user_prof", "importada_web", "Imortada_prof"], data);
+        crearlistado(HEADER_TABLA_COMPLETA, data);
 
     });
 }
 
 function crearlistado(arrayColumna, data) {
     var contenido = "";
-    contenido += "<table id='tablas' class='table'>";
+    contenido += "<table id='tablas' class='table table-bordered table-striped'>";
     contenido += "<thead>";
     contenido += "<tr>";
     for (var i = 0; i < arrayColumna.length; i++) {
@@ -23,7 +25,7 @@ function crearlistado(arrayColumna, data) {
 
     }
 
-    contenido += "<td>Operaciones<td>";
+    contenido += "<td>Operaciones</td>";
     contenido += "</tr>";
     contenido += "</thead>";
     var llaves = Object.keys(data[0]);

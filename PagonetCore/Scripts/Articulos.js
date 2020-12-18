@@ -1,15 +1,22 @@
-﻿listar();
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID Producto", "Código Producto", "Descripción", "Artículo de Referencia", "Unidad", "ID Precio", "Código Precio Profit", "Precio desde",
+    "Precio hasta", "Monto Precio", "Precio 1", "Precio 2", "Precio 3", "Precio 4", "Precio 5", "Precio OM", "ID Imagen", "Ad tip",
+    "Nombre Imagen", "Ruta", "Código Almacén", "Almacén Profit", "Descripción Almacén", "Código Artículo Profit", "Tipo de Stock",
+    "Cantidades", "Página Web"
+];
+
+listar();
 
 function listar() {
     $.get("Articulo/listarartweb", function (data) {
 
-            crearlistado(["codigo producto", "descripcionproducto", "adreferencia", "unidad", "idprecio", "codigoprecioprofit", "pdesde", "phasta", "montoprecio", "precio1", "precio2", "precio3", "precio4", "precio5", "precioOM", "idimagen", "adtip", "nombreimagen", "ruta", "cod_almacen", "almacenprofit", "desalma", "codigoartprof", "tipostock", "cantidades", "paginaweb"], data);   
+        crearlistado(HEADER_TABLA_COMPLETA, data);   
     });
 }
 
 function crearlistado(arrayColumna, data) {
     var contenido = "";
-    contenido += "<table id='tablas' class='table'>";
+    contenido += "<table id='tablas' class='table table-bordered table-striped'>";
     contenido += "<thead>";
     contenido += "<tr>";
     for (var i = 0; i < arrayColumna.length; i++) {
@@ -19,7 +26,7 @@ function crearlistado(arrayColumna, data) {
 
     }
 
-    contenido += "<td>Operaciones<td>";
+    contenido += "<td>Operaciones</td>";
     contenido += "</tr>";
     contenido += "</thead>";
     var llaves = Object.keys(data[0]);
