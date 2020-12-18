@@ -183,7 +183,10 @@ namespace PagonetCore.Controllers
                                     codigoprecioprofit = precio.co_precios,
                                     pdesde = precio.desde,
                                     phasta = precio.hasta,
+                                    //precio en bs
                                     montoprecio = precio.monto,
+                                    //Precio en $$
+                                    // no modificar estas estructuras
                                     precio1 = precio.montoadi1,
                                     precio2 = precio.montoadi2,
                                     precio3 = precio.montoadi3,

@@ -94,6 +94,48 @@ namespace PagonetCore.Controllers
             }).ToList();
             return Json(listarcotizacion, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult listarCotizacioncli(int cli)
+        {
+            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
+            var listarcotizacion = bdsql.Adcotizacion.Where(p => p.id_clientes.Equals(cli)).Select(p => new
+            {
+                p.id_doc_num,
+                p.doc_num,
+                p.descrip,
+                p.id_clientes,
+                p.co_cli,
+                p.idtransporte,
+                p.co_tran,
+                p.co_mone,
+                p.id_vendedor,
+                p.co_ven,
+                p.id_condicion,
+                p.co_cond,
+                p.fec_emis,
+                p.fec_venc,
+                p.fec_reg,
+
+                //FECHAINI = ((DateTime)p.fec_emis).ToShortDateString(),
+                //FEVENC = ((DateTime)p.fec_venc).ToShortDateString(),
+                //FECREG = ((DateTime)p.fec_reg).ToShortDateString(),
+                p.anulado,
+                p.status,
+                p.total_bruto,
+                p.monto_imp,
+                p.monto_imp2,
+                p.monto_imp3,
+                p.total_neto,
+                p.saldo,
+                p.importado_web,
+                p.importado_pro,
+                p.Diasvencimiento,
+                p.nro_pedido,
+                p.vencida
+            }).ToList();
+            return Json(listarcotizacion, JsonRequestBehavior.AllowGet);
+        }
+
         //renglones
         public JsonResult listarRenglones()
         {
