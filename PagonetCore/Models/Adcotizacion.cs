@@ -8,7 +8,7 @@ namespace PagonetCore.Models
     public class Adcotizacion
     {
         public int id_doc_num { get; set; }
-        public int doc_num { get; set; }
+        public string doc_num { get; set; }
         public string descrip { get; set; }
         public int id_clientes { get; set; }
         public string co_cli { get; set; }

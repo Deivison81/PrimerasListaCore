@@ -94,48 +94,6 @@ namespace PagonetCore.Controllers
             }).ToList();
             return Json(listarcotizacion, JsonRequestBehavior.AllowGet);
         }
-
-        public JsonResult listarCotizacioncli(int cli)
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-            var listarcotizacion = bdsql.Adcotizacion.Where(p => p.id_clientes.Equals(cli)).Select(p => new
-            {
-                p.id_doc_num,
-                p.doc_num,
-                p.descrip,
-                p.id_clientes,
-                p.co_cli,
-                p.idtransporte,
-                p.co_tran,
-                p.co_mone,
-                p.id_vendedor,
-                p.co_ven,
-                p.id_condicion,
-                p.co_cond,
-                p.fec_emis,
-                p.fec_venc,
-                p.fec_reg,
-
-                //FECHAINI = ((DateTime)p.fec_emis).ToShortDateString(),
-                //FEVENC = ((DateTime)p.fec_venc).ToShortDateString(),
-                //FECREG = ((DateTime)p.fec_reg).ToShortDateString(),
-                p.anulado,
-                p.status,
-                p.total_bruto,
-                p.monto_imp,
-                p.monto_imp2,
-                p.monto_imp3,
-                p.total_neto,
-                p.saldo,
-                p.importado_web,
-                p.importado_pro,
-                p.Diasvencimiento,
-                p.nro_pedido,
-                p.vencida
-            }).ToList();
-            return Json(listarcotizacion, JsonRequestBehavior.AllowGet);
-        }
-
         //renglones
         public JsonResult listarRenglones()
         {
@@ -289,13 +247,10 @@ namespace PagonetCore.Controllers
             try
             {
                 if (Oadcotizacion.id_doc_num==0)
-                {   
+                {
                     bdsql.Adcotizacion.InsertOnSubmit(Oadcotizacion);
                     bdsql.SubmitChanges();
                     nroregistros = 1;
-
-                    List<Adcotizacion> adcotizacionSel = bdsql.Adcotizacion.Where(p => p.id_clientes.Equals(Oadcotizacion.id_clientes)).OrderByDescending(p=> p.id_doc_num).ToList();
-                    return adcotizacionSel.First().id_doc_num;
                 }
                 else
                 {
@@ -459,14 +414,14 @@ namespace PagonetCore.Controllers
             return Json(listarcotizacioncompleta, JsonRequestBehavior.AllowGet);
         
         }
-        public JsonResult listarCotizacionCompletaco(int codigo)
+        public JsonResult listarCotizacionCompletaco(string codigo)
         {
             PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
 
             var  listarcotizacioncompletaco = (from cabezas in bdsql.Adcotizacion
                                             join renglones in bdsql.AdCotizacionreg
-                                            on cabezas.id_doc_num equals (renglones.doc_num)
-                                            where cabezas.id_doc_num.Equals(codigo)
+                                            on cabezas.doc_num equals renglones.doc_num
+                                            where cabezas.doc_num.Equals(codigo)
                                             select new                                  
                                             {
                                                 cabezas.id_condicion,
@@ -518,92 +473,6 @@ namespace PagonetCore.Controllers
 
 
 
-        }
-        // Formato del JSON.
-        // resultado: {
-        //    "cotizacion": {
-        //        ...
-        //    },
-        //    "renglon": {
-        //        ...
-        //    }
-        // }
-
-        /*public JsonResult guardarDatosCompletos(Object jsonCompleto)
-        {
-            Adcotizacion cotizacion = jsonCompleto.cotizacion;
-            AdCotizacionreg renglon = jsonCompleto.renglon;
-            return this.guardarDatosCompletosSeparado(cotizacion, renglon);
-        }
-
-        public JsonResult guardarDatosCompletosSeparado(Adcotizacion Oadcotizacion, AdCotizacionreg OadCotizacionreg)
-        {
-            // Invocar los métodos individuales para guardar AdCotizacion y AdCotizacionreg.
-            int cotizacion = this.guardarDatos(Oadcotizacion);
-            int renglon = this.guardarDatosreng(OadCotizacionreg);
-
-           
-
-            //return Json({ "cotizacion": cotizacion, "renglon": renglon }, JsonRequestBehavior.AllowPost );
-            return cotizacion, renglon
-            
-        }*/
-        public int Guardate(Adcotizacion Oadcotizacion, List<AdCotizacionreg> OadCotizacionreg)
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-            int cotizacion = 0;
-            int cantidadrenglon = OadCotizacionreg.Count();
-
-            int nroregistros = 0;
-            int nrorenglones = 0;
-            string nrocotizacion = "";
-            try
-            {
-                //bdsql.Adcotizacion.InsertOnSubmit(Oadcotizacion);
-                //bdsql.SubmitChanges();
-                //nroregistros = 1;
-                 cotizacion = this.guardarDatos(Oadcotizacion);
-
-                if (cotizacion != 0)
-                {
-                     //Adcotizacion adcotizacionSel = bdsql.Adcotizacion.Where(p => p.id_clientes.Equals(Oadcotizacion.id_clientes)).Last();
-                    //nrocotizacion = adcotizacionSel.doc_num;
-                    //if (adcotizacionSel.id_doc_num > 0 )
-                    //{    
-                        //(bdsql.Adcotizacion.Where(p => p.doc_num.Equals(Oadcotizacion.doc_num))).Count();
-
-                        for (int i = 0; i < cantidadrenglon; i++ )
-                        {
-                            OadCotizacionreg[i].doc_num = cotizacion;
-                            nrorenglones = nrorenglones + 1;
-                        OadCotizacionreg[i].reng_num = nrorenglones;
-                        // bdsql.AdCotizacionreg.InsertOnSubmit(OadCotizacionreg);
-                        // bdsql.SubmitChanges();
-                        this.guardarDatosreng(OadCotizacionreg[i]);
-                        
-
-                        }
-                    //}
-                    //else
-                    //{
-                     //  return nrorenglones = 0;
-                    //}
-
-                }
-                else
-                {
-                    return nroregistros = 0;
-                }
-
-            }
-            catch(Exception ex)
-            {
-                nroregistros = 0;
-                nrorenglones = 0;
-            }
-
-            //return (nroregistros + nrorenglones) +  int.Parse(nrocotizacion);    
-            return cotizacion;
         }
     }
 }
