@@ -1,26 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="pagonet_I" Class="PagonetSQLDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=TECNODEX;Initial Catalog=pagonet_I;User ID=tecno;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="pagonet_IConnectionString1" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Adtransporte" Member="Adtransporte">
-    <Type Name="Adtransporte">
-      <Column Name="idtransporte" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="co_tran" Type="System.String" DbType="Char(6)" CanBeNull="true" />
-      <Column Name="des_tran" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
-      <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Adusuarios" Member="Adusuarios">
-    <Type Name="Adusuarios">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="co_user_prof" Type="System.String" DbType="NChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="cod_user" Type="System.String" DbType="NChar(6) NOT NULL" CanBeNull="false" />
-      <Column Name="nombre_usuarios" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
-      <Column Name="password" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Estado" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="fecha_ingreso" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="validacion" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.AdAlmacen" Member="AdAlmacen">
     <Type Name="AdAlmacen">
       <Column Name="cod_almacen" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -96,12 +75,6 @@
       <Column Name="cod_comercio" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
       <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Association Name="AdIngreso_Adclientes" Member="AdIngreso" ThisKey="id_segmento" OtherKey="id" Type="AdIngreso" IsForeignKey="true" />
-      <Association Name="Adpais_Adclientes" Member="Adpais" ThisKey="id_pais" OtherKey="id_pais" Type="Adpais" IsForeignKey="true" />
-      <Association Name="AdSegmento_Adclientes" Member="AdSegmento" ThisKey="id_segmento" OtherKey="id_segmento" Type="AdSegmento" IsForeignKey="true" />
-      <Association Name="Adtipo_cliente_Adclientes" Member="Adtipo_cliente" ThisKey="id_tipocliente" OtherKey="id_tipocliente" Type="Adtipo_cliente" IsForeignKey="true" />
-      <Association Name="Advendedor_Adclientes" Member="Advendedor" ThisKey="id_vendedor" OtherKey="id_vendedor" Type="Advendedor" IsForeignKey="true" />
-      <Association Name="Adzona_Adclientes" Member="Adzona" ThisKey="id_zona" OtherKey="id_zona" Type="Adzona" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Adcondiciondepago" Member="Adcondiciondepago">
@@ -110,6 +83,71 @@
       <Column Name="co_cond" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
       <Column Name="cond_des" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
       <Column Name="dias_cred" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Adcotizacion" Member="Adcotizacion">
+    <Type Name="Adcotizacion">
+      <Column Name="id_doc_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="doc_num" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="descrip" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
+      <Column Name="id_clientes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="co_cli" Type="System.String" DbType="NChar(16)" CanBeNull="true" />
+      <Column Name="idtransporte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="co_tran" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="co_mone" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="id_vendedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="co_ven" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="id_condicion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="co_cond" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="fec_emis" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="fec_venc" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="fec_reg" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="anulado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="status" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="total_bruto" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="monto_imp" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="monto_imp2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="monto_imp3" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="total_neto" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="saldo" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+      <Column Name="Diasvencimiento" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="nro_pedido" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="vencida" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AdCotizacionreg" Member="AdCotizacionreg">
+    <Type Name="AdCotizacionreg">
+      <Column Name="id_doc_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="doc_num" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="reng_num" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_art" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="co_art" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
+      <Column Name="art_des" Type="System.String" DbType="VarChar(120)" CanBeNull="true" />
+      <Column Name="cod_almacen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="co_alma" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="total_art" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="stotal_art" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="cod_unidad" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="id_preciosart" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="co_precios" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
+      <Column Name="prec_vta" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="prec_vta_om" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="tipo_imp" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="tipo_imp2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="tipo_imp3" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="porc_imp" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="porc_imp2" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="porc_imp3" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="monto_imp" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="monto_imp2" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="monto_imp3" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="reng_neto" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="tipo_doc" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="num_doc" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
     </Type>
@@ -135,7 +173,6 @@
       <Column Name="co_user_prof" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
       <Column Name="importada_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="Imortada_prof" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Association Name="AdIngreso_Adclientes" Member="Adclientes" ThisKey="id" OtherKey="id_segmento" Type="Adclientes" />
     </Type>
   </Table>
   <Table Name="dbo.Adpais" Member="Adpais">
@@ -145,7 +182,6 @@
       <Column Name="pais_des" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
       <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Association Name="Adpais_Adclientes" Member="Adclientes" ThisKey="id_pais" OtherKey="id_pais" Type="Adclientes" />
     </Type>
   </Table>
   <Table Name="dbo.Adpedidos" Member="Adpedidos">
@@ -242,7 +278,6 @@
       <Column Name="seg_des" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
       <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Association Name="AdSegmento_Adclientes" Member="Adclientes" ThisKey="id_segmento" OtherKey="id_segmento" Type="Adclientes" />
     </Type>
   </Table>
   <Table Name="dbo.AdSerial" Member="AdSerial">
@@ -266,11 +301,10 @@
       <Column Name="des_tipo" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
       <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Association Name="Adtipo_cliente_Adclientes" Member="Adclientes" ThisKey="id_tipocliente" OtherKey="id_tipocliente" Type="Adclientes" />
     </Type>
   </Table>
-  <Table Name="dbo.Adtransporte" Member="Adtransporte1">
-    <Type Name="Adtransporte1">
+  <Table Name="dbo.Adtransporte" Member="Adtransporte">
+    <Type Name="Adtransporte">
       <Column Name="idtransporte" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="co_tran" Type="System.String" DbType="Char(6)" CanBeNull="true" />
       <Column Name="des_tran" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
@@ -278,8 +312,8 @@
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Adusuarios" Member="Adusuarios1">
-    <Type Name="Adusuarios1">
+  <Table Name="dbo.Adusuarios" Member="Adusuarios">
+    <Type Name="Adusuarios">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="co_user_prof" Type="System.String" DbType="NChar(6) NOT NULL" CanBeNull="false" />
       <Column Name="cod_user" Type="System.String" DbType="NChar(6) NOT NULL" CanBeNull="false" />
@@ -300,8 +334,6 @@
       <Column Name="co_zon" Type="System.String" DbType="Char(6) NOT NULL" CanBeNull="false" />
       <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Association Name="Advendedor_Adclientes" Member="Adclientes" ThisKey="id_vendedor" OtherKey="id_vendedor" Type="Adclientes" />
-      <Association Name="Adzona_Advendedor" Member="Adzona" ThisKey="id_zona" OtherKey="id_zona" Type="Adzona" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Adzona" Member="Adzona">
@@ -311,8 +343,6 @@
       <Column Name="zon_des" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
       <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Association Name="Adzona_Adclientes" Member="Adclientes" ThisKey="id_zona" OtherKey="id_zona" Type="Adclientes" />
-      <Association Name="Adzona_Advendedor" Member="Advendedor" ThisKey="id_zona" OtherKey="id_zona" Type="Advendedor" />
     </Type>
   </Table>
   <Table Name="dbo.StockAlma" Member="StockAlma">
@@ -339,71 +369,6 @@
       <Column Name="consumosuntuario" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="porcentajetaza" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="porcentajesuntuario" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Adcotizacion" Member="Adcotizacion">
-    <Type Name="Adcotizacion">
-      <Column Name="id_doc_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="doc_num" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="descrip" Type="System.String" DbType="NChar(60)" CanBeNull="true" />
-      <Column Name="id_clientes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="co_cli" Type="System.String" DbType="NChar(16)" CanBeNull="true" />
-      <Column Name="idtransporte" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="co_tran" Type="System.String" DbType="Char(6)" CanBeNull="true" />
-      <Column Name="co_mone" Type="System.String" DbType="Char(6)" CanBeNull="true" />
-      <Column Name="id_vendedor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="co_ven" Type="System.String" DbType="Char(6)" CanBeNull="true" />
-      <Column Name="id_condicion" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="co_cond" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
-      <Column Name="fec_emis" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="fec_venc" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="fec_reg" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
-      <Column Name="anulado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="status" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="total_bruto" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="monto_imp" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="monto_imp2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="monto_imp3" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="total_neto" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="saldo" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-      <Column Name="Diasvencimiento" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="nro_pedido" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="vencida" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AdCotizacionreg" Member="AdCotizacionreg">
-    <Type Name="AdCotizacionreg">
-      <Column Name="id_doc_num" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="doc_num" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="reng_num" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="id_art" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="co_art" Type="System.String" DbType="NChar(30)" CanBeNull="true" />
-      <Column Name="art_des" Type="System.String" DbType="VarChar(120)" CanBeNull="true" />
-      <Column Name="cod_almacen" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="co_alma" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
-      <Column Name="total_art" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="stotal_art" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="cod_unidad" Type="System.String" DbType="Char(6)" CanBeNull="true" />
-      <Column Name="id_preciosart" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="co_precios" Type="System.String" DbType="NChar(6)" CanBeNull="true" />
-      <Column Name="prec_vta" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="prec_vta_om" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="tipo_imp" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="tipo_imp2" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="tipo_imp3" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="porc_imp" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="porc_imp2" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="porc_imp3" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="monto_imp" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="monto_imp2" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="monto_imp3" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="reng_neto" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
-      <Column Name="tipo_doc" Type="System.String" DbType="Char(4)" CanBeNull="true" />
-      <Column Name="num_doc" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="importado_web" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
       <Column Name="importado_pro" Type="System.Char" DbType="NChar(1)" CanBeNull="true" />
     </Type>

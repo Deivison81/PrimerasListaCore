@@ -289,7 +289,7 @@ namespace PagonetCore.Controllers
             try
             {
                 if (Oadcotizacion.id_doc_num==0)
-                {
+                {   
                     bdsql.Adcotizacion.InsertOnSubmit(Oadcotizacion);
                     bdsql.SubmitChanges();
                     nroregistros = 1;

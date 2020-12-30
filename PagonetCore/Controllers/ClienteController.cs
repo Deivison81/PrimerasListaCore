@@ -149,7 +149,7 @@ namespace PagonetCore.Controllers
         public int guardarDatos(Adclientes Oadclientes)
         {
             PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
-
+            
             int nregistrosafectados = 0;
             try
             {
@@ -158,6 +158,7 @@ namespace PagonetCore.Controllers
                     dbsql.Adclientes.InsertOnSubmit(Oadclientes);
                     dbsql.SubmitChanges();
                     nregistrosafectados = 1;
+                   // ncliente = dbsql.Adclientes.Where(P => P.id_clientes.Equals(Oadclientes.id_clientes)).First();
                 }
                 else
                 {
@@ -200,6 +201,7 @@ namespace PagonetCore.Controllers
                    nregistrosafectados = 0;
             }
             return nregistrosafectados;
+            //return Oadclientes.id_clientes;
         }
       
         public JsonResult Validacodigo()
