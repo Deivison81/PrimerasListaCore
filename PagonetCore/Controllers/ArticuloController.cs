@@ -111,7 +111,6 @@ namespace PagonetCore.Controllers
 
             return Json(listarimagenesart, JsonRequestBehavior.AllowGet);
         }
-        /*
         public JsonResult listarartweb()
         {
             PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
@@ -158,58 +157,6 @@ namespace PagonetCore.Controllers
             return Json(listarartweb, JsonRequestBehavior.AllowGet);
 
         }
-        */
-        public JsonResult listarartweb()
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-
-            var listarartweb = (from stock in bdsql.StockAlma
-                                join alma in bdsql.AdAlmacen
-                                on stock.cod_almacen equals alma.cod_almacen
-                                join Art in bdsql.AdArticulo
-                                on stock.id_art equals Art.id_art
-                                join precio in bdsql.adpreciosart
-                                on Art.id_art equals precio.id_art
-                                join img in bdsql.Adimg_art
-                                on Art.id_art equals img.id_art
-                                select new
-                                {
-                                    idproducto = Art.id_art,
-                                    codigoproducto = Art.co_art,
-                                    descripcionproducto = Art.art_des,
-                                    adreferencia = Art.referencia,
-                                    unidad = Art.cod_unidad,
-                                    idprecio = precio.id_preciosart,
-                                    codigoprecioprofit = precio.co_precios,
-                                    pdesde = precio.desde,
-                                    phasta = precio.hasta,
-                                    //precio en bs
-                                    montoprecio = precio.monto,
-                                    //Precio en $$
-                                    // no modificar estas estructuras
-                                    precio1 = precio.montoadi1,
-                                    precio2 = precio.montoadi2,
-                                    precio3 = precio.montoadi3,
-                                    precio4 = precio.montoadi4,
-                                    precio5 = precio.montoadi5,
-                                    precioOM = precio.precioOm,
-                                    idimagen = img.id_imgart,
-                                    adtip = img.tip,
-                                    nombreimagen = img.imagen_des,
-                                    ruta = img.picture,
-                                    cod_almacen = alma.cod_almacen,
-                                    almacenprofit = alma.co_alma,
-                                    desalma = alma.des_alamacen,
-                                    codigoartprof = stock.co_art,
-                                    tipostock = stock.tipo,
-                                    cantidades = stock.stock,
-                                    paginaweb = stock.importado_web
-                                }).ToList();
-            return Json(listarartweb, JsonRequestBehavior.AllowGet);
-
-        }
-
-
         public JsonResult listarartwebDisponibles(string disponible)
         {
             PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
