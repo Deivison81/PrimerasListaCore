@@ -400,6 +400,7 @@ namespace PagonetCore.Controllers
             }
             return nroregistros;
         }
+
         //cabecera y renglones
         public JsonResult listarCotizacionCompleta()
         {

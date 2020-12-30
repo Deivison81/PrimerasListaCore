@@ -1,4 +1,13 @@
-﻿$("#dtfechainicio").datepicker(
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID Número de Documento", "Número de Documento", "Número de Renglón", "ID Artículo", "Código Artículo",
+    "Descripción Artículo", "Código Almacén", "Código Almacén", "Total Artículos", "Subtotal Artículos",
+    "Código Unidad", "ID Precio Artículos", "Código Precios", "Precio de Venta", "Precio de Venta OM",
+    "Tipo Impuesto", "Tipo Impuesto 2", "Tipo Impuesto 3", "Porcentaje Impuesto", "Porcentaje Impuesto 2",
+    "Porcentaje Impuesto 3", "Monto Impuesto", "Monto Impuesto 2", "Monto Impuesto 3", "Renglón Neto",
+    "Tipo de Documento", "Número de Documento", "¿Importado Web?", "¿Importado Profit?"
+];
+
+$("#dtfechainicio").datepicker(
     {
        dateFormat: "dd/mm/yy",
        changeMonth: true,
@@ -39,8 +48,7 @@ listarr();
 function listarr() {
     $.get("cotizacion/listarRenglones", function (data) {
 
-        crearlistado(["id_doc_num", "doc_num", "reng_num", "id_art", "co_art", "art_des", "cod_almacen", "co_alma", "total_art", "stotal_art", "cod_unidad", "id_preciosart", "co_precios", "prec_vta", "prec_vta_om", "tipo_imp", "tipo_imp2", "tipo_imp3", "porc_imp",
-            "porc_imp2", "porc_imp3", "monto_imp", "monto_imp2", "monto_imp3", "reng_neto", "tipo_doc", "num_doc", "importado_web", "importado_pro"], data);
+        crearlistado(HEADER_TABLA_COMPLETA, data);
 
     });
 }

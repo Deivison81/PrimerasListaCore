@@ -1,27 +1,31 @@
-﻿//cargar datos
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID Almacén", "Código Almacén", "Descripción Almacén", "¿Web?",
+    "Código de Usuario Profit", "¿Importado Web?", "¿Importado Profit?"
+];
+
+//cargar datos
 listar();
 
 function listar() {
     $.get("Almacen/listarAlmacen", function (data) {
 
-        crearlistado(["cod_almacen", "co_alma", "des_alamacen", "web", "co_user_prof", "importado_web", "importado_pro"], data);
+        crearlistado(HEADER_TABLA_COMPLETA, data);
 
     });
 }
 
 function crearlistado(arrayColumna, data) {
     var contenido = "";
-    contenido += "<table id='tablas' class='table'>";
+    contenido += "<table id='tablas' class='table table-bordered table-striped'>";
     contenido += "<thead>";
     contenido += "<tr>";
     for (var i = 0; i < arrayColumna.length; i++) {
         contenido += "<td>";
         contenido += arrayColumna[i];
         contenido += "</td>";
-
     }
 
-    contenido += "<td>Operaciones<td>";
+    contenido += "<td>Operaciones</td>";
     contenido += "</tr>";
     contenido += "</thead>";
     var llaves = Object.keys(data[0]);
@@ -46,10 +50,9 @@ function crearlistado(arrayColumna, data) {
         contenido += "</tr>";
     }
 
-
     contenido += "</tbody>";
-
     contenido += "</table>";
+
     document.getElementById("tabla").innerHTML = contenido;
     $("#tablas").dataTable(
         {

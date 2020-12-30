@@ -1,7 +1,5 @@
-﻿
-
-.error{
-    position:relative;
+﻿.error {
+    position: relative;
 }
 .error::after{
     position:absolute;

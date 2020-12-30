@@ -1,17 +1,20 @@
-﻿alert("si esta cargando");
+﻿const HEADER_TABLA_COMPLETA = [
+    "ID Condición", "Código Condición", "Descripción", "Días de Crédito", "¿Importado Web?", "¿Importado Profit?"
+];
+
 listar();
 
 function listar() {
     $.get("Condicion/listarCondiciones", function (data) {
 
-        crearlistado(["id_condicion", "co_cond", "cond_des", "dias_cred", "importado_web", "importado_pro"], data);
+        crearlistado(HEADER_TABLA_COMPLETA, data);
 
     });
 }
 
 function crearlistado(arrayColumna, data) {
     var contenido = "";
-    contenido += "<table id='tablas' class='table'>";
+    contenido += "<table id='tablas' class='table table-bordered table-striped'>";
     contenido += "<thead>";
     contenido += "<tr>";
     for (var i = 0; i < arrayColumna.length; i++) {
@@ -21,7 +24,7 @@ function crearlistado(arrayColumna, data) {
 
     }
 
-    contenido += "<td>Operaciones<td>";
+    contenido += "<td>Operaciones</td>";
     contenido += "</tr>";
     contenido += "</thead>";
     var llaves = Object.keys(data[0]);
