@@ -1,0 +1,136 @@
+﻿@model PagonetCore.Models.adpreciosart
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>adpreciosart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.co_art)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_art)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_precios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_precios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hasta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hasta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_alma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_alma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioOm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioOm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

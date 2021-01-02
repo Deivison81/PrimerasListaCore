@@ -1,0 +1,208 @@
+﻿@model PagonetCore.Models.Adcotizacion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Adcotizacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.doc_num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doc_num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descrip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_tran)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_tran)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_mone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_mone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_ven)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_ven)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_cond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_cond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_emis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_emis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_venc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_venc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_reg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_reg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anulado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anulado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_bruto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_bruto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_imp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_imp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_imp2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_imp2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_imp3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_imp3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_neto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_neto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.saldo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saldo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diasvencimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diasvencimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nro_pedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nro_pedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vencida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vencida)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

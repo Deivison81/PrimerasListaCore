@@ -1,0 +1,74 @@
+﻿@model PagonetCore.Models.Adusuarios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Adusuarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.co_user_prof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_user_prof)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_user)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_user)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_usuarios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_usuarios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_ingreso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_ingreso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.validacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.validacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

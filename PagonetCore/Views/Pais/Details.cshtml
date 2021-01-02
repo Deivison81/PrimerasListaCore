@@ -1,0 +1,50 @@
+﻿@model PagonetCore.Models.Adpais
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Adpais</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.co_pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pais_des)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pais_des)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_pais }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

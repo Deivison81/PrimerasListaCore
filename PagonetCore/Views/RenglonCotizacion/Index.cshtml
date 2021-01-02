@@ -1,0 +1,177 @@
+﻿@model IEnumerable<PagonetCore.Models.AdCotizacionreg>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.doc_num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reng_num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_art)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.art_des)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_alma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_art)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stotal_art)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cod_unidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_precios)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prec_vta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prec_vta_om)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_imp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_imp2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_imp3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porc_imp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porc_imp2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porc_imp3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_imp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_imp2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_imp3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reng_neto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_doc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_doc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.doc_num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reng_num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_art)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.art_des)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_alma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total_art)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stotal_art)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cod_unidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_precios)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prec_vta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prec_vta_om)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_imp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_imp2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_imp3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porc_imp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porc_imp2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porc_imp3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_imp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_imp2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_imp3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reng_neto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_doc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_doc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_doc_num }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_doc_num }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_doc_num })
+        </td>
+    </tr>
+}
+
+</table>

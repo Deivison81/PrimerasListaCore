@@ -1,16 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace PagonetCore.Models
 {
-    public class Adpais
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class Adpais
     {
+        [Key]
         public int id_pais { get; set; }
+
+        [StringLength(6)]
         public string co_pais { get; set; }
+
+        [StringLength(60)]
         public string pais_des { get; set; }
-        public char importado_web { get; set; }
-        public char importado_pro { get; set; }
+
+        [StringLength(1)]
+        public string importado_web { get; set; }
+
+        [StringLength(1)]
+        public string importado_pro { get; set; }
     }
 }

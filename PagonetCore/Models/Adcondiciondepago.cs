@@ -1,17 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace PagonetCore.Models
 {
-    public class Adcondiciondepago
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Adcondiciondepago")]
+    public partial class Adcondiciondepago
     {
+        [Key]
         public int id_condicion { get; set; }
-        public char co_cond { get; set; }
+
+        [StringLength(6)]
+        public string co_cond { get; set; }
+
+        [StringLength(60)]
         public string cond_des { get; set; }
-        public int dias_cred { get; set; }
-        public char importado_web { get; set; }
-        public char importado_pro { get; set; }
+
+        public int? dias_cred { get; set; }
+
+        [StringLength(1)]
+        public string importado_web { get; set; }
+
+        [StringLength(1)]
+        public string importado_pro { get; set; }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace PagonetCore.Models
 {
     public class sazona
     {
+        // TODO: Se debería tener otro tipo de PK (compuesta por un ID autoincremental + co_zon?).
+        [Key]
         public string co_zon { get; set; }
         public string zon_des { get; set; } 
         public int numcom { get; set; }

@@ -1,0 +1,66 @@
+﻿@model PagonetCore.Models.AdAlmacen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdAlmacen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.co_alma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_alma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.des_alamacen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.des_alamacen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_user_prof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_user_prof)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cod_almacen }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

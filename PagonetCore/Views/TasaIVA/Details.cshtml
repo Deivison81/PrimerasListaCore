@@ -1,0 +1,90 @@
+﻿@model PagonetCore.Models.Tasa_IVA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tasa_IVA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fechapubli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechapubli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nro_reng)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nro_reng)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tip_impu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tip_impu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ventas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ventas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.consumosuntuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.consumosuntuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajetaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajetaza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porcentajesuntuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porcentajesuntuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_impuesto }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

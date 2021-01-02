@@ -1,18 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
 namespace PagonetCore.Models
 {
-    public class Adtransporte
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Adtransporte")]
+    public partial class Adtransporte
     {
-        public int  idtransporte { get; set; }
-        public char co_tran { get; set; }
+        [Key]
+        public int idtransporte { get; set; }
+
+        [StringLength(6)]
+        public string co_tran { get; set; }
+
+        [StringLength(60)]
         public string des_tran { get; set; }
-        public char importado_web { get; set; }
-        public char importado_pro { get; set; }
 
+        [StringLength(1)]
+        public string importado_web { get; set; }
 
+        [StringLength(1)]
+        public string importado_pro { get; set; }
     }
-} 
+}

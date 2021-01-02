@@ -47,11 +47,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Faker.Net.4.7, Version=1.4.108.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Faker.Net.1.4.108\lib\net472\Faker.Net.4.7.dll</HintPath>
+    </Reference>
+    <Reference Include="FizzWare.NBuilder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5651b03e12e42c12, processorArchitecture=MSIL">
+      <HintPath>..\packages\NBuilder.6.1.0\lib\net40\FizzWare.NBuilder.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -123,26 +137,43 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AdpaisController.cs" />
     <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\ArticuloController.cs" />
+    <Compile Include="Controllers\BancoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
-    <Compile Include="Controllers\CondicionController.cs" />
-    <Compile Include="Controllers\cotizacionController.cs" />
+    <Compile Include="Controllers\CondicionDePagoController.cs" />
+    <Compile Include="Controllers\CotizacionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IngresosController.cs" />
+    <Compile Include="Controllers\ImagenArticuloController.cs" />
+    <Compile Include="Controllers\IngresoController.cs" />
+    <Compile Include="Controllers\PaisController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
+    <Compile Include="Controllers\PrecioArticuloController.cs" />
+    <Compile Include="Controllers\RenglonCotizacionController.cs" />
+    <Compile Include="Controllers\RenglonPedidoController.cs" />
+    <Compile Include="Controllers\SaZonaController.cs" />
     <Compile Include="Controllers\SegmentoController.cs" />
-    <Compile Include="Controllers\StockController.cs" />
+    <Compile Include="Controllers\SerialController.cs" />
+    <Compile Include="Controllers\StockAlmacenController.cs" />
     <Compile Include="Controllers\TasaIVAController.cs" />
     <Compile Include="Controllers\TipoclienteController.cs" />
     <Compile Include="Controllers\TransporteController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VendedorController.cs" />
     <Compile Include="Controllers\ZonaController.cs" />
+    <Compile Include="DAL\PagonetContext.cs" />
+    <Compile Include="DAL\PagonetInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101021905360_InitialCreate.cs" />
+    <Compile Include="Migrations\202101021905360_InitialCreate.Designer.cs">
+      <DependentUpon>202101021905360_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
     <Compile Include="Models\AdArticulo.cs" />
+    <Compile Include="Models\AdBanco.cs" />
     <Compile Include="Models\Adclientes.cs" />
     <Compile Include="Models\Adcondiciondepago.cs" />
     <Compile Include="Models\Adcotizacion.cs" />
@@ -150,20 +181,19 @@
     <Compile Include="Models\Adimg_art.cs" />
     <Compile Include="Models\AdIngreso.cs" />
     <Compile Include="Models\Adpais.cs" />
+    <Compile Include="Models\Adpedidos.cs" />
+    <Compile Include="Models\AdPedidosreg.cs" />
     <Compile Include="Models\adpreciosart.cs" />
     <Compile Include="Models\AdSegmento.cs" />
+    <Compile Include="Models\AdSerial.cs" />
     <Compile Include="Models\Adtipo_cliente.cs" />
     <Compile Include="Models\Adtransporte.cs" />
+    <Compile Include="Models\Adusuarios.cs" />
     <Compile Include="Models\Advendedor.cs" />
     <Compile Include="Models\Adzona.cs" />
     <Compile Include="Models\sazona.cs" />
     <Compile Include="Models\StockAlma.cs" />
     <Compile Include="Models\Tasa_IVA.cs" />
-    <Compile Include="PagonetSQL.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PagonetSQL.dbml</DependentUpon>
-    </Compile>
     <Compile Include="profit.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,11 +227,6 @@
     <Content Include="Scripts\Adpais.js" />
     <Content Include="Scripts\adSegmento.js" />
     <Content Include="Scripts\adtipoclientes.js" />
-    <Content Include="PagonetSQL.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>PagonetSQL.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Scripts\Advendedor.js" />
     <Content Include="Scripts\Adzona.js" />
     <Content Include="Scripts\Articulos.js" />
@@ -365,15 +390,115 @@
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Views\Pais\Create.cshtml" />
+    <Content Include="Views\Pais\Delete.cshtml" />
+    <Content Include="Views\Pais\Details.cshtml" />
+    <Content Include="Views\Pais\Edit.cshtml" />
+    <Content Include="Views\Pais\Index.cshtml" />
+    <Content Include="Views\Almacen\Create.cshtml" />
+    <Content Include="Views\Almacen\Delete.cshtml" />
+    <Content Include="Views\Almacen\Details.cshtml" />
+    <Content Include="Views\Almacen\Edit.cshtml" />
+    <Content Include="Views\Articulo\Create.cshtml" />
+    <Content Include="Views\Articulo\Delete.cshtml" />
+    <Content Include="Views\Articulo\Details.cshtml" />
+    <Content Include="Views\Articulo\Edit.cshtml" />
+    <Content Include="Views\Banco\Create.cshtml" />
+    <Content Include="Views\Banco\Delete.cshtml" />
+    <Content Include="Views\Banco\Details.cshtml" />
+    <Content Include="Views\Banco\Edit.cshtml" />
+    <Content Include="Views\Banco\Index.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\CondicionDePago\Create.cshtml" />
+    <Content Include="Views\CondicionDePago\Delete.cshtml" />
+    <Content Include="Views\CondicionDePago\Details.cshtml" />
+    <Content Include="Views\CondicionDePago\Edit.cshtml" />
+    <Content Include="Views\CondicionDePago\Index.cshtml" />
+    <Content Include="Views\cotizacion\Create.cshtml" />
+    <Content Include="Views\cotizacion\Delete.cshtml" />
+    <Content Include="Views\cotizacion\Details.cshtml" />
+    <Content Include="Views\cotizacion\Edit.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Create.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Delete.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Details.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Edit.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Index.cshtml" />
+    <Content Include="Views\ImagenArticulo\Create.cshtml" />
+    <Content Include="Views\ImagenArticulo\Delete.cshtml" />
+    <Content Include="Views\ImagenArticulo\Details.cshtml" />
+    <Content Include="Views\ImagenArticulo\Edit.cshtml" />
+    <Content Include="Views\ImagenArticulo\Index.cshtml" />
+    <Content Include="Views\Ingreso\Create.cshtml" />
+    <Content Include="Views\Ingreso\Delete.cshtml" />
+    <Content Include="Views\Ingreso\Details.cshtml" />
+    <Content Include="Views\Ingreso\Edit.cshtml" />
+    <Content Include="Views\Ingreso\Index.cshtml" />
+    <Content Include="Views\Pedido\Create.cshtml" />
+    <Content Include="Views\Pedido\Delete.cshtml" />
+    <Content Include="Views\Pedido\Details.cshtml" />
+    <Content Include="Views\Pedido\Edit.cshtml" />
+    <Content Include="Views\Pedido\Index.cshtml" />
+    <Content Include="Views\RenglonPedido\Create.cshtml" />
+    <Content Include="Views\RenglonPedido\Delete.cshtml" />
+    <Content Include="Views\RenglonPedido\Details.cshtml" />
+    <Content Include="Views\RenglonPedido\Edit.cshtml" />
+    <Content Include="Views\RenglonPedido\Index.cshtml" />
+    <Content Include="Views\PrecioArticulo\Create.cshtml" />
+    <Content Include="Views\PrecioArticulo\Delete.cshtml" />
+    <Content Include="Views\PrecioArticulo\Details.cshtml" />
+    <Content Include="Views\PrecioArticulo\Edit.cshtml" />
+    <Content Include="Views\PrecioArticulo\Index.cshtml" />
+    <Content Include="Views\Segmento\Create.cshtml" />
+    <Content Include="Views\Segmento\Delete.cshtml" />
+    <Content Include="Views\Segmento\Details.cshtml" />
+    <Content Include="Views\Segmento\Edit.cshtml" />
+    <Content Include="Views\Serial\Create.cshtml" />
+    <Content Include="Views\Serial\Delete.cshtml" />
+    <Content Include="Views\Serial\Details.cshtml" />
+    <Content Include="Views\Serial\Edit.cshtml" />
+    <Content Include="Views\Serial\Index.cshtml" />
+    <Content Include="Views\Tipocliente\Create.cshtml" />
+    <Content Include="Views\Tipocliente\Delete.cshtml" />
+    <Content Include="Views\Tipocliente\Details.cshtml" />
+    <Content Include="Views\Tipocliente\Edit.cshtml" />
+    <Content Include="Views\Transporte\Create.cshtml" />
+    <Content Include="Views\Transporte\Delete.cshtml" />
+    <Content Include="Views\Transporte\Details.cshtml" />
+    <Content Include="Views\Transporte\Edit.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Delete.cshtml" />
+    <Content Include="Views\Usuario\Details.cshtml" />
+    <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Vendedor\Create.cshtml" />
+    <Content Include="Views\Vendedor\Delete.cshtml" />
+    <Content Include="Views\Vendedor\Details.cshtml" />
+    <Content Include="Views\Vendedor\Edit.cshtml" />
+    <Content Include="Views\Zona\Create.cshtml" />
+    <Content Include="Views\Zona\Delete.cshtml" />
+    <Content Include="Views\Zona\Details.cshtml" />
+    <Content Include="Views\Zona\Edit.cshtml" />
+    <Content Include="Views\SaZona\Create.cshtml" />
+    <Content Include="Views\SaZona\Delete.cshtml" />
+    <Content Include="Views\SaZona\Details.cshtml" />
+    <Content Include="Views\SaZona\Edit.cshtml" />
+    <Content Include="Views\SaZona\Index.cshtml" />
+    <Content Include="Views\StockAlmacen\Create.cshtml" />
+    <Content Include="Views\StockAlmacen\Delete.cshtml" />
+    <Content Include="Views\StockAlmacen\Details.cshtml" />
+    <Content Include="Views\StockAlmacen\Edit.cshtml" />
+    <Content Include="Views\StockAlmacen\Index.cshtml" />
+    <Content Include="Views\TasaIVA\Create.cshtml" />
+    <Content Include="Views\TasaIVA\Delete.cshtml" />
+    <Content Include="Views\TasaIVA\Details.cshtml" />
+    <Content Include="Views\TasaIVA\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="PagonetSQL.dbml.layout">
-      <DependentUpon>PagonetSQL.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="profit.dbml.layout">
@@ -382,6 +507,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101021905360_InitialCreate.resx">
+      <DependentUpon>202101021905360_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -417,7 +547,9 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

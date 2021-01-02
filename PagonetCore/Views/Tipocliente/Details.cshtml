@@ -1,0 +1,50 @@
+﻿@model PagonetCore.Models.Adtipo_cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Adtipo_cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tip_cli)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tip_cli)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.des_tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.des_tipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_tipocliente }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

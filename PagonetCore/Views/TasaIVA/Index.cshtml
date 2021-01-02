@@ -1,7 +1,81 @@
-﻿
+﻿@model IEnumerable<PagonetCore.Models.Tasa_IVA>
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>IVA</h2>
+<h2>Index</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fechapubli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nro_reng)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tip_impu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ventas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.consumosuntuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porcentajetaza)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.porcentajesuntuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechapubli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_reng)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tip_impu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ventas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.consumosuntuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajetaza)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.porcentajesuntuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_impuesto }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_impuesto }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_impuesto })
+        </td>
+    </tr>
+}
+
+</table>

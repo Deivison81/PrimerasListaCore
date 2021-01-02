@@ -1,0 +1,165 @@
+﻿@model IEnumerable<PagonetCore.Models.Adpedidos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.doc_num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_tran)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_mone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_ven)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_cond)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fec_emis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fec_venc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fec_reg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anulado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_bruto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_imp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_imp2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_imp3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_neto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saldo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diasvencimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nro_pedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vencida)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.doc_num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descrip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_tran)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_mone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_ven)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_cond)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fec_emis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fec_venc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fec_reg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anulado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total_bruto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_imp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_imp2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_imp3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total_neto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.saldo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diasvencimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_pedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vencida)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_doc_num }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_doc_num }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_doc_num })
+        </td>
+    </tr>
+}
+
+</table>

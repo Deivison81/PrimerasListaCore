@@ -1,0 +1,66 @@
+﻿@model PagonetCore.Models.AdSerial
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdSerial</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.co_art)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_art)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_alma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_alma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.serial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.serial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tip_dispositivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tip_dispositivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.reng_num }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,30 +1,51 @@
-﻿
+﻿@model IEnumerable<PagonetCore.Models.Adtransporte>
+
 @{
     ViewBag.Title = "Index";
 }
 
-<link href="~/Content/datatables.css" rel="stylesheet" />
+<h2>Index</h2>
 
-<div>
-    <div class="row">
-        <div class="col-12">
-            <h2>Transporte</h2>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-12">
-            <span>Esta sección le permite ver los Transportes disponibles.</span>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-12">
-            <div id="tabla" class="table-responsive"></div>
-        </div>
-    </div>
-</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.co_tran)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_tran)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th></th>
+    </tr>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/Transporte.js"></script>
-<script src="~/Scripts/datatables.min.js"></script>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_tran)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_tran)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idtransporte }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idtransporte }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idtransporte })
+        </td>
+    </tr>
+}
+
+</table>

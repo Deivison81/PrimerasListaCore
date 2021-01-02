@@ -1,219 +1,128 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagonetCore.DAL;
+using PagonetCore.Models;
 
 namespace PagonetCore.Controllers
 {
     public class ClienteController : Controller
     {
+        private PagonetContext db = new PagonetContext();
+
         // GET: Cliente
         public ActionResult Index()
+        {
+            return View(db.Clientes.ToList());
+        }
+
+        // GET: Cliente/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adclientes adclientes = db.Clientes.Find(id);
+            if (adclientes == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adclientes);
+        }
+
+        // GET: Cliente/Create
+        public ActionResult Create()
         {
             return View();
         }
 
-        public JsonResult listaCliente()
-        { 
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-            var listaCliente = bdsql.Adclientes.Select(p => new {
-                p.id_clientes,
-                p.co_cli,
-                p.id_tipocliente,
-                p.tip_cli,
-                p.cli_des,
-                p.direc1,
-                p.dir_ent2,
-                p.telefonos,
-                p.inactivo,
-                p.respons,
-                p.id_zona,
-                p.co_zon,
-                p.id_segmento,
-                p.co_seg,
-                p.id_vendedor,
-                p.co_ven,
-                p.idingre,
-                p.co_cta_ingr_egr,
-                p.rif,
-                p.email,
-                p.juridico,
-                p.ciudad,
-                p.zip,
-                p.id_pais,
-                p.co_pais,
-                p.cod_comercio,
-                p.importado_web,
-                p.importado_pro
-
-
-            }).ToList();
-
-            return Json(listaCliente, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult listaClientes(int id)
+        // POST: Cliente/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id_clientes,co_cli,tip_cli,cli_des,direc1,dir_ent2,telefonos,inactivo,respons,co_zon,co_seg,co_ven,co_cta_ingr_egr,rif,email,juridico,ciudad,zip,id_pais,co_pais,cod_comercio,importado_web,importado_pro")] Adclientes adclientes)
         {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-            var listaClientes = bdsql.Adclientes.Where(p=> p.id_clientes.Equals(id))
-                .Select(p => new {
-                p.id_clientes,
-                p.co_cli,
-                p.id_tipocliente,
-                p.tip_cli,
-                p.cli_des,
-                p.direc1,
-                p.dir_ent2,
-                p.telefonos,
-                p.inactivo,
-                p.respons,
-                p.id_zona,
-                p.co_zon,
-                p.id_segmento,
-                p.co_seg,
-                p.id_vendedor,
-                p.co_ven,
-                p.idingre,
-                p.co_cta_ingr_egr,
-                p.rif,
-                p.email,
-                p.juridico,
-                p.ciudad,
-                p.zip,
-                p.id_pais,
-                p.co_pais,
-                p.cod_comercio,
-                p.importado_web,
-                p.importado_pro
-
-
-            }).ToList();
-
-            return Json(listaClientes, JsonRequestBehavior.AllowGet);
-        }
-
-        //listar clientes en cotizacion
-        // busquedar por codigo
-        public JsonResult listaClientesb1(int id)
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-            var listaClientes = bdsql.Adclientes.Where(p => p.id_clientes.Equals(id))
-                .Select(p => new {
-                    p.id_clientes,
-                    p.co_cli,
-                    p.cli_des,
-                    
-
-
-                }).ToList();
-
-            return Json(listaClientes, JsonRequestBehavior.AllowGet);
-        }
-        //Busqueda por rif
-        public JsonResult listaClientesxrif(string rif)
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-            var listaClientes = bdsql.Adclientes.Where(p => p.rif.Equals(rif))
-                .Select(p => new {
-                    p.id_clientes,
-                    p.co_cli,
-                    p.cli_des,
-                    p.cod_comercio,
-                   
-
-
-                }).ToList();
-
-            return Json(listaClientes, JsonRequestBehavior.AllowGet);
-        }
-        //Busqueda por codigo de cliente
-        public JsonResult listaClientesxcodigo(string codigo)
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-            var listaClientes = bdsql.Adclientes.Where(p => p.co_cli.Equals(codigo))
-                .Select(p => new {
-                    p.id_clientes,
-                    p.co_cli,
-                    p.cli_des,
-                    p.cod_comercio,
-
-
-
-                }).ToList();
-
-            return Json(listaClientes, JsonRequestBehavior.AllowGet);
-        }
-
-
-        //Agregar cliente
-        public int guardarDatos(Adclientes Oadclientes)
-        {
-            PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
-
-            int nregistrosafectados = 0;
-            try
+            if (ModelState.IsValid)
             {
-                if (Oadclientes.id_clientes==0)
-                {   
-                    dbsql.Adclientes.InsertOnSubmit(Oadclientes);
-                    dbsql.SubmitChanges();
-                    nregistrosafectados = 1;
-                }
-                else
-                {
-                    Adclientes adclientesSel = dbsql.Adclientes.Where(P => P.id_clientes.Equals(Oadclientes.id_clientes)).First();
-                    adclientesSel.co_cli = Oadclientes.co_cli;
-                    adclientesSel.id_tipocliente = Oadclientes.id_tipocliente;
-                    adclientesSel.tip_cli = Oadclientes.tip_cli;
-                    adclientesSel.cli_des = Oadclientes.cli_des;
-                    adclientesSel.direc1 = Oadclientes.direc1;
-                    adclientesSel.dir_ent2 = Oadclientes.dir_ent2;
-                    adclientesSel.telefonos = Oadclientes.telefonos;
-                    adclientesSel.inactivo = Oadclientes.inactivo;
-                    adclientesSel.respons = Oadclientes.respons;
-                    adclientesSel.id_zona = Oadclientes.id_zona;
-                    adclientesSel.co_zon = Oadclientes.co_zon;
-                    adclientesSel.id_segmento = Oadclientes.id_segmento;
-                    adclientesSel.co_seg = Oadclientes.co_seg;
-                    adclientesSel.id_vendedor = Oadclientes.id_vendedor;
-                    adclientesSel.co_ven = Oadclientes.co_ven;
-                    adclientesSel.idingre = Oadclientes.idingre;
-                    adclientesSel.co_cta_ingr_egr = Oadclientes.co_cta_ingr_egr;
-                    adclientesSel.rif = Oadclientes.rif;
-                    adclientesSel.email = Oadclientes.email;
-                    adclientesSel.juridico = Oadclientes.juridico;
-                    adclientesSel.ciudad = Oadclientes.ciudad;
-                    adclientesSel.zip = Oadclientes.zip;
-                    adclientesSel.id_pais = Oadclientes.id_pais;
-                    adclientesSel.co_pais = Oadclientes.co_pais;
-                    adclientesSel.cod_comercio = Oadclientes.cod_comercio;
-                    adclientesSel.importado_web = Oadclientes.importado_web;
-                    adclientesSel.importado_pro = Oadclientes.importado_pro;
-                    dbsql.SubmitChanges();
-                    nregistrosafectados = 1;
-                }
-
+                db.Clientes.Add(adclientes);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (Exception ex)
-            {
-            
-                   nregistrosafectados = 0;
-            }
-            return nregistrosafectados;
+
+            return View(adclientes);
         }
 
-        public JsonResult Validacodigo()
+        // GET: Cliente/Edit/5
+        public ActionResult Edit(int? id)
         {
-            PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
-
-            var listarcodigo = dbsql.Adclientes.OrderBy(p=> p.co_cli).Select(p => new
+            if (id == null)
             {
-                p.id_clientes,
-                p.co_cli
-            }).ToList();
-            return Json(listarcodigo, JsonRequestBehavior.AllowGet);
-            
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adclientes adclientes = db.Clientes.Find(id);
+            if (adclientes == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adclientes);
+        }
+
+        // POST: Cliente/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id_clientes,co_cli,tip_cli,cli_des,direc1,dir_ent2,telefonos,inactivo,respons,co_zon,co_seg,co_ven,co_cta_ingr_egr,rif,email,juridico,ciudad,zip,id_pais,co_pais,cod_comercio,importado_web,importado_pro")] Adclientes adclientes)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(adclientes).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(adclientes);
+        }
+
+        // GET: Cliente/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adclientes adclientes = db.Clientes.Find(id);
+            if (adclientes == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adclientes);
+        }
+
+        // POST: Cliente/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Adclientes adclientes = db.Clientes.Find(id);
+            db.Clientes.Remove(adclientes);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
-  
 }

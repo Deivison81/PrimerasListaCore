@@ -1,0 +1,226 @@
+﻿@model PagonetCore.Models.AdPedidosreg
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdPedidosreg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.reng_num.doc_num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reng_num.doc_num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doc_num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doc_num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_art)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_art)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.art_des)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.art_des)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_alma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_alma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total_art)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total_art)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stotal_art)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stotal_art)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_unidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_unidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_preciosart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_preciosart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_precios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_precios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prec_vta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prec_vta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prec_vta_om)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prec_vta_om)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_imp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_imp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_imp2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_imp2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_imp3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_imp3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porc_imp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porc_imp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porc_imp2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porc_imp2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.porc_imp3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.porc_imp3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_imp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_imp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_imp2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_imp2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_imp3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_imp3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reng_neto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reng_neto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_doc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_doc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.num_doc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.num_doc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RenglonPedidoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,94 +1,124 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
+using PagonetCore.DAL;
+using PagonetCore.Models;
 
 namespace PagonetCore.Controllers
 {
     public class AlmacenController : Controller
     {
+        private PagonetContext db = new PagonetContext();
+
         // GET: Almacen
         public ActionResult Index()
         {
+            return View(db.Almacenes.ToList());
+        }
+
+        // GET: Almacen/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdAlmacen adAlmacen = db.Almacenes.Find(id);
+            if (adAlmacen == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adAlmacen);
+        }
+
+        // GET: Almacen/Create
+        public ActionResult Create()
+        {
             return View();
-        } 
-        public JsonResult listarAlmacen()
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-
-            var listarAlmacen = bdsql.AdAlmacen.Select(p => new
-            {
-                p.cod_almacen,
-                p.co_alma,
-                p.des_alamacen,
-                p.web,
-                p.co_user_prof,
-                p.importado_web,
-                p.importado_pro
-
-            }).ToList();
-            return Json(listarAlmacen, JsonRequestBehavior.AllowGet);
         }
-        // alamacen tabla completa
-        public JsonResult listarAlmacens(int id)
+
+        // POST: Almacen/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "cod_almacen,co_alma,des_alamacen,web,co_user_prof,importado_web,importado_pro")] AdAlmacen adAlmacen)
         {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-
-            var listarAlmacen = bdsql.AdAlmacen.Where(p=> p.cod_almacen.Equals(id)) 
-                .Select(p => new
+            if (ModelState.IsValid)
             {
-                p.cod_almacen,
-                p.co_alma,
-                p.des_alamacen,
-                
-
-            }).ToList();
-            return Json(listarAlmacen, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult listarAlmacensb1(string almacen)
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-
-            var listarAlmacen = bdsql.AdAlmacen.Where(p => p.co_alma.Equals(almacen))
-                .Select(p => new
-                {
-                    p.cod_almacen,
-                    p.co_alma,
-                    p.des_alamacen,
-                    p.web,
-                   
-
-                }).ToList();
-            return Json(listarAlmacen, JsonRequestBehavior.AllowGet);
-        }
-        public int guardarDatos(AdAlmacen OadAlmacen)
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-
-            int nroregistros = 0;
-            try
-            {
-                if (OadAlmacen.cod_almacen == 0)
-                {
-                    bdsql.AdAlmacen.InsertOnSubmit(OadAlmacen);
-                    bdsql.SubmitChanges();
-                    nroregistros = 1;
-                }
-                else
-                {
-                    AdAlmacen adAlmacensel = bdsql.AdAlmacen.Where(p => p.cod_almacen.Equals(OadAlmacen)).First();
-                              adAlmacensel.co_alma = OadAlmacen.co_alma;
-                              adAlmacensel.des_alamacen = OadAlmacen.des_alamacen;
-                              bdsql.SubmitChanges();
-                              nroregistros = 1;
-                }
-            } catch (Exception ex)
-            {
-                nroregistros = 0;
+                db.Almacenes.Add(adAlmacen);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
 
-            return nroregistros;
+            return View(adAlmacen);
+        }
+
+        // GET: Almacen/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdAlmacen adAlmacen = db.Almacenes.Find(id);
+            if (adAlmacen == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adAlmacen);
+        }
+
+        // POST: Almacen/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "cod_almacen,co_alma,des_alamacen,web,co_user_prof,importado_web,importado_pro")] AdAlmacen adAlmacen)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(adAlmacen).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(adAlmacen);
+        }
+
+        // GET: Almacen/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdAlmacen adAlmacen = db.Almacenes.Find(id);
+            if (adAlmacen == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adAlmacen);
+        }
+
+        // POST: Almacen/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            AdAlmacen adAlmacen = db.Almacenes.Find(id);
+            db.Almacenes.Remove(adAlmacen);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

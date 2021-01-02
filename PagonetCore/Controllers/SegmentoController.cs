@@ -1,80 +1,128 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagonetCore.DAL;
+using PagonetCore.Models;
 
 namespace PagonetCore.Controllers
 {
     public class SegmentoController : Controller
     {
+        private PagonetContext db = new PagonetContext();
+
         // GET: Segmento
         public ActionResult Index()
         {
+            return View(db.Segmentos.ToList());
+        }
+
+        // GET: Segmento/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdSegmento adSegmento = db.Segmentos.Find(id);
+            if (adSegmento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adSegmento);
+        }
+
+        // GET: Segmento/Create
+        public ActionResult Create()
+        {
             return View();
         }
-        public JsonResult listarSegmento()
+
+        // POST: Segmento/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id_segmento,co_seg,seg_des,importado_web,importado_pro")] AdSegmento adSegmento)
         {
-            PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
-
-            var listarSegmento = dbsql.AdSegmento.Select(p => new {
-
-                p.id_segmento,
-                p.co_seg,
-                p.seg_des,
-                p.importado_web,
-                p.importado_pro
-
-
-            }).ToList();
-            return Json(listarSegmento, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult listarSegmentos(int id)
-        {
-            PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
-
-            var listarSegmentos = dbsql.AdSegmento.Where(p=> p.id_segmento.Equals(id)).Select(p => new {
-
-                p.id_segmento,
-                p.co_seg,
-                p.seg_des,
-                p.importado_web,
-                p.importado_pro
-
-
-            }).ToList();
-            return Json(listarSegmentos, JsonRequestBehavior.AllowGet);
-        }
-        public int GuardarDatos(AdSegmento OadSegmento)
-        {
-            PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
-            int nregistrosafectados = 0;
-            try
+            if (ModelState.IsValid)
             {
-                if (OadSegmento.id_segmento == 0)
-                {
-                    dbsql.AdSegmento.InsertOnSubmit(OadSegmento);
-                    dbsql.SubmitChanges();
-                    nregistrosafectados = 1;
-                }
-                else
-                {
-                    AdSegmento adSegmentoSel = dbsql.AdSegmento.Where(P => P.id_segmento.Equals(OadSegmento.id_segmento)).First();
-                    adSegmentoSel.co_seg = OadSegmento.co_seg;
-                    adSegmentoSel.seg_des = OadSegmento.seg_des;
-                    dbsql.SubmitChanges();
-                    nregistrosafectados = 1;
-                }
+                db.Segmentos.Add(adSegmento);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (Exception ex)
+
+            return View(adSegmento);
+        }
+
+        // GET: Segmento/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
             {
-                nregistrosafectados = 0;
-            } 
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdSegmento adSegmento = db.Segmentos.Find(id);
+            if (adSegmento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adSegmento);
+        }
 
-            return nregistrosafectados;
+        // POST: Segmento/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id_segmento,co_seg,seg_des,importado_web,importado_pro")] AdSegmento adSegmento)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(adSegmento).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(adSegmento);
+        }
 
+        // GET: Segmento/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            AdSegmento adSegmento = db.Segmentos.Find(id);
+            if (adSegmento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adSegmento);
+        }
+
+        // POST: Segmento/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            AdSegmento adSegmento = db.Segmentos.Find(id);
+            db.Segmentos.Remove(adSegmento);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
-    
-} 
+}

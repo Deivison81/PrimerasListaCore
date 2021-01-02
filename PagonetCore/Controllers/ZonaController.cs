@@ -1,76 +1,128 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagonetCore.DAL;
+using PagonetCore.Models;
 
 namespace PagonetCore.Controllers
 {
     public class ZonaController : Controller
     {
+        private PagonetContext db = new PagonetContext();
+
         // GET: Zona
         public ActionResult Index()
         {
-            return View();
-        }
-        // GET: Zona
-        public ActionResult zonaprofit()
-        {
-            return View();
+            return View(db.Zonas.ToList());
         }
 
-        public JsonResult listazona()
+        // GET: Zona/Details/5
+        public ActionResult Details(int? id)
         {
-            PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
-
-            var listazona = dbsql.Adzona.Select(p => new { p.id_zona, p.co_zon, p.zon_des, p.importado_web, p.importado_pro }).ToList();
-            return Json(listazona, JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult listazonas(int id)
-        {
-            PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
-
-            var listazona = dbsql.Adzona.Where(p => p.id_zona.Equals(id)).Select(p => new { p.id_zona, p.co_zon, p.zon_des}).ToList();
-            return Json(listazona, JsonRequestBehavior.AllowGet);
-        }
-        public int guardarDatos(Adzona oadzona)
-        {
-            PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-            int nregistrosafectados = 0;
-            try
+            if (id == null)
             {
-                if (oadzona.id_zona == 0)
-                {
-                    bdsql.Adzona.InsertOnSubmit(oadzona);
-                    bdsql.SubmitChanges();
-                    nregistrosafectados = 1;
-                } else
-                {
-                    Adzona adzonasel = bdsql.Adzona.Where(P => P.id_zona.Equals(oadzona.id_zona)).First();
-                    adzonasel.co_zon = oadzona.co_zon;
-                    adzonasel.zon_des = oadzona.zon_des;
-                    bdsql.SubmitChanges();
-                    nregistrosafectados = 1;
-                }
-            } catch(Exception ex)
-            {
-                nregistrosafectados = 0;
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return nregistrosafectados;
-        }
-        public JsonResult listarZonaprofit()
-        {
-            profitDataContext bdsql = new profitDataContext();
-
-            var listarzonaprofit = bdsql.saZona.Select(p => new
+            Adzona adzona = db.Zonas.Find(id);
+            if (adzona == null)
             {
-                p.co_zon,
-                p.zon_des,
-                p.campo1
+                return HttpNotFound();
+            }
+            return View(adzona);
+        }
 
+        // GET: Zona/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
 
-            }).ToList();
-            return Json(listarzonaprofit, JsonRequestBehavior.AllowGet);
+        // POST: Zona/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id_zona,co_zon,zon_des,importado_web,importado_pro")] Adzona adzona)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Zonas.Add(adzona);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(adzona);
+        }
+
+        // GET: Zona/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adzona adzona = db.Zonas.Find(id);
+            if (adzona == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adzona);
+        }
+
+        // POST: Zona/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
+        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id_zona,co_zon,zon_des,importado_web,importado_pro")] Adzona adzona)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(adzona).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(adzona);
+        }
+
+        // GET: Zona/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Adzona adzona = db.Zonas.Find(id);
+            if (adzona == null)
+            {
+                return HttpNotFound();
+            }
+            return View(adzona);
+        }
+
+        // POST: Zona/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Adzona adzona = db.Zonas.Find(id);
+            db.Zonas.Remove(adzona);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

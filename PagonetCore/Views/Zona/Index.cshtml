@@ -1,95 +1,51 @@
-﻿
+﻿@model IEnumerable<PagonetCore.Models.Adzona>
+
 @{
     ViewBag.Title = "Index";
 }
 
-<link href="~/Content/datatables.css" rel="stylesheet" />
+<h2>Index</h2>
 
-<div>
-    <div class="row">
-        <div class="col-12">
-            <h2>Zona</h2>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-12">
-            <span>Esta sección le permite realizar operaciones sobre las Zonas.</span>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-12">
-            <button type="button" onclick="abrirModal(0)" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Agregar</button>
-            <button type="button" id="zonaprofit" class="btn btn-warning">Zona Profit</button>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-12">
-            <div id="tabla" class="table-responsive"></div>
-        </div>
-    </div>
-</div>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.co_zon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zon_des)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th></th>
+    </tr>
 
-<!-- Trigger the modal with a button -->
-<!-- Modal -->
-<div id="myModal" class="modal" role="dialog">
-    <div class="modal-dialog">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_zon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.zon_des)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_zona }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_zona }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_zona })
+        </td>
+    </tr>
+}
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Agregar Zona</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-10 offset-2 col-md-9 offset-md-3">
-                        <form>
-                            <div class="form-group">
-                                <label for="txtzona">ID de Zona</label>
-                                <input type="text" class="form-control borrar" id="txtzona" placeholder="ID de Zona" readonly />
-                            </div>
-                            <div class="form-group">
-                                <label for="txtcodigoZ">Código de Zona</label>
-                                <input type="text" class="form-control borrar obligatorio" id="txtcodigoZ" placeholder="Ingrese Código de Zona" />
-                            </div>
-                            <div class="form-group">
-                                <label for="txtzonades">Descripción de Zona</label>
-                                <input type="text" class="form-control borrar obligatorio" id="txtzonades" placeholder="Ingrese Descripción de Zona" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                @*<table style="width:80%; margin:auto">
-                    <tr>
-                        <td width="40%">Id Zona</td>
-                        <td width="60%"><input class="borrar" type="text" id="txtzona" readonly /></td>
-
-                    </tr>
-                    <tr>
-                        <td width="40%">Ingrese Codigo Zona</td>
-                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtcodigoZ" /></td>
-
-                    </tr>
-                    <tr>
-                        <td width="40%">Ingrese Zona Des</td>
-                        <td width="60%"><input class="borrar obligatorio" type="text" id="txtzonades" /></td>
-
-                    </tr>
-                </table>*@
-            </div>
-            <div class="modal-footer">
-                <button onclick="Agregar()" type="button" class="btn btn-success">Aceptar</button>
-                <button id="btnCancelar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/Adzona.js"></script>
-<script src="~/Scripts/datatables.min.js"></script>
+</table>

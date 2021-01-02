@@ -1,0 +1,58 @@
+﻿@model PagonetCore.Models.AdIngreso
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdIngreso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.co_ctaIng_egr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_ctaIng_egr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descrip_ingre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descrip_ingre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_user_prof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_user_prof)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importada_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importada_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imortada_prof)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imortada_prof)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

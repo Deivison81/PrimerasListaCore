@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PagonetCore.Models.AdSerial>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.co_art)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_alma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tip_dispositivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_art)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_alma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tip_dispositivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.reng_num }) |
+            @Html.ActionLink("Details", "Details", new { id=item.reng_num }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.reng_num })
+        </td>
+    </tr>
+}
+
+</table>

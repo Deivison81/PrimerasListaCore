@@ -1,0 +1,130 @@
+﻿@model PagonetCore.Models.adpreciosart
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>adpreciosart</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.co_art)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_art)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_precios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_precios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hasta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hasta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_alma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_alma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoadi5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.montoadi5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precioOm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precioOm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_preciosart }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
