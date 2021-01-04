@@ -7,13 +7,13 @@ namespace PagonetCore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class DBInicialFK : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DBInicialFK));
         
         string IMigrationMetadata.Id
         {
-            get { return "202101021905360_InitialCreate"; }
+            get { return "202101042156415_DBInicialFK"; }
         }
         
         string IMigrationMetadata.Source

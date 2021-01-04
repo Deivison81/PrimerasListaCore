@@ -9,39 +9,37 @@ namespace PagonetCore.Models
     public partial class Adimg_art
     {
         [Key]
-        [Column(Order = 0)]
+        [Display(Name = "ID Imagen Artículo")]
         public int id_imgart { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public AdArticulo id_art { get; set; }
-
-        [Key]
-        [Column(Order = 2)]
         [StringLength(30)]
+        [Display(Name = "Código de Artículo")]
         public string co_art { get; set; }
 
-        [Key]
-        [Column(Order = 3)]
         [StringLength(6)]
+        [Display(Name = "Tipo")]
         public string tip { get; set; }
 
-        [Key]
-        [Column(Order = 4)]
         [StringLength(60)]
+        [Display(Name = "Descripción")]
         public string imagen_des { get; set; }
 
-        [Key]
-        [Column(Order = 5)]
+        [Display(Name = "Foto")]
         public string picture { get; set; }
 
         [StringLength(1)]
+        [Display(Name = "¿Importado Web?")]
         public string importado_web { get; set; }
 
         [StringLength(1)]
+        [Display(Name = "¿Importado Profit?")]
         public string importado_pro { get; set; }
 
-        public virtual AdArticulo AdArticulo { get; set; }
+        // Claves Foráneas.
+
+        [Display(Name = "ID Artículo")]
+        public int id_art { get; set; }
+
+        public virtual AdArticulo Articulo { get; set; }
     }
 }

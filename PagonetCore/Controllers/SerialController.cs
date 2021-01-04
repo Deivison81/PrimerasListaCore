@@ -47,7 +47,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "reng_num,co_art,co_alma,serial,tip_dispositivo,importado_web,importado_pro")] AdSerial adSerial)
+        public ActionResult Create([Bind(Include = "reng_num,co_art,co_alma,serial,tip_dispositivo,importado_web,importado_pro,id_art,cod_almacen")] AdSerial adSerial)
         {
             if (ModelState.IsValid)
             {

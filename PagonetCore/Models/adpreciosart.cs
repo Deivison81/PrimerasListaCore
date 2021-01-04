@@ -12,8 +12,6 @@ namespace PagonetCore.Models
         [Key]
         public int id_preciosart { get; set; }
 
-        public AdArticulo id_art { get; set; }
-
         [Required]
         [StringLength(30)]
         public string co_art { get; set; }
@@ -25,8 +23,6 @@ namespace PagonetCore.Models
         public DateTime? desde { get; set; }
 
         public DateTime? hasta { get; set; }
-
-        public AdAlmacen cod_almacen { get; set; }
 
         [StringLength(6)]
         public string co_alma { get; set; }
@@ -52,6 +48,14 @@ namespace PagonetCore.Models
         [StringLength(1)]
         public string importado_pro { get; set; }
 
-        public virtual AdArticulo AdArticulo { get; set; }
+        // Claves Foráneas.
+        
+        public int id_art { get; set; }
+
+        public int cod_almacen { get; set; }
+
+        public virtual AdArticulo Articulo { get; set; }
+
+        public virtual AdAlmacen Almacen { get; set; }
     }
 }

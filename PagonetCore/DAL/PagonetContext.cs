@@ -53,6 +53,50 @@ namespace PagonetCore.DAL
 		{
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+			// Claves Foráneas para Clientes.
+			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Cliente).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Vendedor).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Ingreso).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Zona).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Segmento).WithMany().WillCascadeOnDelete(false);
+
+			// Claves Foráneas para Cotizaciones.
+			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.Cliente).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.Transporte).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.Vendedor).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.CondicionDePago);
+
+			// Claves Foráneas para Renglones de Cotización.
+			modelBuilder.Entity<AdCotizacionreg>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<AdCotizacionreg>().HasRequired(c => c.Almacen).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<AdCotizacionreg>().HasRequired(c => c.PrecioArticulo).WithMany().WillCascadeOnDelete(false);
+
+			// Claves Foráneas para Pedidos.
+			modelBuilder.Entity<Adpedidos>().HasRequired(c => c.Cliente).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adpedidos>().HasRequired(c => c.Transporte).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adpedidos>().HasRequired(c => c.Vendedor).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adpedidos>().HasRequired(c => c.CondicionDePago).WithMany().WillCascadeOnDelete(false);
+
+			// Claves Foráneas para Renglones de Pedido.
+			modelBuilder.Entity<AdPedidosreg>().HasRequired(c => c.Pedido).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<AdPedidosreg>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<AdPedidosreg>().HasRequired(c => c.Almacen).WithMany().WillCascadeOnDelete(false);
+
+			// Claves Foráneas para Precios de Artículo.
+			modelBuilder.Entity<adpreciosart>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<adpreciosart>().HasRequired(c => c.Almacen).WithMany().WillCascadeOnDelete(false);
+
+			// Claves Foráneas para Seriales.
+			modelBuilder.Entity<AdSerial>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<AdSerial>().HasRequired(c => c.Almacen).WithMany().WillCascadeOnDelete(false);
+
+			// Claves Foráneas para Vendedores.
+			modelBuilder.Entity<Advendedor>().HasRequired(c => c.Zona).WithMany().WillCascadeOnDelete(false);
+
+			// Claves Foráneas para Stock Almacenes.
+			modelBuilder.Entity<StockAlma>().HasRequired(c => c.Almacen).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<StockAlma>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
 		}
 	}
 }

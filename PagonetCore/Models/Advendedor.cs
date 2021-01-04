@@ -21,8 +21,6 @@ namespace PagonetCore.Models
         [StringLength(60)]
         public string ven_des { get; set; }
 
-        public Adzona id_zona { get; set; }
-
         [Required]
         [StringLength(6)]
         public string co_zon { get; set; }
@@ -32,5 +30,11 @@ namespace PagonetCore.Models
 
         [StringLength(1)]
         public string importado_pro { get; set; }
+
+        // Claves Foráneas.
+
+        public int id_zona { get; set; }
+
+        public virtual Adzona Zona { get; set; }
     }
 }

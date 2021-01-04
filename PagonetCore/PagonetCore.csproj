@@ -162,13 +162,12 @@
     <Compile Include="Controllers\VendedorController.cs" />
     <Compile Include="Controllers\ZonaController.cs" />
     <Compile Include="DAL\PagonetContext.cs" />
-    <Compile Include="DAL\PagonetInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101021905360_InitialCreate.cs" />
-    <Compile Include="Migrations\202101021905360_InitialCreate.Designer.cs">
-      <DependentUpon>202101021905360_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202101042156415_DBInicialFK.cs" />
+    <Compile Include="Migrations\202101042156415_DBInicialFK.Designer.cs">
+      <DependentUpon>202101042156415_DBInicialFK.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
@@ -241,7 +240,17 @@
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.1.js" />
+    <Content Include="Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -495,6 +504,8 @@
     <Content Include="Views\TasaIVA\Delete.cshtml" />
     <Content Include="Views\TasaIVA\Details.cshtml" />
     <Content Include="Views\TasaIVA\Edit.cshtml" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -509,8 +520,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101021905360_InitialCreate.resx">
-      <DependentUpon>202101021905360_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101042156415_DBInicialFK.resx">
+      <DependentUpon>202101042156415_DBInicialFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
