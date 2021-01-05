@@ -64,6 +64,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -72,6 +75,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -137,7 +146,31 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AlmacenController.cs" />
+    <Compile Include="Controllers\APIAlmacenController.cs" />
+    <Compile Include="Controllers\APIArticuloController.cs" />
+    <Compile Include="Controllers\APIBancoController.cs" />
+    <Compile Include="Controllers\APIClienteController.cs" />
+    <Compile Include="Controllers\APICondicionDePagoController.cs" />
+    <Compile Include="Controllers\APICotizacionController.cs" />
+    <Compile Include="Controllers\APIImagenArticuloController.cs" />
+    <Compile Include="Controllers\APIIngresoController.cs" />
+    <Compile Include="Controllers\APIPaisController.cs" />
+    <Compile Include="Controllers\APIPedidoController.cs" />
+    <Compile Include="Controllers\APIPrecioArticuloController.cs" />
+    <Compile Include="Controllers\APIRenglonCotizacionController.cs" />
+    <Compile Include="Controllers\APIRenglonPedidoController.cs" />
+    <Compile Include="Controllers\APISaZonaController.cs" />
+    <Compile Include="Controllers\APISegmentoController.cs" />
+    <Compile Include="Controllers\APISerialController.cs" />
+    <Compile Include="Controllers\APIStockAlmacenController.cs" />
+    <Compile Include="Controllers\APITasaIVAController.cs" />
+    <Compile Include="Controllers\APITipoClienteController.cs" />
+    <Compile Include="Controllers\APITransporteController.cs" />
+    <Compile Include="Controllers\APIUsuarioController.cs" />
+    <Compile Include="Controllers\APIVendedorController.cs" />
+    <Compile Include="Controllers\APIZonaController.cs" />
     <Compile Include="Controllers\ArticuloController.cs" />
     <Compile Include="Controllers\BancoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
@@ -342,6 +375,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\APIAlmacen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />

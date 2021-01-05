@@ -8,6 +8,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 // https://www.jerriepelser.com/blog/creating-test-data-with-nbuilder-and-faker/
 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/composite-formatting
 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
+// https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 
 // Para regenerar la BD (BORRA TODOS LOS DATOS ACTUALES DE LA BD):
 // Herramientas - Administrador de Paquetes NuGet - Consola.
