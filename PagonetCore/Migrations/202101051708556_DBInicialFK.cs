@@ -384,7 +384,6 @@ namespace PagonetCore.Migrations
                 c => new
                     {
                         reng_num = c.Int(nullable: false, identity: true),
-                        id_doc_num = c.Int(nullable: false),
                         doc_num = c.String(maxLength: 20),
                         co_art = c.String(maxLength: 30),
                         art_des = c.String(maxLength: 120),
@@ -409,6 +408,7 @@ namespace PagonetCore.Migrations
                         num_doc = c.String(maxLength: 20),
                         importado_web = c.String(maxLength: 1),
                         importado_pro = c.String(maxLength: 1),
+                        id_doc_num = c.Int(nullable: false),
                         id_art = c.Int(nullable: false),
                         cod_almacen = c.Int(nullable: false),
                         id_preciosart = c.Int(),

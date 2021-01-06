@@ -9,6 +9,8 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/composite-formatting
 // https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
 // https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
+// https://docs.microsoft.com/en-us/ef/ef6/modeling/code-first/data-annotations#relationship-attributes-inverseproperty-and-foreignkey
+// https://forums.asp.net/t/2133118.aspx?How+to+ignore+or+stop+creating+table+from+class+EF+code+first
 
 // Para regenerar la BD (BORRA TODOS LOS DATOS ACTUALES DE LA BD):
 // Herramientas - Administrador de Paquetes NuGet - Consola.
@@ -49,6 +51,9 @@ namespace PagonetCore.DAL
 		public DbSet<PagonetCore.Models.sazona> Sazonas { get; set; }
 		public DbSet<PagonetCore.Models.StockAlma> StockAlmacenes { get; set; }
 		public DbSet<PagonetCore.Models.Tasa_IVA> TasasIVA { get; set; }
+		// Se deja comentado para que no cree la Tabla en la BD. Esto solo se utilizará como 
+		// modelo intermedio para crear Cotizaciones con Renglones en una misma llamada a la API.
+		//public DbSet<PagonetCore.Models.CotizacionRenglon> CotizacionRenglon { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -99,5 +104,5 @@ namespace PagonetCore.DAL
 			modelBuilder.Entity<StockAlma>().HasRequired(c => c.Almacen).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<StockAlma>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
 		}
-	}
+    }
 }

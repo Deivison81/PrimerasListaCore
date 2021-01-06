@@ -154,6 +154,7 @@
     <Compile Include="Controllers\APIClienteController.cs" />
     <Compile Include="Controllers\APICondicionDePagoController.cs" />
     <Compile Include="Controllers\APICotizacionController.cs" />
+    <Compile Include="Controllers\APICotizacionRenglonController.cs" />
     <Compile Include="Controllers\APIImagenArticuloController.cs" />
     <Compile Include="Controllers\APIIngresoController.cs" />
     <Compile Include="Controllers\APIPaisController.cs" />
@@ -198,9 +199,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101042156415_DBInicialFK.cs" />
-    <Compile Include="Migrations\202101042156415_DBInicialFK.Designer.cs">
-      <DependentUpon>202101042156415_DBInicialFK.cs</DependentUpon>
+    <Compile Include="Migrations\202101051708556_DBInicialFK.cs" />
+    <Compile Include="Migrations\202101051708556_DBInicialFK.Designer.cs">
+      <DependentUpon>202101051708556_DBInicialFK.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Models\Adusuarios.cs" />
     <Compile Include="Models\Advendedor.cs" />
     <Compile Include="Models\Adzona.cs" />
+    <Compile Include="Models\CotizacionRenglon.cs" />
     <Compile Include="Models\sazona.cs" />
     <Compile Include="Models\StockAlma.cs" />
     <Compile Include="Models\Tasa_IVA.cs" />
@@ -554,8 +556,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101042156415_DBInicialFK.resx">
-      <DependentUpon>202101042156415_DBInicialFK.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101051708556_DBInicialFK.resx">
+      <DependentUpon>202101051708556_DBInicialFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
