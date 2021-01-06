@@ -12,6 +12,21 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Articulo.co_art)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_art)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imagen_des)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.picture)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.importado_web)
         </th>
         <th>
@@ -23,15 +38,30 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.Articulo.co_art)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_art)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.imagen_des)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.picture)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.importado_web)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.importado_pro)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_imgart }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_imgart }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_imgart })
         </td>
     </tr>
 }

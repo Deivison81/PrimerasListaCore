@@ -12,7 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.reng_num.doc_num)
+            @Html.DisplayNameFor(model => model.Almacen.co_alma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Articulo.co_art)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pedido.doc_num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrecioArticulo.co_art)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.doc_num)
@@ -34,9 +43,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.cod_unidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_preciosart)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.co_precios)
@@ -95,7 +101,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.reng_num.doc_num)
+            @Html.DisplayFor(modelItem => item.Almacen.co_alma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Articulo.co_art)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pedido.doc_num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrecioArticulo.co_art)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.doc_num)
@@ -117,9 +132,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.cod_unidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_preciosart)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.co_precios)
@@ -173,9 +185,9 @@
             @Html.DisplayFor(modelItem => item.importado_pro)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RenglonPedidoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RenglonPedidoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RenglonPedidoID })
+            @Html.ActionLink("Edit", "Edit", new { id=item.reng_num }) |
+            @Html.ActionLink("Details", "Details", new { id=item.reng_num }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.reng_num })
         </td>
     </tr>
 }

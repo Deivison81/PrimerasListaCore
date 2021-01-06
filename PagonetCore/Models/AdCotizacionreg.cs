@@ -107,19 +107,16 @@ namespace PagonetCore.Models
         // TODO: Debe ser nullable. El operador ? no es soportado sino en C# >= 8.0,
         // y C# 8.0 solo es soportado en .NET Core (no .NET Framework).
         // Inicialmente: AdArticulo?
-        [Display(Name = "ID Artículo")]
         public virtual AdArticulo Articulo { get; set; }
 
         // TODO: Debe ser nullable. El operador ? no es soportado sino en C# >= 8.0,
         // y C# 8.0 solo es soportado en .NET Core (no .NET Framework).
         // Inicialmente: AdAlmacen?
-        [Display(Name = "Código de Almacén")]
         public virtual AdAlmacen Almacen { get; set; }
 
         // TODO: Debe ser nullable. El operador ? no es soportado sino en C# >= 8.0,
         // y C# 8.0 solo es soportado en .NET Core (no .NET Framework).
         // Inicialmente: adpreciosart?
-        [Display(Name = "ID Precio Artículo")]
         public virtual adpreciosart PrecioArticulo { get; set; }
     }
 }

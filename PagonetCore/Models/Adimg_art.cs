@@ -37,7 +37,6 @@ namespace PagonetCore.Models
 
         // Claves Foráneas.
 
-        [Display(Name = "ID Artículo")]
         public int id_art { get; set; }
 
         public virtual AdArticulo Articulo { get; set; }

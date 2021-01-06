@@ -18,7 +18,7 @@ namespace PagonetCore.Controllers
         // GET: RenglonPedido
         public ActionResult Index()
         {
-            var renglonesPedidos = db.RenglonesPedidos.Include(a => a.reng_num);
+            var renglonesPedidos = db.RenglonesPedidos.Include(a => a.Almacen).Include(a => a.Articulo).Include(a => a.Pedido).Include(a => a.PrecioArticulo);
             return View(renglonesPedidos.ToList());
         }
 
@@ -40,7 +40,10 @@ namespace PagonetCore.Controllers
         // GET: RenglonPedido/Create
         public ActionResult Create()
         {
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma");
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
             ViewBag.id_doc_num = new SelectList(db.Pedidos, "id_doc_num", "doc_num");
+            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art");
             return View();
         }
 
@@ -49,7 +52,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "reng_num,id_doc_num,doc_num,co_art,art_des,co_alma,total_art,stotal_art,cod_unidad,id_preciosart,co_precios,prec_vta,prec_vta_om,tipo_imp,tipo_imp2,tipo_imp3,porc_imp,porc_imp2,porc_imp3,monto_imp,monto_imp2,monto_imp3,reng_neto,tipo_doc,num_doc,importado_web,importado_pro,id_doc_num,id_art,cod_almacen,id_preciosart")] AdPedidosreg adPedidosreg)
+        public ActionResult Create([Bind(Include = "reng_num,doc_num,co_art,art_des,co_alma,total_art,stotal_art,cod_unidad,co_precios,prec_vta,prec_vta_om,tipo_imp,tipo_imp2,tipo_imp3,porc_imp,porc_imp2,porc_imp3,monto_imp,monto_imp2,monto_imp3,reng_neto,tipo_doc,num_doc,importado_web,importado_pro,id_doc_num,id_art,cod_almacen,id_preciosart")] AdPedidosreg adPedidosreg)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +61,10 @@ namespace PagonetCore.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adPedidosreg.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adPedidosreg.id_art);
             ViewBag.id_doc_num = new SelectList(db.Pedidos, "id_doc_num", "doc_num", adPedidosreg.id_doc_num);
+            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art", adPedidosreg.id_preciosart);
             return View(adPedidosreg);
         }
 
@@ -74,7 +80,10 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adPedidosreg.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adPedidosreg.id_art);
             ViewBag.id_doc_num = new SelectList(db.Pedidos, "id_doc_num", "doc_num", adPedidosreg.id_doc_num);
+            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art", adPedidosreg.id_preciosart);
             return View(adPedidosreg);
         }
 
@@ -83,7 +92,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RenglonPedidoID,id_doc_num,doc_num,co_art,art_des,co_alma,total_art,stotal_art,cod_unidad,id_preciosart,co_precios,prec_vta,prec_vta_om,tipo_imp,tipo_imp2,tipo_imp3,porc_imp,porc_imp2,porc_imp3,monto_imp,monto_imp2,monto_imp3,reng_neto,tipo_doc,num_doc,importado_web,importado_pro")] AdPedidosreg adPedidosreg)
+        public ActionResult Edit([Bind(Include = "reng_num,doc_num,co_art,art_des,co_alma,total_art,stotal_art,cod_unidad,co_precios,prec_vta,prec_vta_om,tipo_imp,tipo_imp2,tipo_imp3,porc_imp,porc_imp2,porc_imp3,monto_imp,monto_imp2,monto_imp3,reng_neto,tipo_doc,num_doc,importado_web,importado_pro,id_doc_num,id_art,cod_almacen,id_preciosart")] AdPedidosreg adPedidosreg)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +100,10 @@ namespace PagonetCore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adPedidosreg.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adPedidosreg.id_art);
             ViewBag.id_doc_num = new SelectList(db.Pedidos, "id_doc_num", "doc_num", adPedidosreg.id_doc_num);
+            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art", adPedidosreg.id_preciosart);
             return View(adPedidosreg);
         }
 

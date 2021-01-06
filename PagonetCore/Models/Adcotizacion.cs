@@ -100,16 +100,12 @@ namespace PagonetCore.Models
         public int id_vendedor { get; set; }
         public int id_condicion { get; set; }
 
-        [Display(Name = "ID Cliente")]
         public virtual Adclientes Cliente { get; set; }
 
-        [Display(Name = "ID Transporte")]
         public virtual Adtransporte Transporte { get; set; }
 
-        [Display(Name = "ID Vendedor")]
         public virtual Advendedor Vendedor { get; set; }
 
-        [Display(Name = "ID Condición de Pago")]
         public virtual Adcondiciondepago CondicionDePago { get; set; }
     }
 }

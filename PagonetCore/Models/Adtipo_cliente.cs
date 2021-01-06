@@ -13,15 +13,19 @@ namespace PagonetCore.Models
 
         [Required]
         [StringLength(6)]
+        [Display(Name = "Tipo Cliente")]
         public string tip_cli { get; set; }
 
         [StringLength(60)]
+        [Display(Name = "Descripción")]
         public string des_tipo { get; set; }
 
         [StringLength(1)]
+        [Display(Name = "¿Importado Web?")]
         public string importado_web { get; set; }
 
         [StringLength(1)]
+        [Display(Name = "¿Importado Profit?")]
         public string importado_pro { get; set; }
     }
 }

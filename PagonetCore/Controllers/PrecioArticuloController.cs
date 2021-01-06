@@ -15,13 +15,14 @@ namespace PagonetCore.Controllers
     {
         private PagonetContext db = new PagonetContext();
 
-        // GET: PrecioArticulos
+        // GET: PrecioArticulo
         public ActionResult Index()
         {
-            return View(db.PreciosArticulo.ToList());
+            var preciosArticulo = db.PreciosArticulo.Include(a => a.Almacen).Include(a => a.Articulo);
+            return View(preciosArticulo.ToList());
         }
 
-        // GET: PrecioArticulos/Details/5
+        // GET: PrecioArticulo/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,13 +37,15 @@ namespace PagonetCore.Controllers
             return View(adpreciosart);
         }
 
-        // GET: PrecioArticulos/Create
+        // GET: PrecioArticulo/Create
         public ActionResult Create()
         {
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma");
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
             return View();
         }
 
-        // POST: PrecioArticulos/Create
+        // POST: PrecioArticulo/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -56,10 +59,12 @@ namespace PagonetCore.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adpreciosart.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adpreciosart.id_art);
             return View(adpreciosart);
         }
 
-        // GET: PrecioArticulos/Edit/5
+        // GET: PrecioArticulo/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -71,15 +76,17 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adpreciosart.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adpreciosart.id_art);
             return View(adpreciosart);
         }
 
-        // POST: PrecioArticulos/Edit/5
+        // POST: PrecioArticulo/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_preciosart,co_art,co_precios,desde,hasta,co_alma,monto,montoadi1,montoadi2,montoadi3,montoadi4,montoadi5,precioOm,importado_web,importado_pro")] adpreciosart adpreciosart)
+        public ActionResult Edit([Bind(Include = "id_preciosart,co_art,co_precios,desde,hasta,co_alma,monto,montoadi1,montoadi2,montoadi3,montoadi4,montoadi5,precioOm,importado_web,importado_pro,id_art,cod_almacen")] adpreciosart adpreciosart)
         {
             if (ModelState.IsValid)
             {
@@ -87,10 +94,12 @@ namespace PagonetCore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adpreciosart.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adpreciosart.id_art);
             return View(adpreciosart);
         }
 
-        // GET: PrecioArticulos/Delete/5
+        // GET: PrecioArticulo/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +114,7 @@ namespace PagonetCore.Controllers
             return View(adpreciosart);
         }
 
-        // POST: PrecioArticulos/Delete/5
+        // POST: PrecioArticulo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

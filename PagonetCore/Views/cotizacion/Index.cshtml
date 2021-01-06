@@ -12,6 +12,18 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Cliente.co_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CondicionDePago.co_cond)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Transporte.co_tran)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vendedor.co_ven)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.doc_num)
         </th>
         <th>
@@ -85,6 +97,18 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.co_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CondicionDePago.co_cond)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transporte.co_tran)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vendedor.co_ven)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.doc_num)
         </td>

@@ -10,17 +10,11 @@ namespace PagonetCore.Models
     public partial class AdBanco
     {
         [Key]
-        [Column(Order = 0)]
         public int id_banco { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [StringLength(6)]
         [Display(Name = "Código")]
         public string co_ban { get; set; }
 
-        [Key]
-        [Column(Order = 2)]
         [StringLength(60)]
         [Display(Name = "Descripción")]
         public string des_ban { get; set; }

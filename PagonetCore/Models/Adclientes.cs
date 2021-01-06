@@ -125,23 +125,17 @@ namespace PagonetCore.Models
 
         public int id_pais { get; set; }
 
-        [Display(Name = "Tipo de Cliente")]
         public virtual Adtipo_cliente Cliente { get; set; }
 
-        [Display(Name = "ID Vendedor")]
         public virtual Advendedor Vendedor { get; set; }
 
-        [Display(Name = "ID Ingreso")]
         [ForeignKey("idingre")]
         public virtual AdIngreso Ingreso { get; set; }
 
-        [Display(Name = "ID Zona")]
         public virtual Adzona Zona { get; set; }
 
-        [Display(Name = "ID Segmento")]
         public virtual AdSegmento Segmento { get; set; }
 
-        [Display(Name = "ID País")]
         public virtual Adpais Pais { get; set; }
     }
 }

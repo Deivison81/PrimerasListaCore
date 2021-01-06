@@ -12,6 +12,12 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.co_ban)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.des_ban)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.importado_web)
         </th>
         <th>
@@ -23,15 +29,21 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.co_ban)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.des_ban)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.importado_web)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.importado_pro)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_banco }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_banco }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_banco })
         </td>
     </tr>
 }

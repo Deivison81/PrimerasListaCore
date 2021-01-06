@@ -11,11 +11,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.reng_num.doc_num)
+            @Html.DisplayNameFor(model => model.Almacen.co_alma)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.reng_num.doc_num)
+            @Html.DisplayFor(model => model.Almacen.co_alma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Articulo.co_art)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Articulo.co_art)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pedido.doc_num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pedido.doc_num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioArticulo.co_art)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioArticulo.co_art)
         </dd>
 
         <dt>
@@ -72,14 +96,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.cod_unidad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.id_preciosart)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.id_preciosart)
         </dd>
 
         <dt>
@@ -221,6 +237,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RenglonPedidoID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.reng_num }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

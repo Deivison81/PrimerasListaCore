@@ -47,7 +47,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,co_ctaIng_egr,descrip_ingre,co_user_prof,importada_web,Imortada_prof")] AdIngreso adIngreso)
+        public ActionResult Create([Bind(Include = "id,co_ctaIng_egr,descrip_ingre,co_user_prof,importado_web,importado_pro")] AdIngreso adIngreso)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,co_ctaIng_egr,descrip_ingre,co_user_prof,importada_web,Imortada_prof")] AdIngreso adIngreso)
+        public ActionResult Edit([Bind(Include = "id,co_ctaIng_egr,descrip_ingre,co_user_prof,importado_web,importado_pro")] AdIngreso adIngreso)
         {
             if (ModelState.IsValid)
             {

@@ -18,7 +18,8 @@ namespace PagonetCore.Controllers
         // GET: RenglonCotizacion
         public ActionResult Index()
         {
-            return View(db.RenglonesCotizacion.ToList());
+            var renglonesCotizacion = db.RenglonesCotizacion.Include(a => a.Almacen).Include(a => a.Articulo).Include(a => a.PrecioArticulo);
+            return View(renglonesCotizacion.ToList());
         }
 
         // GET: RenglonCotizacion/Details/5
@@ -39,6 +40,9 @@ namespace PagonetCore.Controllers
         // GET: RenglonCotizacion/Create
         public ActionResult Create()
         {
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma");
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
+            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art");
             return View();
         }
 
@@ -56,6 +60,9 @@ namespace PagonetCore.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adCotizacionreg.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adCotizacionreg.id_art);
+            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art", adCotizacionreg.id_preciosart);
             return View(adCotizacionreg);
         }
 
@@ -71,6 +78,9 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adCotizacionreg.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adCotizacionreg.id_art);
+            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art", adCotizacionreg.id_preciosart);
             return View(adCotizacionreg);
         }
 
@@ -79,7 +89,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_doc_num,doc_num,reng_num,co_art,art_des,co_alma,total_art,stotal_art,cod_unidad,co_precios,prec_vta,prec_vta_om,tipo_imp,tipo_imp2,tipo_imp3,porc_imp,porc_imp2,porc_imp3,monto_imp,monto_imp2,monto_imp3,reng_neto,tipo_doc,num_doc,importado_web,importado_pro")] AdCotizacionreg adCotizacionreg)
+        public ActionResult Edit([Bind(Include = "id_doc_num,doc_num,reng_num,co_art,art_des,co_alma,total_art,stotal_art,cod_unidad,co_precios,prec_vta,prec_vta_om,tipo_imp,tipo_imp2,tipo_imp3,porc_imp,porc_imp2,porc_imp3,monto_imp,monto_imp2,monto_imp3,reng_neto,tipo_doc,num_doc,importado_web,importado_pro,id_art,cod_almacen,id_preciosart")] AdCotizacionreg adCotizacionreg)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +97,9 @@ namespace PagonetCore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adCotizacionreg.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adCotizacionreg.id_art);
+            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art", adCotizacionreg.id_preciosart);
             return View(adCotizacionreg);
         }
 

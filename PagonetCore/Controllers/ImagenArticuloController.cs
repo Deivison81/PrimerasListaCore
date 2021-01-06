@@ -18,7 +18,8 @@ namespace PagonetCore.Controllers
         // GET: ImagenArticulo
         public ActionResult Index()
         {
-            return View(db.ImagenesArticulo.ToList());
+            var imagenesArticulo = db.ImagenesArticulo.Include(a => a.Articulo);
+            return View(imagenesArticulo.ToList());
         }
 
         // GET: ImagenArticulo/Details/5
@@ -39,6 +40,7 @@ namespace PagonetCore.Controllers
         // GET: ImagenArticulo/Create
         public ActionResult Create()
         {
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
             return View();
         }
 
@@ -56,6 +58,7 @@ namespace PagonetCore.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adimg_art.id_art);
             return View(adimg_art);
         }
 
@@ -71,6 +74,7 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adimg_art.id_art);
             return View(adimg_art);
         }
 
@@ -79,7 +83,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_imgart,co_art,tip,imagen_des,picture,importado_web,importado_pro")] Adimg_art adimg_art)
+        public ActionResult Edit([Bind(Include = "id_imgart,co_art,tip,imagen_des,picture,importado_web,importado_pro,id_art")] Adimg_art adimg_art)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace PagonetCore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adimg_art.id_art);
             return View(adimg_art);
         }
 

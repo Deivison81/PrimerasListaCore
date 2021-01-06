@@ -3,7 +3,7 @@ namespace PagonetCore.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DBInicialFK : DbMigration
+    public partial class BDInicial : DbMigration
     {
         public override void Up()
         {
@@ -48,13 +48,13 @@ namespace PagonetCore.Migrations
                 "dbo.AdBanco",
                 c => new
                     {
-                        id_banco = c.Int(nullable: false),
-                        co_ban = c.String(nullable: false, maxLength: 6),
-                        des_ban = c.String(nullable: false, maxLength: 60),
+                        id_banco = c.Int(nullable: false, identity: true),
+                        co_ban = c.String(),
+                        des_ban = c.String(maxLength: 60),
                         importado_web = c.String(maxLength: 1),
                         importado_pro = c.String(maxLength: 1),
                     })
-                .PrimaryKey(t => new { t.id_banco, t.co_ban, t.des_ban });
+                .PrimaryKey(t => t.id_banco);
             
             CreateTable(
                 "dbo.Adclientes",

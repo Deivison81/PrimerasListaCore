@@ -18,7 +18,8 @@ namespace PagonetCore.Controllers
         // GET: Vendedor
         public ActionResult Index()
         {
-            return View(db.Vendedores.ToList());
+            var vendedores = db.Vendedores.Include(a => a.Zona);
+            return View(vendedores.ToList());
         }
 
         // GET: Vendedor/Details/5
@@ -39,6 +40,7 @@ namespace PagonetCore.Controllers
         // GET: Vendedor/Create
         public ActionResult Create()
         {
+            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon");
             return View();
         }
 
@@ -56,6 +58,7 @@ namespace PagonetCore.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", advendedor.id_zona);
             return View(advendedor);
         }
 
@@ -71,6 +74,7 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", advendedor.id_zona);
             return View(advendedor);
         }
 
@@ -79,7 +83,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_vendedor,co_ven,tipo,ven_des,co_zon,importado_web,importado_pro")] Advendedor advendedor)
+        public ActionResult Edit([Bind(Include = "id_vendedor,co_ven,tipo,ven_des,co_zon,importado_web,importado_pro,id_zona")] Advendedor advendedor)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace PagonetCore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", advendedor.id_zona);
             return View(advendedor);
         }
 

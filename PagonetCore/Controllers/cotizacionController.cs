@@ -18,7 +18,8 @@ namespace PagonetCore.Controllers
         // GET: Cotizacion
         public ActionResult Index()
         {
-            return View(db.Cotizaciones.ToList());
+            var cotizaciones = db.Cotizaciones.Include(a => a.Cliente).Include(a => a.CondicionDePago).Include(a => a.Transporte).Include(a => a.Vendedor);
+            return View(cotizaciones.ToList());
         }
 
         // GET: Cotizacion/Details/5
@@ -39,6 +40,10 @@ namespace PagonetCore.Controllers
         // GET: Cotizacion/Create
         public ActionResult Create()
         {
+            ViewBag.id_clientes = new SelectList(db.Clientes, "id_clientes", "co_cli");
+            ViewBag.id_condicion = new SelectList(db.CondicionesDePago, "id_condicion", "co_cond");
+            ViewBag.idtransporte = new SelectList(db.Transportes, "idtransporte", "co_tran");
+            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven");
             return View();
         }
 
@@ -56,6 +61,10 @@ namespace PagonetCore.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.id_clientes = new SelectList(db.Clientes, "id_clientes", "co_cli", adcotizacion.id_clientes);
+            ViewBag.id_condicion = new SelectList(db.CondicionesDePago, "id_condicion", "co_cond", adcotizacion.id_condicion);
+            ViewBag.idtransporte = new SelectList(db.Transportes, "idtransporte", "co_tran", adcotizacion.idtransporte);
+            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven", adcotizacion.id_vendedor);
             return View(adcotizacion);
         }
 
@@ -71,6 +80,10 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.id_clientes = new SelectList(db.Clientes, "id_clientes", "co_cli", adcotizacion.id_clientes);
+            ViewBag.id_condicion = new SelectList(db.CondicionesDePago, "id_condicion", "co_cond", adcotizacion.id_condicion);
+            ViewBag.idtransporte = new SelectList(db.Transportes, "idtransporte", "co_tran", adcotizacion.idtransporte);
+            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven", adcotizacion.id_vendedor);
             return View(adcotizacion);
         }
 
@@ -79,7 +92,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_doc_num,doc_num,descrip,co_cli,co_tran,co_mone,co_ven,co_cond,fec_emis,fec_venc,fec_reg,anulado,status,total_bruto,monto_imp,monto_imp2,monto_imp3,total_neto,saldo,importado_web,importado_pro,Diasvencimiento,nro_pedido,vencida")] Adcotizacion adcotizacion)
+        public ActionResult Edit([Bind(Include = "id_doc_num,doc_num,descrip,co_cli,co_tran,co_mone,co_ven,co_cond,fec_emis,fec_venc,fec_reg,anulado,status,total_bruto,monto_imp,monto_imp2,monto_imp3,total_neto,saldo,importado_web,importado_pro,Diasvencimiento,nro_pedido,vencida,id_clientes,idtransporte,id_vendedor,id_condicion")] Adcotizacion adcotizacion)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +100,10 @@ namespace PagonetCore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.id_clientes = new SelectList(db.Clientes, "id_clientes", "co_cli", adcotizacion.id_clientes);
+            ViewBag.id_condicion = new SelectList(db.CondicionesDePago, "id_condicion", "co_cond", adcotizacion.id_condicion);
+            ViewBag.idtransporte = new SelectList(db.Transportes, "idtransporte", "co_tran", adcotizacion.idtransporte);
+            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven", adcotizacion.id_vendedor);
             return View(adcotizacion);
         }
 

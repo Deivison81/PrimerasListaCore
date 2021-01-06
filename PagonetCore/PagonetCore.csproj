@@ -199,9 +199,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101051708556_DBInicialFK.cs" />
-    <Compile Include="Migrations\202101051708556_DBInicialFK.Designer.cs">
-      <DependentUpon>202101051708556_DBInicialFK.cs</DependentUpon>
+    <Compile Include="Migrations\202101060159576_BDInicial.cs" />
+    <Compile Include="Migrations\202101060159576_BDInicial.Designer.cs">
+      <DependentUpon>202101060159576_BDInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
@@ -374,10 +374,69 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Tipocliente\Index.cshtml" />
+    <Content Include="Views\Banco\Create.cshtml" />
+    <Content Include="Views\Banco\Delete.cshtml" />
+    <Content Include="Views\Banco\Details.cshtml" />
+    <Content Include="Views\Banco\Edit.cshtml" />
+    <Content Include="Views\Banco\Index.cshtml" />
+    <Content Include="Views\Ingreso\Create.cshtml" />
+    <Content Include="Views\Ingreso\Delete.cshtml" />
+    <Content Include="Views\Ingreso\Details.cshtml" />
+    <Content Include="Views\Ingreso\Edit.cshtml" />
+    <Content Include="Views\Ingreso\Index.cshtml" />
+    <Content Include="Views\RenglonPedido\Create.cshtml" />
+    <Content Include="Views\RenglonPedido\Delete.cshtml" />
+    <Content Include="Views\RenglonPedido\Details.cshtml" />
+    <Content Include="Views\RenglonPedido\Edit.cshtml" />
+    <Content Include="Views\RenglonPedido\Index.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Cotizacion\Create.cshtml" />
+    <Content Include="Views\Cotizacion\Delete.cshtml" />
+    <Content Include="Views\Cotizacion\Details.cshtml" />
+    <Content Include="Views\Cotizacion\Edit.cshtml" />
+    <Content Include="Views\Cotizacion\Index.cshtml" />
+    <Content Include="Views\ImagenArticulo\Create.cshtml" />
+    <Content Include="Views\ImagenArticulo\Delete.cshtml" />
+    <Content Include="Views\ImagenArticulo\Details.cshtml" />
+    <Content Include="Views\ImagenArticulo\Edit.cshtml" />
+    <Content Include="Views\ImagenArticulo\Index.cshtml" />
+    <Content Include="Views\Pedido\Create.cshtml" />
+    <Content Include="Views\Pedido\Delete.cshtml" />
+    <Content Include="Views\Pedido\Details.cshtml" />
+    <Content Include="Views\Pedido\Edit.cshtml" />
+    <Content Include="Views\Pedido\Index.cshtml" />
+    <Content Include="Views\PrecioArticulo\Create.cshtml" />
+    <Content Include="Views\PrecioArticulo\Delete.cshtml" />
+    <Content Include="Views\PrecioArticulo\Details.cshtml" />
+    <Content Include="Views\PrecioArticulo\Edit.cshtml" />
+    <Content Include="Views\PrecioArticulo\Index.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Create.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Delete.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Details.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Edit.cshtml" />
+    <Content Include="Views\RenglonCotizacion\Index.cshtml" />
+    <Content Include="Views\Serial\Create.cshtml" />
+    <Content Include="Views\Serial\Delete.cshtml" />
+    <Content Include="Views\Serial\Details.cshtml" />
+    <Content Include="Views\Serial\Edit.cshtml" />
+    <Content Include="Views\Serial\Index.cshtml" />
+    <Content Include="Views\StockAlmacen\Create.cshtml" />
+    <Content Include="Views\StockAlmacen\Delete.cshtml" />
+    <Content Include="Views\StockAlmacen\Details.cshtml" />
+    <Content Include="Views\StockAlmacen\Edit.cshtml" />
+    <Content Include="Views\StockAlmacen\Index.cshtml" />
+    <Content Include="Views\Vendedor\Create.cshtml" />
+    <Content Include="Views\Vendedor\Delete.cshtml" />
+    <Content Include="Views\Vendedor\Details.cshtml" />
+    <Content Include="Views\Vendedor\Edit.cshtml" />
+    <Content Include="Views\Vendedor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\APIAlmacen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.min.css.map" />
@@ -393,12 +452,8 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="packages.config" />
     <Content Include="Views\Segmento\Index.cshtml" />
-    <Content Include="Views\Ingresos\Index.cshtml" />
     <Content Include="Views\Zona\Index.cshtml" />
-    <Content Include="Views\Vendedor\Index.cshtml" />
-    <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Almacen\Index.cshtml" />
-    <Content Include="Views\Stock\Index.cshtml" />
     <Content Include="Views\Transporte\Index.cshtml" />
     <Content Include="Views\Articulo\Index.cshtml" />
     <Content Include="Views\Condicion\Index.cshtml" />
@@ -409,10 +464,8 @@
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
-    <Content Include="Views\Adpais\Index.cshtml" />
     <Content Include="Views\TasaIVA\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
-    <Content Include="Views\cotizacion\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile3.pubxml" />
     <Content Include="Views\Zona\zonaprofit.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile4.pubxml" />
@@ -448,63 +501,15 @@
     <Content Include="Views\Articulo\Delete.cshtml" />
     <Content Include="Views\Articulo\Details.cshtml" />
     <Content Include="Views\Articulo\Edit.cshtml" />
-    <Content Include="Views\Banco\Create.cshtml" />
-    <Content Include="Views\Banco\Delete.cshtml" />
-    <Content Include="Views\Banco\Details.cshtml" />
-    <Content Include="Views\Banco\Edit.cshtml" />
-    <Content Include="Views\Banco\Index.cshtml" />
-    <Content Include="Views\Cliente\Create.cshtml" />
-    <Content Include="Views\Cliente\Delete.cshtml" />
-    <Content Include="Views\Cliente\Details.cshtml" />
-    <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\CondicionDePago\Create.cshtml" />
     <Content Include="Views\CondicionDePago\Delete.cshtml" />
     <Content Include="Views\CondicionDePago\Details.cshtml" />
     <Content Include="Views\CondicionDePago\Edit.cshtml" />
     <Content Include="Views\CondicionDePago\Index.cshtml" />
-    <Content Include="Views\cotizacion\Create.cshtml" />
-    <Content Include="Views\cotizacion\Delete.cshtml" />
-    <Content Include="Views\cotizacion\Details.cshtml" />
-    <Content Include="Views\cotizacion\Edit.cshtml" />
-    <Content Include="Views\RenglonCotizacion\Create.cshtml" />
-    <Content Include="Views\RenglonCotizacion\Delete.cshtml" />
-    <Content Include="Views\RenglonCotizacion\Details.cshtml" />
-    <Content Include="Views\RenglonCotizacion\Edit.cshtml" />
-    <Content Include="Views\RenglonCotizacion\Index.cshtml" />
-    <Content Include="Views\ImagenArticulo\Create.cshtml" />
-    <Content Include="Views\ImagenArticulo\Delete.cshtml" />
-    <Content Include="Views\ImagenArticulo\Details.cshtml" />
-    <Content Include="Views\ImagenArticulo\Edit.cshtml" />
-    <Content Include="Views\ImagenArticulo\Index.cshtml" />
-    <Content Include="Views\Ingreso\Create.cshtml" />
-    <Content Include="Views\Ingreso\Delete.cshtml" />
-    <Content Include="Views\Ingreso\Details.cshtml" />
-    <Content Include="Views\Ingreso\Edit.cshtml" />
-    <Content Include="Views\Ingreso\Index.cshtml" />
-    <Content Include="Views\Pedido\Create.cshtml" />
-    <Content Include="Views\Pedido\Delete.cshtml" />
-    <Content Include="Views\Pedido\Details.cshtml" />
-    <Content Include="Views\Pedido\Edit.cshtml" />
-    <Content Include="Views\Pedido\Index.cshtml" />
-    <Content Include="Views\RenglonPedido\Create.cshtml" />
-    <Content Include="Views\RenglonPedido\Delete.cshtml" />
-    <Content Include="Views\RenglonPedido\Details.cshtml" />
-    <Content Include="Views\RenglonPedido\Edit.cshtml" />
-    <Content Include="Views\RenglonPedido\Index.cshtml" />
-    <Content Include="Views\PrecioArticulo\Create.cshtml" />
-    <Content Include="Views\PrecioArticulo\Delete.cshtml" />
-    <Content Include="Views\PrecioArticulo\Details.cshtml" />
-    <Content Include="Views\PrecioArticulo\Edit.cshtml" />
-    <Content Include="Views\PrecioArticulo\Index.cshtml" />
     <Content Include="Views\Segmento\Create.cshtml" />
     <Content Include="Views\Segmento\Delete.cshtml" />
     <Content Include="Views\Segmento\Details.cshtml" />
     <Content Include="Views\Segmento\Edit.cshtml" />
-    <Content Include="Views\Serial\Create.cshtml" />
-    <Content Include="Views\Serial\Delete.cshtml" />
-    <Content Include="Views\Serial\Details.cshtml" />
-    <Content Include="Views\Serial\Edit.cshtml" />
-    <Content Include="Views\Serial\Index.cshtml" />
     <Content Include="Views\Tipocliente\Create.cshtml" />
     <Content Include="Views\Tipocliente\Delete.cshtml" />
     <Content Include="Views\Tipocliente\Details.cshtml" />
@@ -518,10 +523,6 @@
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Vendedor\Create.cshtml" />
-    <Content Include="Views\Vendedor\Delete.cshtml" />
-    <Content Include="Views\Vendedor\Details.cshtml" />
-    <Content Include="Views\Vendedor\Edit.cshtml" />
     <Content Include="Views\Zona\Create.cshtml" />
     <Content Include="Views\Zona\Delete.cshtml" />
     <Content Include="Views\Zona\Details.cshtml" />
@@ -531,11 +532,6 @@
     <Content Include="Views\SaZona\Details.cshtml" />
     <Content Include="Views\SaZona\Edit.cshtml" />
     <Content Include="Views\SaZona\Index.cshtml" />
-    <Content Include="Views\StockAlmacen\Create.cshtml" />
-    <Content Include="Views\StockAlmacen\Delete.cshtml" />
-    <Content Include="Views\StockAlmacen\Details.cshtml" />
-    <Content Include="Views\StockAlmacen\Edit.cshtml" />
-    <Content Include="Views\StockAlmacen\Index.cshtml" />
     <Content Include="Views\TasaIVA\Create.cshtml" />
     <Content Include="Views\TasaIVA\Delete.cshtml" />
     <Content Include="Views\TasaIVA\Details.cshtml" />
@@ -556,8 +552,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101051708556_DBInicialFK.resx">
-      <DependentUpon>202101051708556_DBInicialFK.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101060159576_BDInicial.resx">
+      <DependentUpon>202101060159576_BDInicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

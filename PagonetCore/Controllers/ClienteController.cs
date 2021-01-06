@@ -18,7 +18,8 @@ namespace PagonetCore.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            return View(db.Clientes.ToList());
+            var clientes = db.Clientes.Include(a => a.Cliente).Include(a => a.Ingreso).Include(a => a.Pais).Include(a => a.Segmento).Include(a => a.Vendedor).Include(a => a.Zona);
+            return View(clientes.ToList());
         }
 
         // GET: Cliente/Details/5
@@ -39,6 +40,12 @@ namespace PagonetCore.Controllers
         // GET: Cliente/Create
         public ActionResult Create()
         {
+            ViewBag.id_tipocliente = new SelectList(db.TiposCliente, "id_tipocliente", "tip_cli");
+            ViewBag.idingre = new SelectList(db.Ingresos, "id", "co_ctaIng_egr");
+            ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "co_pais");
+            ViewBag.id_segmento = new SelectList(db.Segmentos, "id_segmento", "co_seg");
+            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven");
+            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon");
             return View();
         }
 
@@ -47,7 +54,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_clientes,co_cli,tip_cli,cli_des,direc1,dir_ent2,telefonos,inactivo,respons,co_zon,co_seg,co_ven,co_cta_ingr_egr,rif,email,juridico,ciudad,zip,id_pais,co_pais,cod_comercio,importado_web,importado_pro,id_tipocliente,id_vendedor,idingre,id_zona,id_segmento")] Adclientes adclientes)
+        public ActionResult Create([Bind(Include = "id_clientes,co_cli,tip_cli,cli_des,direc1,dir_ent2,telefonos,inactivo,respons,co_zon,co_seg,co_ven,co_cta_ingr_egr,rif,email,juridico,ciudad,zip,co_pais,cod_comercio,importado_web,importado_pro,id_tipocliente,id_vendedor,idingre,id_zona,id_segmento,id_pais")] Adclientes adclientes)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +63,12 @@ namespace PagonetCore.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.id_tipocliente = new SelectList(db.TiposCliente, "id_tipocliente", "tip_cli", adclientes.id_tipocliente);
+            ViewBag.idingre = new SelectList(db.Ingresos, "id", "co_ctaIng_egr", adclientes.idingre);
+            ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "co_pais", adclientes.id_pais);
+            ViewBag.id_segmento = new SelectList(db.Segmentos, "id_segmento", "co_seg", adclientes.id_segmento);
+            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven", adclientes.id_vendedor);
+            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", adclientes.id_zona);
             return View(adclientes);
         }
 
@@ -71,6 +84,12 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.id_tipocliente = new SelectList(db.TiposCliente, "id_tipocliente", "tip_cli", adclientes.id_tipocliente);
+            ViewBag.idingre = new SelectList(db.Ingresos, "id", "co_ctaIng_egr", adclientes.idingre);
+            ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "co_pais", adclientes.id_pais);
+            ViewBag.id_segmento = new SelectList(db.Segmentos, "id_segmento", "co_seg", adclientes.id_segmento);
+            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven", adclientes.id_vendedor);
+            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", adclientes.id_zona);
             return View(adclientes);
         }
 
@@ -79,7 +98,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_clientes,co_cli,tip_cli,cli_des,direc1,dir_ent2,telefonos,inactivo,respons,co_zon,co_seg,co_ven,co_cta_ingr_egr,rif,email,juridico,ciudad,zip,id_pais,co_pais,cod_comercio,importado_web,importado_pro")] Adclientes adclientes)
+        public ActionResult Edit([Bind(Include = "id_clientes,co_cli,tip_cli,cli_des,direc1,dir_ent2,telefonos,inactivo,respons,co_zon,co_seg,co_ven,co_cta_ingr_egr,rif,email,juridico,ciudad,zip,co_pais,cod_comercio,importado_web,importado_pro,id_tipocliente,id_vendedor,idingre,id_zona,id_segmento,id_pais")] Adclientes adclientes)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +106,12 @@ namespace PagonetCore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.id_tipocliente = new SelectList(db.TiposCliente, "id_tipocliente", "tip_cli", adclientes.id_tipocliente);
+            ViewBag.idingre = new SelectList(db.Ingresos, "id", "co_ctaIng_egr", adclientes.idingre);
+            ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "co_pais", adclientes.id_pais);
+            ViewBag.id_segmento = new SelectList(db.Segmentos, "id_segmento", "co_seg", adclientes.id_segmento);
+            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven", adclientes.id_vendedor);
+            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", adclientes.id_zona);
             return View(adclientes);
         }
 

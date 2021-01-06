@@ -18,7 +18,8 @@ namespace PagonetCore.Controllers
         // GET: StockAlmacen
         public ActionResult Index()
         {
-            return View(db.StockAlmacenes.ToList());
+            var stockAlmacenes = db.StockAlmacenes.Include(s => s.Almacen).Include(s => s.Articulo);
+            return View(stockAlmacenes.ToList());
         }
 
         // GET: StockAlmacen/Details/5
@@ -39,6 +40,8 @@ namespace PagonetCore.Controllers
         // GET: StockAlmacen/Create
         public ActionResult Create()
         {
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma");
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
             return View();
         }
 
@@ -56,6 +59,8 @@ namespace PagonetCore.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", stockAlma.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", stockAlma.id_art);
             return View(stockAlma);
         }
 
@@ -71,6 +76,8 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", stockAlma.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", stockAlma.id_art);
             return View(stockAlma);
         }
 
@@ -79,7 +86,7 @@ namespace PagonetCore.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StockAlmacenID,stock")] StockAlma stockAlma)
+        public ActionResult Edit([Bind(Include = "StockAlmacenID,stock,cod_almacen,id_art")] StockAlma stockAlma)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +94,8 @@ namespace PagonetCore.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", stockAlma.cod_almacen);
+            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", stockAlma.id_art);
             return View(stockAlma);
         }
 

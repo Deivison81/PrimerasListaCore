@@ -13,15 +13,19 @@ namespace PagonetCore.Models
         public int idtransporte { get; set; }
 
         [StringLength(6)]
+        [Display(Name = "Código")]
         public string co_tran { get; set; }
 
         [StringLength(60)]
+        [Display(Name = "Descripción")]
         public string des_tran { get; set; }
 
         [StringLength(1)]
+        [Display(Name = "¿Importado Web?")]
         public string importado_web { get; set; }
 
         [StringLength(1)]
+        [Display(Name = "¿Importado Profit?")]
         public string importado_pro { get; set; }
     }
 }
