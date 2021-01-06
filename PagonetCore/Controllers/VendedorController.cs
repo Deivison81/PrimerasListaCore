@@ -40,7 +40,15 @@ namespace PagonetCore.Controllers
         // GET: Vendedor/Create
         public ActionResult Create()
         {
-            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon");
+            var items = db.Zonas.Select(x => new
+            {
+                id_zona = x.id_zona,
+                texto = x.co_zon + " - " + x.zon_des
+            });
+
+            ViewBag.id_zona = new SelectList(items, "id_zona", "texto");
+
+            //ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon");
             return View();
         }
 
@@ -74,7 +82,16 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", advendedor.id_zona);
+
+            var items = db.Zonas.Select(x => new
+            {
+                id_zona = x.id_zona,
+                texto = x.co_zon + " - " + x.zon_des
+            });
+
+            ViewBag.id_zona = new SelectList(items, "id_zona", "texto", advendedor.id_zona);
+
+            //ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", advendedor.id_zona);
             return View(advendedor);
         }
 

@@ -1,13 +1,12 @@
 ﻿@model PagonetCore.Models.adpreciosart
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Precio Artículo";
 }
 
-<h2>Details</h2>
+<h2>Detalles Precio Artículo</h2>
 
 <div>
-    <h4>adpreciosart</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -141,6 +140,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_preciosart }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_preciosart }) |
+    @Html.ActionLink("Volver", "Index")
 </p>

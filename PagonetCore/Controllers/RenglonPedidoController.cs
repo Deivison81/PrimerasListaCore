@@ -40,10 +40,38 @@ namespace PagonetCore.Controllers
         // GET: RenglonPedido/Create
         public ActionResult Create()
         {
-            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma");
-            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
-            ViewBag.id_doc_num = new SelectList(db.Pedidos, "id_doc_num", "doc_num");
-            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art");
+            var itemsAlmacenes = db.Almacenes.Select(x => new
+            {
+                cod_almacen = x.cod_almacen,
+                texto = x.co_alma + " - " + x.des_alamacen
+            });
+
+            ViewBag.cod_almacen = new SelectList(itemsAlmacenes, "cod_almacen", "texto");
+
+            var itemsArticulos = db.Articulos.Select(x => new
+            {
+                id_art = x.id_art,
+                texto = x.co_art + " - " + x.art_des
+            });
+
+            ViewBag.id_art = new SelectList(itemsArticulos, "id_art", "texto");
+
+            var itemsPedido = db.Pedidos.Select(x => new
+            {
+                id_doc_num = x.id_doc_num,
+                texto = x.doc_num + " - " + x.descrip
+            });
+
+            ViewBag.id_doc_num = new SelectList(itemsPedido, "id_doc_num", "texto");
+
+            var itemsPrecioArticulo = db.PreciosArticulo.Select(x => new
+            {
+                id_preciosart = x.id_preciosart,
+                texto = x.co_art + " - " + x.co_precios
+            });
+
+            ViewBag.id_preciosart = new SelectList(itemsPrecioArticulo, "id_preciosart", "texto");
+
             return View();
         }
 
@@ -80,10 +108,39 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adPedidosreg.cod_almacen);
-            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adPedidosreg.id_art);
-            ViewBag.id_doc_num = new SelectList(db.Pedidos, "id_doc_num", "doc_num", adPedidosreg.id_doc_num);
-            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art", adPedidosreg.id_preciosart);
+
+            var itemsAlmacenes = db.Almacenes.Select(x => new
+            {
+                cod_almacen = x.cod_almacen,
+                texto = x.co_alma + " - " + x.des_alamacen
+            });
+
+            ViewBag.cod_almacen = new SelectList(itemsAlmacenes, "cod_almacen", "texto", adPedidosreg.cod_almacen);
+
+            var itemsArticulos = db.Articulos.Select(x => new
+            {
+                id_art = x.id_art,
+                texto = x.co_art + " - " + x.art_des
+            });
+
+            ViewBag.id_art = new SelectList(itemsArticulos, "id_art", "texto", adPedidosreg.id_art);
+
+            var itemsPedido = db.Pedidos.Select(x => new
+            {
+                id_doc_num = x.id_doc_num,
+                texto = x.doc_num + " - " + x.descrip
+            });
+
+            ViewBag.id_doc_num = new SelectList(itemsPedido, "id_doc_num", "texto", adPedidosreg.id_doc_num);
+
+            var itemsPrecioArticulo = db.PreciosArticulo.Select(x => new
+            {
+                id_preciosart = x.id_preciosart,
+                texto = x.co_art + " - " + x.co_precios
+            });
+
+            ViewBag.id_preciosart = new SelectList(itemsPrecioArticulo, "id_preciosart", "texto", adPedidosreg.id_preciosart);
+
             return View(adPedidosreg);
         }
 

@@ -40,7 +40,14 @@ namespace PagonetCore.Controllers
         // GET: ImagenArticulo/Create
         public ActionResult Create()
         {
-            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
+            var itemsArticulos = db.Articulos.Select(x => new
+            {
+                id_art = x.id_art,
+                texto = x.co_art + " - " + x.art_des
+            });
+
+            ViewBag.id_art = new SelectList(itemsArticulos, "id_art", "texto");
+
             return View();
         }
 
@@ -74,7 +81,15 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adimg_art.id_art);
+
+            var itemsArticulos = db.Articulos.Select(x => new
+            {
+                id_art = x.id_art,
+                texto = x.co_art + " - " + x.art_des
+            });
+
+            ViewBag.id_art = new SelectList(itemsArticulos, "id_art", "texto", adimg_art.id_art);
+
             return View(adimg_art);
         }
 

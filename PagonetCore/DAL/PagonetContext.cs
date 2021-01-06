@@ -11,6 +11,10 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 // https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
 // https://docs.microsoft.com/en-us/ef/ef6/modeling/code-first/data-annotations#relationship-attributes-inverseproperty-and-foreignkey
 // https://forums.asp.net/t/2133118.aspx?How+to+ignore+or+stop+creating+table+from+class+EF+code+first
+// https://www.codeproject.com/Answers/1226024/Mvc-multiple-fields-in-selectlist-for-dropdownlist#answer1
+// https://stackoverflow.com/questions/6057865/asp-net-mvc-3-override-name-attribute-with-textboxfor
+// https://www.pluralsight.com/guides/asp-net-mvc-populating-dropdown-lists-in-razor-views-using-the-mvvm-design-pattern-entity-framework-and-ajax
+// https://es.stackoverflow.com/questions/193592/como-llenar-un-html-dropdownlistfor
 
 // Para regenerar la BD (BORRA TODOS LOS DATOS ACTUALES DE LA BD):
 // Herramientas - Administrador de Paquetes NuGet - Consola.
@@ -61,7 +65,7 @@ namespace PagonetCore.DAL
 			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
 			// Claves Foráneas para Clientes.
-			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Cliente).WithMany().WillCascadeOnDelete(false);
+			modelBuilder.Entity<Adclientes>().HasRequired(c => c.TipoCliente).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Vendedor).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Ingreso).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Adclientes>().HasRequired(c => c.Zona).WithMany().WillCascadeOnDelete(false);

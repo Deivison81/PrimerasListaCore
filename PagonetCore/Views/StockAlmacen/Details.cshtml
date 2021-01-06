@@ -1,13 +1,12 @@
 ﻿@model PagonetCore.Models.StockAlma
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Stock";
 }
 
-<h2>Details</h2>
+<h2>Detalles Stock</h2>
 
 <div>
-    <h4>StockAlma</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,6 +36,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StockAlmacenID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.StockAlmacenID }) |
+    @Html.ActionLink("Volver", "Index")
 </p>

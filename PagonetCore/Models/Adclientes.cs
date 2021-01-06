@@ -125,7 +125,7 @@ namespace PagonetCore.Models
 
         public int id_pais { get; set; }
 
-        public virtual Adtipo_cliente Cliente { get; set; }
+        public virtual Adtipo_cliente TipoCliente { get; set; }
 
         public virtual Advendedor Vendedor { get; set; }
 

@@ -40,9 +40,36 @@ namespace PagonetCore.Controllers
         // GET: RenglonCotizacion/Create
         public ActionResult Create()
         {
-            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma");
-            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
-            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art");
+            var itemsAlmacenes = db.Almacenes.Select(x => new
+            {
+                cod_almacen = x.cod_almacen,
+                texto = x.co_alma + " - " + x.des_alamacen
+            });
+
+            ViewBag.cod_almacen = new SelectList(itemsAlmacenes, "cod_almacen", "texto");
+
+            //ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma");
+
+            var itemsArticulos = db.Articulos.Select(x => new
+            {
+                id_art = x.id_art,
+                texto = x.co_art + " - " + x.art_des
+            });
+
+            ViewBag.id_art = new SelectList(itemsArticulos, "id_art", "texto");
+
+            //ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
+
+            var itemsPrecioArticulo = db.PreciosArticulo.Select(x => new
+            {
+                id_preciosart = x.id_preciosart,
+                texto = x.co_art + " - " + x.co_precios
+            });
+
+            ViewBag.id_preciosart = new SelectList(itemsPrecioArticulo, "id_preciosart", "texto");
+
+            //ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art");
+
             return View();
         }
 
@@ -78,9 +105,31 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adCotizacionreg.cod_almacen);
-            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adCotizacionreg.id_art);
-            ViewBag.id_preciosart = new SelectList(db.PreciosArticulo, "id_preciosart", "co_art", adCotizacionreg.id_preciosart);
+
+            var itemsAlmacenes = db.Almacenes.Select(x => new
+            {
+                cod_almacen = x.cod_almacen,
+                texto = x.co_alma + " - " + x.des_alamacen
+            });
+
+            ViewBag.cod_almacen = new SelectList(itemsAlmacenes, "cod_almacen", "texto", adCotizacionreg.cod_almacen);
+
+            var itemsArticulos = db.Articulos.Select(x => new
+            {
+                id_art = x.id_art,
+                texto = x.co_art + " - " + x.art_des
+            });
+
+            ViewBag.id_art = new SelectList(itemsArticulos, "id_art", "texto", adCotizacionreg.id_art);
+
+            var itemsPrecioArticulo = db.PreciosArticulo.Select(x => new
+            {
+                id_preciosart = x.id_preciosart,
+                texto = x.co_art + " - " + x.co_precios
+            });
+
+            ViewBag.id_preciosart = new SelectList(itemsPrecioArticulo, "id_preciosart", "texto", adCotizacionreg.id_preciosart);
+
             return View(adCotizacionreg);
         }
 

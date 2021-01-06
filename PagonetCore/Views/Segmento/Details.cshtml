@@ -1,13 +1,12 @@
 ﻿@model PagonetCore.Models.AdSegmento
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Segmento";
 }
 
-<h2>Details</h2>
+<h2>Detalles Segmento</h2>
 
 <div>
-    <h4>AdSegmento</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -45,6 +44,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_segmento }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_segmento }) |
+    @Html.ActionLink("Volver", "Index")
 </p>

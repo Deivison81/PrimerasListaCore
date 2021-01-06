@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PagonetCore.Models.Tasa_IVA>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tasas IVA";
 }
 
-<h2>Index</h2>
+<h2>Tasas IVA</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create")
 </p>
 <table class="table">
     <tr>
@@ -71,9 +71,9 @@
             @Html.DisplayFor(modelItem => item.importado_pro)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_impuesto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_impuesto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_impuesto })
+            @Html.ActionLink("Modificar", "Edit", new { id=item.id_impuesto }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_impuesto }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_impuesto })
         </td>
     </tr>
 }

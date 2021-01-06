@@ -40,8 +40,22 @@ namespace PagonetCore.Controllers
         // GET: PrecioArticulo/Create
         public ActionResult Create()
         {
-            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma");
-            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art");
+            var itemsAlmacenes = db.Almacenes.Select(x => new
+            {
+                cod_almacen = x.cod_almacen,
+                texto = x.co_alma + " - " + x.des_alamacen
+            });
+
+            ViewBag.cod_almacen = new SelectList(itemsAlmacenes, "cod_almacen", "texto");
+
+            var itemsArticulos = db.Articulos.Select(x => new
+            {
+                id_art = x.id_art,
+                texto = x.co_art + " - " + x.art_des
+            });
+
+            ViewBag.id_art = new SelectList(itemsArticulos, "id_art", "texto");
+
             return View();
         }
 
@@ -76,8 +90,23 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.cod_almacen = new SelectList(db.Almacenes, "cod_almacen", "co_alma", adpreciosart.cod_almacen);
-            ViewBag.id_art = new SelectList(db.Articulos, "id_art", "co_art", adpreciosart.id_art);
+
+            var itemsAlmacenes = db.Almacenes.Select(x => new
+            {
+                cod_almacen = x.cod_almacen,
+                texto = x.co_alma + " - " + x.des_alamacen
+            });
+
+            ViewBag.cod_almacen = new SelectList(itemsAlmacenes, "cod_almacen", "texto", adpreciosart.cod_almacen);
+
+            var itemsArticulos = db.Articulos.Select(x => new
+            {
+                id_art = x.id_art,
+                texto = x.co_art + " - " + x.art_des
+            });
+
+            ViewBag.id_art = new SelectList(itemsArticulos, "id_art", "texto", adpreciosart.id_art);
+
             return View(adpreciosart);
         }
 

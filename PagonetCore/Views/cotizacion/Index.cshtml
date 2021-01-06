@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PagonetCore.Models.Adcotizacion>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Cotizaciones";
 }
 
-<h2>Index</h2>
+<h2>Cotizaciones</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create")
 </p>
 <table class="table">
     <tr>
@@ -179,9 +179,9 @@
             @Html.DisplayFor(modelItem => item.vencida)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_doc_num }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_doc_num }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_doc_num })
+            @Html.ActionLink("Modificar", "Edit", new { id=item.id_doc_num }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_doc_num }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_doc_num })
         </td>
     </tr>
 }

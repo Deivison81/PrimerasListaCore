@@ -1,13 +1,12 @@
 ﻿@model PagonetCore.Models.Adpedidos
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Pedido";
 }
 
-<h2>Details</h2>
+<h2>Detalles Pedido</h2>
 
 <div>
-    <h4>Adpedidos</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -229,6 +228,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_doc_num }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar Pedido", "Edit", new { id = Model.id_doc_num }) |
+    @Html.ActionLink("Volver a Pedidos", "Index")
 </p>

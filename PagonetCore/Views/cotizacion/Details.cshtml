@@ -1,13 +1,12 @@
 ﻿@model PagonetCore.Models.Adcotizacion
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Cotización";
 }
 
-<h2>Details</h2>
+<h2>Detalles Cotización</h2>
 
 <div>
-    <h4>Adcotizacion</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -229,6 +228,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_doc_num }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_doc_num }) |
+    @Html.ActionLink("Volver a Cotizaciones", "Index")
 </p>

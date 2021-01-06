@@ -1,13 +1,12 @@
 ﻿@model PagonetCore.Models.AdIngreso
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Ingreso";
 }
 
-<h2>Details</h2>
+<h2>Detalles Ingreso</h2>
 
 <div>
-    <h4>AdIngreso</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -53,6 +52,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar Ingreso", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Volver a Ingresos", "Index")
 </p>

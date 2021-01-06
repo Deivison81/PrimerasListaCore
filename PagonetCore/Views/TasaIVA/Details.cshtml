@@ -1,13 +1,12 @@
 ﻿@model PagonetCore.Models.Tasa_IVA
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Tasa IVA";
 }
 
-<h2>Details</h2>
+<h2>Detalles Tasa IVA</h2>
 
 <div>
-    <h4>Tasa_IVA</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -85,6 +84,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_impuesto }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_impuesto }) |
+    @Html.ActionLink("Volver", "Index")
 </p>

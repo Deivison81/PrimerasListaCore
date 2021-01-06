@@ -1,10 +1,10 @@
 ﻿@model PagonetCore.Models.Adclientes
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear Cliente";
 }
 
-<h2>Create</h2>
+<h2>Crear Cliente</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Adclientes</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -184,63 +183,69 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_tipocliente, "id_tipocliente", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_tipocliente, "ID Tipo de Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_tipocliente", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("id_tipocliente", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownListFor(x => x.TipoCliente, (IEnumerable<SelectListItem>)ViewBag.id_tipocliente, htmlAttributes: new { @class = "form-control", @Name = "id_tipocliente" })
                 @Html.ValidationMessageFor(model => model.id_tipocliente, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_vendedor, "id_vendedor", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_vendedor, "ID Vendedor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_vendedor", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("id_vendedor", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownListFor(x => x.Vendedor, (IEnumerable<SelectListItem>)ViewBag.id_vendedor, htmlAttributes: new { @class = "form-control", @Name = "id_vendedor" })
                 @Html.ValidationMessageFor(model => model.id_vendedor, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idingre, "idingre", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idingre, "ID Ingreso", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("idingre", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("idingre", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownListFor(x => x.Ingreso, (IEnumerable<SelectListItem>)ViewBag.id, htmlAttributes: new { @class = "form-control", @Name = "idingre" })
                 @Html.ValidationMessageFor(model => model.idingre, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_zona, "id_zona", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_zona, "ID Zona", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_zona", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("id_zona", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownListFor(x => x.Zona, (IEnumerable<SelectListItem>)ViewBag.id_zona, htmlAttributes: new { @class = "form-control", @Name = "id_zona" })
                 @Html.ValidationMessageFor(model => model.id_zona, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_segmento, "id_segmento", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_segmento, "ID Segmento", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_segmento", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("id_segmento", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownListFor(x => x.Segmento, (IEnumerable<SelectListItem>)ViewBag.id_segmento, htmlAttributes: new { @class = "form-control", @Name = "id_segmento" })
                 @Html.ValidationMessageFor(model => model.id_segmento, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_pais, "id_pais", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_pais, "ID País", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("id_pais", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("id_pais", null, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownListFor(x => x.Pais, (IEnumerable<SelectListItem>)ViewBag.id_pais, htmlAttributes: new { @class = "form-control", @Name = "id_pais" })
                 @Html.ValidationMessageFor(model => model.id_pais, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver a Clientes", "Index")
 </div>
 
 @section Scripts {

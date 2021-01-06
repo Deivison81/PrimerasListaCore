@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<PagonetCore.Models.Adclientes>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Clientes";
 }
 
-<h2>Index</h2>
+<h2>Clientes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Cliente.tip_cli)
+            @Html.DisplayNameFor(model => model.TipoCliente.tip_cli)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Ingreso.co_ctaIng_egr)
@@ -98,7 +98,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Cliente.tip_cli)
+            @Html.DisplayFor(modelItem => item.TipoCliente.tip_cli)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Ingreso.co_ctaIng_egr)
@@ -179,9 +179,9 @@
             @Html.DisplayFor(modelItem => item.importado_pro)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_clientes }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_clientes }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_clientes })
+            @Html.ActionLink("Modificar", "Edit", new { id=item.id_clientes }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_clientes }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_clientes })
         </td>
     </tr>
 }

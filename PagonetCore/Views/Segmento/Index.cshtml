@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PagonetCore.Models.AdSegmento>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Segmentos";
 }
 
-<h2>Index</h2>
+<h2>Segmentos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create")
 </p>
 <table class="table">
     <tr>
@@ -41,9 +41,9 @@
             @Html.DisplayFor(modelItem => item.importado_pro)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_segmento }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_segmento }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_segmento })
+            @Html.ActionLink("Modificar", "Edit", new { id=item.id_segmento }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_segmento }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_segmento })
         </td>
     </tr>
 }

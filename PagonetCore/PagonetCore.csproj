@@ -389,11 +389,6 @@
     <Content Include="Views\RenglonPedido\Details.cshtml" />
     <Content Include="Views\RenglonPedido\Edit.cshtml" />
     <Content Include="Views\RenglonPedido\Index.cshtml" />
-    <Content Include="Views\Cliente\Create.cshtml" />
-    <Content Include="Views\Cliente\Delete.cshtml" />
-    <Content Include="Views\Cliente\Details.cshtml" />
-    <Content Include="Views\Cliente\Edit.cshtml" />
-    <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cotizacion\Create.cshtml" />
     <Content Include="Views\Cotizacion\Delete.cshtml" />
     <Content Include="Views\Cotizacion\Details.cshtml" />
@@ -434,6 +429,11 @@
     <Content Include="Views\Vendedor\Details.cshtml" />
     <Content Include="Views\Vendedor\Edit.cshtml" />
     <Content Include="Views\Vendedor\Index.cshtml" />
+    <Content Include="Views\Cliente\Create.cshtml" />
+    <Content Include="Views\Cliente\Delete.cshtml" />
+    <Content Include="Views\Cliente\Details.cshtml" />
+    <Content Include="Views\Cliente\Edit.cshtml" />
+    <Content Include="Views\Cliente\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -456,7 +456,6 @@
     <Content Include="Views\Almacen\Index.cshtml" />
     <Content Include="Views\Transporte\Index.cshtml" />
     <Content Include="Views\Articulo\Index.cshtml" />
-    <Content Include="Views\Condicion\Index.cshtml" />
     <Content Include="profit.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>profit.designer.cs</LastGenOutput>

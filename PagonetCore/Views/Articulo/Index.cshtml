@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PagonetCore.Models.AdArticulo>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Artículos";
 }
 
-<h2>Index</h2>
+<h2>Artículos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create")
 </p>
 <table class="table">
     <tr>
@@ -107,9 +107,9 @@
             @Html.DisplayFor(modelItem => item.importado_pro)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id_art }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id_art }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id_art })
+            @Html.ActionLink("Modificar", "Edit", new { id=item.id_art }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_art }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_art })
         </td>
     </tr>
 }

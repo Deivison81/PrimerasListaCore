@@ -1,21 +1,20 @@
 ﻿@model PagonetCore.Models.Adclientes
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles de Cliente";
 }
 
-<h2>Details</h2>
+<h2>Detalles de Cliente</h2>
 
 <div>
-    <h4>Adclientes</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Cliente.tip_cli)
+            @Html.DisplayNameFor(model => model.TipoCliente.tip_cli)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Cliente.tip_cli)
+            @Html.DisplayFor(model => model.TipoCliente.tip_cli)
         </dd>
 
         <dt>
@@ -229,6 +228,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id_clientes }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_clientes }) |
+    @Html.ActionLink("Volver a Clientes", "Index")
 </p>

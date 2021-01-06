@@ -18,7 +18,7 @@ namespace PagonetCore.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            var clientes = db.Clientes.Include(a => a.Cliente).Include(a => a.Ingreso).Include(a => a.Pais).Include(a => a.Segmento).Include(a => a.Vendedor).Include(a => a.Zona);
+            var clientes = db.Clientes.Include(a => a.TipoCliente).Include(a => a.Ingreso).Include(a => a.Pais).Include(a => a.Segmento).Include(a => a.Vendedor).Include(a => a.Zona);
             return View(clientes.ToList());
         }
 
@@ -40,12 +40,65 @@ namespace PagonetCore.Controllers
         // GET: Cliente/Create
         public ActionResult Create()
         {
-            ViewBag.id_tipocliente = new SelectList(db.TiposCliente, "id_tipocliente", "tip_cli");
-            ViewBag.idingre = new SelectList(db.Ingresos, "id", "co_ctaIng_egr");
-            ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "co_pais");
-            ViewBag.id_segmento = new SelectList(db.Segmentos, "id_segmento", "co_seg");
-            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven");
-            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon");
+            var itemsTipoCliente = db.TiposCliente.Select(x => new
+            {
+                id_tipocliente = x.id_tipocliente,
+                texto = x.tip_cli + " - " + x.des_tipo
+            });
+
+            ViewBag.id_tipocliente = new SelectList(itemsTipoCliente, "id_tipocliente", "texto");
+
+            //ViewBag.id_tipocliente = new SelectList(db.TiposCliente, "id_tipocliente", "tip_cli");
+
+            var itemsIngresos = db.Ingresos.Select(x => new
+            {
+                id = x.id,
+                texto = x.co_ctaIng_egr + " - " + x.descrip_ingre
+            });
+
+            ViewBag.id = new SelectList(itemsIngresos, "id", "texto");
+
+            //ViewBag.idingre = new SelectList(db.Ingresos, "id", "co_ctaIng_egr");
+
+            var itemsPaises = db.Paises.Select(x => new
+            {
+                id_pais = x.id_pais,
+                texto = x.co_pais + " - " + x.pais_des
+            });
+
+            ViewBag.id_pais = new SelectList(itemsPaises, "id_pais", "texto");
+
+            //ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "co_pais");
+
+            var itemsSegmentos = db.Segmentos.Select(x => new
+            {
+                id_segmento = x.id_segmento,
+                texto = x.co_seg + " - " + x.seg_des
+            });
+
+            ViewBag.id_segmento = new SelectList(itemsSegmentos, "id_segmento", "texto");
+
+            //ViewBag.id_segmento = new SelectList(db.Segmentos, "id_segmento", "co_seg");
+
+            var itemsVendedores = db.Vendedores.Select(x => new
+            {
+                id_vendedor = x.id_vendedor,
+                texto = x.co_ven + " - " + x.tipo + " - " + x.ven_des + " - " + x.co_zon
+            });
+
+            ViewBag.id_vendedor = new SelectList(itemsVendedores, "id_vendedor", "texto");
+
+            //ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven");
+
+            var itemsZona = db.Zonas.Select(x => new
+            {
+                id_zona = x.id_zona,
+                texto = x.co_zon + " - " + x.zon_des
+            });
+
+            ViewBag.id_zona = new SelectList(itemsZona, "id_zona", "texto");
+
+            //ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon");
             return View();
         }
 
@@ -84,12 +137,67 @@ namespace PagonetCore.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_tipocliente = new SelectList(db.TiposCliente, "id_tipocliente", "tip_cli", adclientes.id_tipocliente);
-            ViewBag.idingre = new SelectList(db.Ingresos, "id", "co_ctaIng_egr", adclientes.idingre);
-            ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "co_pais", adclientes.id_pais);
-            ViewBag.id_segmento = new SelectList(db.Segmentos, "id_segmento", "co_seg", adclientes.id_segmento);
-            ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven", adclientes.id_vendedor);
-            ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", adclientes.id_zona);
+
+            var itemsTipoCliente = db.TiposCliente.Select(x => new
+            {
+                id_tipocliente = x.id_tipocliente,
+                texto = x.tip_cli + " - " + x.des_tipo
+            });
+
+            ViewBag.id_tipocliente = new SelectList(itemsTipoCliente, "id_tipocliente", "texto", adclientes.id_tipocliente);
+
+            //ViewBag.id_tipocliente = new SelectList(db.TiposCliente, "id_tipocliente", "tip_cli", adclientes.id_tipocliente);
+
+            var itemsIngresos = db.Ingresos.Select(x => new
+            {
+                id = x.id,
+                texto = x.co_ctaIng_egr + " - " + x.descrip_ingre
+            });
+
+            ViewBag.id = new SelectList(itemsIngresos, "id", "texto", adclientes.idingre);
+
+            //ViewBag.idingre = new SelectList(db.Ingresos, "id", "co_ctaIng_egr", adclientes.idingre);
+
+            var itemsPaises = db.Paises.Select(x => new
+            {
+                id_pais = x.id_pais,
+                texto = x.co_pais + " - " + x.pais_des
+            });
+
+            ViewBag.id_pais = new SelectList(itemsPaises, "id_pais", "texto", adclientes.id_pais);
+
+            //ViewBag.id_pais = new SelectList(db.Paises, "id_pais", "co_pais", adclientes.id_pais);
+
+            var itemsSegmentos = db.Segmentos.Select(x => new
+            {
+                id_segmento = x.id_segmento,
+                texto = x.co_seg + " - " + x.seg_des
+            });
+
+            ViewBag.id_segmento = new SelectList(itemsSegmentos, "id_segmento", "texto", adclientes.id_segmento);
+
+            //ViewBag.id_segmento = new SelectList(db.Segmentos, "id_segmento", "co_seg", adclientes.id_segmento);
+
+            var itemsVendedores = db.Vendedores.Select(x => new
+            {
+                id_vendedor = x.id_vendedor,
+                texto = x.co_ven + " - " + x.tipo + " - " + x.ven_des + " - " + x.co_zon
+            });
+
+            ViewBag.id_vendedor = new SelectList(itemsVendedores, "id_vendedor", "texto", adclientes.id_vendedor);
+
+            //ViewBag.id_vendedor = new SelectList(db.Vendedores, "id_vendedor", "co_ven", adclientes.id_vendedor);
+
+            var itemsZona = db.Zonas.Select(x => new
+            {
+                id_zona = x.id_zona,
+                texto = x.co_zon + " - " + x.zon_des
+            });
+
+            ViewBag.id_zona = new SelectList(itemsZona, "id_zona", "texto", adclientes.id_zona);
+
+            //ViewBag.id_zona = new SelectList(db.Zonas, "id_zona", "co_zon", adclientes.id_zona);
+
             return View(adclientes);
         }
 

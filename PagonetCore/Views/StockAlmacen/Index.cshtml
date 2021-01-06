@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<PagonetCore.Models.StockAlma>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Stock Almacenes";
 }
 
-<h2>Index</h2>
+<h2>Stock Almacenes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.stock)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StockAlmacenID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StockAlmacenID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StockAlmacenID })
+            @Html.ActionLink("Modificar", "Edit", new { id=item.StockAlmacenID }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.StockAlmacenID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.StockAlmacenID })
         </td>
     </tr>
 }
