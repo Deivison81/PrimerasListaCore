@@ -4,54 +4,54 @@
     ViewBag.Title = "Detalles de Condición de Pago";
 }
 
-<h2>Detalles de Condición de Pago</h2>
+<h2 class="d-flex justify-content-center">Detalles de Condición de Pago</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_cond)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_cond)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.cond_des)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.cond_des)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.dias_cred)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.dias_cred)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_pro)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_pro)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_condicion }) |
+<p class="d-flex justify-content-center">
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_condicion }) &nbsp;|&nbsp;
     @Html.ActionLink("Volver a Condiciones de Pago", "Index")
 </p>

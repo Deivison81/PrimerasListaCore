@@ -4,70 +4,70 @@
     ViewBag.Title = "Detalles Vendedor";
 }
 
-<h2>Detalles Vendedor</h2>
+<h2 class="d-flex justify-content-center">Detalles Vendedor</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.Zona.co_zon)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.Zona.co_zon)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_ven)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_ven)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.tipo)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.tipo)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.ven_des)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.ven_des)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_zon)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_zon)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_pro)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_pro)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_vendedor }) |
+<p class="d-flex justify-content-center">
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.id_vendedor }) &nbsp;|&nbsp;
     @Html.ActionLink("Volver", "Index")
 </p>

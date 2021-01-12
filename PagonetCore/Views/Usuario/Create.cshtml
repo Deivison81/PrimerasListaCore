@@ -4,7 +4,7 @@
     ViewBag.Title = "Crear Usuario";
 }
 
-<h2>Crear Usuario</h2>
+<h2 class="d-flex justify-content-center">Crear Usuario</h2>
 
 
 @using (Html.BeginForm()) 
@@ -16,78 +16,78 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.co_user_prof, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.co_user_prof, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.co_user_prof, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.co_user_prof, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.cod_user, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.cod_user, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.cod_user, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.cod_user, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.nombre_usuarios, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.nombre_usuarios, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.nombre_usuarios, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.nombre_usuarios, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.fecha_ingreso, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.fecha_ingreso, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.fecha_ingreso, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.fecha_ingreso, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.validacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.validacion, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.validacion, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.validacion, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
+<div class="d-flex justify-content-center">
     @Html.ActionLink("Volver", "Index")
 </div>
 

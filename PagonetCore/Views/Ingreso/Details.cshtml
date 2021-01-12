@@ -4,54 +4,54 @@
     ViewBag.Title = "Detalles Ingreso";
 }
 
-<h2>Detalles Ingreso</h2>
+<h2 class="d-flex justify-content-center">Detalles Ingreso</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_ctaIng_egr)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_ctaIng_egr)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.descrip_ingre)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.descrip_ingre)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_user_prof)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_user_prof)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_pro)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_pro)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Modificar Ingreso", "Edit", new { id = Model.id }) |
+<p class="d-flex justify-content-center">
+    @Html.ActionLink("Modificar Ingreso", "Edit", new { id = Model.id }) &nbsp;|&nbsp;
     @Html.ActionLink("Volver a Ingresos", "Index")
 </p>

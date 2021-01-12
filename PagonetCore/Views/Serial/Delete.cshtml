@@ -4,73 +4,73 @@
     ViewBag.Title = "Eliminar Serial";
 }
 
-<h2>Eliminar Serial</h2>
+<h2 class="d-flex justify-content-center">Eliminar Serial</h2>
 
-<h3>¿Está seguro de que desea eliminar?</h3>
+<h3 class="d-flex justify-content-center">¿Está seguro de que desea eliminar?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.Almacen.co_alma)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.Almacen.co_alma)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.Articulo.co_art)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.Articulo.co_art)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_art)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_art)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_alma)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_alma)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.serial)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.serial)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.tip_dispositivo)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.tip_dispositivo)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_pro)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_pro)
         </dd>
 
@@ -79,8 +79,8 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+        <div class="form-actions no-color col-10 offset-2 col-md-7 offset-md-5">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> &nbsp;|&nbsp;
             @Html.ActionLink("Volver", "Index")
         </div>
     }

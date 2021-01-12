@@ -13,7 +13,7 @@ namespace PagonetCore.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202101060159576_BDInicial"; }
+            get { return "202101120215453_BDInicial"; }
         }
         
         string IMigrationMetadata.Source

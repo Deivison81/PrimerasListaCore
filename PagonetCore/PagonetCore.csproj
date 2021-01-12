@@ -199,9 +199,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101060159576_BDInicial.cs" />
-    <Compile Include="Migrations\202101060159576_BDInicial.Designer.cs">
-      <DependentUpon>202101060159576_BDInicial.cs</DependentUpon>
+    <Compile Include="Migrations\202101120215453_BDInicial.cs" />
+    <Compile Include="Migrations\202101120215453_BDInicial.Designer.cs">
+      <DependentUpon>202101120215453_BDInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
@@ -466,7 +466,6 @@
     <Content Include="Views\TasaIVA\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile3.pubxml" />
-    <Content Include="Views\Zona\zonaprofit.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile4.pubxml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -551,8 +550,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101060159576_BDInicial.resx">
-      <DependentUpon>202101060159576_BDInicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202101120215453_BDInicial.resx">
+      <DependentUpon>202101120215453_BDInicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

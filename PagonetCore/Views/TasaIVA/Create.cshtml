@@ -4,7 +4,7 @@
     ViewBag.Title = "Crear Tasa IVA";
 }
 
-<h2>Crear Tasa IVA</h2>
+<h2 class="d-flex justify-content-center">Crear Tasa IVA</h2>
 
 
 @using (Html.BeginForm()) 
@@ -15,86 +15,86 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.id_impuesto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.id_impuesto, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.id_impuesto, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.id_impuesto, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.fechapubli, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.fechapubli, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.fechapubli, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.fechapubli, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tip_impu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.tip_impu, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.tip_impu, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.tip_impu, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ventas, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.ventas, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.ventas, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ventas, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.consumosuntuario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.consumosuntuario, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.consumosuntuario, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.consumosuntuario, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.porcentajetaza, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.porcentajetaza, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.porcentajetaza, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.porcentajetaza, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.porcentajesuntuario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.porcentajesuntuario, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.porcentajesuntuario, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.porcentajesuntuario, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.importado_web, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.importado_web, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.importado_web, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.importado_web, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.importado_pro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.importado_pro, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.importado_pro, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.importado_pro, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
+<div class="d-flex justify-content-center">
     @Html.ActionLink("Volver", "Index")
 </div>
 

@@ -4,63 +4,63 @@
     ViewBag.Title = "Detalles";
 }
 
-<h2>Detalles</h2>
+<h2 class="d-flex justify-content-center">Detalles</h2>
 
 <div>
-    <h4>Almacén</h4>
+    <h4 class="d-flex justify-content-center">Almacén</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_alma)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_alma)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.des_alamacen)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.des_alamacen)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_user_prof)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_user_prof)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_pro)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_pro)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Modificar", "Edit", new { id = Model.cod_almacen }) |
+<p class="d-flex justify-content-center">
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.cod_almacen }) &nbsp;|&nbsp;
     @Html.ActionLink("Volver a Almacenes", "Index")
 </p>

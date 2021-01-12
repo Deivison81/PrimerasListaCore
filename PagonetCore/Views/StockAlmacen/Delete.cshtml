@@ -4,33 +4,33 @@
     ViewBag.Title = "Eliminar Stock";
 }
 
-<h2>Eliminar Stock</h2>
+<h2 class="d-flex justify-content-center">Eliminar Stock</h2>
 
-<h3>¿Está seguro de que desea eliminar?</h3>
+<h3 class="d-flex justify-content-center">¿Está seguro de que desea eliminar?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.Almacen.co_alma)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.Almacen.co_alma)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.Articulo.co_art)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.Articulo.co_art)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.stock)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.stock)
         </dd>
 
@@ -39,8 +39,8 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+        <div class="form-actions no-color col-10 offset-2 col-md-7 offset-md-5">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> &nbsp;|&nbsp;
             @Html.ActionLink("Volver", "Index")
         </div>
     }

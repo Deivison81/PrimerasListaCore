@@ -90,10 +90,10 @@ namespace PagonetCore.Migrations
                         id_pais = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.id_clientes)
-                .ForeignKey("dbo.Adtipo_cliente", t => t.id_tipocliente)
                 .ForeignKey("dbo.AdIngreso", t => t.idingre)
                 .ForeignKey("dbo.Adpais", t => t.id_pais, cascadeDelete: true)
                 .ForeignKey("dbo.AdSegmento", t => t.id_segmento)
+                .ForeignKey("dbo.Adtipo_cliente", t => t.id_tipocliente)
                 .ForeignKey("dbo.Advendedor", t => t.id_vendedor)
                 .ForeignKey("dbo.Adzona", t => t.id_zona)
                 .Index(t => t.id_tipocliente)
@@ -102,18 +102,6 @@ namespace PagonetCore.Migrations
                 .Index(t => t.id_zona)
                 .Index(t => t.id_segmento)
                 .Index(t => t.id_pais);
-            
-            CreateTable(
-                "dbo.Adtipo_cliente",
-                c => new
-                    {
-                        id_tipocliente = c.Int(nullable: false, identity: true),
-                        tip_cli = c.String(nullable: false, maxLength: 6),
-                        des_tipo = c.String(maxLength: 60),
-                        importado_web = c.String(maxLength: 1),
-                        importado_pro = c.String(maxLength: 1),
-                    })
-                .PrimaryKey(t => t.id_tipocliente);
             
             CreateTable(
                 "dbo.AdIngreso",
@@ -151,6 +139,18 @@ namespace PagonetCore.Migrations
                         importado_pro = c.String(maxLength: 1),
                     })
                 .PrimaryKey(t => t.id_segmento);
+            
+            CreateTable(
+                "dbo.Adtipo_cliente",
+                c => new
+                    {
+                        id_tipocliente = c.Int(nullable: false, identity: true),
+                        tip_cli = c.String(nullable: false, maxLength: 6),
+                        des_tipo = c.String(maxLength: 60),
+                        importado_web = c.String(maxLength: 1),
+                        importado_pro = c.String(maxLength: 1),
+                    })
+                .PrimaryKey(t => t.id_tipocliente);
             
             CreateTable(
                 "dbo.Advendedor",
@@ -448,7 +448,7 @@ namespace PagonetCore.Migrations
                 "dbo.AdSerial",
                 c => new
                     {
-                        reng_num = c.Int(nullable: false),
+                        reng_num = c.Int(nullable: false, identity: true),
                         co_art = c.String(maxLength: 30),
                         co_alma = c.String(maxLength: 6),
                         serial = c.String(maxLength: 40),
@@ -540,10 +540,10 @@ namespace PagonetCore.Migrations
             DropForeignKey("dbo.Adclientes", "id_zona", "dbo.Adzona");
             DropForeignKey("dbo.Adclientes", "id_vendedor", "dbo.Advendedor");
             DropForeignKey("dbo.Advendedor", "id_zona", "dbo.Adzona");
+            DropForeignKey("dbo.Adclientes", "id_tipocliente", "dbo.Adtipo_cliente");
             DropForeignKey("dbo.Adclientes", "id_segmento", "dbo.AdSegmento");
             DropForeignKey("dbo.Adclientes", "id_pais", "dbo.Adpais");
             DropForeignKey("dbo.Adclientes", "idingre", "dbo.AdIngreso");
-            DropForeignKey("dbo.Adclientes", "id_tipocliente", "dbo.Adtipo_cliente");
             DropIndex("dbo.StockAlma", new[] { "id_art" });
             DropIndex("dbo.StockAlma", new[] { "cod_almacen" });
             DropIndex("dbo.AdSerial", new[] { "cod_almacen" });
@@ -588,10 +588,10 @@ namespace PagonetCore.Migrations
             DropTable("dbo.Adcondiciondepago");
             DropTable("dbo.Adzona");
             DropTable("dbo.Advendedor");
+            DropTable("dbo.Adtipo_cliente");
             DropTable("dbo.AdSegmento");
             DropTable("dbo.Adpais");
             DropTable("dbo.AdIngreso");
-            DropTable("dbo.Adtipo_cliente");
             DropTable("dbo.Adclientes");
             DropTable("dbo.AdBanco");
             DropTable("dbo.AdArticulo");

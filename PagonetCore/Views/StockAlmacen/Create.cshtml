@@ -4,7 +4,7 @@
     ViewBag.Title = "Crear Stock";
 }
 
-<h2>Crear Stock</h2>
+<h2 class="d-flex justify-content-center">Crear Stock</h2>
 
 
 @using (Html.BeginForm()) 
@@ -15,16 +15,16 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.stock, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.stock, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @Html.EditorFor(model => model.stock, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.stock, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.cod_almacen, "Código Almacén", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.cod_almacen, "Código Almacén", htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @*@Html.DropDownList("cod_almacen", null, htmlAttributes: new { @class = "form-control" })*@
                 @Html.DropDownListFor(x => x.Almacen, (IEnumerable<SelectListItem>)ViewBag.cod_almacen, htmlAttributes: new { @class = "form-control", @Name = "cod_almacen" })
                 @Html.ValidationMessageFor(model => model.cod_almacen, "", new { @class = "text-danger" })
@@ -32,8 +32,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_art, "ID Artículo", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.id_art, "ID Artículo", htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 @*@Html.DropDownList("id_art", null, htmlAttributes: new { @class = "form-control" })*@
                 @Html.DropDownListFor(x => x.Articulo, (IEnumerable<SelectListItem>)ViewBag.id_art, htmlAttributes: new { @class = "form-control", @Name = "id_art" })
                 @Html.ValidationMessageFor(model => model.id_art, "", new { @class = "text-danger" })
@@ -41,14 +41,14 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-10 offset-2 col-md-7 offset-md-5">
                 <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-<div>
+<div class="d-flex justify-content-center">
     @Html.ActionLink("Volver", "Index")
 </div>
 

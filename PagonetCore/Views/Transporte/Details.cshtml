@@ -4,46 +4,46 @@
     ViewBag.Title = "Detalles Transporte";
 }
 
-<h2>Detalles Transporte</h2>
+<h2 class="d-flex justify-content-center">Detalles Transporte</h2>
 
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_tran)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_tran)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.des_tran)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.des_tran)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_pro)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_pro)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Modificar", "Edit", new { id = Model.idtransporte }) |
+<p class="d-flex justify-content-center">
+    @Html.ActionLink("Modificar", "Edit", new { id = Model.idtransporte }) &nbsp;|&nbsp;
     @Html.ActionLink("Volver", "Index")
 </p>

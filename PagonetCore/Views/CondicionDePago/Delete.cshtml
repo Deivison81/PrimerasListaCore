@@ -4,50 +4,49 @@
     ViewBag.Title = "Eliminar Condición de Pago";
 }
 
-<h2>Eliminar Condición de Pago</h2>
+<h2 class="d-flex justify-content-center">Eliminar Condición de Pago</h2>
 
-<h3>¿Está seguro de que desea eliminar la Condición de Pago?</h3>
+<h3 class="d-flex justify-content-center">¿Está seguro de que desea eliminar la Condición de Pago?</h3>
 <div>
-    <h4>Adcondiciondepago</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_cond)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_cond)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.cond_des)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.cond_des)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.dias_cred)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.dias_cred)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_pro)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_pro)
         </dd>
 
@@ -56,8 +55,8 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+        <div class="form-actions no-color col-10 offset-2 col-md-7 offset-md-5">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> &nbsp;|&nbsp;
             @Html.ActionLink("Volver a Condiciones de Pago", "Index")
         </div>
     }

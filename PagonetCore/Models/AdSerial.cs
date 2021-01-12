@@ -10,7 +10,6 @@ namespace PagonetCore.Models
     public partial class AdSerial
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int reng_num { get; set; }
 
         [StringLength(30)]

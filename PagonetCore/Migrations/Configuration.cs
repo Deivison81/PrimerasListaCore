@@ -394,10 +394,9 @@ namespace PagonetCore.Migrations
 			renglonesPedidos.ToList().ForEach(r => context.RenglonesPedidos.Add(r));
 			context.SaveChanges();
 
-			// Serial.
+			// Seriales.
 			var serial = Builder<AdSerial>.CreateListOfSize(5)
 				.All()
-					.With(a => a.reng_num = Faker.RandomNumber.Next(9999))
 					.With(a => a.id_art = articulos.Single(s => s.id_art == 1).id_art)
 					.With(a => a.co_art = Faker.RandomNumber.Next(999).ToString("000"))
 					.With(a => a.cod_almacen = almacenes.Single(s => s.cod_almacen == 1).cod_almacen)

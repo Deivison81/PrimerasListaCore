@@ -4,49 +4,49 @@
     ViewBag.Title = "Eliminar Ingreso";
 }
 
-<h2>Eliminar Ingreso</h2>
+<h2 class="d-flex justify-content-center">Eliminar Ingreso</h2>
 
-<h3>¿Está seguro de que desea eliminar el Ingreso?</h3>
+<h3 class="d-flex justify-content-center">¿Está seguro de que desea eliminar el Ingreso?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_ctaIng_egr)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_ctaIng_egr)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.descrip_ingre)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.descrip_ingre)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.co_user_prof)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.co_user_prof)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_web)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_web)
         </dd>
 
-        <dt>
+        <dt class="d-flex justify-content-center">
             @Html.DisplayNameFor(model => model.importado_pro)
         </dt>
 
-        <dd>
+        <dd class="d-flex justify-content-center">
             @Html.DisplayFor(model => model.importado_pro)
         </dd>
 
@@ -55,8 +55,8 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+        <div class="form-actions no-color col-10 offset-2 col-md-7 offset-md-5">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> &nbsp;|&nbsp;
             @Html.ActionLink("Volver a Ingresos", "Index")
         </div>
     }
