@@ -351,9 +351,11 @@ namespace PagonetCore.Controllers
             {
                 if (OadCotizacionreg.id_doc_num == 0)
                 {
+                    
                     bdsql.AdCotizacionreg.InsertOnSubmit(OadCotizacionreg);
                     bdsql.SubmitChanges();
                     nroregistros = 1;
+
                 }
                 else
                 {
@@ -557,6 +559,8 @@ namespace PagonetCore.Controllers
             int nroregistros = 0;
             int nrorenglones = 0;
             string nrocotizacion = "";
+            decimal totalreglones = 0;
+
             try
             {
                 //bdsql.Adcotizacion.InsertOnSubmit(Oadcotizacion);
@@ -576,12 +580,14 @@ namespace PagonetCore.Controllers
                         {
                             OadCotizacionreg[i].doc_num = cotizacion;
                             nrorenglones = nrorenglones + 1;
-                        OadCotizacionreg[i].reng_num = nrorenglones;
+                            OadCotizacionreg[i].reng_num = nrorenglones;
+                            totalreglones = totalreglones + (decimal)OadCotizacionreg[i].reng_neto;
+
                         // bdsql.AdCotizacionreg.InsertOnSubmit(OadCotizacionreg);
                         // bdsql.SubmitChanges();
                         this.guardarDatosreng(OadCotizacionreg[i]);
                         
-
+                        
                         }
                     //}
                     //else
