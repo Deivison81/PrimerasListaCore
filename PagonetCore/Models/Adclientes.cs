@@ -37,6 +37,7 @@ namespace PagonetCore.Models
         [Required]
         [StringLength(60)]
         [Display(Name = "Telefóno")]
+        [RegularExpression(@"^[0]{1}[0-9]{3}[-]{1}[0-9]{7}$", ErrorMessage = "El Número de Teléfono debe tener el formato: 0XXX-1234567.")]
         public string telefonos { get; set; }
 
         [Required]
@@ -72,11 +73,13 @@ namespace PagonetCore.Models
         [Required]
         [StringLength(18)]
         [Display(Name = "RIF")]
+        [RegularExpression(@"^(j|J)[-]{1}[0-9]{9}[-]{1}[0-9]{1}$", ErrorMessage = "El RIF debe tener el formato: J-123456789-0.")]
         public string rif { get; set; }
 
         [Required]
         [StringLength(60)]
         [Display(Name = "Email")]
+        [EmailAddress()]
         public string email { get; set; }
 
         [Required]

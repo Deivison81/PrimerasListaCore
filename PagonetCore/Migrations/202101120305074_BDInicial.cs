@@ -500,7 +500,7 @@ namespace PagonetCore.Migrations
                 "dbo.Adusuarios",
                 c => new
                     {
-                        id = c.Int(nullable: false),
+                        id = c.Int(nullable: false, identity: true),
                         co_user_prof = c.String(nullable: false, maxLength: 6),
                         cod_user = c.String(nullable: false, maxLength: 6),
                         nombre_usuarios = c.String(nullable: false, maxLength: 60),

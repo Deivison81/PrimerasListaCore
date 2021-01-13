@@ -73,7 +73,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fec_emis, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
             <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.fec_emis, new { htmlAttributes = new { @class = "form-control" } })
+                @* Prohibir entrada de texto sin el uso del Calendario. Ver: https://stackoverflow.com/a/28670688 *@
+                @Html.EditorFor(model => model.fec_emis, new { htmlAttributes = new { @onkeydown = "return false", @class = "form-control datepicker", data_provide = "datepicker", data_date_format = "dd-mm-yyyy", data_date_language = "es" } })
                 @Html.ValidationMessageFor(model => model.fec_emis, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -81,7 +82,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fec_venc, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
             <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.fec_venc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.fec_venc, new { htmlAttributes = new { @onkeydown = "return false", @class = "form-control datepicker", data_provide = "datepicker", data_date_format = "dd-mm-yyyy", data_date_language = "es" } })
                 @Html.ValidationMessageFor(model => model.fec_venc, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -89,7 +90,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fec_reg, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
             <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.fec_reg, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.fec_reg, new { htmlAttributes = new { @onkeydown = "return false", @class = "form-control datepicker", data_provide = "datepicker", data_date_format = "dd-mm-yyyy", data_date_language = "es" } })
                 @Html.ValidationMessageFor(model => model.fec_reg, "", new { @class = "text-danger" })
             </div>
         </div>

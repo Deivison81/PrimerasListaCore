@@ -8,7 +8,7 @@ namespace PagonetCore.Models
 
     public partial class Adusuarios
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int id { get; set; }
 
         [Required]
@@ -37,6 +37,7 @@ namespace PagonetCore.Models
         public string Estado { get; set; }
 
         [Display(Name = "Fecha Ingreso")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", NullDisplayText = "Sin Fecha")]
         public DateTime fecha_ingreso { get; set; }
 
         [StringLength(6)]

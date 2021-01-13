@@ -39,14 +39,17 @@ namespace PagonetCore.Models
 
         [Column(TypeName = "smalldatetime")]
         [Display(Name = "Fecha Emisión")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:dd-MM-yyyy}", NullDisplayText = "Sin Fecha")]
         public DateTime? fec_emis { get; set; }
 
         [Column(TypeName = "smalldatetime")]
         [Display(Name = "Fecha Vencimiento")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:dd-MM-yyyy}", NullDisplayText = "Sin Fecha")]
         public DateTime? fec_venc { get; set; }
 
         [Column(TypeName = "smalldatetime")]
         [Display(Name = "Fecha Registro")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:dd-MM-yyyy}", NullDisplayText = "Sin Fecha")]
         public DateTime? fec_reg { get; set; }
 
         [StringLength(1)]

@@ -12,6 +12,7 @@ namespace PagonetCore.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id_impuesto { get; set; }
 
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", NullDisplayText = "Sin Fecha")]
         public DateTime fechapubli { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

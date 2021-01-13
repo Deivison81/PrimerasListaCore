@@ -23,9 +23,11 @@ namespace PagonetCore.Models
         public string co_precios { get; set; }
 
         [Display(Name = "Desde")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", NullDisplayText = "Sin Fecha")]
         public DateTime? desde { get; set; }
 
         [Display(Name = "Hasta")]
+        [DisplayFormat(ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, DataFormatString = "{0:dd-MM-yyyy HH:mm:ss}", NullDisplayText = "Sin Fecha")]
         public DateTime? hasta { get; set; }
 
         [StringLength(6)]

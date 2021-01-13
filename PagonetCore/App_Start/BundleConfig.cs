@@ -22,9 +22,14 @@ namespace PagonetCore
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-datepicker").Include(
+                        "~/Scripts/bootstrap-datepicker.js",
+                        "~/Scripts/locales/bootstrap-datepicker.es.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/bootstrap-datepicker.css"));
         }
     }
 }
