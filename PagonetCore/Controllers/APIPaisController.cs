@@ -18,12 +18,14 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APIPais
+        [Route("Adpais/listarPais")]
         public IQueryable<Adpais> GetPaises()
         {
             return db.Paises;
         }
 
         // GET: api/APIPais/5
+        [Route("Adpais/listarpais1/{id:int:min(1)}")]
         [ResponseType(typeof(Adpais))]
         public IHttpActionResult GetAdpais(int id)
         {
@@ -72,6 +74,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APIPais
+        [Route("api/APIPais", Name = "CrearPaisNuevaApi")]
+        [Route("Adpais/guardarDatos")]
         [ResponseType(typeof(Adpais))]
         public IHttpActionResult PostAdpais(Adpais adpais)
         {
@@ -83,7 +87,14 @@ namespace PagonetCore.Controllers
             db.Paises.Add(adpais);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adpais.id_pais }, adpais);
+            string nombreRuta = "CrearPaisNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/Adpais/guardarDatos") == 0)
+            {
+                nombreRuta = "CrearPais";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adpais.id_pais }, adpais);
         }
 
         // DELETE: api/APIPais/5

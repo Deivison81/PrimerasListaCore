@@ -16,6 +16,10 @@ namespace PagonetCore.Controllers
     {
         private PagonetContext db = new PagonetContext();
 
+        // NOTA:
+        // Este Controlador se utiliza como utilidad para guardar cotizaciones y renglones
+        // en una misma petición HTTP.
+
         // PUT: api/APICotizacionRenglon/5
         /*[ResponseType(typeof(void))]
         public IHttpActionResult PutCotizacionRenglon(int id, CotizacionRenglon cotizacionRenglon)

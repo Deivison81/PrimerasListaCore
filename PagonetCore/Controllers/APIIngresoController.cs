@@ -18,12 +18,14 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APIIngreso
+        [Route("Ingresos/listaIngreso")]
         public IQueryable<AdIngreso> GetIngresos()
         {
             return db.Ingresos;
         }
 
         // GET: api/APIIngreso/5
+        [Route("Ingresos/listaIngreso/{id:int:min(1)}")]
         [ResponseType(typeof(AdIngreso))]
         public IHttpActionResult GetAdIngreso(int id)
         {
@@ -72,6 +74,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APIIngreso
+        [Route("api/APIIngreso", Name = "CrearIngresoNuevaApi")]
+        [Route("Ingresos/guardarDatos")]
         [ResponseType(typeof(AdIngreso))]
         public IHttpActionResult PostAdIngreso(AdIngreso adIngreso)
         {
@@ -83,7 +87,14 @@ namespace PagonetCore.Controllers
             db.Ingresos.Add(adIngreso);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adIngreso.id }, adIngreso);
+            string nombreRuta = "CrearIngresoNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/Ingresos/guardarDatos") == 0)
+            {
+                nombreRuta = "CrearIngreso";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adIngreso.id }, adIngreso);
         }
 
         // DELETE: api/APIIngreso/5

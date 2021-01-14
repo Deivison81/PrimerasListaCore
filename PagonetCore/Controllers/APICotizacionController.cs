@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using PagonetCore.DAL;
@@ -18,12 +14,15 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APICotizacion
+        // GET: cotizacion/listarCotizacion
+        [Route("cotizacion/listarCotizacion")]
         public IQueryable<Adcotizacion> GetCotizaciones()
         {
             return db.Cotizaciones;
         }
 
         // GET: api/APICotizacion/5
+        [Route("cotizacion/listarcotizacionid/{id:int:min(1)}")]
         [ResponseType(typeof(Adcotizacion))]
         public IHttpActionResult GetAdcotizacion(int id)
         {
@@ -72,6 +71,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APICotizacion
+        [Route("api/APICotizacion", Name = "CrearCotizacionNuevaApi")]
+        [Route("cotizacion/guardarDatos")]
         [ResponseType(typeof(Adcotizacion))]
         public IHttpActionResult PostAdcotizacion(Adcotizacion adcotizacion)
         {
@@ -83,7 +84,14 @@ namespace PagonetCore.Controllers
             db.Cotizaciones.Add(adcotizacion);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adcotizacion.id_doc_num }, adcotizacion);
+            string nombreRuta = "CrearCotizacionNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/cotizacion/guardarDatos") == 0)
+            {
+                nombreRuta = "CrearCotizacion";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adcotizacion.id_doc_num }, adcotizacion);
         }
 
         // DELETE: api/APICotizacion/5

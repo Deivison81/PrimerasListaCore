@@ -18,12 +18,44 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APICliente
+        [Route("Cliente/listaCliente")]
         public IQueryable<Adclientes> GetClientes()
         {
             return db.Clientes;
         }
 
+        // GET: Cliente/Validacodigo
+        [Route("Cliente/Validacodigo")]
+        public IHttpActionResult GetClientesOrdenadosPorCodigo()
+        {
+            return Json(db.Clientes
+                .OrderBy(x => x.co_cli)
+                .Select(x => new
+                {
+                    x.id_clientes,
+                    x.co_cli
+                })
+            );
+        }
+
+        // GET: Cotizacion/listarCliente
+        // NOTA:
+        // Esto se colocó para compatibilidad con rutas anteriores, pero no es apropiado, puesto
+        // que la ruta incluye 'Cotización' en su URL, y esto es completamente 
+        // y únicamente relacionado a Cliente.
+        [Route("Cotizacion/listarCliente")]
+        public IHttpActionResult GetClientesCotizacion()
+        {
+            return Json(db.Clientes.Select(x => new
+            {
+                IID = x.id_clientes,
+                CODIGO = x.co_cli,
+                NOMBRE = x.cli_des
+            }));
+        }
+
         // GET: api/APICliente/5
+        [Route("Cliente/listaClientes/{id:int:min(1)}")]
         [ResponseType(typeof(Adclientes))]
         public IHttpActionResult GetAdclientes(int id)
         {

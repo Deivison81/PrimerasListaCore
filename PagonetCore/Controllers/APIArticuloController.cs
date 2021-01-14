@@ -16,8 +16,9 @@ namespace PagonetCore.Controllers
     public class APIArticuloController : ApiController
     {
         private PagonetContext db = new PagonetContext();
-
+        
         // GET: api/APIArticulo
+        [Route("Articulo/listarartweb")]
         public IQueryable<AdArticulo> GetArticulos()
         {
             return db.Articulos;

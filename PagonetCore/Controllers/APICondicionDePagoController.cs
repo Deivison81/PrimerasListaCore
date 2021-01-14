@@ -18,12 +18,31 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APICondicionDePago
+        [Route("Condicion/listarCondiciones")]
         public IQueryable<Adcondiciondepago> GetCondicionesDePago()
         {
             return db.CondicionesDePago;
         }
 
+        // GET: cotizacion/listarCondicion
+        // NOTA:
+        // Esto se colocó para compatibilidad con rutas anteriores, pero no es apropiado, puesto
+        // que la ruta incluye 'Cotización' en su URL, y esto es completamente 
+        // y únicamente relacionado a Condición de Pago.
+        [Route("cotizacion/listarCondicion")]
+        public IHttpActionResult GetCondicionesDePagoCotizacion()
+        {
+            return Json(db.CondicionesDePago.Select(x => new
+            {
+                IID = x.id_condicion,
+                CODIGO = x.co_cond,
+                NOMBRE = x.cond_des,
+                DIAS = x.dias_cred
+            }));
+        }
+
         // GET: api/APICondicionDePago/5
+        [Route("Condicion/listarCondicion/{id:int:min(1)}")]
         [ResponseType(typeof(Adcondiciondepago))]
         public IHttpActionResult GetAdcondiciondepago(int id)
         {
@@ -37,6 +56,7 @@ namespace PagonetCore.Controllers
         }
 
         // PUT: api/APICondicionDePago/5
+        [Route("Condicion/modificarDatos")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdcondiciondepago(int id, Adcondiciondepago adcondiciondepago)
         {
@@ -72,6 +92,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APICondicionDePago
+        [Route("api/APICondicionDePago", Name = "CrearCondicionDePagoNuevaApi")]
+        [Route("Condicion/guardarDatos")]
         [ResponseType(typeof(Adcondiciondepago))]
         public IHttpActionResult PostAdcondiciondepago(Adcondiciondepago adcondiciondepago)
         {
@@ -83,7 +105,14 @@ namespace PagonetCore.Controllers
             db.CondicionesDePago.Add(adcondiciondepago);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adcondiciondepago.id_condicion }, adcondiciondepago);
+            string nombreRuta = "CrearCondicionDePagoNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/Condicion/guardarDatos") == 0)
+            {
+                nombreRuta = "CrearCondicionDePago";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adcondiciondepago.id_condicion }, adcondiciondepago);
         }
 
         // DELETE: api/APICondicionDePago/5

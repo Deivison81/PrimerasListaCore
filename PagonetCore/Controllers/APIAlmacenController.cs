@@ -14,12 +14,14 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APIAlmacen
+        [Route("Almacen/listarAlmacen")]
         public IQueryable<AdAlmacen> GetAlmacenes()
         {
             return db.Almacenes;
         }
 
         // GET: api/APIAlmacen/5
+        [Route("Almacen/listarAlmacens/{id:int:min(1)}")]
         [ResponseType(typeof(AdAlmacen))]
         public IHttpActionResult GetAdAlmacen(int id)
         {
@@ -68,6 +70,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APIAlmacen
+        [Route("api/APIAlmacen", Name = "CrearAlmacenNuevaApi")]
+        [Route("Almacen/guardarDatos")]
         [ResponseType(typeof(AdAlmacen))]
         public IHttpActionResult PostAdAlmacen(AdAlmacen adAlmacen)
         {
@@ -79,7 +83,14 @@ namespace PagonetCore.Controllers
             db.Almacenes.Add(adAlmacen);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adAlmacen.cod_almacen }, adAlmacen);
+            string nombreRuta = "CrearAlmacenNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/Almacen/guardarDatos") == 0)
+            {
+                nombreRuta = "CrearAlmacen";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adAlmacen.cod_almacen }, adAlmacen);
         }
 
         // DELETE: api/APIAlmacen/5

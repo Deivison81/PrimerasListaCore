@@ -18,12 +18,14 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APITipoCliente
+        [Route("Tipocliente/listatipot")]
         public IQueryable<Adtipo_cliente> GetTiposCliente()
         {
             return db.TiposCliente;
         }
 
         // GET: api/APITipoCliente/5
+        [Route("Tipocliente/listatipot/{id:int:min(1)}")]
         [ResponseType(typeof(Adtipo_cliente))]
         public IHttpActionResult GetAdtipo_cliente(int id)
         {
@@ -72,6 +74,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APITipoCliente
+        [Route("api/APITipoCliente", Name = "CrearTipoClienteNuevaApi")]
+        [Route("Tipocliente/guardarDatos")]
         [ResponseType(typeof(Adtipo_cliente))]
         public IHttpActionResult PostAdtipo_cliente(Adtipo_cliente adtipo_cliente)
         {
@@ -83,7 +87,14 @@ namespace PagonetCore.Controllers
             db.TiposCliente.Add(adtipo_cliente);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adtipo_cliente.id_tipocliente }, adtipo_cliente);
+            string nombreRuta = "CrearTipoClienteNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/Tipocliente/guardarDatos") == 0)
+            {
+                nombreRuta = "CrearTipoCliente";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adtipo_cliente.id_tipocliente }, adtipo_cliente);
         }
 
         // DELETE: api/APITipoCliente/5

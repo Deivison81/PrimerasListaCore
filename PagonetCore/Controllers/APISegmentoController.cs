@@ -18,12 +18,14 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APISegmento
+        [Route("Segmento/listarSegmento")]
         public IQueryable<AdSegmento> GetSegmentos()
         {
             return db.Segmentos;
         }
 
         // GET: api/APISegmento/5
+        [Route("Segmento/listarSegmentos/{id:int:min(1)}")]
         [ResponseType(typeof(AdSegmento))]
         public IHttpActionResult GetAdSegmento(int id)
         {
@@ -72,6 +74,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APISegmento
+        [Route("api/APISegmento", Name = "CrearSegmentoNuevaApi")]
+        [Route("Segmento/GuardarDatos")]
         [ResponseType(typeof(AdSegmento))]
         public IHttpActionResult PostAdSegmento(AdSegmento adSegmento)
         {
@@ -83,7 +87,14 @@ namespace PagonetCore.Controllers
             db.Segmentos.Add(adSegmento);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adSegmento.id_segmento }, adSegmento);
+            string nombreRuta = "CrearSegmentoNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/Segmento/GuardarDatos") == 0)
+            {
+                nombreRuta = "CrearSegmento";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adSegmento.id_segmento }, adSegmento);
         }
 
         // DELETE: api/APISegmento/5

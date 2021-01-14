@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using PagonetCore.DAL;
@@ -18,9 +15,26 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APITransporte
+        [Route("Transporte/listarTransportes")]
         public IQueryable<Adtransporte> GetTransportes()
         {
             return db.Transportes;
+        }
+
+        // GET: Cotizacion/listarTransporte
+        // NOTA:
+        // Esto se colocó para compatibilidad con rutas anteriores, pero no es apropiado, puesto
+        // que la ruta incluye 'Cotización' en su URL, y esto es completamente 
+        // y únicamente relacionado a Transporte.
+        [Route("Cotizacion/listarTransporte")]
+        public IHttpActionResult GetTransportesCotizacion()
+        {
+            return Json(db.Transportes.Select(x => new
+            {
+                IID = x.idtransporte,
+                CODIGO = x.co_tran,
+                NOMBRE = x.des_tran
+            }));
         }
 
         // GET: api/APITransporte/5

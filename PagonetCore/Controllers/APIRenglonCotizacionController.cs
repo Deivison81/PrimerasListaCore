@@ -18,12 +18,15 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APIRenglonCotizacion
+        // GET: cotizacion/listarRenglones
+        [Route("cotizacion/listarRenglones")]
         public IQueryable<AdCotizacionreg> GetRenglonesCotizacion()
         {
             return db.RenglonesCotizacion;
         }
 
         // GET: api/APIRenglonCotizacion/5
+        [Route("cotizacion/listarRenglonesid/{id:int:min(1)}")]
         [ResponseType(typeof(AdCotizacionreg))]
         public IHttpActionResult GetAdCotizacionreg(int id)
         {
@@ -72,6 +75,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APIRenglonCotizacion
+        [Route("api/APIRenglonCotizacion", Name = "CrearRenglonCotizacionNuevaApi")]
+        [Route("cotizacion/guardarDatosreng")]
         [ResponseType(typeof(AdCotizacionreg))]
         public IHttpActionResult PostAdCotizacionreg(AdCotizacionreg adCotizacionreg)
         {
@@ -83,7 +88,14 @@ namespace PagonetCore.Controllers
             db.RenglonesCotizacion.Add(adCotizacionreg);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adCotizacionreg.id_doc_num }, adCotizacionreg);
+            string nombreRuta = "CrearRenglonCotizacionNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/cotizacion/guardarDatosreng") == 0)
+            {
+                nombreRuta = "CrearRenglonCotizacion";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adCotizacionreg.id_doc_num }, adCotizacionreg);
         }
 
         // DELETE: api/APIRenglonCotizacion/5

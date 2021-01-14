@@ -18,12 +18,30 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APIVendedor
+        [Route("Vendedor/listarVendedor")]
         public IQueryable<Advendedor> GetVendedores()
         {
             return db.Vendedores;
         }
 
+        // GET: Cotizacion/listarVendedor
+        // NOTA:
+        // Esto se colocó para compatibilidad con rutas anteriores, pero no es apropiado, puesto
+        // que la ruta incluye 'Cotización' en su URL, y esto es completamente 
+        // y únicamente relacionado a Vendedor.
+        [Route("Cotizacion/listarVendedor")]
+        public IHttpActionResult GetVendedoresCotizacion()
+        {
+            return Json(db.Vendedores.Select(x => new
+            {
+                IID = x.id_vendedor,
+                CODIGO = x.co_ven,
+                NOMBRE = x.ven_des
+            }));
+        }
+
         // GET: api/APIVendedor/5
+        [Route("Vendedor/listarVendedores/{id:int:min(1)}")]
         [ResponseType(typeof(Advendedor))]
         public IHttpActionResult GetAdvendedor(int id)
         {

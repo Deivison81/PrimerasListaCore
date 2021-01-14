@@ -18,12 +18,14 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APIZona
+        [Route("Zona/listazona")]
         public IQueryable<Adzona> GetZonas()
         {
             return db.Zonas;
         }
 
         // GET: api/APIZona/5
+        [Route("Zona/listazonas/{id:int:min(1)}")]
         [ResponseType(typeof(Adzona))]
         public IHttpActionResult GetAdzona(int id)
         {
@@ -72,6 +74,8 @@ namespace PagonetCore.Controllers
         }
 
         // POST: api/APIZona
+        [Route("api/APIZona", Name = "CrearZonaNuevaApi")]
+        [Route("Zona/guardarDatos")]
         [ResponseType(typeof(Adzona))]
         public IHttpActionResult PostAdzona(Adzona adzona)
         {
@@ -83,7 +87,14 @@ namespace PagonetCore.Controllers
             db.Zonas.Add(adzona);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adzona.id_zona }, adzona);
+            string nombreRuta = "CrearZonaNuevaApi";
+
+            if (string.Compare(Request.RequestUri.AbsolutePath, "/Zona/guardarDatos") == 0)
+            {
+                nombreRuta = "CrearZona";
+            }
+
+            return CreatedAtRoute(nombreRuta, new { id = adzona.id_zona }, adzona);
         }
 
         // DELETE: api/APIZona/5
