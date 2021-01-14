@@ -73,9 +73,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APITipoCliente
-        [Route("api/APITipoCliente", Name = "CrearTipoClienteNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: Tipocliente/guardarDatos
+        [HttpPost]
         [Route("Tipocliente/guardarDatos")]
+        [ResponseType(typeof(int))]
+        public int CrearTipoCliente(Adtipo_cliente adtipo_cliente)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.TiposCliente.Add(adtipo_cliente);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APITipoCliente
         [ResponseType(typeof(Adtipo_cliente))]
         public IHttpActionResult PostAdtipo_cliente(Adtipo_cliente adtipo_cliente)
         {
@@ -87,14 +103,7 @@ namespace PagonetCore.Controllers
             db.TiposCliente.Add(adtipo_cliente);
             db.SaveChanges();
 
-            string nombreRuta = "CrearTipoClienteNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/Tipocliente/guardarDatos") == 0)
-            {
-                nombreRuta = "CrearTipoCliente";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adtipo_cliente.id_tipocliente }, adtipo_cliente);
+            return CreatedAtRoute("DefaultApi", new { id = adtipo_cliente.id_tipocliente }, adtipo_cliente);
         }
 
         // DELETE: api/APITipoCliente/5

@@ -91,9 +91,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APICondicionDePago
-        [Route("api/APICondicionDePago", Name = "CrearCondicionDePagoNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: Condicion/guardarDatos
+        [HttpPost]
         [Route("Condicion/guardarDatos")]
+        [ResponseType(typeof(int))]
+        public int CrearCondicionDePago(Adcondiciondepago adcondiciondepago)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.CondicionesDePago.Add(adcondiciondepago);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APICondicionDePago
         [ResponseType(typeof(Adcondiciondepago))]
         public IHttpActionResult PostAdcondiciondepago(Adcondiciondepago adcondiciondepago)
         {
@@ -105,14 +121,7 @@ namespace PagonetCore.Controllers
             db.CondicionesDePago.Add(adcondiciondepago);
             db.SaveChanges();
 
-            string nombreRuta = "CrearCondicionDePagoNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/Condicion/guardarDatos") == 0)
-            {
-                nombreRuta = "CrearCondicionDePago";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adcondiciondepago.id_condicion }, adcondiciondepago);
+            return CreatedAtRoute("DefaultApi", new { id = adcondiciondepago.id_condicion }, adcondiciondepago);
         }
 
         // DELETE: api/APICondicionDePago/5

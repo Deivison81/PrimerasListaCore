@@ -73,9 +73,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APISegmento
-        [Route("api/APISegmento", Name = "CrearSegmentoNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: Segmento/GuardarDatos
+        [HttpPost]
         [Route("Segmento/GuardarDatos")]
+        [ResponseType(typeof(int))]
+        public int CrearSegmento(AdSegmento adSegmento)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.Segmentos.Add(adSegmento);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APISegmento
         [ResponseType(typeof(AdSegmento))]
         public IHttpActionResult PostAdSegmento(AdSegmento adSegmento)
         {
@@ -87,14 +103,7 @@ namespace PagonetCore.Controllers
             db.Segmentos.Add(adSegmento);
             db.SaveChanges();
 
-            string nombreRuta = "CrearSegmentoNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/Segmento/GuardarDatos") == 0)
-            {
-                nombreRuta = "CrearSegmento";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adSegmento.id_segmento }, adSegmento);
+            return CreatedAtRoute("DefaultApi", new { id = adSegmento.id_segmento }, adSegmento);
         }
 
         // DELETE: api/APISegmento/5

@@ -69,9 +69,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APIAlmacen
-        [Route("api/APIAlmacen", Name = "CrearAlmacenNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: Almacen/guardarDatos
+        [HttpPost]
         [Route("Almacen/guardarDatos")]
+        [ResponseType(typeof(int))]
+        public int CrearAlmacen(AdAlmacen adAlmacen)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.Almacenes.Add(adAlmacen);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APIAlmacen
         [ResponseType(typeof(AdAlmacen))]
         public IHttpActionResult PostAdAlmacen(AdAlmacen adAlmacen)
         {
@@ -83,14 +99,7 @@ namespace PagonetCore.Controllers
             db.Almacenes.Add(adAlmacen);
             db.SaveChanges();
 
-            string nombreRuta = "CrearAlmacenNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/Almacen/guardarDatos") == 0)
-            {
-                nombreRuta = "CrearAlmacen";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adAlmacen.cod_almacen }, adAlmacen);
+            return CreatedAtRoute("DefaultApi", new { id = adAlmacen.cod_almacen }, adAlmacen);
         }
 
         // DELETE: api/APIAlmacen/5

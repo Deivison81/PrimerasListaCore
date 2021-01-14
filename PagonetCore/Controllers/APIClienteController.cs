@@ -103,6 +103,24 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // TODO: Falta definir la ruta apropiada.
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: 
+        [HttpPost]
+        [ResponseType(typeof(int))]
+        public int CrearCliente(Adclientes adclientes)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.Clientes.Add(adclientes);
+            db.SaveChanges();
+
+            return 1;
+        }
+
         // POST: api/APICliente
         [ResponseType(typeof(Adclientes))]
         public IHttpActionResult PostAdclientes(Adclientes adclientes)

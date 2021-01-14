@@ -73,9 +73,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APIPais
-        [Route("api/APIPais", Name = "CrearPaisNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: Adpais/guardarDatos
+        [HttpPost]
         [Route("Adpais/guardarDatos")]
+        [ResponseType(typeof(int))]
+        public int CrearPais(Adpais adpais)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.Paises.Add(adpais);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APIPais
         [ResponseType(typeof(Adpais))]
         public IHttpActionResult PostAdpais(Adpais adpais)
         {
@@ -87,14 +103,7 @@ namespace PagonetCore.Controllers
             db.Paises.Add(adpais);
             db.SaveChanges();
 
-            string nombreRuta = "CrearPaisNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/Adpais/guardarDatos") == 0)
-            {
-                nombreRuta = "CrearPais";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adpais.id_pais }, adpais);
+            return CreatedAtRoute("DefaultApi", new { id = adpais.id_pais }, adpais);
         }
 
         // DELETE: api/APIPais/5

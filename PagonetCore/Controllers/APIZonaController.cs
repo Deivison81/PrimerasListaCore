@@ -73,9 +73,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APIZona
-        [Route("api/APIZona", Name = "CrearZonaNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: Zona/guardarDatos
+        [HttpPost]
         [Route("Zona/guardarDatos")]
+        [ResponseType(typeof(int))]
+        public int CrearZona(Adzona adzona)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.Zonas.Add(adzona);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APIZona
         [ResponseType(typeof(Adzona))]
         public IHttpActionResult PostAdzona(Adzona adzona)
         {
@@ -87,14 +103,7 @@ namespace PagonetCore.Controllers
             db.Zonas.Add(adzona);
             db.SaveChanges();
 
-            string nombreRuta = "CrearZonaNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/Zona/guardarDatos") == 0)
-            {
-                nombreRuta = "CrearZona";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adzona.id_zona }, adzona);
+            return CreatedAtRoute("DefaultApi", new { id = adzona.id_zona }, adzona);
         }
 
         // DELETE: api/APIZona/5

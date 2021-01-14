@@ -70,9 +70,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APICotizacion
-        [Route("api/APICotizacion", Name = "CrearCotizacionNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: cotizacion/guardarDatos
+        [HttpPost]
         [Route("cotizacion/guardarDatos")]
+        [ResponseType(typeof(int))]
+        public int CrearCotizacion(Adcotizacion adcotizacion)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.Cotizaciones.Add(adcotizacion);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APICotizacion
         [ResponseType(typeof(Adcotizacion))]
         public IHttpActionResult PostAdcotizacion(Adcotizacion adcotizacion)
         {
@@ -84,14 +100,7 @@ namespace PagonetCore.Controllers
             db.Cotizaciones.Add(adcotizacion);
             db.SaveChanges();
 
-            string nombreRuta = "CrearCotizacionNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/cotizacion/guardarDatos") == 0)
-            {
-                nombreRuta = "CrearCotizacion";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adcotizacion.id_doc_num }, adcotizacion);
+            return CreatedAtRoute("DefaultApi", new { id = adcotizacion.id_doc_num }, adcotizacion);
         }
 
         // DELETE: api/APICotizacion/5

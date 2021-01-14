@@ -73,9 +73,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APIIngreso
-        [Route("api/APIIngreso", Name = "CrearIngresoNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: Ingresos/guardarDatos
+        [HttpPost]
         [Route("Ingresos/guardarDatos")]
+        [ResponseType(typeof(int))]
+        public int CrearIngreso(AdIngreso adIngreso)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.Ingresos.Add(adIngreso);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APIIngreso
         [ResponseType(typeof(AdIngreso))]
         public IHttpActionResult PostAdIngreso(AdIngreso adIngreso)
         {
@@ -87,14 +103,7 @@ namespace PagonetCore.Controllers
             db.Ingresos.Add(adIngreso);
             db.SaveChanges();
 
-            string nombreRuta = "CrearIngresoNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/Ingresos/guardarDatos") == 0)
-            {
-                nombreRuta = "CrearIngreso";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adIngreso.id }, adIngreso);
+            return CreatedAtRoute("DefaultApi", new { id = adIngreso.id }, adIngreso);
         }
 
         // DELETE: api/APIIngreso/5

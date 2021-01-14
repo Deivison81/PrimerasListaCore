@@ -55,6 +55,63 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }*/
 
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: CotizacionCompleta/Create
+        [HttpPost]
+        [Route("CotizacionCompleta/Create")]
+        [ResponseType(typeof(int))]
+        public int CrearCotizacionRenglon(CotizacionRenglon cotizacionRenglon)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            // Invocar métodos para guardar Cotizaciones y Renglones de Cotización por separado.
+            Adcotizacion cotizacion = new Adcotizacion();
+            cotizacion.doc_num = cotizacionRenglon.doc_num;
+            cotizacion.descrip = cotizacionRenglon.descrip;
+            cotizacion.co_cli = cotizacionRenglon.co_cli;
+            cotizacion.co_tran = cotizacionRenglon.co_tran;
+            cotizacion.co_mone = cotizacionRenglon.co_mone;
+            cotizacion.co_ven = cotizacionRenglon.co_ven;
+            cotizacion.co_cond = cotizacionRenglon.co_cond;
+            cotizacion.fec_emis = cotizacionRenglon.fec_emis;
+            cotizacion.fec_venc = cotizacionRenglon.fec_venc;
+            cotizacion.fec_reg = cotizacionRenglon.fec_reg;
+            cotizacion.anulado = cotizacionRenglon.anulado;
+            cotizacion.status = cotizacionRenglon.status;
+            cotizacion.total_bruto = cotizacionRenglon.total_bruto;
+            cotizacion.monto_imp = cotizacionRenglon.monto_imp;
+            cotizacion.monto_imp2 = cotizacionRenglon.monto_imp2;
+            cotizacion.monto_imp3 = cotizacionRenglon.monto_imp3;
+            cotizacion.total_neto = cotizacionRenglon.total_neto;
+            cotizacion.saldo = cotizacionRenglon.saldo;
+            cotizacion.importado_web = cotizacionRenglon.importado_web;
+            cotizacion.importado_pro = cotizacionRenglon.importado_pro;
+            cotizacion.Diasvencimiento = cotizacionRenglon.Diasvencimiento;
+            cotizacion.nro_pedido = cotizacionRenglon.nro_pedido;
+            cotizacion.vencida = cotizacionRenglon.vencida;
+            cotizacion.id_clientes = cotizacionRenglon.id_clientes;
+            cotizacion.idtransporte = cotizacionRenglon.idtransporte;
+            cotizacion.id_vendedor = cotizacionRenglon.id_vendedor;
+            cotizacion.id_condicion = cotizacionRenglon.id_condicion;
+
+            ICollection<AdCotizacionreg> renglonesCotizacion = cotizacionRenglon.RenglonesCotizacion;
+
+            int numeroRegistrosAfectados = 0;
+
+            numeroRegistrosAfectados += new APICotizacionController().CrearCotizacion(cotizacion);
+
+            var instanciaControladorRenglones = new APIRenglonCotizacionController();
+            foreach (AdCotizacionreg renglon in renglonesCotizacion)
+            {
+                numeroRegistrosAfectados += instanciaControladorRenglones.CrearRenglonCotizacion(renglon);
+            }
+
+            return numeroRegistrosAfectados;
+        }
+
         // POST: api/APICotizacionRenglon
         [ResponseType(typeof(JsonResult<CotizacionRenglon>))]
         public IHttpActionResult PostCotizacionRenglon(CotizacionRenglon cotizacionRenglon)

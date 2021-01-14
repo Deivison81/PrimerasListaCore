@@ -89,6 +89,24 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // TODO: Falta definir la ruta.
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: 
+        [HttpPost]
+        [ResponseType(typeof(int))]
+        public int CrearVendedor(Advendedor advendedor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.Vendedores.Add(advendedor);
+            db.SaveChanges();
+
+            return 1;
+        }
+
         // POST: api/APIVendedor
         [ResponseType(typeof(Advendedor))]
         public IHttpActionResult PostAdvendedor(Advendedor advendedor)

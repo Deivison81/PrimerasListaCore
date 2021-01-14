@@ -74,9 +74,25 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/APIRenglonCotizacion
-        [Route("api/APIRenglonCotizacion", Name = "CrearRenglonCotizacionNuevaApi")]
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: cotizacion/guardarDatosreng
+        [HttpPost]
         [Route("cotizacion/guardarDatosreng")]
+        [ResponseType(typeof(int))]
+        public int CrearRenglonCotizacion(AdCotizacionreg adCotizacionreg)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            db.RenglonesCotizacion.Add(adCotizacionreg);
+            db.SaveChanges();
+
+            return 1;
+        }
+
+        // POST: api/APIRenglonCotizacion
         [ResponseType(typeof(AdCotizacionreg))]
         public IHttpActionResult PostAdCotizacionreg(AdCotizacionreg adCotizacionreg)
         {
@@ -88,14 +104,7 @@ namespace PagonetCore.Controllers
             db.RenglonesCotizacion.Add(adCotizacionreg);
             db.SaveChanges();
 
-            string nombreRuta = "CrearRenglonCotizacionNuevaApi";
-
-            if (string.Compare(Request.RequestUri.AbsolutePath, "/cotizacion/guardarDatosreng") == 0)
-            {
-                nombreRuta = "CrearRenglonCotizacion";
-            }
-
-            return CreatedAtRoute(nombreRuta, new { id = adCotizacionreg.id_doc_num }, adCotizacionreg);
+            return CreatedAtRoute("DefaultApi", new { id = adCotizacionreg.id_doc_num }, adCotizacionreg);
         }
 
         // DELETE: api/APIRenglonCotizacion/5
