@@ -11,29 +11,64 @@
 </head>
 <body>
     <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
-        <a class="navbar-brand hidden-sm hidden-md hidden-lg" href="/">Página Principal</a>
+        <a class="navbar-brand hidden-sm hidden-md hidden-lg" href="/">Inicio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="nav-item active">@Html.ActionLink("Almacén", "Index", "Almacen", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Artículos", "Index", "Articulo", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item dropdown">
+                    <a id="dropdown-articulos" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Almacenes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown-articulos">
+                        <li>@Html.ActionLink("Almacenes", "Index", "Almacen", new { }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Stock", "Index", "StockAlmacen", new { }, new { @class = "dropdown-item" })</li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="dropdown-articulos" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Artículos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown-articulos">
+                        <li>@Html.ActionLink("Artículos", "Index", "Articulo", new { }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Imágenes Artículos", "Index", "ImagenArticulo", new { }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Precio Artículos", "Index", "PrecioArticulo", new { }, new { @class = "dropdown-item" })</li>
+                    </ul>
+                </li>
                 <li class="nav-item">@Html.ActionLink("Banco", "Index", "Banco", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Clientes", "Index", "Cliente", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item dropdown">
+                    <a id="dropdown-clientes" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Clientes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown-clientes">
+                        <li>@Html.ActionLink("Clientes", "Index", "Cliente", new { }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Tipo de Cliente", "Index", "Tipocliente", new { }, new { @class = "dropdown-item" })</li>
+                    </ul>
+                </li>
                 <li class="nav-item">@Html.ActionLink("Condiciones de Pago", "Index", "CondicionDePago", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Cotización", "Index", "Cotizacion", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Imágenes Artículos", "Index", "ImagenArticulo", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item dropdown">
+                    <a id="dropdown-cotizaciones" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Cotizaciones
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown-cotizaciones">
+                        <li>@Html.ActionLink("Cotizaciones", "Index", "Cotizacion", new { }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Renglones Cotización", "Index", "RenglonCotizacion", new { }, new { @class = "dropdown-item" })</li>
+                    </ul>
+                </li>
                 <li class="nav-item">@Html.ActionLink("Ingresos", "Index", "Ingreso", new { }, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("País", "Index", "Pais", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Pedido", "Index", "Pedido", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Precio Artículos", "Index", "PrecioArticulo", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Renglones Cotización", "Index", "RenglonCotizacion", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Renglones Pedido", "Index", "RenglonPedido", new { }, new { @class = "nav-link" })</li>
+                <li class="nav-item dropdown">
+                    <a id="dropdown-pedidos" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Pedidos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown-pedidos">
+                        <li>@Html.ActionLink("Pedidos", "Index", "Pedido", new { }, new { @class = "dropdown-item" })</li>
+                        <li>@Html.ActionLink("Renglones Pedido", "Index", "RenglonPedido", new { }, new { @class = "dropdown-item" })</li>
+                    </ul>
+                </li>
                 <li class="nav-item">@Html.ActionLink("Segmento", "Index", "Segmento", new { }, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Seriales", "Index", "Serial", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Stock", "Index", "StockAlmacen", new { }, new { @class = "nav-link" })</li>
-                <li class="nav-item">@Html.ActionLink("Tipo de Cliente", "Index", "Tipocliente", new { }, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Transporte", "Index", "Transporte", new { }, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Vendedor", "Index", "Vendedor", new { }, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Zona", "Index", "zona", new { }, new { @class = "nav-link" })</li>
@@ -51,6 +86,7 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/popper")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/bootstrap-datepicker")
     @RenderSection("scripts", required: false)
