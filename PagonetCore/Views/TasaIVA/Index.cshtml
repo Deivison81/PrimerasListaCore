@@ -4,78 +4,84 @@
     ViewBag.Title = "Tasas IVA";
 }
 
-<h2>Tasas IVA</h2>
+<div class="row justify-content-center mb-4">
+    <h2>Tasas IVA</h2>
+</div>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table table-responsive table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.fechapubli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nro_reng)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tip_impu)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ventas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.consumosuntuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.porcentajetaza)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.porcentajesuntuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_web)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_pro)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center mb-4">
+    @Html.ActionLink("Crear Tasa IVA", "Create", null, new { @type = "button", @class = "btn btn-primary" })
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechapubli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nro_reng)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tip_impu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ventas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.consumosuntuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.porcentajetaza)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.porcentajesuntuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_web)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_pro)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.id_impuesto }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_impuesto }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_impuesto })
-        </td>
-    </tr>
-}
+<div class="row justify-content-center mb-4">
+    <table class="table table-responsive table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.fechapubli)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nro_reng)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tip_impu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ventas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.consumosuntuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.porcentajetaza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.porcentajesuntuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.importado_web)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.importado_pro)
+            </th>
+            <th>Acciones</th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechapubli)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nro_reng)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tip_impu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ventas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.consumosuntuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.porcentajetaza)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.porcentajesuntuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.importado_web)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.importado_pro)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar", "Edit", new { id = item.id_impuesto }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.id_impuesto }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id_impuesto })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

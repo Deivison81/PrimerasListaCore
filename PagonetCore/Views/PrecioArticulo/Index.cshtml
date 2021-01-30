@@ -4,120 +4,128 @@
     ViewBag.Title = "Precios Artículos";
 }
 
-<h2>Precios Artículos</h2>
+<div class="row justify-content-center mb-4">
+    <h1 class="display-4">Precios Artículos</h1>
+</div>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table table-responsive table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Almacen.co_alma)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Articulo.co_art)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_art)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_precios)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.desde)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.hasta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_alma)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.monto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.montoadi1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.montoadi2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.montoadi3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.montoadi4)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.montoadi5)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.precioOm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_web)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_pro)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center mb-4">
+    @Html.ActionLink("Crear Precio Artículo", "Create", null, new { @type = "button", @class = "btn btn-primary" })
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Almacen.co_alma)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Articulo.co_art)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_art)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_precios)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.desde)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.hasta)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_alma)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.monto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.montoadi1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.montoadi2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.montoadi3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.montoadi4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.montoadi5)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.precioOm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_web)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_pro)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.id_preciosart }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_preciosart }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_preciosart })
-        </td>
-    </tr>
-}
+<div class="row justify-content-center mb-4">
+    <div class="col-12">
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Almacen.co_alma)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Articulo.co_art)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_art)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_precios)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.desde)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.hasta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_alma)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.monto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.montoadi1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.montoadi2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.montoadi3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.montoadi4)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.montoadi5)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.precioOm)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_web)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_pro)
+                </th>
+                <th>Acciones</th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Almacen.co_alma)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Articulo.co_art)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_art)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_precios)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.desde)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hasta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_alma)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.monto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.montoadi1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.montoadi2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.montoadi3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.montoadi4)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.montoadi5)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.precioOm)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_web)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_pro)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modificar", "Edit", new { id = item.id_preciosart }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.id_preciosart }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id_preciosart })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

@@ -4,48 +4,56 @@
     ViewBag.Title = "Tipos de Cliente";
 }
 
-<h2>Tipos de Cliente</h2>
+<div class="row justify-content-center mb-4">
+    <h1 class="display-4">Tipos de Cliente</h1>
+</div>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table table-responsive table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.tip_cli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.des_tipo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_web)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_pro)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center mb-4">
+    @Html.ActionLink("Crear Tipo de Cliente", "Create", null, new { @type = "button", @class = "btn btn-primary" })
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.tip_cli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.des_tipo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_web)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_pro)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.id_tipocliente }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_tipocliente }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_tipocliente })
-        </td>
-    </tr>
-}
+<div class="row justify-content-center mb-4">
+    <div class="col-12">
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.tip_cli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.des_tipo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_web)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_pro)
+                </th>
+                <th>Acciones</th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tip_cli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.des_tipo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_web)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_pro)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modificar", "Edit", new { id = item.id_tipocliente }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.id_tipocliente }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id_tipocliente })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

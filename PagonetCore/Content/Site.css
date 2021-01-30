@@ -19,6 +19,14 @@
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {
+textarea,
+.form-btn {
     max-width: 280px;
+}
+
+/* https://stackoverflow.com/a/31184284 */
+.table td,
+.table th {
+    white-space: nowrap;
+    width: 1%;
 }

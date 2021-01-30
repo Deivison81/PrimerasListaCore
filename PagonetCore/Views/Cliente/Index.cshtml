@@ -4,186 +4,194 @@
     ViewBag.Title = "Clientes";
 }
 
-<h2>Clientes</h2>
+<div class="row justify-content-center mb-4">
+    <h1 class="display-4">Clientes</h1>
+</div>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table table-responsive table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TipoCliente.tip_cli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ingreso.co_ctaIng_egr)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pais.co_pais)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Segmento.co_seg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vendedor.co_ven)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zona.co_zon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_cli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tip_cli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cli_des)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.direc1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dir_ent2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.telefonos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.inactivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.respons)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_zon)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_seg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_ven)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_cta_ingr_egr)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rif)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.juridico)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ciudad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.zip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_pais)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cod_comercio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_web)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_pro)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center mb-4">
+    @Html.ActionLink("Crear Cliente", "Create", null, new { @type = "button", @class = "btn btn-primary" })
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TipoCliente.tip_cli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ingreso.co_ctaIng_egr)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pais.co_pais)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Segmento.co_seg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vendedor.co_ven)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zona.co_zon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_cli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tip_cli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cli_des)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.direc1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dir_ent2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.telefonos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.inactivo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.respons)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_zon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_seg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_ven)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_cta_ingr_egr)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rif)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.juridico)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ciudad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.zip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_pais)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cod_comercio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_web)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_pro)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.id_clientes }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_clientes }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_clientes })
-        </td>
-    </tr>
-}
+<div class="row justify-content-center">
+    <div class="col-12">
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoCliente.tip_cli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ingreso.co_ctaIng_egr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pais.co_pais)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Segmento.co_seg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vendedor.co_ven)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zona.co_zon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_cli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tip_cli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cli_des)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.direc1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dir_ent2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.telefonos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.inactivo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.respons)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_zon)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_seg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_ven)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_cta_ingr_egr)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rif)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.juridico)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ciudad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.zip)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_pais)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cod_comercio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_web)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_pro)
+                </th>
+                <th>Acciones</th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoCliente.tip_cli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ingreso.co_ctaIng_egr)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pais.co_pais)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Segmento.co_seg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vendedor.co_ven)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zona.co_zon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_cli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tip_cli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cli_des)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.direc1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dir_ent2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.telefonos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.inactivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.respons)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_zon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_seg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_ven)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_cta_ingr_egr)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rif)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.juridico)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ciudad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.zip)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_pais)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cod_comercio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_web)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_pro)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modificar", "Edit", new { id = item.id_clientes }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.id_clientes }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id_clientes })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

@@ -4,66 +4,71 @@
     ViewBag.Title = "Imágenes Artículos";
 }
 
-<h2>Imágenes Artículos</h2>
+<div class="row justify-content-center mb-4">
+    <h2>Imágenes Artículos</h2>
+</div>
+<div class="row justify-content-center mb-4">
+    @Html.ActionLink("Crear Imagen Artículo", "Create", null, new { @type = "button", @class = "btn btn-primary" })
+</div>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table table-responsive table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Articulo.co_art)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_art)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imagen_des)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.picture)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_web)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_pro)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center mb-4">
+    <table class="table table-responsive table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Articulo.co_art)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.co_art)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imagen_des)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.importado_web)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.importado_pro)
+            </th>
+            <th>Acciones</th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Articulo.co_art)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_art)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imagen_des)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.picture)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_web)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_pro)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.id_imgart }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_imgart }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_imgart })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Articulo.co_art)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.co_art)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.imagen_des)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.picture)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.importado_web)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.importado_pro)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar", "Edit", new { id = item.id_imgart }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.id_imgart }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id_imgart })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

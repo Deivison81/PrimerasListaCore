@@ -1,81 +1,82 @@
 ﻿@model PagonetCore.Models.AdAlmacen
 
 @{
-    ViewBag.Title = "Modificar";
+    ViewBag.Title = "Modificar Almacén";
 }
 
-<h2 class="d-flex justify-content-center">Modificar</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.cod_almacen)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.co_alma, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
-            <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.co_alma, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.co_alma, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.des_alamacen, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
-            <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.des_alamacen, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.des_alamacen, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.web, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
-            <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.web, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.web, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.co_user_prof, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
-            <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.co_user_prof, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.co_user_prof, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.importado_web, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
-            <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.importado_web, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.importado_web, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.importado_pro, htmlAttributes: new { @class = "control-label col-10 offset-2 col-md-7 offset-md-5" })
-            <div class="col-10 offset-2 col-md-7 offset-md-5">
-                @Html.EditorFor(model => model.importado_pro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.importado_pro, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-10 offset-2 col-md-7 offset-md-5">
-                <input type="submit" value="Guardar" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div class="d-flex justify-content-center">
-    @Html.ActionLink("Volver a Almacenes", "Index")
+<div class="row justify-content-center mb-4">
+    <h2>Modificar Almacén</h2>
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-9 offset-3 mr-5 col-sm-7 col-md-6 offset-lg-4 mr-lg-5">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.cod_almacen)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.co_alma, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.co_alma, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.co_alma, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.des_alamacen, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.des_alamacen, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.des_alamacen, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.web, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.web, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.web, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.co_user_prof, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.co_user_prof, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.co_user_prof, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.importado_web, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.importado_web, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.importado_web, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.importado_pro, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(model => model.importado_pro, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.importado_pro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Guardar Almacén" class="btn btn-primary btn-block" />
+                @Html.ActionLink("Volver a Almacenes", "Index", null, new { @type = "button", @class = "form-btn btn btn-light btn-block" })
+            </div>
+        </div>
+        }
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+</div>

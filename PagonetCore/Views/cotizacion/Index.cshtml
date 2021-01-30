@@ -4,186 +4,194 @@
     ViewBag.Title = "Cotizaciones";
 }
 
-<h2>Cotizaciones</h2>
+<div class="row justify-content-center mb-4">
+    <h1 class="display-4">Cotizaciones</h1>
+</div>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table table-responsive table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Cliente.co_cli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CondicionDePago.co_cond)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Transporte.co_tran)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vendedor.co_ven)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.doc_num)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.descrip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_cli)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_tran)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_mone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_ven)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_cond)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fec_emis)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fec_venc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fec_reg)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.anulado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.total_bruto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.monto_imp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.monto_imp2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.monto_imp3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.total_neto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.saldo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_web)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_pro)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Diasvencimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nro_pedido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.vencida)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center mb-4">
+    @Html.ActionLink("Crear Cotización", "Create", null, new { @type = "button", @class = "btn btn-primary" })
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cliente.co_cli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CondicionDePago.co_cond)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Transporte.co_tran)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vendedor.co_ven)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.doc_num)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descrip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_cli)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_tran)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_mone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_ven)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_cond)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fec_emis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fec_venc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fec_reg)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.anulado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.total_bruto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.monto_imp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.monto_imp2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.monto_imp3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.total_neto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.saldo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_web)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_pro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Diasvencimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nro_pedido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vencida)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.id_doc_num }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_doc_num }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_doc_num })
-        </td>
-    </tr>
-}
+<div class="row justify-content-center mb-4">
+    <div class="col-12">
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente.co_cli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CondicionDePago.co_cond)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Transporte.co_tran)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vendedor.co_ven)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.doc_num)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.descrip)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_cli)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_tran)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_mone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_ven)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_cond)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fec_emis)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fec_venc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fec_reg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.anulado)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.total_bruto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.monto_imp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.monto_imp2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.monto_imp3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.total_neto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.saldo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_web)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_pro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Diasvencimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nro_pedido)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.vencida)
+                </th>
+                <th>Acciones</th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente.co_cli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CondicionDePago.co_cond)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Transporte.co_tran)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vendedor.co_ven)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.doc_num)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.descrip)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_cli)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_tran)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_mone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_ven)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_cond)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fec_emis)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fec_venc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fec_reg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.anulado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.total_bruto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.monto_imp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.monto_imp2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.monto_imp3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.total_neto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.saldo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_web)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_pro)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Diasvencimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nro_pedido)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vencida)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modificar", "Edit", new { id = item.id_doc_num }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.id_doc_num }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id_doc_num })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

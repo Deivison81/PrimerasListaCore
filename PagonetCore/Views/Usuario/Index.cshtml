@@ -4,66 +4,72 @@
     ViewBag.Title = "Usuarios";
 }
 
-<h2>Usuarios</h2>
+<div class="row justify-content-center mb-4">
+    <h2>Usuarios</h2>
+</div>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table table-responsive table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.co_user_prof)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cod_user)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre_usuarios)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha_ingreso)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.validacion)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center mb-4">
+    @Html.ActionLink("Crear Usuario", "Create", null, new { @type = "button", @class = "btn btn-primary" })
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_user_prof)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cod_user)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre_usuarios)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_ingreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.validacion)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+<div class="row justify-content-center mb-4">
+    <table class="table table-responsive table-bordered">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.co_user_prof)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cod_user)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre_usuarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fecha_ingreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.validacion)
+            </th>
+            <th>Acciones</th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.co_user_prof)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cod_user)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre_usuarios)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fecha_ingreso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.validacion)
+                </td>
+                <td>
+                    @Html.ActionLink("Modificar", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

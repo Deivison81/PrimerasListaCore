@@ -4,114 +4,122 @@
     ViewBag.Title = "Artículos";
 }
 
-<h2>Artículos</h2>
+<div class="row justify-content-center mb-4">
+    <h1 class="display-4">Artículos</h1>
+</div>
 
-<p>
-    @Html.ActionLink("Crear", "Create")
-</p>
-<table class="table table-responsive table-bordered">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.co_art)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.art_des)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_lin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_subl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_cat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_color)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.co_ubicacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cod_proc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cod_unidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.referencia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo_imp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo_imp2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.tipo_imp3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_web)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.importado_pro)
-        </th>
-        <th></th>
-    </tr>
+<div class="row justify-content-center mb-4">
+    @Html.ActionLink("Crear Artículo", "Create", null, new { @type = "button", @class = "btn btn-primary" })
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_art)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.art_des)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_lin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_subl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_cat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.co_ubicacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cod_proc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cod_unidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.referencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo_imp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo_imp2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.tipo_imp3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_web)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.importado_pro)
-        </td>
-        <td>
-            @Html.ActionLink("Modificar", "Edit", new { id=item.id_art }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_art }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_art })
-        </td>
-    </tr>
-}
+<div class="row justify-content-center">
+    <div class="col-12">
+        <table class="table table-responsive table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_art)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.art_des)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_lin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_subl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_cat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.co_ubicacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cod_proc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cod_unidad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.referencia)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tipo_imp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tipo_imp2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tipo_imp3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_web)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.importado_pro)
+                </th>
+                <th>Acciones</th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_art)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.art_des)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_lin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_subl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_cat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_color)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.co_ubicacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cod_proc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cod_unidad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.referencia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tipo_imp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tipo_imp2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tipo_imp3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_web)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.importado_pro)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modificar", "Edit", new { id = item.id_art }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.id_art }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.id_art })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
