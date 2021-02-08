@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8587c2e13edf405da1f1d8500f97977b" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="ProfitModel.saZona" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProfitModel.saAlmacen" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ProfitModel.saArticulo" Width="1.5" PointX="15.75" PointY="20.375" />
+        <EntityTypeShape EntityType="ProfitModel.saArtImagen" Width="1.5" PointX="18" PointY="41.25" />
+        <EntityTypeShape EntityType="ProfitModel.saArtPrecio" Width="1.5" PointX="18" PointY="15.875" />
+        <EntityTypeShape EntityType="ProfitModel.saBanco" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="ProfitModel.saCliente" Width="1.5" PointX="8" PointY="0.75" />
+        <EntityTypeShape EntityType="ProfitModel.saCondicionPago" Width="1.5" PointX="5.75" PointY="33.375" />
+        <EntityTypeShape EntityType="ProfitModel.saCotizacionCliente" Width="1.5" PointX="10.25" PointY="3.25" />
+        <EntityTypeShape EntityType="ProfitModel.saCotizacionClienteReng" Width="1.5" PointX="15.5" PointY="2" />
+        <EntityTypeShape EntityType="ProfitModel.saCuentaIngEgr" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="ProfitModel.saPais" Width="1.5" PointX="5.75" PointY="27.375" />
+        <EntityTypeShape EntityType="ProfitModel.saPedidoVenta" Width="1.5" PointX="13.25" PointY="5.25" />
+        <EntityTypeShape EntityType="ProfitModel.saPedidoVentaReng" Width="1.5" PointX="18.5" PointY="3" />
+        <EntityTypeShape EntityType="ProfitModel.saSegmento" Width="1.5" PointX="5.75" PointY="20.625" />
+        <EntityTypeShape EntityType="ProfitModel.saSeriales" Width="1.5" PointX="21" PointY="19.5" />
+        <EntityTypeShape EntityType="ProfitModel.saStockAlmacen" Width="1.5" PointX="21" PointY="15.625" />
+        <EntityTypeShape EntityType="ProfitModel.saTasa" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="ProfitModel.saTipoCliente" Width="1.5" PointX="5.75" PointY="40.375" />
+        <EntityTypeShape EntityType="ProfitModel.saTransporte" Width="1.5" PointX="8" PointY="19.875" />
+        <EntityTypeShape EntityType="ProfitModel.saVendedor" Width="1.5" PointX="5.75" PointY="46.375" />
+        <AssociationConnector Association="ProfitModel.FK_saArtPrecio_saAlmacen" />
+        <AssociationConnector Association="ProfitModel.FK_saCotizacionClienteReng_saAlmacen" />
+        <AssociationConnector Association="ProfitModel.FK_saPedidoVentaReng_saAlmacen" />
+        <AssociationConnector Association="ProfitModel.FK_saSeriales_saAlmacen" />
+        <AssociationConnector Association="ProfitModel.FK_saStockAlmacen_saAlmacen" />
+        <AssociationConnector Association="ProfitModel.FK_saArtImagen_saArticulo" />
+        <AssociationConnector Association="ProfitModel.FK_saArtPrecio_saArticulo" />
+        <AssociationConnector Association="ProfitModel.FK_saSeriales_saArticulo" />
+        <AssociationConnector Association="ProfitModel.FK_saStockAlmacen_saArticulo" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saClienteCasaMatriz" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saCondicionPago" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saCuentaIngEgr" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saPais" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saSegmento" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saTipoCliente" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saVendedor" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saZona" />
+        <AssociationConnector Association="ProfitModel.FK_saCotizacionCliente_saCliente" />
+        <AssociationConnector Association="ProfitModel.FK_saPedidoVenta_saCliente" />
+        <AssociationConnector Association="ProfitModel.FK_saCotizacionCliente_saCondicionPago" />
+        <AssociationConnector Association="ProfitModel.FK_saPedidoVenta_saCondicionPago" />
+        <AssociationConnector Association="ProfitModel.FK_saCotizacionCliente_saCuentaIngEgr" />
+        <AssociationConnector Association="ProfitModel.FK_saCotizacionCliente_saTransporte" />
+        <AssociationConnector Association="ProfitModel.FK_saCotizacionCliente_saVendedor" />
+        <AssociationConnector Association="ProfitModel.FK_saCotizacionClienteReng_saCotizacionCliente" />
+        <AssociationConnector Association="ProfitModel.FK_saPedidoVenta_saCuentaIngEgr" />
+        <AssociationConnector Association="ProfitModel.FK_saPedidoVenta_saTransporte" />
+        <AssociationConnector Association="ProfitModel.FK_saPedidoVenta_saVendedor" />
+        <AssociationConnector Association="ProfitModel.FK_saPedidoVentaReng_saPedidoVenta" />
+        <AssociationConnector Association="ProfitModel.FK_saVendedor_saZona" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -2,20 +2,6 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-// https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application
-// https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-a-more-complex-data-model-for-an-asp-net-mvc-application
-// https://docs.microsoft.com/en-us/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application
-// https://www.jerriepelser.com/blog/creating-test-data-with-nbuilder-and-faker/
-// https://docs.microsoft.com/en-us/dotnet/standard/base-types/composite-formatting
-// https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-numeric-format-strings
-// https://docs.microsoft.com/en-us/aspnet/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api
-// https://docs.microsoft.com/en-us/ef/ef6/modeling/code-first/data-annotations#relationship-attributes-inverseproperty-and-foreignkey
-// https://forums.asp.net/t/2133118.aspx?How+to+ignore+or+stop+creating+table+from+class+EF+code+first
-// https://www.codeproject.com/Answers/1226024/Mvc-multiple-fields-in-selectlist-for-dropdownlist#answer1
-// https://stackoverflow.com/questions/6057865/asp-net-mvc-3-override-name-attribute-with-textboxfor
-// https://www.pluralsight.com/guides/asp-net-mvc-populating-dropdown-lists-in-razor-views-using-the-mvvm-design-pattern-entity-framework-and-ajax
-// https://es.stackoverflow.com/questions/193592/como-llenar-un-html-dropdownlistfor
-
 // Para regenerar la BD (BORRA TODOS LOS DATOS ACTUALES DE LA BD):
 // Herramientas - Administrador de Paquetes NuGet - Consola.
 // enable-migrations -Force
@@ -50,9 +36,6 @@ namespace PagonetCore.DAL
 		public DbSet<PagonetCore.Models.Adusuarios> Usuarios { get; set; }
 		public DbSet<PagonetCore.Models.Advendedor> Vendedores { get; set; }
 		public DbSet<PagonetCore.Models.Adzona> Zonas { get; set; }
-		// TODO: Refactorizar Sazonas para coincidir con convenciones de 
-		// nombres de C#.
-		public DbSet<PagonetCore.Models.sazona> Sazonas { get; set; }
 		public DbSet<PagonetCore.Models.StockAlma> StockAlmacenes { get; set; }
 		public DbSet<PagonetCore.Models.Tasa_IVA> TasasIVA { get; set; }
 		// Se deja comentado para que no cree la Tabla en la BD. Esto solo se utilizará como 

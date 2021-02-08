@@ -166,7 +166,6 @@
     <Compile Include="Controllers\APIPrecioArticuloController.cs" />
     <Compile Include="Controllers\APIRenglonCotizacionController.cs" />
     <Compile Include="Controllers\APIRenglonPedidoController.cs" />
-    <Compile Include="Controllers\APISaZonaController.cs" />
     <Compile Include="Controllers\APISegmentoController.cs" />
     <Compile Include="Controllers\APISerialController.cs" />
     <Compile Include="Controllers\APIStockAlmacenController.cs" />
@@ -189,7 +188,6 @@
     <Compile Include="Controllers\PrecioArticuloController.cs" />
     <Compile Include="Controllers\RenglonCotizacionController.cs" />
     <Compile Include="Controllers\RenglonPedidoController.cs" />
-    <Compile Include="Controllers\SaZonaController.cs" />
     <Compile Include="Controllers\SegmentoController.cs" />
     <Compile Include="Controllers\SerialController.cs" />
     <Compile Include="Controllers\StockAlmacenController.cs" />
@@ -203,9 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202101120305074_BDInicial.cs" />
-    <Compile Include="Migrations\202101120305074_BDInicial.Designer.cs">
-      <DependentUpon>202101120305074_BDInicial.cs</DependentUpon>
+    <Compile Include="Migrations\202102071725371_BDInicial.cs" />
+    <Compile Include="Migrations\202102071725371_BDInicial.Designer.cs">
+      <DependentUpon>202102071725371_BDInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
@@ -229,15 +227,273 @@
     <Compile Include="Models\Advendedor.cs" />
     <Compile Include="Models\Adzona.cs" />
     <Compile Include="Models\CotizacionRenglon.cs" />
-    <Compile Include="Models\sazona.cs" />
     <Compile Include="Models\StockAlma.cs" />
     <Compile Include="Models\Tasa_IVA.cs" />
-    <Compile Include="profit.designer.cs">
+    <Compile Include="pActualizarAlmacen_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarBanco_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarCondicionPago_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarCotizacionCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarCuentaIngreso_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarImagenArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarPais_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarPedidoVenta_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarRenglonesCotizacionCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarRenglonesPedidoVenta_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarSegmento_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarSerialesEntrada_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarSerialesSalida_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarTasa_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarTipoCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarTransporte_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarVendedor_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarZona_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarAlmacen_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarBanco_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarCondicionPago_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarCotizacionCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarCuentaIngreso_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarImagenArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarPais_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarPedidoVenta_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarRenglonesCotizacionCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarRenglonesPedidoVenta_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarSegmento_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarTipoCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarTransporte_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarVendedor_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarZona_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfitModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>profit.dbml</DependentUpon>
+      <DependentUpon>ProfitModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfitModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfitModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfitModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="pSeleccionarAlmacen_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarBanco_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarCondicionPago_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarCotizacionCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarCuentaIngreso_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarImagenArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarPais_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarPrecioArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarRenglonesCotizacionCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarRenglonesPedidoVenta_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarSegmento_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarSerialesEntradaDevolucion_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarSerialesEntradaDuplicados_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarSerialesEntradaExistencia_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarSerialesEntrada_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarSerialesSalidaBusqueda_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarSerialesSalidaDevolucion_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarSerialesSalida_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarTasa_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarTipoCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarTransporte_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarVendedor_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarZona_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saAlmacen.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saArticulo.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saArtImagen.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saArtPrecio.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saBanco.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saCliente.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saCondicionPago.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saCotizacionCliente.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saCotizacionClienteReng.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saCuentaIngEgr.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saPais.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saPedidoVenta.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saPedidoVentaReng.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saSegmento.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saSeriales.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saStockAlmacen.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saTasa.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saTipoCliente.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saTransporte.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saVendedor.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saZona.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-datepicker.css" />
@@ -266,6 +522,16 @@
     <Content Include="Imgp\P2.png" />
     <Content Include="Imgp\P2LITE.png" />
     <Content Include="Imgp\P2PRO.png" />
+    <Content Include="ProfitModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProfitModel.edmx</DependentUpon>
+      <LastGenOutput>ProfitModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ProfitModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProfitModel.edmx</DependentUpon>
+      <LastGenOutput>ProfitModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\AdAlmacen.js" />
     <Content Include="Scripts\Adclientes.js" />
     <Content Include="Scripts\Adcondiciondepago.js" />
@@ -293,6 +559,14 @@
     <Content Include="Content\bootstrap-datepicker3.css.map" />
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
+    <EntityDeploy Include="ProfitModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProfitModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ProfitModel.edmx.diagram">
+      <DependentUpon>ProfitModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Readme.md" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
@@ -556,11 +830,6 @@
     <Content Include="Views\Almacen\Index.cshtml" />
     <Content Include="Views\Transporte\Index.cshtml" />
     <Content Include="Views\Articulo\Index.cshtml" />
-    <Content Include="profit.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>profit.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <Content Include="Views\TasaIVA\Index.cshtml" />
@@ -625,11 +894,6 @@
     <Content Include="Views\Zona\Delete.cshtml" />
     <Content Include="Views\Zona\Details.cshtml" />
     <Content Include="Views\Zona\Edit.cshtml" />
-    <Content Include="Views\SaZona\Create.cshtml" />
-    <Content Include="Views\SaZona\Delete.cshtml" />
-    <Content Include="Views\SaZona\Details.cshtml" />
-    <Content Include="Views\SaZona\Edit.cshtml" />
-    <Content Include="Views\SaZona\Index.cshtml" />
     <Content Include="Views\TasaIVA\Create.cshtml" />
     <Content Include="Views\TasaIVA\Delete.cshtml" />
     <Content Include="Views\TasaIVA\Details.cshtml" />
@@ -640,18 +904,14 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="profit.dbml.layout">
-      <DependentUpon>profit.dbml</DependentUpon>
-    </None>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202101120305074_BDInicial.resx">
-      <DependentUpon>202101120305074_BDInicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202102071725371_BDInicial.resx">
+      <DependentUpon>202102071725371_BDInicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
