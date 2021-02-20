@@ -5,7 +5,7 @@ namespace PagonetCore.Migrations
     using System.Linq;
     using FizzWare.NBuilder;
     using PagonetCore.Models;
-    using System.Text;
+	using System.Text;
 
     internal sealed class Configuration : DbMigrationsConfiguration<PagonetCore.DAL.PagonetContext>
     {
@@ -14,8 +14,8 @@ namespace PagonetCore.Migrations
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(PagonetCore.DAL.PagonetContext context)
-        {
+		protected override void Seed(PagonetCore.DAL.PagonetContext context)
+		{
 			//  This method will be called after migrating to the latest version.
 
 			//  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -29,434 +29,287 @@ namespace PagonetCore.Migrations
 			//    );
 			//
 
-			// Almacenes.
-			var almacenes = Builder<AdAlmacen>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_alma = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.des_alamacen = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.web = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.co_user_prof = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			ProfitEntities profitContext = new ProfitEntities();
 
-			almacenes.ToList().ForEach(a => context.Almacenes.Add(a));
+			// Almacenes.
+			var almacenes = profitContext.saAlmacen.Select(a => new
+			{
+				a.co_alma,
+				a.des_alma
+			}).ToList();
+
+			almacenes.ForEach(a => context.Almacenes.Add(new AdAlmacen
+			{
+				co_alma = a.co_alma,
+				des_alamacen = a.des_alma,
+				web = null,
+				co_user_prof = null,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Artículos.
-			var articulos = Builder<AdArticulo>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_art = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.art_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.co_lin = Faker.RandomNumber.Next(99).ToString("00"))
-					.With(a => a.co_subl = Faker.RandomNumber.Next(99).ToString("00"))
-					.With(a => a.co_cat = Faker.RandomNumber.Next(99).ToString("00"))
-					.With(a => a.co_color = Faker.RandomNumber.Next(99).ToString("00"))
-					.With(a => a.co_ubicacion = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.cod_proc = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.cod_unidad = "UNI")
-					.With(a => a.referencia = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.tipo_imp = "1")
-					.With(a => a.tipo_imp2 = null)
-					.With(a => a.tipo_imp3 = null)
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var articulos = profitContext.saArticulo.Select(a => new
+			{
+				a.co_art,
+				a.art_des,
+				a.co_lin,
+				a.co_subl,
+				a.co_cat,
+				a.co_color,
+				a.co_ubicacion,
+				a.cod_proc,
+				a.@ref,
+				a.tipo_imp,
+				a.tipo_imp2,
+				a.tipo_imp3
+			}).ToList();
 
-			articulos.ToList().ForEach(a => context.Articulos.Add(a));
+			articulos.ForEach(a => context.Articulos.Add(new AdArticulo
+			{
+				co_art = a.co_art,
+				art_des = a.art_des,
+				co_lin = a.co_lin,
+				co_subl = a.co_subl,
+				co_cat = a.co_cat,
+				co_color = a.co_color,
+				co_ubicacion = a.co_ubicacion,
+				cod_proc = a.cod_proc,
+				cod_unidad = "1",
+				referencia = a.@ref,
+				tipo_imp = a.tipo_imp,
+				tipo_imp2 = a.tipo_imp2,
+				tipo_imp3 = a.tipo_imp3,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Bancos.
-			var bancos = Builder<AdBanco>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_ban = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.des_ban = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var bancos = profitContext.saBanco.Select(b => new
+			{
+				b.co_ban,
+				b.des_ban
+			}).ToList();
 
-			bancos.ToList().ForEach(b => context.Bancos.Add(b));
+			bancos.ForEach(b => context.Bancos.Add(new AdBanco
+			{
+				co_ban = b.co_ban,
+				des_ban = b.des_ban,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Tipo de Cliente.
-			var tiposCliente = Builder<Adtipo_cliente>.CreateListOfSize(5)
-				.All()
-					.With(a => a.tip_cli = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.des_tipo = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var tiposCliente = profitContext.saTipoCliente.Select(t => new
+			{
+				t.tip_cli,
+				t.des_tipo
+			}).ToList();
 
-			tiposCliente.ToList().ForEach(t => context.TiposCliente.Add(t));
+			tiposCliente.ForEach(t => context.TiposCliente.Add(new Adtipo_cliente
+			{
+				tip_cli = t.tip_cli,
+				des_tipo = t.des_tipo,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Segmentos.
-			var segmentos = Builder<AdSegmento>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_seg = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.seg_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var segmentos = profitContext.saSegmento.Select(s => new
+			{
+				s.co_seg,
+				s.seg_des
+			}).ToList();
 
-			segmentos.ToList().ForEach(s => context.Segmentos.Add(s));
+			segmentos.ForEach(s => context.Segmentos.Add(new AdSegmento
+			{
+				co_seg = s.co_seg,
+				seg_des = s.seg_des,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Zonas.
-			var zonas = Builder<Adzona>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_zon = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.zon_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var zonas = profitContext.saZona.Select(z => new
+			{
+				z.co_zon,
+				z.zon_des
+			}).ToList();
 
-			zonas.ToList().ForEach(z => context.Zonas.Add(z));
+			zonas.ForEach(z => context.Zonas.Add(new Adzona
+			{
+				co_zon = z.co_zon,
+				zon_des = z.zon_des,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Ingresos.
-			var ingresos = Builder<AdIngreso>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_ctaIng_egr = Faker.RandomNumber.Next(9999).ToString("0000"))
-					.With(a => a.descrip_ingre = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.co_user_prof = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var ingresos = profitContext.saCuentaIngEgr.Select(i => new
+			{
+				i.co_cta_ingr_egr,
+				i.descrip
+			}).ToList();
 
-			ingresos.ToList().ForEach(i => context.Ingresos.Add(i));
+			ingresos.ForEach(i => context.Ingresos.Add(new AdIngreso
+			{
+				co_ctaIng_egr = i.co_cta_ingr_egr,
+				descrip_ingre = i.descrip,
+				co_user_prof = null,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Vendedores.
-			var vendedores = Builder<Advendedor>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_ven = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.tipo = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.ven_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.id_zona = zonas.Single(s => s.id_zona == 1).id_zona)
-					.With(a => a.co_zon = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var vendedores = profitContext.saVendedor.Select(v => new
+			{
+				v.co_ven,
+				v.tipo,
+				v.ven_des,
+				v.co_zon,
+				v.saZona
+			}).ToList();
 
-			vendedores.ToList().ForEach(v => context.Vendedores.Add(v));
+			vendedores.ForEach(v => context.Vendedores.Add(new Advendedor
+			{
+				co_ven = v.co_ven,
+				tipo = v.tipo,
+				ven_des = v.ven_des,
+				id_zona = context.Zonas.Where(z => z.co_zon.Equals(v.co_zon)).Select(z => z.id_zona).First(),
+				co_zon = v.co_zon,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Países.
-			var paises = Builder<Adpais>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_pais = Faker.RandomNumber.Next(9999).ToString("0000"))
-					.With(a => a.pais_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var paises = profitContext.saPais.Select(p => new
+			{
+				p.co_pais,
+				p.pais_des
+			}).ToList();
 
-			paises.ToList().ForEach(p => context.Paises.Add(p));
-			context.SaveChanges();
+			paises.ForEach(p => context.Paises.Add(new Adpais
+			{
+				co_pais = p.co_pais,
+				pais_des = p.pais_des,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
 
-			// Clientes.
-			var clientes = Builder<Adclientes>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_cli = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_tipocliente = tiposCliente.Single(s => s.id_tipocliente == 1).id_tipocliente)
-					.With(a => a.tip_cli = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.cli_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.direc1 = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.dir_ent2 = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.telefonos = "0416-4561230")
-					.With(a => a.inactivo = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.respons = Faker.Name.FullName())
-					.With(a => a.id_zona = zonas.Single(s => s.id_zona == 1).id_zona)
-					.With(a => a.co_zon = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_segmento = segmentos.Single(s => s.id_segmento == 1).id_segmento)
-					.With(a => a.co_seg = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_vendedor = vendedores.Single(s => s.id_vendedor == 1).id_vendedor)
-					.With(a => a.co_ven = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.idingre = ingresos.Single(s => s.id == 1).id)
-					.With(a => a.co_cta_ingr_egr = Faker.RandomNumber.Next(9999).ToString("0000"))
-					.With(a => a.rif = "J-123456789-0")
-					.With(a => a.email = Faker.Internet.Email())
-					.With(a => a.juridico = "1")
-					.With(a => a.ciudad = String.Join(" ", Faker.Lorem.Words(1)))
-					.With(a => a.zip = Faker.RandomNumber.Next(9999).ToString("0000"))
-					.With(a => a.id_pais = paises.Single(s => s.id_pais == 1).id_pais)
-					.With(a => a.co_pais = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.cod_comercio = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
-
-			clientes.ToList().ForEach(c => context.Clientes.Add(c));
 			context.SaveChanges();
 
 			// Condiciones de Pago.
-			var condicionesDePago = Builder<Adcondiciondepago>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_cond = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.cond_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.dias_cred = Faker.RandomNumber.Next(999))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var condicionesDePago = profitContext.saCondicionPago.Select(c => new
+			{
+				c.co_cond,
+				c.cond_des,
+				c.dias_cred
+			}).ToList();
 
-			condicionesDePago.ToList().ForEach(c => context.CondicionesDePago.Add(c));
+			condicionesDePago.ForEach(c => context.CondicionesDePago.Add(new Adcondiciondepago
+			{
+				co_cond = c.co_cond,
+				cond_des = c.cond_des,
+				dias_cred = c.dias_cred,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
 			context.SaveChanges();
 
 			// Transporte.
-			var transportes = Builder<Adtransporte>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_tran = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.des_tran = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var transportes = profitContext.saTransporte.Select(t => new
+			{
+				t.co_tran,
+				t.des_tran
+			}).ToList();
 
-			transportes.ToList().ForEach(t => context.Transportes.Add(t));
-			context.SaveChanges();
+			transportes.ForEach(t => context.Transportes.Add(new Adtransporte
+			{
+				co_tran = t.co_tran,
+				des_tran = t.des_tran,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
 
-			// Cotizaciones.
-			var cotizaciones = Builder<Adcotizacion>.CreateListOfSize(5)
-				.All()
-					.With(a => a.doc_num = Faker.RandomNumber.Next(999))
-					.With(a => a.descrip = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.id_clientes = clientes.Single(s => s.id_clientes == 1).id_clientes)
-					.With(a => a.co_cli = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.idtransporte = transportes.Single(s => s.idtransporte == 1).idtransporte)
-					.With(a => a.co_tran = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.co_mone = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_vendedor = vendedores.Single(s => s.id_vendedor == 1).id_vendedor)
-					.With(a => a.co_ven = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_condicion = condicionesDePago.Single(s => s.id_condicion == 1).id_condicion)
-					.With(a => a.co_cond = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.fec_emis = DateTime.Now)
-					.With(a => a.fec_venc = DateTime.Now)
-					.With(a => a.fec_reg = DateTime.Now)
-					.With(a => a.anulado = "0")
-					.With(a => a.status = "1")
-					.With(a => a.total_bruto = Faker.RandomNumber.Next(400))
-					.With(a => a.monto_imp = Faker.RandomNumber.Next(40))
-					.With(a => a.monto_imp2 = null)
-					.With(a => a.monto_imp3 = null)
-					.With(a => a.total_neto = Faker.RandomNumber.Next(400))
-					.With(a => a.saldo = Faker.RandomNumber.Next(400))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.Diasvencimiento = Faker.RandomNumber.Next(7))
-					.With(a => a.nro_pedido = Faker.RandomNumber.Next(999))
-					.With(a => a.vencida = "0")
-				.Build();
-
-			cotizaciones.ToList().ForEach(c => context.Cotizaciones.Add(c));
 			context.SaveChanges();
 
 			// Precios Artículo.
-			var preciosArticulo = Builder<adpreciosart>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_art = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.co_precios = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.desde = DateTime.Now)
-					.With(a => a.hasta = DateTime.Now)
-					.With(a => a.cod_almacen = almacenes.Single(s => s.cod_almacen == 1).cod_almacen)
-					.With(a => a.co_alma = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.monto = Faker.RandomNumber.Next(400))
-					.With(a => a.montoadi1 = Faker.RandomNumber.Next(400))
-					.With(a => a.montoadi2 = Faker.RandomNumber.Next(300))
-					.With(a => a.montoadi3 = Faker.RandomNumber.Next(400))
-					.With(a => a.montoadi4 = Faker.RandomNumber.Next(100))
-					.With(a => a.montoadi5 = Faker.RandomNumber.Next(40))
-					.With(a => a.precioOm = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
+			var preciosArticulo = profitContext.saArtPrecio.Select(p => new
+			{
+				p.co_art,
+				p.co_precio,
+				p.desde,
+				p.hasta,
+				p.saAlmacen,
+				p.co_alma,
+				p.monto,
+				p.montoadi1,
+				p.montoadi2,
+				p.montoadi3,
+				p.montoadi4,
+				p.montoadi5,
+				p.precioOm
+			}).ToList();
 
-			preciosArticulo.ToList().ForEach(p => context.PreciosArticulo.Add(p));
-			context.SaveChanges();
+			preciosArticulo.ForEach(p => context.PreciosArticulo.Add(new adpreciosart
+			{
+				co_art = p.co_art,
+				co_precios = p.co_precio,
+				desde = p.desde,
+				hasta = p.hasta,
+				cod_almacen = context.Almacenes.Where(a => a.co_alma.Equals(p.co_alma)).Select(a => a.cod_almacen).First(),
+				co_alma = p.co_alma,
+				monto = p.monto,
+				montoadi1 = p.montoadi1,
+				montoadi2 = p.montoadi2,
+				montoadi3 = p.montoadi3,
+				montoadi4 = p.montoadi4,
+				montoadi5 = p.montoadi5,
+				precioOm = profitContext.saArtPrecio.Where(pa => pa.co_art.Equals(p.co_art)).Select(pa => pa.precioOm).First() == true ? "1" : "0",
+				importado_pro = "1",
+				importado_web = "1"
+			}));
 
-			// Renglones de Cotización.
-			var renglonesCotizacion = Builder<AdCotizacionreg>.CreateListOfSize(5)
-				.All()
-					.With(a => a.doc_num = Faker.RandomNumber.Next(999))
-					.With(a => a.reng_num = Faker.RandomNumber.Next(999))
-					.With(a => a.id_art = articulos.Single(s => s.id_art == 1).id_art)
-					.With(a => a.art_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.co_alma = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.cod_almacen = almacenes.Single(s => s.cod_almacen == 1).cod_almacen)
-					.With(a => a.total_art = Faker.RandomNumber.Next(400))
-					.With(a => a.stotal_art = Faker.RandomNumber.Next(400))
-					.With(a => a.cod_unidad = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_preciosart = preciosArticulo.Single(s => s.id_preciosart == 1).id_preciosart)
-					.With(a => a.co_precios = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.prec_vta = Faker.RandomNumber.Next(400))
-					.With(a => a.prec_vta_om = Faker.RandomNumber.Next(400))
-					.With(a => a.tipo_imp = "1")
-					.With(a => a.tipo_imp2 = null)
-					.With(a => a.tipo_imp3 = null)
-					.With(a => a.porc_imp = Faker.RandomNumber.Next(20))
-					.With(a => a.porc_imp2 = null)
-					.With(a => a.porc_imp3 = null)
-					.With(a => a.monto_imp = Faker.RandomNumber.Next(100))
-					.With(a => a.monto_imp2 = null)
-					.With(a => a.monto_imp3 = null)
-					.With(a => a.reng_neto = Faker.RandomNumber.Next(400))
-					.With(a => a.tipo_doc = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.num_doc = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
-
-			renglonesCotizacion.ToList().ForEach(r => context.RenglonesCotizacion.Add(r));
 			context.SaveChanges();
 
 			// Imágenes Artículo.
-			var imagenesArticulo = Builder<Adimg_art>.CreateListOfSize(5)
-				.All()
-					.With(a => a.id_art = articulos.Single(s => s.id_art == 1).id_art)
-					.With(a => a.co_art = Faker.RandomNumber.Next(99999).ToString("00000"))
-					.With(a => a.tip = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.imagen_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.picture = String.Join(" ", Faker.Lorem.Words(5)))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.Articulo = Pick<AdArticulo>.RandomItemFrom(articulos))
-				.Build();
+			var imagenesArticulo = profitContext.saArtImagen.Select(i => new
+			{
+				i.co_art,
+				i.tip,
+				i.imagen_des,
+				i.picture,
+				i.saArticulo
+			}).ToList();
 
-			imagenesArticulo.ToList().ForEach(i => context.ImagenesArticulo.Add(i));
-			context.SaveChanges();
+			imagenesArticulo.ForEach(i => context.ImagenesArticulo.Add(new Adimg_art
+			{
+				id_art = context.Articulos.Where(a => a.co_art.Equals(i.co_art)).Select(a => a.id_art).First(),
+				co_art = i.co_art,
+				tip = i.tip,
+				imagen_des = i.imagen_des,
+				picture = Encoding.UTF8.GetString(i.picture),
+				importado_pro = "1",
+				importado_web = "1"
+			}));
 
-			// Pedidos.
-			var pedidos = Builder<Adpedidos>.CreateListOfSize(5)
-				.All()
-					.With(a => a.doc_num = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.descrip = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.id_clientes = clientes.Single(s => s.id_clientes == 1).id_clientes)
-					.With(a => a.co_cli = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.idtransporte = transportes.Single(s => s.idtransporte == 1).idtransporte)
-					.With(a => a.co_tran = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.co_mone = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_vendedor = vendedores.Single(s => s.id_vendedor == 1).id_vendedor)
-					.With(a => a.co_ven = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_condicion = condicionesDePago.Single(s => s.id_condicion == 1).id_condicion)
-					.With(a => a.co_cond = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.fec_emis = DateTime.Now)
-					.With(a => a.fec_venc = DateTime.Now)
-					.With(a => a.fec_reg = DateTime.Now)
-					.With(a => a.anulado = "0")
-					.With(a => a.status = "1")
-					.With(a => a.monto_imp = Faker.RandomNumber.Next(100))
-					.With(a => a.monto_imp2 = null)
-					.With(a => a.monto_imp3 = null)
-					.With(a => a.total_neto = Faker.RandomNumber.Next(400))
-					.With(a => a.saldo = Faker.RandomNumber.Next(400))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.Diasvencimiento = Faker.RandomNumber.Next(7))
-					.With(a => a.nro_pedido = "1")
-					.With(a => a.vencida = "0")
-				.Build();
-
-			pedidos.ToList().ForEach(p => context.Pedidos.Add(p));
-			context.SaveChanges();
-
-			// Renglones de Pedidos.
-			var renglonesPedidos = Builder<AdPedidosreg>.CreateListOfSize(5)
-				.All()
-					.With(a => a.id_doc_num = pedidos.Single(s => s.id_doc_num == 1).id_doc_num)
-					.With(a => a.doc_num = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.reng_num = pedidos.Single(s => s.id_doc_num == 1).id_doc_num)
-					.With(a => a.id_art = articulos.Single(s => s.id_art == 1).id_art)
-					.With(a => a.co_art = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.art_des = String.Join(" ", Faker.Lorem.Words(3)))
-					.With(a => a.cod_almacen = almacenes.Single(s => s.cod_almacen == 1).cod_almacen)
-					.With(a => a.co_alma = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.total_art = Faker.RandomNumber.Next(400))
-					.With(a => a.stotal_art = Faker.RandomNumber.Next(400))
-					.With(a => a.cod_unidad = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.id_preciosart = preciosArticulo.Single(s => s.id_preciosart == 1).id_preciosart)
-					.With(a => a.co_precios = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.prec_vta = Faker.RandomNumber.Next(400))
-					.With(a => a.prec_vta_om = Faker.RandomNumber.Next(400))
-					.With(a => a.tipo_imp = "1")
-					.With(a => a.tipo_imp2 = null)
-					.With(a => a.tipo_imp3 = null)
-					.With(a => a.porc_imp = Faker.RandomNumber.Next(20))
-					.With(a => a.porc_imp2 = null)
-					.With(a => a.porc_imp3 = null)
-					.With(a => a.monto_imp = Faker.RandomNumber.Next(100))
-					.With(a => a.monto_imp2 = null)
-					.With(a => a.monto_imp3 = null)
-					.With(a => a.reng_neto = Faker.RandomNumber.Next(400))
-					.With(a => a.tipo_doc = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.num_doc = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
-
-			renglonesPedidos.ToList().ForEach(r => context.RenglonesPedidos.Add(r));
-			context.SaveChanges();
-
-			// Seriales.
-			var serial = Builder<AdSerial>.CreateListOfSize(5)
-				.All()
-					.With(a => a.id_art = articulos.Single(s => s.id_art == 1).id_art)
-					.With(a => a.co_art = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.cod_almacen = almacenes.Single(s => s.cod_almacen == 1).cod_almacen)
-					.With(a => a.co_alma = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.serial = Faker.RandomNumber.Next(99999).ToString("00000"))
-					.With(a => a.tip_dispositivo = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
-
-			serial.ToList().ForEach(s => context.Seriales.Add(s));
-			context.SaveChanges();
-
-			// Usuarios.
-			var usuarios = Builder<Adusuarios>.CreateListOfSize(5)
-				.All()
-					.With(a => a.co_user_prof = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.cod_user = Faker.RandomNumber.Next(999).ToString("000"))
-					.With(a => a.nombre_usuarios = Faker.Internet.UserName())
-					.With(a => a.password = Encoding.ASCII.GetBytes(Faker.RandomNumber.Next(999).ToString("000")))
-					.With(a => a.Estado = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.fecha_ingreso = DateTime.Now)
-					.With(a => a.validacion = Faker.RandomNumber.Next(999).ToString("000"))
-				.Build();
-
-			usuarios.ToList().ForEach(u => context.Usuarios.Add(u));
-			context.SaveChanges();
-
-			// Stock Almacenes.
-			var stockAlmacenes = Builder<StockAlma>.CreateListOfSize(5)
-				.All()
-					.With(a => a.cod_almacen = almacenes.Single(s => s.cod_almacen == 1).cod_almacen)
-					.With(a => a.co_alma = new char())
-					.With(a => a.id_art = articulos.Single(s => s.id_art == 1).id_art)
-					.With(a => a.co_art = new char())
-					.With(a => a.tipo = new char())
-					.With(a => a.stock = Faker.RandomNumber.Next(999))
-					.With(a => a.importado_pro = new char())
-					.With(a => a.importado_web = new char())
-				.Build();
-
-			stockAlmacenes.ToList().ForEach(s => context.StockAlmacenes.Add(s));
-			context.SaveChanges();
-
-			// Tasas IVA.
-			var tasasIVA = Builder<Tasa_IVA>.CreateListOfSize(5)
-				.All()
-					.With(a => a.id_impuesto = Faker.RandomNumber.Next(999))
-					.With(a => a.fechapubli = DateTime.Now)
-					.With(a => a.nro_reng = Faker.RandomNumber.Next(999))
-					.With(a => a.tip_impu = Faker.RandomNumber.Next(999))
-					.With(a => a.ventas = "1")
-					.With(a => a.consumosuntuario = "1")
-					.With(a => a.porcentajetaza = Faker.RandomNumber.Next(999))
-					.With(a => a.porcentajesuntuario = Faker.RandomNumber.Next(999))
-					.With(a => a.importado_pro = Faker.RandomNumber.Next(1).ToString())
-					.With(a => a.importado_web = Faker.RandomNumber.Next(1).ToString())
-				.Build();
-
-			tasasIVA.ToList().ForEach(t => context.TasasIVA.Add(t));
 			context.SaveChanges();
 		}
     }

@@ -205,6 +205,10 @@
     <Compile Include="Migrations\202102071725371_BDInicial.Designer.cs">
       <DependentUpon>202102071725371_BDInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102190442496_ActualizacionCobros.cs" />
+    <Compile Include="Migrations\202102190442496_ActualizacionCobros.Designer.cs">
+      <DependentUpon>202102190442496_ActualizacionCobros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
     <Compile Include="Models\AdArticulo.cs" />
@@ -215,6 +219,7 @@
     <Compile Include="Models\AdCotizacionreg.cs" />
     <Compile Include="Models\Adimg_art.cs" />
     <Compile Include="Models\AdIngreso.cs" />
+    <Compile Include="Models\AdMoneda.cs" />
     <Compile Include="Models\Adpais.cs" />
     <Compile Include="Models\Adpedidos.cs" />
     <Compile Include="Models\AdPedidosreg.cs" />
@@ -226,8 +231,13 @@
     <Compile Include="Models\Adusuarios.cs" />
     <Compile Include="Models\Advendedor.cs" />
     <Compile Include="Models\Adzona.cs" />
+    <Compile Include="Models\AdCobros.cs" />
     <Compile Include="Models\CotizacionRenglon.cs" />
+    <Compile Include="Models\AdRenglonesCobro.cs" />
+    <Compile Include="Models\AdFormasCobro.cs" />
+    <Compile Include="Models\AdMovimientoBanco.cs" />
     <Compile Include="Models\StockAlma.cs" />
+    <Compile Include="Models\AdTasa.cs" />
     <Compile Include="Models\Tasa_IVA.cs" />
     <Compile Include="pActualizarAlmacen_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
@@ -912,6 +922,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202102071725371_BDInicial.resx">
       <DependentUpon>202102071725371_BDInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102190442496_ActualizacionCobros.resx">
+      <DependentUpon>202102190442496_ActualizacionCobros.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

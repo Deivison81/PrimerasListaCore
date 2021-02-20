@@ -41,6 +41,12 @@ namespace PagonetCore.DAL
 		// Se deja comentado para que no cree la Tabla en la BD. Esto solo se utilizará como 
 		// modelo intermedio para crear Cotizaciones con Renglones en una misma llamada a la API.
 		//public DbSet<PagonetCore.Models.CotizacionRenglon> CotizacionRenglon { get; set; }
+		public virtual DbSet<AdCobros> Cobros { get; set; }
+		public virtual DbSet<AdRenglonesCobro> RenglonesCobro { get; set; }
+		public virtual DbSet<AdMoneda> Monedas { get; set; }
+		public virtual DbSet<AdFormasCobro> FormasCobro { get; set; }
+		public virtual DbSet<AdTasa> Tasas { get; set; }
+		public virtual DbSet<AdMovimientoBanco> MovimientosBancos { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -90,6 +96,277 @@ namespace PagonetCore.DAL
 			// Claves Foráneas para Stock Almacenes.
 			modelBuilder.Entity<StockAlma>().HasRequired(c => c.Almacen).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<StockAlma>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
-		}
+
+            modelBuilder.Entity<AdCobros>()
+                .Property(e => e.cob_num_pro)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdCobros>()
+                .Property(e => e.co_cli)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdCobros>()
+                .Property(e => e.co_mone)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdCobros>()
+                .Property(e => e.co_ven)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdCobros>()
+                .Property(e => e.tasa)
+                .HasPrecision(21, 8);
+
+            modelBuilder.Entity<AdCobros>()
+                .Property(e => e.anulado)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdCobros>()
+                .Property(e => e.importado_web)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdCobros>()
+                .Property(e => e.importado_pro)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdRenglonesCobro>()
+                .Property(e => e.cob_num_pro)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdRenglonesCobro>()
+                .Property(e => e.co_tipo_doc)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdRenglonesCobro>()
+                .Property(e => e.nro_doc)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdRenglonesCobro>()
+                .Property(e => e.tipo_doc)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdRenglonesCobro>()
+                .Property(e => e.num_doc)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdRenglonesCobro>()
+                .Property(e => e.importado_web)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdRenglonesCobro>()
+                .Property(e => e.importado_pro)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdMoneda>()
+                .Property(e => e.co_mone)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMoneda>()
+                .Property(e => e.mone_des)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMoneda>()
+                .Property(e => e.importado_web)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdMoneda>()
+                .Property(e => e.importado_pro)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.cob_num_pro)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.co_ban)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.forma_pag)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.cod_cta)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.cod_caja)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.mov_num_c)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.mov_num_b)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.dolar)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.importado_web)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdFormasCobro>()
+                .Property(e => e.importado_pro)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdTasa>()
+                .Property(e => e.co_mone)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdTasa>()
+                .Property(e => e.tasa_c)
+                .HasPrecision(21, 8);
+
+            modelBuilder.Entity<AdTasa>()
+                .Property(e => e.tasa_v)
+                .HasPrecision(21, 8);
+
+            modelBuilder.Entity<AdTasa>()
+                .Property(e => e.importado_web)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdTasa>()
+                .Property(e => e.importado_pro)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                    .Property(e => e.mov_num)
+                    .IsFixedLength()
+                    .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.descrip)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.cod_cta)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.co_cta_ingr_egr)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.tasa)
+                .HasPrecision(18, 5);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.tipo_op)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.doc_num)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.origen)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.cob_pag)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.dep_num)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.cod_ingben)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.campo1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.campo2)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.campo3)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.campo4)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.campo5)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.campo6)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.campo7)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.campo8)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.co_us_in)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.co_sucu_in)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.co_us_mo)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.co_sucu_mo)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.trasnfe)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.revisado)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.importado_web)
+                .IsFixedLength();
+
+            modelBuilder.Entity<AdMovimientoBanco>()
+                .Property(e => e.importado_pro)
+                .IsFixedLength();
+        }
     }
 }
