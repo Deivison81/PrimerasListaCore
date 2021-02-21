@@ -18,6 +18,9 @@ namespace PagonetCore.Models
         public char cod_proc { get; set; }
         public char cod_unidad { get; set; }
         public string referencia { get; set; }
+        public char tipo_imp { get; set; }
+        public char tipo_imp2 { get; set; }
+        public char tipo_imp3 { get; set; }
         public char importado_web { get; set; }
         public char importado_pro { get; set; }
         

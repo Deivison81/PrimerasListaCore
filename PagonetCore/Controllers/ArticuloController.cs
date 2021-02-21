@@ -162,7 +162,7 @@ namespace PagonetCore.Controllers
         public JsonResult listarartweb()
         {
             PagonetSQLDataContext bdsql = new PagonetSQLDataContext();
-
+            var iva = 16;
             var listarartweb = (from stock in bdsql.StockAlma
                                 join alma in bdsql.AdAlmacen
                                 on stock.cod_almacen equals alma.cod_almacen
@@ -172,6 +172,7 @@ namespace PagonetCore.Controllers
                                 on Art.id_art equals precio.id_art
                                 join img in bdsql.Adimg_art
                                 on Art.id_art equals img.id_art
+                               
                                 select new
                                 {
                                     idproducto = Art.id_art,
@@ -179,6 +180,7 @@ namespace PagonetCore.Controllers
                                     descripcionproducto = Art.art_des,
                                     adreferencia = Art.referencia,
                                     unidad = Art.cod_unidad,
+                                    tipoimput = Art.tipo_imp,
                                     idprecio = precio.id_preciosart,
                                     codigoprecioprofit = precio.co_precios,
                                     pdesde = precio.desde,
@@ -193,11 +195,13 @@ namespace PagonetCore.Controllers
                                     precio4 = precio.montoadi4,
                                     precio5 = precio.montoadi5,
                                     precioOM = precio.precioOm,
+                                    montoiva = precio.monto * iva/100,
+                                    porcentaje = iva,
                                     idimagen = img.id_imgart,
                                     adtip = img.tip,
                                     nombreimagen = img.imagen_des,
                                     ruta = img.picture,
-                                    cod_almacen = alma.cod_almacen,
+                                    codi_almacen = alma.cod_almacen,
                                     almacenprofit = alma.co_alma,
                                     desalma = alma.des_alamacen,
                                     codigoartprof = stock.co_art,

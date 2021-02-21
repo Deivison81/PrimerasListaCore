@@ -559,7 +559,13 @@ namespace PagonetCore.Controllers
             int nroregistros = 0;
             int nrorenglones = 0;
             string nrocotizacion = "";
+            decimal baseneta = 0;
             decimal totalreglones = 0;
+            decimal valoriva = 0;
+            decimal divisor = 100;
+            decimal totalrenglon1 = 0;
+            decimal totalrenglon2 = 0;
+            decimal sumaiva = 0;
 
             try
             {
@@ -581,23 +587,38 @@ namespace PagonetCore.Controllers
                             OadCotizacionreg[i].doc_num = cotizacion;
                             nrorenglones = nrorenglones + 1;
                             OadCotizacionreg[i].reng_num = nrorenglones;
-                            totalreglones = totalreglones + (decimal)OadCotizacionreg[i].reng_neto;
+                            baseneta = (decimal)OadCotizacionreg[i].total_art * (decimal)OadCotizacionreg[i].prec_vta;
+                            valoriva = (decimal)OadCotizacionreg[i].porc_imp;
+                            totalrenglon1 = (baseneta * valoriva) / divisor;
+                            OadCotizacionreg[i].monto_imp = totalrenglon1;
+                            totalrenglon2 = baseneta + totalrenglon1;
+                            OadCotizacionreg[i].reng_neto = totalrenglon2;
+                            sumaiva = sumaiva + totalrenglon1;
 
+                            totalreglones = totalreglones + totalrenglon2 ;
+                        
                         // bdsql.AdCotizacionreg.InsertOnSubmit(OadCotizacionreg);
                         // bdsql.SubmitChanges();
                         this.guardarDatosreng(OadCotizacionreg[i]);
                         
                         
                         }
+                        Oadcotizacion.total_bruto = totalrenglon2 - totalrenglon1;
+                        Oadcotizacion.monto_imp = totalrenglon1;
+                        Oadcotizacion.total_neto = totalrenglon2;
+                        Oadcotizacion.saldo = totalrenglon2;
+                        this.guardarDatos(Oadcotizacion);
+
+
                     //}
                     //else
                     //{
-                     //  return nrorenglones = 0;
+                    //  return nrorenglones = 0;
                     //}
-
+                    //(decimal)OadCotizacionreg[i].reng_neto
                 }
                 else
-                {
+                { 
                     return nroregistros = 0;
                 }
 
@@ -609,7 +630,8 @@ namespace PagonetCore.Controllers
             }
 
             //return (nroregistros + nrorenglones) +  int.Parse(nrocotizacion);    
-            return cotizacion;
+            //return cotizacion;
+            return (int)baseneta;
         }
     }
-}
+} 
