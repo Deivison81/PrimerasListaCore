@@ -69,5 +69,43 @@ namespace PagonetCore.Controllers
 
 
         }
+
+        public int guardarDatos(Adcondiciondepago adCondicionPago)
+        {
+            try
+            {
+                PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
+                dbsql.Adcondiciondepago.InsertOnSubmit(adCondicionPago);
+                dbsql.SubmitChanges();
+                return 1;
+            } catch (Exception ex)
+            {
+                // TODO: Arrojar excepción.
+                return 0;
+            }
+        }
+
+        public int modificarDatos(Adcondiciondepago adCondicionPago)
+        {
+            try
+            {
+                PagonetSQLDataContext dbsql = new PagonetSQLDataContext();
+                Adcondiciondepago condicion = dbsql.Adcondiciondepago.Where(p => p.id_condicion.Equals(adCondicionPago.id_condicion)).First();
+
+                condicion.co_cond = adCondicionPago.co_cond;
+                condicion.cond_des = adCondicionPago.cond_des;
+                condicion.dias_cred = adCondicionPago.dias_cred;
+                condicion.importado_web = adCondicionPago.importado_web;
+                condicion.importado_pro = adCondicionPago.importado_pro;
+
+				dbsql.SubmitChanges();
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                // TODO: Arrojar excepción.
+                return 0;
+            }
+        }
     }
 }

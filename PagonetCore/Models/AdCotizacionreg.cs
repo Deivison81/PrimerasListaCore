@@ -8,7 +8,7 @@ namespace PagonetCore.Models
     public class AdCotizacionreg
     {
         public int reng_num { get; set; }
-        public int doc_num { get; set; }
+        public string doc_num { get; set; }
         public int id_doc_num { get; set; }
         public int id_art { get; set; }
         public string co_art { get; set; }
