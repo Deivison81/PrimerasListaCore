@@ -156,14 +156,17 @@
     <Compile Include="Controllers\APIArticuloController.cs" />
     <Compile Include="Controllers\APIBancoController.cs" />
     <Compile Include="Controllers\APIClienteController.cs" />
+    <Compile Include="Controllers\APICobroController.cs" />
     <Compile Include="Controllers\APICondicionDePagoController.cs" />
     <Compile Include="Controllers\APICotizacionController.cs" />
-    <Compile Include="Controllers\APICotizacionRenglonController.cs" />
+    <Compile Include="Controllers\APIFormaCobroController.cs" />
     <Compile Include="Controllers\APIImagenArticuloController.cs" />
     <Compile Include="Controllers\APIIngresoController.cs" />
+    <Compile Include="Controllers\APIMonedaController.cs" />
     <Compile Include="Controllers\APIPaisController.cs" />
     <Compile Include="Controllers\APIPedidoController.cs" />
     <Compile Include="Controllers\APIPrecioArticuloController.cs" />
+    <Compile Include="Controllers\APIRenglonCobroController.cs" />
     <Compile Include="Controllers\APIRenglonCotizacionController.cs" />
     <Compile Include="Controllers\APIRenglonPedidoController.cs" />
     <Compile Include="Controllers\APISegmentoController.cs" />
@@ -209,6 +212,14 @@
     <Compile Include="Migrations\202102190442496_ActualizacionCobros.Designer.cs">
       <DependentUpon>202102190442496_ActualizacionCobros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102211552020_ActualizacionCharAString.cs" />
+    <Compile Include="Migrations\202102211552020_ActualizacionCharAString.Designer.cs">
+      <DependentUpon>202102211552020_ActualizacionCharAString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102211602594_ActualizacionCharAStringStock.cs" />
+    <Compile Include="Migrations\202102211602594_ActualizacionCharAStringStock.Designer.cs">
+      <DependentUpon>202102211602594_ActualizacionCharAStringStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
     <Compile Include="Models\AdArticulo.cs" />
@@ -232,7 +243,6 @@
     <Compile Include="Models\Advendedor.cs" />
     <Compile Include="Models\Adzona.cs" />
     <Compile Include="Models\AdCobros.cs" />
-    <Compile Include="Models\CotizacionRenglon.cs" />
     <Compile Include="Models\AdRenglonesCobro.cs" />
     <Compile Include="Models\AdFormasCobro.cs" />
     <Compile Include="Models\AdMovimientoBanco.cs" />
@@ -925,6 +935,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102190442496_ActualizacionCobros.resx">
       <DependentUpon>202102190442496_ActualizacionCobros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211552020_ActualizacionCharAString.resx">
+      <DependentUpon>202102211552020_ActualizacionCharAString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102211602594_ActualizacionCharAStringStock.resx">
+      <DependentUpon>202102211602594_ActualizacionCharAStringStock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

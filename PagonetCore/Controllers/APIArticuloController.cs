@@ -18,10 +18,62 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
         
         // GET: api/APIArticulo
-        [Route("Articulo/listarartweb")]
         public IQueryable<AdArticulo> GetArticulos()
         {
             return db.Articulos;
+        }
+
+        [Route("Articulo/listarartweb")]
+        public object GetArticulosConPrecios()
+        {
+            const int IVA = 16;
+
+            // LINQ de Deivison.
+            return (from stock in db.StockAlmacenes
+                    join alma in db.Almacenes
+                    on stock.cod_almacen equals alma.cod_almacen
+                    join Art in db.Articulos
+                    on stock.id_art equals Art.id_art
+                    join precio in db.PreciosArticulo
+                    on Art.id_art equals precio.id_art
+                    join img in db.ImagenesArticulo
+                    on Art.id_art equals img.id_art
+                    select new
+                    {
+                        idproducto = Art.id_art,
+                        codigoproducto = Art.co_art,
+                        descripcionproducto = Art.art_des,
+                        adreferencia = Art.referencia,
+                        unidad = Art.cod_unidad,
+                        tipoimput = Art.tipo_imp,
+                        idprecio = precio.id_preciosart,
+                        codigoprecioprofit = precio.co_precios,
+                        pdesde = precio.desde,
+                        phasta = precio.hasta,
+                        //precio en bs
+                        montoprecio = precio.monto,
+                        //Precio en $$
+                        // no modificar estas estructuras
+                        precio1 = precio.montoadi1,
+                        precio2 = precio.montoadi2,
+                        precio3 = precio.montoadi3,
+                        precio4 = precio.montoadi4,
+                        precio5 = precio.montoadi5,
+                        precioOM = precio.precioOm,
+                        montoiva = precio.monto * (IVA / 100),
+                        porcentaje = IVA,
+                        idimagen = img.id_imgart,
+                        adtip = img.tip,
+                        nombreimagen = img.imagen_des,
+                        ruta = img.picture,
+                        codi_almacen = alma.cod_almacen,
+                        almacenprofit = alma.co_alma,
+                        desalma = alma.des_alamacen,
+                        codigoartprof = stock.co_art,
+                        tipostock = stock.tipo,
+                        cantidades = stock.stock,
+                        paginaweb = stock.importado_web
+                    }).ToList();
         }
 
         // GET: api/APIArticulo/5

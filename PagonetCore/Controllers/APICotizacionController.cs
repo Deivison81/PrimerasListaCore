@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -86,6 +87,76 @@ namespace PagonetCore.Controllers
             db.SaveChanges();
 
             return 1;
+        }
+
+        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: CotizacionCompleta/Create
+        [HttpPost]
+        [Route("CotizacionCompleta/Create")]
+        [ResponseType(typeof(int))]
+        public int CrearCotizacionRenglon(Adcotizacion cotizacionRenglon)
+        {
+            if (!ModelState.IsValid)
+            {
+                return 0;
+            }
+
+            // Invocar métodos para guardar Cotizaciones y Renglones de Cotización por separado.
+            Adcotizacion cotizacion = new Adcotizacion();
+            cotizacion.doc_num = cotizacionRenglon.doc_num;
+            cotizacion.descrip = cotizacionRenglon.descrip;
+            cotizacion.co_cli = cotizacionRenglon.co_cli;
+            cotizacion.co_tran = cotizacionRenglon.co_tran;
+            cotizacion.co_mone = cotizacionRenglon.co_mone;
+            cotizacion.co_ven = cotizacionRenglon.co_ven;
+            cotizacion.co_cond = cotizacionRenglon.co_cond;
+            cotizacion.fec_emis = cotizacionRenglon.fec_emis;
+            cotizacion.fec_venc = cotizacionRenglon.fec_venc;
+            cotizacion.fec_reg = cotizacionRenglon.fec_reg;
+            cotizacion.anulado = cotizacionRenglon.anulado;
+            cotizacion.status = cotizacionRenglon.status;
+            cotizacion.total_bruto = cotizacionRenglon.total_bruto;
+            cotizacion.monto_imp = cotizacionRenglon.monto_imp;
+            cotizacion.monto_imp2 = cotizacionRenglon.monto_imp2;
+            cotizacion.monto_imp3 = cotizacionRenglon.monto_imp3;
+            cotizacion.total_neto = cotizacionRenglon.total_neto;
+            cotizacion.saldo = cotizacionRenglon.saldo;
+            cotizacion.importado_web = cotizacionRenglon.importado_web;
+            cotizacion.importado_pro = cotizacionRenglon.importado_pro;
+            cotizacion.Diasvencimiento = cotizacionRenglon.Diasvencimiento;
+            cotizacion.nro_pedido = cotizacionRenglon.nro_pedido;
+            cotizacion.vencida = cotizacionRenglon.vencida;
+            cotizacion.id_clientes = cotizacionRenglon.id_clientes;
+            cotizacion.idtransporte = cotizacionRenglon.idtransporte;
+            cotizacion.id_vendedor = cotizacionRenglon.id_vendedor;
+            cotizacion.id_condicion = cotizacionRenglon.id_condicion;
+
+            ICollection<AdCotizacionreg> renglonesCotizacion = cotizacionRenglon.RenglonesCotizacion;
+
+            int numeroRegistrosAfectados = 0;
+
+            var instanciaControladorRenglones = new APIRenglonCotizacionController();
+            decimal baseNeta = 0, valorIva = 0, totalMontoImpuesto = 0, totalMontoNeto = 0;
+
+            foreach (AdCotizacionreg renglon in renglonesCotizacion)
+            {
+                baseNeta = (decimal)(renglon.total_art * renglon.prec_vta);
+                valorIva = (decimal)(renglon.porc_imp);
+                renglon.monto_imp = baseNeta * (valorIva / 100);
+                renglon.reng_neto = baseNeta + renglon.monto_imp;
+                totalMontoImpuesto += (decimal)renglon.monto_imp;
+                totalMontoNeto += (decimal)renglon.reng_neto;
+                numeroRegistrosAfectados += instanciaControladorRenglones.CrearRenglonCotizacion(renglon);
+            }
+
+            cotizacion.total_bruto = totalMontoNeto - totalMontoImpuesto;
+            cotizacion.monto_imp = totalMontoImpuesto;
+            cotizacion.total_neto = totalMontoNeto;
+            cotizacion.saldo = totalMontoNeto;
+
+            numeroRegistrosAfectados += this.CrearCotizacion(cotizacion);
+
+            return numeroRegistrosAfectados;
         }
 
         // POST: api/APICotizacion

@@ -1,6 +1,7 @@
 namespace PagonetCore.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -110,5 +111,8 @@ namespace PagonetCore.Models
         public virtual Advendedor Vendedor { get; set; }
 
         public virtual Adcondiciondepago CondicionDePago { get; set; }
+
+        [NotMapped]
+        public virtual ICollection<AdCotizacionreg> RenglonesCotizacion { get; set; }
     }
 }

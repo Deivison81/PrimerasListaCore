@@ -38,9 +38,6 @@ namespace PagonetCore.DAL
 		public DbSet<PagonetCore.Models.Adzona> Zonas { get; set; }
 		public DbSet<PagonetCore.Models.StockAlma> StockAlmacenes { get; set; }
 		public DbSet<PagonetCore.Models.Tasa_IVA> TasasIVA { get; set; }
-		// Se deja comentado para que no cree la Tabla en la BD. Esto solo se utilizará como 
-		// modelo intermedio para crear Cotizaciones con Renglones en una misma llamada a la API.
-		//public DbSet<PagonetCore.Models.CotizacionRenglon> CotizacionRenglon { get; set; }
 		public virtual DbSet<AdCobros> Cobros { get; set; }
 		public virtual DbSet<AdRenglonesCobro> RenglonesCobro { get; set; }
 		public virtual DbSet<AdMoneda> Monedas { get; set; }
@@ -64,10 +61,10 @@ namespace PagonetCore.DAL
 			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.Cliente).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.Transporte).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.Vendedor).WithMany().WillCascadeOnDelete(false);
-			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.CondicionDePago);
+            modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.CondicionDePago);
 
-			// Claves Foráneas para Renglones de Cotización.
-			modelBuilder.Entity<AdCotizacionreg>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
+            // Claves Foráneas para Renglones de Cotización.
+            modelBuilder.Entity<AdCotizacionreg>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<AdCotizacionreg>().HasRequired(c => c.Almacen).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<AdCotizacionreg>().HasRequired(c => c.PrecioArticulo).WithMany().WillCascadeOnDelete(false);
 

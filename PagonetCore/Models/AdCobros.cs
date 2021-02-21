@@ -43,5 +43,11 @@ namespace PagonetCore.Models
 
         [StringLength(1)]
         public string importado_pro { get; set; }
+
+        [NotMapped]
+        public virtual ICollection<AdRenglonesCobro> RenglonesCobro { get; set; }
+
+        [NotMapped]
+        public virtual ICollection<AdFormasCobro> FormasCobro { get; set; }
     }
 }

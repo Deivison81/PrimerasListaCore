@@ -7,23 +7,28 @@ namespace PagonetCore.Models
         [Key]
         public int StockAlmacenID { get; set; }
 
+        [StringLength(30)]
         [Display(Name = "Código Almacén")]
-        public char co_alma { get; set; }
+        public string co_alma { get; set; }
 
+        [StringLength(30)]
         [Display(Name = "Código Artículo")]
-        public char co_art { get; set; }
+        public string co_art { get; set; }
 
+        [StringLength(30)]
         [Display(Name = "Tipo")]
-        public char tipo { get; set; }
+        public string tipo { get; set; }
 
         [Display(Name = "Stock")]
         public decimal stock { get; set; }
 
+        [StringLength(1)]
         [Display(Name = "¿Importado Web?")]
-        public char importado_web { get; set; }
+        public string importado_web { get; set; }
 
+        [StringLength(1)]
         [Display(Name = "¿Importado Profit?")]
-        public char importado_pro { get; set; }
+        public string importado_pro { get; set; }
 
         // Claves Foráneas.
         
