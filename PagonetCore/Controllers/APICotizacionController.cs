@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -110,9 +111,9 @@ namespace PagonetCore.Controllers
             cotizacion.co_mone = cotizacionRenglon.co_mone;
             cotizacion.co_ven = cotizacionRenglon.co_ven;
             cotizacion.co_cond = cotizacionRenglon.co_cond;
-            cotizacion.fec_emis = cotizacionRenglon.fec_emis;
-            cotizacion.fec_venc = cotizacionRenglon.fec_venc;
-            cotizacion.fec_reg = cotizacionRenglon.fec_reg;
+            cotizacion.fec_emis = DateTime.Now;
+            cotizacion.fec_venc = cotizacion.fec_emis.Value.AddDays((double) cotizacionRenglon.Diasvencimiento);
+            cotizacion.fec_reg = DateTime.Now;
             cotizacion.anulado = cotizacionRenglon.anulado;
             cotizacion.status = cotizacionRenglon.status;
             cotizacion.total_bruto = cotizacionRenglon.total_bruto;
@@ -138,6 +139,12 @@ namespace PagonetCore.Controllers
             var instanciaControladorRenglones = new APIRenglonCotizacionController();
             decimal baseNeta = 0, valorIva = 0, totalMontoImpuesto = 0, totalMontoNeto = 0;
 
+            decimal tasaDelDia = db.Tasas
+                .Where(t => t.fecha.Value.CompareTo(cotizacion.fec_emis.Value) <= 0)
+                .Select(t => (decimal) t.tasa_v)
+                .ToList()
+                .LastOrDefault();
+
             foreach (AdCotizacionreg renglon in renglonesCotizacion)
             {
                 baseNeta = (decimal)(renglon.total_art * renglon.prec_vta);
@@ -146,6 +153,8 @@ namespace PagonetCore.Controllers
                 renglon.reng_neto = baseNeta + renglon.monto_imp;
                 totalMontoImpuesto += (decimal)renglon.monto_imp;
                 totalMontoNeto += (decimal)renglon.reng_neto;
+                renglon.tasa_v = tasaDelDia;
+                renglon.prec_vta_om = (tasaDelDia != 0) ? (renglon.prec_vta / tasaDelDia) : null;
                 numeroRegistrosAfectados += instanciaControladorRenglones.CrearRenglonCotizacion(renglon);
             }
 
@@ -154,7 +163,7 @@ namespace PagonetCore.Controllers
             cotizacion.total_neto = totalMontoNeto;
             cotizacion.saldo = totalMontoNeto;
 
-            numeroRegistrosAfectados += this.CrearCotizacion(cotizacion);
+            numeroRegistrosAfectados += CrearCotizacion(cotizacion);
 
             return numeroRegistrosAfectados;
         }
@@ -167,6 +176,10 @@ namespace PagonetCore.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            adcotizacion.fec_emis = DateTime.Now;
+            adcotizacion.fec_venc = adcotizacion.fec_emis.Value.AddDays((double)adcotizacion.Diasvencimiento);
+            adcotizacion.fec_reg = DateTime.Now;
 
             db.Cotizaciones.Add(adcotizacion);
             db.SaveChanges();

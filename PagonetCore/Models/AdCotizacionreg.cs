@@ -47,6 +47,9 @@ namespace PagonetCore.Models
         [Display(Name = "Precio de Venta OM")]
         public decimal? prec_vta_om { get; set; }
 
+        [Display(Name = "Tasa del Día")]
+        public decimal? tasa_v { get; set; }
+
         [StringLength(1)]
         [Display(Name = "Tipo de Impuesto")]
         public string tipo_imp { get; set; }

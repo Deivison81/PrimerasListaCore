@@ -40,7 +40,6 @@ namespace PagonetCore.Controllers
         }
 
         // PUT: api/APIRenglonCotizacion/5
-        [ResponseType(typeof(void))]
         public IHttpActionResult PutAdCotizacionreg(int id, AdCotizacionreg adCotizacionreg)
         {
             if (!ModelState.IsValid)
@@ -50,13 +49,35 @@ namespace PagonetCore.Controllers
 
             if (id != adCotizacionreg.id_doc_num)
             {
-                return BadRequest();
+                return BadRequest("id_doc_num no coincide con el ID del parámetro del URL.");
             }
 
             db.Entry(adCotizacionreg).State = EntityState.Modified;
 
             try
             {
+                DateTime fechaEmisionCotizacion = db.Cotizaciones
+                .Where(c => c.doc_num == adCotizacionreg.doc_num)
+                .Select(c => (DateTime)c.fec_emis)
+                .FirstOrDefault();
+
+                decimal baseNeta = 0, valorIva = 0, totalMontoImpuesto = 0, totalMontoNeto = 0;
+
+                decimal tasaDelDia = db.Tasas
+                    .Where(t => t.fecha.Value.CompareTo(fechaEmisionCotizacion) <= 0)
+                    .Select(t => (decimal)t.tasa_v)
+                    .ToList()
+                    .LastOrDefault();
+
+                baseNeta = (decimal)(adCotizacionreg.total_art * adCotizacionreg.prec_vta);
+                valorIva = (decimal)(adCotizacionreg.porc_imp);
+                adCotizacionreg.monto_imp = baseNeta * (valorIva / 100);
+                adCotizacionreg.reng_neto = baseNeta + adCotizacionreg.monto_imp;
+                totalMontoImpuesto += (decimal)adCotizacionreg.monto_imp;
+                totalMontoNeto += (decimal)adCotizacionreg.reng_neto;
+                adCotizacionreg.tasa_v = tasaDelDia;
+                adCotizacionreg.prec_vta_om = (tasaDelDia != 0) ? (adCotizacionreg.prec_vta / tasaDelDia) : null;
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -86,6 +107,28 @@ namespace PagonetCore.Controllers
                 return 0;
             }
 
+            DateTime fechaEmisionCotizacion = db.Cotizaciones
+                .Where(c => c.doc_num == adCotizacionreg.doc_num)
+                .Select(c => (DateTime)c.fec_emis)
+                .FirstOrDefault();
+
+            decimal baseNeta = 0, valorIva = 0, totalMontoImpuesto = 0, totalMontoNeto = 0;
+
+            decimal tasaDelDia = db.Tasas
+                .Where(t => t.fecha.Value.CompareTo(fechaEmisionCotizacion) <= 0)
+                .Select(t => (decimal)t.tasa_v)
+                .ToList()
+                .LastOrDefault();
+
+            baseNeta = (decimal)(adCotizacionreg.total_art * adCotizacionreg.prec_vta);
+            valorIva = (decimal)(adCotizacionreg.porc_imp);
+            adCotizacionreg.monto_imp = baseNeta * (valorIva / 100);
+            adCotizacionreg.reng_neto = baseNeta + adCotizacionreg.monto_imp;
+            totalMontoImpuesto += (decimal)adCotizacionreg.monto_imp;
+            totalMontoNeto += (decimal)adCotizacionreg.reng_neto;
+            adCotizacionreg.tasa_v = tasaDelDia;
+            adCotizacionreg.prec_vta_om = (tasaDelDia != 0) ? (adCotizacionreg.prec_vta / tasaDelDia) : null;
+
             db.RenglonesCotizacion.Add(adCotizacionreg);
             db.SaveChanges();
 
@@ -100,6 +143,28 @@ namespace PagonetCore.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            DateTime fechaEmisionCotizacion = db.Cotizaciones
+                .Where(c => c.doc_num == adCotizacionreg.doc_num)
+                .Select(c => (DateTime)c.fec_emis)
+                .FirstOrDefault();
+
+            decimal baseNeta = 0, valorIva = 0, totalMontoImpuesto = 0, totalMontoNeto = 0;
+
+            decimal tasaDelDia = db.Tasas
+                .Where(t => t.fecha.Value.CompareTo(fechaEmisionCotizacion) <= 0)
+                .Select(t => (decimal)t.tasa_v)
+                .ToList()
+                .LastOrDefault();
+
+            baseNeta = (decimal)(adCotizacionreg.total_art * adCotizacionreg.prec_vta);
+            valorIva = (decimal)(adCotizacionreg.porc_imp);
+            adCotizacionreg.monto_imp = baseNeta * (valorIva / 100);
+            adCotizacionreg.reng_neto = baseNeta + adCotizacionreg.monto_imp;
+            totalMontoImpuesto += (decimal)adCotizacionreg.monto_imp;
+            totalMontoNeto += (decimal)adCotizacionreg.reng_neto;
+            adCotizacionreg.tasa_v = tasaDelDia;
+            adCotizacionreg.prec_vta_om = (tasaDelDia != 0) ? (adCotizacionreg.prec_vta / tasaDelDia) : null;
 
             db.RenglonesCotizacion.Add(adCotizacionreg);
             db.SaveChanges();

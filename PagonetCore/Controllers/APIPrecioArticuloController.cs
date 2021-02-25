@@ -54,6 +54,27 @@ namespace PagonetCore.Controllers
 
             try
             {
+                decimal tasaDelDia = db.Tasas
+                    .Where(t => t.fecha.Value.CompareTo(adpreciosart.desde.Value) <= 0)
+                    .Select(t => (decimal)t.tasa_v)
+                    .ToList()
+                    .LastOrDefault();
+
+                // TODO: Validar en el modelo.
+                if (adpreciosart.precioOm.Equals("1"))
+                {
+                    adpreciosart.tasa_v = tasaDelDia;
+                    adpreciosart.montoadi1 = (tasaDelDia != 0) ? (adpreciosart.monto / tasaDelDia) : 0;
+                }
+                else if (adpreciosart.precioOm.Equals("0"))
+                {
+                    adpreciosart.tasa_v = null;
+                }
+                else
+                {
+                    return BadRequest("precioOm debe ser un string con 0 o 1.");
+                }
+
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -78,6 +99,25 @@ namespace PagonetCore.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            decimal tasaDelDia = db.Tasas
+                .Where(t => t.fecha.Value.CompareTo(adpreciosart.desde.Value) <= 0)
+                .Select(t => (decimal)t.tasa_v)
+                .ToList()
+                .LastOrDefault();
+
+            // TODO: Validar en el modelo.
+            if(adpreciosart.precioOm.Equals("1"))
+            {
+                adpreciosart.tasa_v = tasaDelDia;
+                adpreciosart.montoadi1 = (tasaDelDia != 0) ? (adpreciosart.monto / tasaDelDia) : 0;
+            } else if(adpreciosart.precioOm.Equals("0"))
+            {
+                adpreciosart.tasa_v = null;
+            } else
+            {
+                return BadRequest("precioOm debe ser un string con 0 o 1.");
             }
 
             db.PreciosArticulo.Add(adpreciosart);
