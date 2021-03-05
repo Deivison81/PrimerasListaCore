@@ -224,6 +224,14 @@
     <Compile Include="Migrations\202102250313574_AgregarTasas.Designer.cs">
       <DependentUpon>202102250313574_AgregarTasas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103051642110_KeyRenglonesCobro.cs" />
+    <Compile Include="Migrations\202103051642110_KeyRenglonesCobro.Designer.cs">
+      <DependentUpon>202103051642110_KeyRenglonesCobro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103051656346_KeyFormasCobro.cs" />
+    <Compile Include="Migrations\202103051656346_KeyFormasCobro.Designer.cs">
+      <DependentUpon>202103051656346_KeyFormasCobro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
     <Compile Include="Models\AdArticulo.cs" />
@@ -966,6 +974,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102250313574_AgregarTasas.resx">
       <DependentUpon>202102250313574_AgregarTasas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103051642110_KeyRenglonesCobro.resx">
+      <DependentUpon>202103051642110_KeyRenglonesCobro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103051656346_KeyFormasCobro.resx">
+      <DependentUpon>202103051656346_KeyFormasCobro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

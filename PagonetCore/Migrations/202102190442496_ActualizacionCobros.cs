@@ -31,9 +31,9 @@ namespace PagonetCore.Migrations
                 "dbo.AdFormasCobro",
                 c => new
                     {
-                        forma_cob_id = c.Int(nullable: false),
+                        forma_cob_id = c.Int(nullable: false, identity: true),
                         nro_reng = c.Int(nullable: false),
-                        id_cob = c.Int(),
+                        id_cob = c.Int(nullable: false),
                         cob_num_pro = c.String(maxLength: 15, fixedLength: true),
                         co_ban = c.String(maxLength: 6, fixedLength: true, unicode: false),
                         forma_pag = c.String(maxLength: 2, fixedLength: true, unicode: false),
@@ -46,7 +46,7 @@ namespace PagonetCore.Migrations
                         importado_web = c.String(maxLength: 1, fixedLength: true),
                         importado_pro = c.String(maxLength: 1, fixedLength: true),
                     })
-                .PrimaryKey(t => new { t.forma_cob_id, t.nro_reng });
+                .PrimaryKey(t => t.forma_cob_id);
             
             CreateTable(
                 "dbo.AdMoneda",
@@ -115,9 +115,9 @@ namespace PagonetCore.Migrations
                 "dbo.AdRenglonesCobro",
                 c => new
                     {
-                        idrencob = c.Int(nullable: false),
+                        idrencob = c.Int(nullable: false, identity: true),
                         reng_num = c.Int(nullable: false),
-                        id_cob = c.Int(nullable: false, identity: true),
+                        id_cob = c.Int(nullable: false),
                         cob_num_pro = c.String(nullable: false, maxLength: 15, fixedLength: true),
                         co_tipo_doc = c.String(maxLength: 6, fixedLength: true, unicode: false),
                         nro_doc = c.String(maxLength: 20, fixedLength: true, unicode: false),
