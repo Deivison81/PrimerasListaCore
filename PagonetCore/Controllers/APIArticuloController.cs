@@ -63,7 +63,7 @@ namespace PagonetCore.Controllers
                         precio4 = precio.montoadi4,
                         precio5 = precio.montoadi5,
                         precioOM = precio.precioOm,
-                        montoiva = precio.monto * (IVA / 100),
+                        montoiva = (precio.monto * IVA) / 100,
                         porcentaje = IVA,
                         idimagen = img.id_imgart,
                         adtip = img.tip,
