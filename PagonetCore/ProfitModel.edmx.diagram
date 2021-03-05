@@ -56,6 +56,12 @@
         <AssociationConnector Association="ProfitModel.FK_saPedidoVenta_saVendedor" />
         <AssociationConnector Association="ProfitModel.FK_saPedidoVentaReng_saPedidoVenta" />
         <AssociationConnector Association="ProfitModel.FK_saVendedor_saZona" />
+        <EntityTypeShape EntityType="ProfitModel.saMoneda" Width="1.5" PointX="0.75" PointY="14.625" />
+        <AssociationConnector Association="ProfitModel.FK_saCliente_saMoneda" />
+        <AssociationConnector Association="ProfitModel.FK_saCotizacionCliente_saMoneda" />
+        <AssociationConnector Association="ProfitModel.FK_saPais_saMoneda" />
+        <AssociationConnector Association="ProfitModel.FK_saPedidoVenta_saMoneda" />
+        <AssociationConnector Association="ProfitModel.FK_saTasa_saMoneda" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

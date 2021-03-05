@@ -12,17 +12,22 @@ namespace PagonetCore
     using System;
     using System.Collections.Generic;
     
-    public partial class saPais
+    public partial class saMoneda
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public saPais()
+        public saMoneda()
         {
             this.saCliente = new HashSet<saCliente>();
+            this.saCotizacionCliente = new HashSet<saCotizacionCliente>();
+            this.saPais = new HashSet<saPais>();
+            this.saPedidoVenta = new HashSet<saPedidoVenta>();
+            this.saTasa = new HashSet<saTasa>();
         }
     
-        public string co_pais { get; set; }
-        public string pais_des { get; set; }
         public string co_mone { get; set; }
+        public string mone_des { get; set; }
+        public decimal cambio { get; set; }
+        public bool relacion { get; set; }
         public string campo1 { get; set; }
         public string campo2 { get; set; }
         public string campo3 { get; set; }
@@ -44,6 +49,13 @@ namespace PagonetCore
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saCliente> saCliente { get; set; }
-        public virtual saMoneda saMoneda { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saCotizacionCliente> saCotizacionCliente { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saPais> saPais { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saPedidoVenta> saPedidoVenta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saTasa> saTasa { get; set; }
     }
 }

@@ -73,25 +73,10 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: api/APIPais
         // POST: Adpais/guardarDatos
         [HttpPost]
         [Route("Adpais/guardarDatos")]
-        [ResponseType(typeof(int))]
-        public int CrearPais(Adpais adpais)
-        {
-            if (!ModelState.IsValid)
-            {
-                return 0;
-            }
-
-            db.Paises.Add(adpais);
-            db.SaveChanges();
-
-            return 1;
-        }
-
-        // POST: api/APIPais
         [ResponseType(typeof(Adpais))]
         public IHttpActionResult PostAdpais(Adpais adpais)
         {

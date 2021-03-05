@@ -86,5 +86,6 @@ namespace PagonetCore
         public virtual saVendedor saVendedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saCotizacionClienteReng> saCotizacionClienteReng { get; set; }
+        public virtual saMoneda saMoneda { get; set; }
     }
 }

@@ -464,6 +464,33 @@
           <Property Name="validador" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
+        <EntityType Name="saMoneda">
+          <Key>
+            <PropertyRef Name="co_mone" />
+          </Key>
+          <Property Name="co_mone" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="mone_des" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="cambio" Type="decimal" Precision="18" Scale="5" Nullable="false" />
+          <Property Name="relacion" Type="bit" Nullable="false" />
+          <Property Name="campo1" Type="varchar" MaxLength="60" />
+          <Property Name="campo2" Type="varchar" MaxLength="60" />
+          <Property Name="campo3" Type="varchar" MaxLength="60" />
+          <Property Name="campo4" Type="varchar" MaxLength="60" />
+          <Property Name="campo5" Type="varchar" MaxLength="60" />
+          <Property Name="campo6" Type="varchar" MaxLength="60" />
+          <Property Name="campo7" Type="varchar" MaxLength="60" />
+          <Property Name="campo8" Type="varchar" MaxLength="60" />
+          <Property Name="co_us_in" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="co_sucu_in" Type="char" MaxLength="6" />
+          <Property Name="fe_us_in" Type="datetime" Nullable="false" />
+          <Property Name="co_us_mo" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="co_sucu_mo" Type="char" MaxLength="6" />
+          <Property Name="fe_us_mo" Type="datetime" Nullable="false" />
+          <Property Name="revisado" Type="char" MaxLength="1" />
+          <Property Name="trasnfe" Type="char" MaxLength="1" />
+          <Property Name="validador" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
         <EntityType Name="saPais">
           <Key>
             <PropertyRef Name="co_pais" />
@@ -911,6 +938,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_saCliente_saMoneda">
+          <End Role="saMoneda" Type="Self.saMoneda" Multiplicity="0..1" />
+          <End Role="saCliente" Type="Self.saCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saCliente">
+              <PropertyRef Name="co_mone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_saCliente_saPais">
           <End Role="saPais" Type="Self.saPais" Multiplicity="0..1" />
           <End Role="saCliente" Type="Self.saCliente" Multiplicity="*" />
@@ -1007,6 +1046,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_saCotizacionCliente_saMoneda">
+          <End Role="saMoneda" Type="Self.saMoneda" Multiplicity="1" />
+          <End Role="saCotizacionCliente" Type="Self.saCotizacionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saCotizacionCliente">
+              <PropertyRef Name="co_mone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_saCotizacionCliente_saTransporte">
           <End Role="saTransporte" Type="Self.saTransporte" Multiplicity="1" />
           <End Role="saCotizacionCliente" Type="Self.saCotizacionCliente" Multiplicity="*" />
@@ -1057,6 +1108,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_saPais_saMoneda">
+          <End Role="saMoneda" Type="Self.saMoneda" Multiplicity="1" />
+          <End Role="saPais" Type="Self.saPais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saPais">
+              <PropertyRef Name="co_mone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_saPedidoVenta_saCliente">
           <End Role="saCliente" Type="Self.saCliente" Multiplicity="1" />
           <End Role="saPedidoVenta" Type="Self.saPedidoVenta" Multiplicity="*" />
@@ -1090,6 +1153,18 @@
             </Principal>
             <Dependent Role="saPedidoVenta">
               <PropertyRef Name="co_cta_ingr_egr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_saPedidoVenta_saMoneda">
+          <End Role="saMoneda" Type="Self.saMoneda" Multiplicity="1" />
+          <End Role="saPedidoVenta" Type="Self.saPedidoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saPedidoVenta">
+              <PropertyRef Name="co_mone" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1190,6 +1265,20 @@
             </Principal>
             <Dependent Role="saStockAlmacen">
               <PropertyRef Name="co_art" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_saTasa_saMoneda">
+          <End Role="saMoneda" Type="Self.saMoneda" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="saTasa" Type="Self.saTasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saTasa">
+              <PropertyRef Name="co_mone" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1530,6 +1619,29 @@
           <Parameter Name="sCampos" Type="varchar(max)" Mode="In" />
           <Parameter Name="srevisado" Type="char" Mode="In" />
           <Parameter Name="strasnfe" Type="char" Mode="In" />
+          <Parameter Name="tsValidador" Type="timestamp" Mode="In" />
+          <Parameter Name="gRowguid" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="pActualizarMoneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sCo_Mone" Type="char" Mode="In" />
+          <Parameter Name="sCo_MoneOri" Type="char" Mode="In" />
+          <Parameter Name="sMone_Des" Type="varchar" Mode="In" />
+          <Parameter Name="deCambio" Type="decimal" Mode="In" />
+          <Parameter Name="bRelacion" Type="bit" Mode="In" />
+          <Parameter Name="sCampo1" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo2" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo3" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo4" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo5" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo6" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo7" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo8" Type="varchar" Mode="In" />
+          <Parameter Name="sCo_Us_Mo" Type="char" Mode="In" />
+          <Parameter Name="sCo_Sucu_Mo" Type="char" Mode="In" />
+          <Parameter Name="sMaquina" Type="varchar" Mode="In" />
+          <Parameter Name="sCampos" Type="varchar(max)" Mode="In" />
+          <Parameter Name="sRevisado" Type="char" Mode="In" />
+          <Parameter Name="sTrasnfe" Type="char" Mode="In" />
           <Parameter Name="tsValidador" Type="timestamp" Mode="In" />
           <Parameter Name="gRowguid" Type="uniqueidentifier" Mode="In" />
         </Function>
@@ -2213,6 +2325,25 @@
           <Parameter Name="srevisado" Type="char" Mode="In" />
           <Parameter Name="strasnfe" Type="char" Mode="In" />
         </Function>
+        <Function Name="pInsertarMoneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sCo_Mone" Type="char" Mode="In" />
+          <Parameter Name="sMone_Des" Type="varchar" Mode="In" />
+          <Parameter Name="deCambio" Type="decimal" Mode="In" />
+          <Parameter Name="bRelacion" Type="bit" Mode="In" />
+          <Parameter Name="sCampo1" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo2" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo3" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo4" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo5" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo6" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo7" Type="varchar" Mode="In" />
+          <Parameter Name="sCampo8" Type="varchar" Mode="In" />
+          <Parameter Name="sCo_Us_In" Type="char" Mode="In" />
+          <Parameter Name="sCo_Sucu_In" Type="char" Mode="In" />
+          <Parameter Name="sMaquina" Type="varchar" Mode="In" />
+          <Parameter Name="sRevisado" Type="char" Mode="In" />
+          <Parameter Name="sTrasnfe" Type="char" Mode="In" />
+        </Function>
         <Function Name="pInsertarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="sCo_Pais" Type="char" Mode="In" />
           <Parameter Name="sPais_Des" Type="varchar" Mode="In" />
@@ -2515,6 +2646,9 @@
           <Parameter Name="sCo_Art" Type="char" Mode="In" />
           <Parameter Name="sTip" Type="char" Mode="In" />
         </Function>
+        <Function Name="pSeleccionarMoneda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sCo_Mone" Type="char" Mode="In" />
+        </Function>
         <Function Name="pSeleccionarPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="sCo_Pais" Type="char" Mode="In" />
         </Function>
@@ -2606,6 +2740,7 @@
           <EntitySet Name="saCotizacionCliente" EntityType="Self.saCotizacionCliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="saCotizacionClienteReng" EntityType="Self.saCotizacionClienteReng" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="saCuentaIngEgr" EntityType="Self.saCuentaIngEgr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="saMoneda" EntityType="Self.saMoneda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="saPais" EntityType="Self.saPais" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="saPedidoVenta" EntityType="Self.saPedidoVenta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="saPedidoVentaReng" EntityType="Self.saPedidoVentaReng" Schema="dbo" store:Type="Tables" />
@@ -2641,6 +2776,10 @@
             <End Role="saCuentaIngEgr" EntitySet="saCuentaIngEgr" />
             <End Role="saCliente" EntitySet="saCliente" />
           </AssociationSet>
+          <AssociationSet Name="FK_saCliente_saMoneda" Association="Self.FK_saCliente_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saCliente" EntitySet="saCliente" />
+          </AssociationSet>
           <AssociationSet Name="FK_saCliente_saPais" Association="Self.FK_saCliente_saPais">
             <End Role="saPais" EntitySet="saPais" />
             <End Role="saCliente" EntitySet="saCliente" />
@@ -2673,6 +2812,10 @@
             <End Role="saCuentaIngEgr" EntitySet="saCuentaIngEgr" />
             <End Role="saCotizacionCliente" EntitySet="saCotizacionCliente" />
           </AssociationSet>
+          <AssociationSet Name="FK_saCotizacionCliente_saMoneda" Association="Self.FK_saCotizacionCliente_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saCotizacionCliente" EntitySet="saCotizacionCliente" />
+          </AssociationSet>
           <AssociationSet Name="FK_saCotizacionCliente_saTransporte" Association="Self.FK_saCotizacionCliente_saTransporte">
             <End Role="saTransporte" EntitySet="saTransporte" />
             <End Role="saCotizacionCliente" EntitySet="saCotizacionCliente" />
@@ -2689,6 +2832,10 @@
             <End Role="saCotizacionCliente" EntitySet="saCotizacionCliente" />
             <End Role="saCotizacionClienteReng" EntitySet="saCotizacionClienteReng" />
           </AssociationSet>
+          <AssociationSet Name="FK_saPais_saMoneda" Association="Self.FK_saPais_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saPais" EntitySet="saPais" />
+          </AssociationSet>
           <AssociationSet Name="FK_saPedidoVenta_saCliente" Association="Self.FK_saPedidoVenta_saCliente">
             <End Role="saCliente" EntitySet="saCliente" />
             <End Role="saPedidoVenta" EntitySet="saPedidoVenta" />
@@ -2699,6 +2846,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_saPedidoVenta_saCuentaIngEgr" Association="Self.FK_saPedidoVenta_saCuentaIngEgr">
             <End Role="saCuentaIngEgr" EntitySet="saCuentaIngEgr" />
+            <End Role="saPedidoVenta" EntitySet="saPedidoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_saPedidoVenta_saMoneda" Association="Self.FK_saPedidoVenta_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
             <End Role="saPedidoVenta" EntitySet="saPedidoVenta" />
           </AssociationSet>
           <AssociationSet Name="FK_saPedidoVenta_saTransporte" Association="Self.FK_saPedidoVenta_saTransporte">
@@ -2732,6 +2883,10 @@
           <AssociationSet Name="FK_saStockAlmacen_saArticulo" Association="Self.FK_saStockAlmacen_saArticulo">
             <End Role="saArticulo" EntitySet="saArticulo" />
             <End Role="saStockAlmacen" EntitySet="saStockAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_saTasa_saMoneda" Association="Self.FK_saTasa_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saTasa" EntitySet="saTasa" />
           </AssociationSet>
           <AssociationSet Name="FK_saVendedor_saZona" Association="Self.FK_saVendedor_saZona">
             <End Role="saZona" EntitySet="saZona" />
@@ -4206,41 +4361,41 @@
             <Parameter Name="sco_zon" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarArticulo" ReturnType="Collection(ProfitModel.pSeleccionarArticulo_Result)">
-            <Parameter Name="sCo_Art" Mode="In" Type="String" />
+          <Parameter Name="sCo_Art" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarBanco" ReturnType="Collection(ProfitModel.pSeleccionarBanco_Result)">
-            <Parameter Name="sCo_Ban" Mode="In" Type="String" />
+          <Parameter Name="sCo_Ban" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarCliente" ReturnType="Collection(ProfitModel.pSeleccionarCliente_Result)">
-            <Parameter Name="sCo_Cli" Mode="In" Type="String" />
+          <Parameter Name="sCo_Cli" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarCondicionPago" ReturnType="Collection(ProfitModel.pSeleccionarCondicionPago_Result)">
-            <Parameter Name="sCo_Cond" Mode="In" Type="String" />
+          <Parameter Name="sCo_Cond" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarCotizacionCliente" ReturnType="Collection(ProfitModel.pSeleccionarCotizacionCliente_Result)">
-            <Parameter Name="sDoc_Num" Mode="In" Type="String" />
+          <Parameter Name="sDoc_Num" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarCuentaIngreso" ReturnType="Collection(ProfitModel.pSeleccionarCuentaIngreso_Result)">
-            <Parameter Name="sCo_Cta_Ingr_Egr" Mode="In" Type="String" />
+          <Parameter Name="sCo_Cta_Ingr_Egr" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarImagenArticulo" ReturnType="Collection(ProfitModel.pSeleccionarImagenArticulo_Result)">
             <Parameter Name="sCo_Art" Mode="In" Type="String" />
             <Parameter Name="sTip" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarPais" ReturnType="Collection(ProfitModel.pSeleccionarPais_Result)">
-            <Parameter Name="sCo_Pais" Mode="In" Type="String" />
+          <Parameter Name="sCo_Pais" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarPrecioArticulo" ReturnType="Collection(ProfitModel.pSeleccionarPrecioArticulo_Result)">
-            <Parameter Name="sco_art" Mode="In" Type="String" />
+          <Parameter Name="sco_art" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarRenglonesCotizacionCliente" ReturnType="Collection(ProfitModel.pSeleccionarRenglonesCotizacionCliente_Result)">
-            <Parameter Name="sDoc_Num" Mode="In" Type="String" />
+          <Parameter Name="sDoc_Num" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarRenglonesPedidoVenta" ReturnType="Collection(ProfitModel.pSeleccionarRenglonesPedidoVenta_Result)">
-            <Parameter Name="sDoc_Num" Mode="In" Type="String" />
+          <Parameter Name="sDoc_Num" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarSegmento" ReturnType="Collection(ProfitModel.pSeleccionarSegmento_Result)">
-            <Parameter Name="sCo_Seg" Mode="In" Type="String" />
+          <Parameter Name="sCo_Seg" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarSerialesECantXDoc" ReturnType="Collection(Int32)">
             <Parameter Name="sTipo_Doc" Mode="In" Type="String" />
@@ -4293,16 +4448,82 @@
             <Parameter Name="gRowguid" Mode="In" Type="Guid" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarTasa" ReturnType="Collection(ProfitModel.pSeleccionarTasa_Result)">
-            <Parameter Name="sCo_Mone" Mode="In" Type="String" />
+          <Parameter Name="sCo_Mone" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarTipoCliente" ReturnType="Collection(ProfitModel.pSeleccionarTipoCliente_Result)">
-            <Parameter Name="sTip_Cli" Mode="In" Type="String" />
+          <Parameter Name="sTip_Cli" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarTransporte" ReturnType="Collection(ProfitModel.pSeleccionarTransporte_Result)">
-            <Parameter Name="sCo_Tran" Mode="In" Type="String" />
+          <Parameter Name="sCo_Tran" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="pSeleccionarVendedor" ReturnType="Collection(ProfitModel.pSeleccionarVendedor_Result)">
-            <Parameter Name="sCo_Ven" Mode="In" Type="String" />
+          <Parameter Name="sCo_Ven" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="saMoneda" EntityType="ProfitModel.saMoneda" />
+          <AssociationSet Name="FK_saCliente_saMoneda" Association="ProfitModel.FK_saCliente_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saCliente" EntitySet="saCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_saCotizacionCliente_saMoneda" Association="ProfitModel.FK_saCotizacionCliente_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saCotizacionCliente" EntitySet="saCotizacionCliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_saPais_saMoneda" Association="ProfitModel.FK_saPais_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saPais" EntitySet="saPais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_saPedidoVenta_saMoneda" Association="ProfitModel.FK_saPedidoVenta_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saPedidoVenta" EntitySet="saPedidoVenta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_saTasa_saMoneda" Association="ProfitModel.FK_saTasa_saMoneda">
+            <End Role="saMoneda" EntitySet="saMoneda" />
+            <End Role="saTasa" EntitySet="saTasa" />
+          </AssociationSet>
+          <FunctionImport Name="pActualizarMoneda" ReturnType="Collection(ProfitModel.pActualizarMoneda_Result)">
+            <Parameter Name="sCo_Mone" Mode="In" Type="String" />
+            <Parameter Name="sCo_MoneOri" Mode="In" Type="String" />
+            <Parameter Name="sMone_Des" Mode="In" Type="String" />
+            <Parameter Name="deCambio" Mode="In" Type="Decimal" />
+            <Parameter Name="bRelacion" Mode="In" Type="Boolean" />
+            <Parameter Name="sCampo1" Mode="In" Type="String" />
+            <Parameter Name="sCampo2" Mode="In" Type="String" />
+            <Parameter Name="sCampo3" Mode="In" Type="String" />
+            <Parameter Name="sCampo4" Mode="In" Type="String" />
+            <Parameter Name="sCampo5" Mode="In" Type="String" />
+            <Parameter Name="sCampo6" Mode="In" Type="String" />
+            <Parameter Name="sCampo7" Mode="In" Type="String" />
+            <Parameter Name="sCampo8" Mode="In" Type="String" />
+            <Parameter Name="sCo_Us_Mo" Mode="In" Type="String" />
+            <Parameter Name="sCo_Sucu_Mo" Mode="In" Type="String" />
+            <Parameter Name="sMaquina" Mode="In" Type="String" />
+            <Parameter Name="sCampos" Mode="In" Type="String" />
+            <Parameter Name="sRevisado" Mode="In" Type="String" />
+            <Parameter Name="sTrasnfe" Mode="In" Type="String" />
+            <Parameter Name="tsValidador" Mode="In" Type="Binary" />
+            <Parameter Name="gRowguid" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="pInsertarMoneda" ReturnType="Collection(ProfitModel.pInsertarMoneda_Result)">
+            <Parameter Name="sCo_Mone" Mode="In" Type="String" />
+            <Parameter Name="sMone_Des" Mode="In" Type="String" />
+            <Parameter Name="deCambio" Mode="In" Type="Decimal" />
+            <Parameter Name="bRelacion" Mode="In" Type="Boolean" />
+            <Parameter Name="sCampo1" Mode="In" Type="String" />
+            <Parameter Name="sCampo2" Mode="In" Type="String" />
+            <Parameter Name="sCampo3" Mode="In" Type="String" />
+            <Parameter Name="sCampo4" Mode="In" Type="String" />
+            <Parameter Name="sCampo5" Mode="In" Type="String" />
+            <Parameter Name="sCampo6" Mode="In" Type="String" />
+            <Parameter Name="sCampo7" Mode="In" Type="String" />
+            <Parameter Name="sCampo8" Mode="In" Type="String" />
+            <Parameter Name="sCo_Us_In" Mode="In" Type="String" />
+            <Parameter Name="sCo_Sucu_In" Mode="In" Type="String" />
+            <Parameter Name="sMaquina" Mode="In" Type="String" />
+            <Parameter Name="sRevisado" Mode="In" Type="String" />
+            <Parameter Name="sTrasnfe" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="pSeleccionarMoneda" ReturnType="Collection(ProfitModel.pSeleccionarMoneda_Result)">
+            <Parameter Name="sCo_Mone" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="pActualizarZona_Result">
@@ -4684,6 +4905,7 @@
           <NavigationProperty Name="saZona" Relationship="ProfitModel.FK_saCliente_saZona" FromRole="saCliente" ToRole="saZona" />
           <NavigationProperty Name="saCotizacionCliente" Relationship="ProfitModel.FK_saCotizacionCliente_saCliente" FromRole="saCliente" ToRole="saCotizacionCliente" />
           <NavigationProperty Name="saPedidoVenta" Relationship="ProfitModel.FK_saPedidoVenta_saCliente" FromRole="saCliente" ToRole="saPedidoVenta" />
+          <NavigationProperty Name="saMoneda" Relationship="ProfitModel.FK_saCliente_saMoneda" FromRole="saCliente" ToRole="saMoneda" />
         </EntityType>
         <EntityType Name="saCondicionPago">
           <Key>
@@ -4785,6 +5007,7 @@
           <NavigationProperty Name="saTransporte" Relationship="ProfitModel.FK_saCotizacionCliente_saTransporte" FromRole="saCotizacionCliente" ToRole="saTransporte" />
           <NavigationProperty Name="saVendedor" Relationship="ProfitModel.FK_saCotizacionCliente_saVendedor" FromRole="saCotizacionCliente" ToRole="saVendedor" />
           <NavigationProperty Name="saCotizacionClienteReng" Relationship="ProfitModel.FK_saCotizacionClienteReng_saCotizacionCliente" FromRole="saCotizacionCliente" ToRole="saCotizacionClienteReng" />
+          <NavigationProperty Name="saMoneda" Relationship="ProfitModel.FK_saCotizacionCliente_saMoneda" FromRole="saCotizacionCliente" ToRole="saMoneda" />
         </EntityType>
         <EntityType Name="saCotizacionClienteReng">
           <Key>
@@ -4904,6 +5127,7 @@
           <Property Name="validador" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="rowguid" Type="Guid" Nullable="false" />
           <NavigationProperty Name="saCliente" Relationship="ProfitModel.FK_saCliente_saPais" FromRole="saPais" ToRole="saCliente" />
+          <NavigationProperty Name="saMoneda" Relationship="ProfitModel.FK_saPais_saMoneda" FromRole="saPais" ToRole="saMoneda" />
         </EntityType>
         <EntityType Name="saPedidoVenta">
           <Key>
@@ -4973,6 +5197,7 @@
           <NavigationProperty Name="saTransporte" Relationship="ProfitModel.FK_saPedidoVenta_saTransporte" FromRole="saPedidoVenta" ToRole="saTransporte" />
           <NavigationProperty Name="saVendedor" Relationship="ProfitModel.FK_saPedidoVenta_saVendedor" FromRole="saPedidoVenta" ToRole="saVendedor" />
           <NavigationProperty Name="saPedidoVentaReng" Relationship="ProfitModel.FK_saPedidoVentaReng_saPedidoVenta" FromRole="saPedidoVenta" ToRole="saPedidoVentaReng" />
+          <NavigationProperty Name="saMoneda" Relationship="ProfitModel.FK_saPedidoVenta_saMoneda" FromRole="saPedidoVenta" ToRole="saMoneda" />
         </EntityType>
         <EntityType Name="saPedidoVentaReng">
           <Key>
@@ -5134,6 +5359,7 @@
           <Property Name="trasnfe" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="validador" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="saMoneda" Relationship="ProfitModel.FK_saTasa_saMoneda" FromRole="saTasa" ToRole="saMoneda" />
         </EntityType>
         <EntityType Name="saTipoCliente">
           <Key>
@@ -6638,6 +6864,136 @@
           <Property Type="Binary" Name="validador" Nullable="false" MaxLength="8" />
           <Property Type="Guid" Name="rowguid" Nullable="false" />
           <Property Type="String" Name="co_zon" Nullable="true" MaxLength="6" />
+        </ComplexType>
+        <EntityType Name="saMoneda">
+          <Key>
+            <PropertyRef Name="co_mone" />
+          </Key>
+          <Property Name="co_mone" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="mone_des" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="cambio" Type="Decimal" Nullable="false" Precision="18" Scale="5" />
+          <Property Name="relacion" Type="Boolean" Nullable="false" />
+          <Property Name="campo1" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="campo2" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="campo3" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="campo4" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="campo5" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="campo6" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="campo7" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="campo8" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="co_us_in" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="co_sucu_in" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="fe_us_in" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="co_us_mo" Type="String" Nullable="false" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="co_sucu_mo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="fe_us_mo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="revisado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="trasnfe" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="validador" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="rowguid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="saCliente" Relationship="ProfitModel.FK_saCliente_saMoneda" FromRole="saMoneda" ToRole="saCliente" />
+          <NavigationProperty Name="saCotizacionCliente" Relationship="ProfitModel.FK_saCotizacionCliente_saMoneda" FromRole="saMoneda" ToRole="saCotizacionCliente" />
+          <NavigationProperty Name="saPais" Relationship="ProfitModel.FK_saPais_saMoneda" FromRole="saMoneda" ToRole="saPais" />
+          <NavigationProperty Name="saPedidoVenta" Relationship="ProfitModel.FK_saPedidoVenta_saMoneda" FromRole="saMoneda" ToRole="saPedidoVenta" />
+          <NavigationProperty Name="saTasa" Relationship="ProfitModel.FK_saTasa_saMoneda" FromRole="saMoneda" ToRole="saTasa" />
+        </EntityType>
+        <Association Name="FK_saCliente_saMoneda">
+          <End Type="ProfitModel.saMoneda" Role="saMoneda" Multiplicity="0..1" />
+          <End Type="ProfitModel.saCliente" Role="saCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saCliente">
+              <PropertyRef Name="co_mone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_saCotizacionCliente_saMoneda">
+          <End Type="ProfitModel.saMoneda" Role="saMoneda" Multiplicity="1" />
+          <End Type="ProfitModel.saCotizacionCliente" Role="saCotizacionCliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saCotizacionCliente">
+              <PropertyRef Name="co_mone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_saPais_saMoneda">
+          <End Type="ProfitModel.saMoneda" Role="saMoneda" Multiplicity="1" />
+          <End Type="ProfitModel.saPais" Role="saPais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saPais">
+              <PropertyRef Name="co_mone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_saPedidoVenta_saMoneda">
+          <End Type="ProfitModel.saMoneda" Role="saMoneda" Multiplicity="1" />
+          <End Type="ProfitModel.saPedidoVenta" Role="saPedidoVenta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saPedidoVenta">
+              <PropertyRef Name="co_mone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_saTasa_saMoneda">
+          <End Type="ProfitModel.saMoneda" Role="saMoneda" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ProfitModel.saTasa" Role="saTasa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="saMoneda">
+              <PropertyRef Name="co_mone" />
+            </Principal>
+            <Dependent Role="saTasa">
+              <PropertyRef Name="co_mone" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="pActualizarMoneda_Result">
+          <Property Type="Binary" Name="validador" Nullable="true" />
+          <Property Type="DateTime" Name="fe_us_in" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="fe_us_mo" Nullable="true" Precision="23" />
+          <Property Type="Guid" Name="rowguid" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pInsertarMoneda_Result">
+          <Property Type="Binary" Name="validador" Nullable="true" />
+          <Property Type="DateTime" Name="fe_us_in" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="fe_us_mo" Nullable="true" Precision="23" />
+          <Property Type="Guid" Name="rowguid" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="pSeleccionarMoneda_Result">
+          <Property Type="String" Name="co_mone" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="mone_des" Nullable="false" MaxLength="60" />
+          <Property Type="Decimal" Name="cambio" Nullable="false" Precision="18" Scale="5" />
+          <Property Type="Boolean" Name="relacion" Nullable="false" />
+          <Property Type="String" Name="campo1" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="campo2" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="campo3" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="campo4" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="campo5" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="campo6" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="campo7" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="campo8" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="co_us_in" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="co_sucu_in" Nullable="true" MaxLength="6" />
+          <Property Type="DateTime" Name="fe_us_in" Nullable="false" Precision="23" />
+          <Property Type="String" Name="co_us_mo" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="co_sucu_mo" Nullable="true" MaxLength="6" />
+          <Property Type="DateTime" Name="fe_us_mo" Nullable="false" Precision="23" />
+          <Property Type="String" Name="revisado" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="trasnfe" Nullable="true" MaxLength="1" />
+          <Property Type="Binary" Name="validador" Nullable="false" MaxLength="8" />
+          <Property Type="Guid" Name="rowguid" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -8840,6 +9196,82 @@
                 <ScalarProperty Name="validador" ColumnName="validador" />
                 <ScalarProperty Name="rowguid" ColumnName="rowguid" />
                 <ScalarProperty Name="co_zon" ColumnName="co_zon" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="saMoneda">
+            <EntityTypeMapping TypeName="ProfitModel.saMoneda">
+              <MappingFragment StoreEntitySet="saMoneda">
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+                <ScalarProperty Name="validador" ColumnName="validador" />
+                <ScalarProperty Name="trasnfe" ColumnName="trasnfe" />
+                <ScalarProperty Name="revisado" ColumnName="revisado" />
+                <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+                <ScalarProperty Name="co_sucu_mo" ColumnName="co_sucu_mo" />
+                <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+                <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+                <ScalarProperty Name="co_sucu_in" ColumnName="co_sucu_in" />
+                <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
+                <ScalarProperty Name="campo8" ColumnName="campo8" />
+                <ScalarProperty Name="campo7" ColumnName="campo7" />
+                <ScalarProperty Name="campo6" ColumnName="campo6" />
+                <ScalarProperty Name="campo5" ColumnName="campo5" />
+                <ScalarProperty Name="campo4" ColumnName="campo4" />
+                <ScalarProperty Name="campo3" ColumnName="campo3" />
+                <ScalarProperty Name="campo2" ColumnName="campo2" />
+                <ScalarProperty Name="campo1" ColumnName="campo1" />
+                <ScalarProperty Name="relacion" ColumnName="relacion" />
+                <ScalarProperty Name="cambio" ColumnName="cambio" />
+                <ScalarProperty Name="mone_des" ColumnName="mone_des" />
+                <ScalarProperty Name="co_mone" ColumnName="co_mone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pActualizarMoneda" FunctionName="ProfitModel.Store.pActualizarMoneda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProfitModel.pActualizarMoneda_Result">
+                <ScalarProperty Name="validador" ColumnName="validador" />
+                <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+                <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pInsertarMoneda" FunctionName="ProfitModel.Store.pInsertarMoneda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProfitModel.pInsertarMoneda_Result">
+                <ScalarProperty Name="validador" ColumnName="validador" />
+                <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+                <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pSeleccionarMoneda" FunctionName="ProfitModel.Store.pSeleccionarMoneda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProfitModel.pSeleccionarMoneda_Result">
+                <ScalarProperty Name="co_mone" ColumnName="co_mone" />
+                <ScalarProperty Name="mone_des" ColumnName="mone_des" />
+                <ScalarProperty Name="cambio" ColumnName="cambio" />
+                <ScalarProperty Name="relacion" ColumnName="relacion" />
+                <ScalarProperty Name="campo1" ColumnName="campo1" />
+                <ScalarProperty Name="campo2" ColumnName="campo2" />
+                <ScalarProperty Name="campo3" ColumnName="campo3" />
+                <ScalarProperty Name="campo4" ColumnName="campo4" />
+                <ScalarProperty Name="campo5" ColumnName="campo5" />
+                <ScalarProperty Name="campo6" ColumnName="campo6" />
+                <ScalarProperty Name="campo7" ColumnName="campo7" />
+                <ScalarProperty Name="campo8" ColumnName="campo8" />
+                <ScalarProperty Name="co_us_in" ColumnName="co_us_in" />
+                <ScalarProperty Name="co_sucu_in" ColumnName="co_sucu_in" />
+                <ScalarProperty Name="fe_us_in" ColumnName="fe_us_in" />
+                <ScalarProperty Name="co_us_mo" ColumnName="co_us_mo" />
+                <ScalarProperty Name="co_sucu_mo" ColumnName="co_sucu_mo" />
+                <ScalarProperty Name="fe_us_mo" ColumnName="fe_us_mo" />
+                <ScalarProperty Name="revisado" ColumnName="revisado" />
+                <ScalarProperty Name="trasnfe" ColumnName="trasnfe" />
+                <ScalarProperty Name="validador" ColumnName="validador" />
+                <ScalarProperty Name="rowguid" ColumnName="rowguid" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

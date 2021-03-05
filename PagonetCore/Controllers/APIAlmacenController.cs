@@ -34,6 +34,20 @@ namespace PagonetCore.Controllers
             return Ok(adAlmacen);
         }
 
+        // GET: api/APIAlmacen/5
+        [Route("Almacen/listarAlmacensb1/{id}")]
+        [ResponseType(typeof(AdAlmacen))]
+        public IHttpActionResult GetAdAlmacenB1(string codigoAlmacen)
+        {
+            AdAlmacen adAlmacen = db.Almacenes.Where(a => a.co_alma == codigoAlmacen).FirstOrDefault();
+            if (adAlmacen == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(adAlmacen);
+        }
+
         // PUT: api/APIAlmacen/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdAlmacen(int id, AdAlmacen adAlmacen)
@@ -69,25 +83,10 @@ namespace PagonetCore.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // Nota: Este método retorna el número de registros afectados por la petición.
+        // POST: api/APIAlmacen
         // POST: Almacen/guardarDatos
         [HttpPost]
         [Route("Almacen/guardarDatos")]
-        [ResponseType(typeof(int))]
-        public int CrearAlmacen(AdAlmacen adAlmacen)
-        {
-            if (!ModelState.IsValid)
-            {
-                return 0;
-            }
-
-            db.Almacenes.Add(adAlmacen);
-            db.SaveChanges();
-
-            return 1;
-        }
-
-        // POST: api/APIAlmacen
         [ResponseType(typeof(AdAlmacen))]
         public IHttpActionResult PostAdAlmacen(AdAlmacen adAlmacen)
         {

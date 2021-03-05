@@ -115,5 +115,6 @@ namespace PagonetCore
         public virtual ICollection<saCotizacionCliente> saCotizacionCliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saPedidoVenta> saPedidoVenta { get; set; }
+        public virtual saMoneda saMoneda { get; set; }
     }
 }

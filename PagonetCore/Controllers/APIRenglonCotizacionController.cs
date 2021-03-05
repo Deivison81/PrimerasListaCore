@@ -132,7 +132,7 @@ namespace PagonetCore.Controllers
             db.RenglonesCotizacion.Add(adCotizacionreg);
             db.SaveChanges();
 
-            return 1;
+            return adCotizacionreg.reng_num;
         }
 
         // POST: api/APIRenglonCotizacion

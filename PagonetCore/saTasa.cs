@@ -36,5 +36,7 @@ namespace PagonetCore
         public string trasnfe { get; set; }
         public byte[] validador { get; set; }
         public System.Guid rowguid { get; set; }
+    
+        public virtual saMoneda saMoneda { get; set; }
     }
 }

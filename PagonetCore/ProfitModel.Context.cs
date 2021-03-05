@@ -48,6 +48,7 @@ namespace PagonetCore
         public virtual DbSet<saTipoCliente> saTipoCliente { get; set; }
         public virtual DbSet<saTransporte> saTransporte { get; set; }
         public virtual DbSet<saVendedor> saVendedor { get; set; }
+        public virtual DbSet<saMoneda> saMoneda { get; set; }
     
         public virtual ObjectResult<pActualizarZona_Result> pActualizarZona(string sCo_Zon, string sCo_ZonOri, string sZon_Des, string sDis_Cen, string sCampo1, string sCampo2, string sCampo3, string sCampo4, string sCampo5, string sCampo6, string sCampo7, string sCampo8, string sCo_Us_Mo, string sCo_Sucu_Mo, string sMaquina, string sCampos, string sRevisado, string sTrasnfe, byte[] tsValidador, Nullable<System.Guid> gRowguid)
         {
@@ -5409,6 +5410,177 @@ namespace PagonetCore
                 new ObjectParameter("sCo_Ven", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pSeleccionarVendedor_Result>("pSeleccionarVendedor", sCo_VenParameter);
+        }
+    
+        public virtual ObjectResult<pActualizarMoneda_Result> pActualizarMoneda(string sCo_Mone, string sCo_MoneOri, string sMone_Des, Nullable<decimal> deCambio, Nullable<bool> bRelacion, string sCampo1, string sCampo2, string sCampo3, string sCampo4, string sCampo5, string sCampo6, string sCampo7, string sCampo8, string sCo_Us_Mo, string sCo_Sucu_Mo, string sMaquina, string sCampos, string sRevisado, string sTrasnfe, byte[] tsValidador, Nullable<System.Guid> gRowguid)
+        {
+            var sCo_MoneParameter = sCo_Mone != null ?
+                new ObjectParameter("sCo_Mone", sCo_Mone) :
+                new ObjectParameter("sCo_Mone", typeof(string));
+    
+            var sCo_MoneOriParameter = sCo_MoneOri != null ?
+                new ObjectParameter("sCo_MoneOri", sCo_MoneOri) :
+                new ObjectParameter("sCo_MoneOri", typeof(string));
+    
+            var sMone_DesParameter = sMone_Des != null ?
+                new ObjectParameter("sMone_Des", sMone_Des) :
+                new ObjectParameter("sMone_Des", typeof(string));
+    
+            var deCambioParameter = deCambio.HasValue ?
+                new ObjectParameter("deCambio", deCambio) :
+                new ObjectParameter("deCambio", typeof(decimal));
+    
+            var bRelacionParameter = bRelacion.HasValue ?
+                new ObjectParameter("bRelacion", bRelacion) :
+                new ObjectParameter("bRelacion", typeof(bool));
+    
+            var sCampo1Parameter = sCampo1 != null ?
+                new ObjectParameter("sCampo1", sCampo1) :
+                new ObjectParameter("sCampo1", typeof(string));
+    
+            var sCampo2Parameter = sCampo2 != null ?
+                new ObjectParameter("sCampo2", sCampo2) :
+                new ObjectParameter("sCampo2", typeof(string));
+    
+            var sCampo3Parameter = sCampo3 != null ?
+                new ObjectParameter("sCampo3", sCampo3) :
+                new ObjectParameter("sCampo3", typeof(string));
+    
+            var sCampo4Parameter = sCampo4 != null ?
+                new ObjectParameter("sCampo4", sCampo4) :
+                new ObjectParameter("sCampo4", typeof(string));
+    
+            var sCampo5Parameter = sCampo5 != null ?
+                new ObjectParameter("sCampo5", sCampo5) :
+                new ObjectParameter("sCampo5", typeof(string));
+    
+            var sCampo6Parameter = sCampo6 != null ?
+                new ObjectParameter("sCampo6", sCampo6) :
+                new ObjectParameter("sCampo6", typeof(string));
+    
+            var sCampo7Parameter = sCampo7 != null ?
+                new ObjectParameter("sCampo7", sCampo7) :
+                new ObjectParameter("sCampo7", typeof(string));
+    
+            var sCampo8Parameter = sCampo8 != null ?
+                new ObjectParameter("sCampo8", sCampo8) :
+                new ObjectParameter("sCampo8", typeof(string));
+    
+            var sCo_Us_MoParameter = sCo_Us_Mo != null ?
+                new ObjectParameter("sCo_Us_Mo", sCo_Us_Mo) :
+                new ObjectParameter("sCo_Us_Mo", typeof(string));
+    
+            var sCo_Sucu_MoParameter = sCo_Sucu_Mo != null ?
+                new ObjectParameter("sCo_Sucu_Mo", sCo_Sucu_Mo) :
+                new ObjectParameter("sCo_Sucu_Mo", typeof(string));
+    
+            var sMaquinaParameter = sMaquina != null ?
+                new ObjectParameter("sMaquina", sMaquina) :
+                new ObjectParameter("sMaquina", typeof(string));
+    
+            var sCamposParameter = sCampos != null ?
+                new ObjectParameter("sCampos", sCampos) :
+                new ObjectParameter("sCampos", typeof(string));
+    
+            var sRevisadoParameter = sRevisado != null ?
+                new ObjectParameter("sRevisado", sRevisado) :
+                new ObjectParameter("sRevisado", typeof(string));
+    
+            var sTrasnfeParameter = sTrasnfe != null ?
+                new ObjectParameter("sTrasnfe", sTrasnfe) :
+                new ObjectParameter("sTrasnfe", typeof(string));
+    
+            var tsValidadorParameter = tsValidador != null ?
+                new ObjectParameter("tsValidador", tsValidador) :
+                new ObjectParameter("tsValidador", typeof(byte[]));
+    
+            var gRowguidParameter = gRowguid.HasValue ?
+                new ObjectParameter("gRowguid", gRowguid) :
+                new ObjectParameter("gRowguid", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pActualizarMoneda_Result>("pActualizarMoneda", sCo_MoneParameter, sCo_MoneOriParameter, sMone_DesParameter, deCambioParameter, bRelacionParameter, sCampo1Parameter, sCampo2Parameter, sCampo3Parameter, sCampo4Parameter, sCampo5Parameter, sCampo6Parameter, sCampo7Parameter, sCampo8Parameter, sCo_Us_MoParameter, sCo_Sucu_MoParameter, sMaquinaParameter, sCamposParameter, sRevisadoParameter, sTrasnfeParameter, tsValidadorParameter, gRowguidParameter);
+        }
+    
+        public virtual ObjectResult<pInsertarMoneda_Result> pInsertarMoneda(string sCo_Mone, string sMone_Des, Nullable<decimal> deCambio, Nullable<bool> bRelacion, string sCampo1, string sCampo2, string sCampo3, string sCampo4, string sCampo5, string sCampo6, string sCampo7, string sCampo8, string sCo_Us_In, string sCo_Sucu_In, string sMaquina, string sRevisado, string sTrasnfe)
+        {
+            var sCo_MoneParameter = sCo_Mone != null ?
+                new ObjectParameter("sCo_Mone", sCo_Mone) :
+                new ObjectParameter("sCo_Mone", typeof(string));
+    
+            var sMone_DesParameter = sMone_Des != null ?
+                new ObjectParameter("sMone_Des", sMone_Des) :
+                new ObjectParameter("sMone_Des", typeof(string));
+    
+            var deCambioParameter = deCambio.HasValue ?
+                new ObjectParameter("deCambio", deCambio) :
+                new ObjectParameter("deCambio", typeof(decimal));
+    
+            var bRelacionParameter = bRelacion.HasValue ?
+                new ObjectParameter("bRelacion", bRelacion) :
+                new ObjectParameter("bRelacion", typeof(bool));
+    
+            var sCampo1Parameter = sCampo1 != null ?
+                new ObjectParameter("sCampo1", sCampo1) :
+                new ObjectParameter("sCampo1", typeof(string));
+    
+            var sCampo2Parameter = sCampo2 != null ?
+                new ObjectParameter("sCampo2", sCampo2) :
+                new ObjectParameter("sCampo2", typeof(string));
+    
+            var sCampo3Parameter = sCampo3 != null ?
+                new ObjectParameter("sCampo3", sCampo3) :
+                new ObjectParameter("sCampo3", typeof(string));
+    
+            var sCampo4Parameter = sCampo4 != null ?
+                new ObjectParameter("sCampo4", sCampo4) :
+                new ObjectParameter("sCampo4", typeof(string));
+    
+            var sCampo5Parameter = sCampo5 != null ?
+                new ObjectParameter("sCampo5", sCampo5) :
+                new ObjectParameter("sCampo5", typeof(string));
+    
+            var sCampo6Parameter = sCampo6 != null ?
+                new ObjectParameter("sCampo6", sCampo6) :
+                new ObjectParameter("sCampo6", typeof(string));
+    
+            var sCampo7Parameter = sCampo7 != null ?
+                new ObjectParameter("sCampo7", sCampo7) :
+                new ObjectParameter("sCampo7", typeof(string));
+    
+            var sCampo8Parameter = sCampo8 != null ?
+                new ObjectParameter("sCampo8", sCampo8) :
+                new ObjectParameter("sCampo8", typeof(string));
+    
+            var sCo_Us_InParameter = sCo_Us_In != null ?
+                new ObjectParameter("sCo_Us_In", sCo_Us_In) :
+                new ObjectParameter("sCo_Us_In", typeof(string));
+    
+            var sCo_Sucu_InParameter = sCo_Sucu_In != null ?
+                new ObjectParameter("sCo_Sucu_In", sCo_Sucu_In) :
+                new ObjectParameter("sCo_Sucu_In", typeof(string));
+    
+            var sMaquinaParameter = sMaquina != null ?
+                new ObjectParameter("sMaquina", sMaquina) :
+                new ObjectParameter("sMaquina", typeof(string));
+    
+            var sRevisadoParameter = sRevisado != null ?
+                new ObjectParameter("sRevisado", sRevisado) :
+                new ObjectParameter("sRevisado", typeof(string));
+    
+            var sTrasnfeParameter = sTrasnfe != null ?
+                new ObjectParameter("sTrasnfe", sTrasnfe) :
+                new ObjectParameter("sTrasnfe", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pInsertarMoneda_Result>("pInsertarMoneda", sCo_MoneParameter, sMone_DesParameter, deCambioParameter, bRelacionParameter, sCampo1Parameter, sCampo2Parameter, sCampo3Parameter, sCampo4Parameter, sCampo5Parameter, sCampo6Parameter, sCampo7Parameter, sCampo8Parameter, sCo_Us_InParameter, sCo_Sucu_InParameter, sMaquinaParameter, sRevisadoParameter, sTrasnfeParameter);
+        }
+    
+        public virtual ObjectResult<pSeleccionarMoneda_Result> pSeleccionarMoneda(string sCo_Mone)
+        {
+            var sCo_MoneParameter = sCo_Mone != null ?
+                new ObjectParameter("sCo_Mone", sCo_Mone) :
+                new ObjectParameter("sCo_Mone", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pSeleccionarMoneda_Result>("pSeleccionarMoneda", sCo_MoneParameter);
         }
     }
 }

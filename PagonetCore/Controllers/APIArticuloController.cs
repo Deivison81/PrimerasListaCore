@@ -16,13 +16,16 @@ namespace PagonetCore.Controllers
     public class APIArticuloController : ApiController
     {
         private PagonetContext db = new PagonetContext();
-        
+
         // GET: api/APIArticulo
+        [HttpGet]
+        [Route("Articulo/listarArticulos")]
         public IQueryable<AdArticulo> GetArticulos()
         {
             return db.Articulos;
         }
 
+        [HttpGet]
         [Route("Articulo/listarartweb")]
         public object GetArticulosConPrecios()
         {
@@ -76,7 +79,93 @@ namespace PagonetCore.Controllers
                     }).ToList();
         }
 
+        [HttpGet]
+        [Route("Articulo/listarartwebDisponibles/{disponible}")]
+        public object GetAdArticuloArtWebDisponibles(string disponible)
+        {
+            return (from stock in db.StockAlmacenes
+                    join alma in db.Almacenes
+                    on stock.cod_almacen equals alma.cod_almacen
+                    join Art in db.Articulos
+                    on stock.id_art equals Art.id_art
+                    join precio in db.PreciosArticulo
+                    on Art.id_art equals precio.id_art
+                    join img in db.ImagenesArticulo
+                    on Art.id_art equals img.id_art
+                    where stock.tipo.Equals(disponible)
+                    select new
+                    {
+                        idproducto = Art.id_art,
+                        codigoproducto = Art.co_art,
+                        descripcionproducto = Art.art_des,
+                        adreferencia = Art.referencia,
+                        unidad = Art.cod_unidad,
+                        idprecio = precio.id_preciosart,
+                        codigoprecioprofit = precio.co_precios,
+                        pdesde = precio.desde,
+                        phasta = precio.hasta,
+                        montoprecio = precio.monto,
+                        precio1 = precio.montoadi1,
+                        precio2 = precio.montoadi2,
+                        precio3 = precio.montoadi3,
+                        precio4 = precio.montoadi4,
+                        precio5 = precio.montoadi5,
+                        precioOM = precio.precioOm,
+                        idimagen = img.id_imgart,
+                        adtip = img.tip,
+                        nombreimagen = img.imagen_des,
+                        ruta = img.picture,
+                        cod_almacen = alma.cod_almacen,
+                        almacenprofit = alma.co_alma,
+                        desalma = alma.des_alamacen,
+                        codigoartprof = stock.co_art,
+                        tipostock = stock.tipo,
+                        cantidades = stock.stock,
+                        paginaweb = stock.importado_web
+                    }).ToList();
+        }
+
+        [HttpGet]
+        [Route("Articulo/listarartwebDisponibleacoti/{disponible}")]
+        public object GetAdArticuloArtWebDisponiblesCoti(string disponible)
+        {
+            return (from stock in db.StockAlmacenes
+                    join alma in db.Almacenes
+                    on stock.cod_almacen equals alma.cod_almacen
+                    join Art in db.Articulos
+                    on stock.id_art equals Art.id_art
+                    join precio in db.PreciosArticulo
+                    on Art.id_art equals precio.id_art
+                    join img in db.ImagenesArticulo
+                    on Art.id_art equals img.id_art
+                    where stock.tipo.Equals(disponible)
+                    select new
+                    {
+                        idproducto = Art.id_art,
+                        codigoproducto = Art.co_art,
+                        descripcionproducto = Art.art_des,
+                        unidad = Art.cod_unidad,
+                        idprecio = precio.id_preciosart,
+                        codigoprecioprofit = precio.co_precios,
+                        montoprecio = precio.monto,
+                        precio1 = precio.montoadi1,
+                        precio2 = precio.montoadi2,
+                        precioOM = precio.precioOm,
+                        adtip = img.tip,
+                        nombreimagen = img.imagen_des,
+                        ruta = img.picture,
+                        almacenprofit = alma.co_alma,
+                        desalma = alma.des_alamacen,
+                        codigoartprof = stock.co_art,
+                        tipostock = stock.tipo,
+                        cantidades = stock.stock,
+                        paginaweb = stock.importado_web
+                    }).ToList();
+        }
+
         // GET: api/APIArticulo/5
+        [HttpGet]
+        [Route("Articulo/listarArticulo/{id:int:min(1)}")]
         [ResponseType(typeof(AdArticulo))]
         public IHttpActionResult GetAdArticulo(int id)
         {
@@ -87,6 +176,53 @@ namespace PagonetCore.Controllers
             }
 
             return Ok(adArticulo);
+        }
+
+        [HttpGet]
+        [Route("Articulo/listarPrecios")]
+        public IHttpActionResult GetAdArticuloPrecios()
+        {
+            var listarPrecios = db.PreciosArticulo.Select(p => new
+            {
+                p.id_preciosart,
+                p.id_art,
+                p.co_art,
+                p.co_precios,
+                p.desde,
+                p.hasta,
+                p.cod_almacen,
+                p.co_alma,
+                p.monto,
+                p.montoadi1,
+                p.montoadi2,
+                p.montoadi3,
+                p.montoadi4,
+                p.montoadi5,
+                p.precioOm,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarPrecios);
+        }
+
+        [HttpGet]
+        [Route("Articulo/listarimagenesart")]
+        public IHttpActionResult GetAdArticuloImagenes()
+        {
+            var listarimagenesart = db.ImagenesArticulo.Select(p => new
+            {
+                p.id_imgart,
+                p.id_art,
+                p.co_art,
+                p.tip,
+                p.imagen_des,
+                p.picture,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarimagenesart);
         }
 
         // PUT: api/APIArticulo/5

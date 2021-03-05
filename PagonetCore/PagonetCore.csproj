@@ -277,6 +277,9 @@
     <Compile Include="pActualizarImagenArticulo_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pActualizarMoneda_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pActualizarPais_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
@@ -335,6 +338,9 @@
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pInsertarImagenArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarMoneda_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pInsertarPais_Result.cs">
@@ -402,6 +408,9 @@
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pSeleccionarImagenArticulo_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarMoneda_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pSeleccionarPais_Result.cs">
@@ -483,6 +492,9 @@
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="saCuentaIngEgr.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saMoneda.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="saPais.cs">
