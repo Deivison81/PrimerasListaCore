@@ -174,18 +174,18 @@ namespace PagonetCore.Controllers
 
         // POST: api/APICliente
         [Route("Cliente/guardarDatos")]
-        [ResponseType(typeof(Adclientes))]
-        public IHttpActionResult PostAdclientes(Adclientes adclientes)
+        [ResponseType(typeof(int))]
+        public int PostAdclientes(Adclientes adclientes)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return 0;
             }
 
             db.Clientes.Add(adclientes);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = adclientes.id_clientes }, adclientes);
+            return adclientes.id_clientes;
         }
 
         // DELETE: api/APICliente/5
