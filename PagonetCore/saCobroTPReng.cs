@@ -12,23 +12,22 @@ namespace PagonetCore
     using System;
     using System.Collections.Generic;
     
-    public partial class saCobroDocReng
+    public partial class saCobroTPReng
     {
         public int reng_num { get; set; }
         public string cob_num { get; set; }
-        public string co_tipo_doc { get; set; }
-        public string nro_doc { get; set; }
-        public decimal mont_cob { get; set; }
-        public decimal dpcobro_porc_desc { get; set; }
-        public decimal dpcobro_monto { get; set; }
-        public decimal monto_retencion_iva { get; set; }
-        public decimal monto_retencion { get; set; }
-        public Nullable<System.Guid> reten_tercero_rowguid_ori { get; set; }
-        public string tipo_doc { get; set; }
+        public string co_tar { get; set; }
+        public string co_ban { get; set; }
+        public string forma_pag { get; set; }
+        public string cod_cta { get; set; }
+        public string cod_caja { get; set; }
+        public string co_vale { get; set; }
+        public string mov_num_c { get; set; }
+        public string mov_num_b { get; set; }
         public string num_doc { get; set; }
-        public Nullable<System.Guid> rowguid_reng_ori { get; set; }
-        public Nullable<int> tipo_origen { get; set; }
-        public string gen_origen { get; set; }
+        public bool devuelto { get; set; }
+        public decimal mont_doc { get; set; }
+        public System.DateTime fecha_che { get; set; }
         public string co_sucu_in { get; set; }
         public string co_us_in { get; set; }
         public System.DateTime fe_us_in { get; set; }
@@ -39,7 +38,11 @@ namespace PagonetCore
         public string revisado { get; set; }
         public System.Guid rowguid { get; set; }
     
+        public virtual saBanco saBanco { get; set; }
         public virtual saCobro saCobro { get; set; }
-        public virtual saDocumentoVenta saDocumentoVenta { get; set; }
+        public virtual saCaja saCaja { get; set; }
+        public virtual saCuentaBancaria saCuentaBancaria { get; set; }
+        public virtual saMovimientoBanco saMovimientoBanco { get; set; }
+        public virtual saMovimientoCaja saMovimientoCaja { get; set; }
     }
 }

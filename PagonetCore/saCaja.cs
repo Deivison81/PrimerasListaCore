@@ -12,28 +12,23 @@ namespace PagonetCore
     using System;
     using System.Collections.Generic;
     
-    public partial class saCobro
+    public partial class saCaja
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public saCobro()
+        public saCaja()
         {
-            this.saCobroDocReng = new HashSet<saCobroDocReng>();
             this.saCobroTPReng = new HashSet<saCobroTPReng>();
+            this.saMovimientoCaja = new HashSet<saMovimientoCaja>();
         }
     
-        public string cob_num { get; set; }
-        public string recibo { get; set; }
+        public string cod_caja { get; set; }
         public string descrip { get; set; }
-        public string co_cli { get; set; }
-        public string co_ven { get; set; }
+        public System.DateTime mes_ini { get; set; }
         public string co_mone { get; set; }
-        public decimal tasa { get; set; }
-        public System.DateTime fecha { get; set; }
-        public bool anulado { get; set; }
-        public decimal monto { get; set; }
-        public string dis_cen { get; set; }
-        public Nullable<System.DateTime> feccom { get; set; }
         public Nullable<int> numcom { get; set; }
+        public Nullable<System.DateTime> feccom { get; set; }
+        public string dis_cen { get; set; }
+        public bool inactivo { get; set; }
         public string campo1 { get; set; }
         public string campo2 { get; set; }
         public string campo3 { get; set; }
@@ -52,13 +47,13 @@ namespace PagonetCore
         public string trasnfe { get; set; }
         public byte[] validador { get; set; }
         public System.Guid rowguid { get; set; }
+        public Nullable<decimal> aux_imp01 { get; set; }
+        public Nullable<decimal> aux_imp02 { get; set; }
     
-        public virtual saCliente saCliente { get; set; }
         public virtual saMoneda saMoneda { get; set; }
-        public virtual saVendedor saVendedor { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saCobroDocReng> saCobroDocReng { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saCobroTPReng> saCobroTPReng { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saMovimientoCaja> saMovimientoCaja { get; set; }
     }
 }

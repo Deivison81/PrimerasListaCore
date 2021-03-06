@@ -10,25 +10,27 @@
 namespace PagonetCore
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class saBanco
+    public partial class pSeleccionarCuentaBancaria_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public saBanco()
-        {
-            this.saCobroTPReng = new HashSet<saCobroTPReng>();
-            this.saCuentaBancaria = new HashSet<saCuentaBancaria>();
-            this.saMovimientoCaja = new HashSet<saMovimientoCaja>();
-        }
-    
+        public string cod_cta { get; set; }
         public string co_ban { get; set; }
-        public string des_ban { get; set; }
+        public string co_mone { get; set; }
+        public string num_cta { get; set; }
+        public Nullable<int> numcom { get; set; }
+        public Nullable<System.DateTime> feccom { get; set; }
+        public string dis_cen { get; set; }
         public string telefonos { get; set; }
-        public int plazo1 { get; set; }
-        public int plazo2 { get; set; }
-        public int plazo3 { get; set; }
-        public int plazo4 { get; set; }
+        public string sucursal { get; set; }
+        public System.DateTime mes_ini { get; set; }
+        public bool inactivo { get; set; }
+        public bool usa_chra { get; set; }
+        public string ejec_cu { get; set; }
+        public string direccion { get; set; }
+        public string email { get; set; }
+        public string tipo_cu { get; set; }
+        public System.DateTime fecini { get; set; }
+        public System.DateTime fec_chra { get; set; }
         public string campo1 { get; set; }
         public string campo2 { get; set; }
         public string campo3 { get; set; }
@@ -47,14 +49,11 @@ namespace PagonetCore
         public string trasnfe { get; set; }
         public byte[] validador { get; set; }
         public System.Guid rowguid { get; set; }
-        public Nullable<decimal> comisMismoBanco { get; set; }
-        public Nullable<decimal> comisOtrosBancos { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saCobroTPReng> saCobroTPReng { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saCuentaBancaria> saCuentaBancaria { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saMovimientoCaja> saMovimientoCaja { get; set; }
+        public Nullable<decimal> aux_imp01 { get; set; }
+        public Nullable<decimal> aux_imp02 { get; set; }
+        public decimal Saldo_TI { get; set; }
+        public decimal Saldo_CI { get; set; }
+        public decimal Saldo_TF { get; set; }
+        public decimal Saldo_CF { get; set; }
     }
 }

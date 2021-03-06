@@ -144,8 +144,61 @@ namespace PagonetCore.Controllers
 
             foreach (AdRenglonesCobro renglon in renglonesCobros)
             {
-                // TODO: Falta calcular el IVA en cada renglón al insertar.
-                pSeleccionarRenglonesCobro_Result renglonCobroProfit = profitContext.pSeleccionarRenglonesCobro(renglon.cob_num_pro).FirstOrDefault();
+                saCobroDocReng renglonCobroProfit = profitContext.saCobroDocReng.Where(r => (r.cob_num == renglon.cob_num_pro) && (r.reng_num == renglon.reng_num)).FirstOrDefault();
+                pSeleccionarDocumentoVenta_Result documentoVentaProfit = profitContext.pSeleccionarDocumentoVenta(renglon.co_tipo_doc, renglon.nro_doc).FirstOrDefault();
+                pSeleccionarTipoDocumento_Result tipoDocumentoProfit = profitContext.pSeleccionarTipoDocumento(renglon.co_tipo_doc).FirstOrDefault();
+                pSeleccionarCobro_Result cobroProfit = profitContext.pSeleccionarCobro(renglon.cob_num_pro).First();
+
+                if (tipoDocumentoProfit != null)
+                {
+                    byte[] validador = tipoDocumentoProfit.validador;
+                    profitContext.pActualizarTipoDocumento(
+                        renglon.co_tipo_doc, renglon.co_tipo_doc, tipoDocumentoProfit.descrip, tipoDocumentoProfit.tipo_mov, tipoDocumentoProfit.usar_ventas, tipoDocumentoProfit.usar_compras,
+                        tipoDocumentoProfit.registro_sistema, tipoDocumentoProfit.num_fact_fis_venta, tipoDocumentoProfit.num_cont_venta, tipoDocumentoProfit.serial_imp_fis_venta,
+                        tipoDocumentoProfit.num_iva_venta, tipoDocumentoProfit.reac_doc_Compra, tipoDocumentoProfit.reac_doc_Venta, tipoDocumentoProfit.anul_doc_venta, tipoDocumentoProfit.anul_doc_compra,
+                        tipoDocumentoProfit.doc_prov_compra, tipoDocumentoProfit.num_control_compra, tipoDocumentoProfit.reng_compra, tipoDocumentoProfit.reng_venta, tipoDocumentoProfit.num_iva_compra,
+                        tipoDocumentoProfit.manual_venta, tipoDocumentoProfit.manual_compra, tipoDocumentoProfit.doc_asoc_compra, tipoDocumentoProfit.doc_asoc_venta, tipoDocumentoProfit.act_prog_pago,
+                        tipoDocumentoProfit.aplica_dxpp_venta, tipoDocumentoProfit.aplica_dxpp_compra, tipoDocumentoProfit.aplica_riva_venta, tipoDocumentoProfit.aplica_riva_compra,
+                        tipoDocumentoProfit.tipo_imp, tipoDocumentoProfit.campo1, tipoDocumentoProfit.campo2, tipoDocumentoProfit.campo3, tipoDocumentoProfit.campo4, tipoDocumentoProfit.campo5,
+                        tipoDocumentoProfit.campo6, tipoDocumentoProfit.campo7, tipoDocumentoProfit.campo8, tipoDocumentoProfit.co_us_mo, tipoDocumentoProfit.co_sucu_mo, null, null, null,
+                        tipoDocumentoProfit.trasnfe, validador, null
+                    );
+                }
+                else
+                {
+                    profitContext.pInsertarTipoDocumento(
+                        renglon.co_tipo_doc, "", "CR", false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 
+                        false, false, false, false, false, false, false, false, "", null, null, null, null, null, null, null, null, "", null, null, null, null
+                    );
+                }
+
+                if (documentoVentaProfit != null)
+                {
+                    byte[] validador = documentoVentaProfit.validador;
+                    profitContext.pActualizarDocumentoVenta(
+                        renglon.co_tipo_doc, renglon.co_tipo_doc, renglon.nro_doc, renglon.nro_doc, documentoVentaProfit.co_cli, documentoVentaProfit.co_ven, documentoVentaProfit.co_mone,
+                        documentoVentaProfit.co_cta_ingr_egr, documentoVentaProfit.mov_ban, documentoVentaProfit.tasa, documentoVentaProfit.observa, documentoVentaProfit.fec_reg,
+                        documentoVentaProfit.fec_emis, documentoVentaProfit.fec_venc, documentoVentaProfit.anulado, documentoVentaProfit.aut, documentoVentaProfit.contrib, documentoVentaProfit.doc_orig,
+                        documentoVentaProfit.nro_orig, documentoVentaProfit.nro_che, documentoVentaProfit.monto_imp, renglon.saldo, documentoVentaProfit.total_bruto, documentoVentaProfit.monto_desc_glob,
+                        documentoVentaProfit.porc_desc_glob, documentoVentaProfit.porc_reca, documentoVentaProfit.monto_reca, documentoVentaProfit.total_neto, documentoVentaProfit.monto_imp2,
+                        documentoVentaProfit.monto_imp3, documentoVentaProfit.tipo_imp, documentoVentaProfit.porc_imp, documentoVentaProfit.porc_imp2, documentoVentaProfit.porc_imp3,
+                        documentoVentaProfit.num_comprobante, documentoVentaProfit.tipo_origen, documentoVentaProfit.n_control, documentoVentaProfit.dis_cen, documentoVentaProfit.comis1,
+                        documentoVentaProfit.comis2, documentoVentaProfit.comis3, documentoVentaProfit.comis4, documentoVentaProfit.comis5, documentoVentaProfit.comis6, documentoVentaProfit.adicional,
+                        documentoVentaProfit.salestax, documentoVentaProfit.ven_ter, documentoVentaProfit.impfis, documentoVentaProfit.impfisfac, documentoVentaProfit.imp_nro_z, documentoVentaProfit.otros1,
+                        documentoVentaProfit.otros2, documentoVentaProfit.otros3, documentoVentaProfit.campo1, documentoVentaProfit.campo2, documentoVentaProfit.campo3, documentoVentaProfit.campo4,
+                        documentoVentaProfit.campo5, documentoVentaProfit.campo6, documentoVentaProfit.campo7, documentoVentaProfit.campo8, documentoVentaProfit.co_us_mo, documentoVentaProfit.co_sucu_mo,
+                        documentoVentaProfit.revisado, documentoVentaProfit.trasnfe, null, null, validador, null
+                    );
+                }
+                else
+                {
+                    profitContext.pInsertarDocumentoVenta(
+                        renglon.co_tipo_doc, renglon.nro_doc, cobroProfit.co_cli, cobroProfit.co_ven, cobroProfit.co_mone, null, cobroProfit.co_cta_ingr_egr, cobroProfit.tasa, 
+                        null, DateTime.Now, DateTime.Now, DateTime.Now, cobroProfit.anulado, false, false, renglon.co_tipo_doc, null, null, 0, renglon.saldo, 0, 0, null, null, 0, 
+                        renglon.saldo, 0, 0, null, 0, 0, 0, 0, null, null, null, 0, 0, 0, 0, 0, 0, 0, null, false, null, null, null, 0, 0, 0, null, null, null, null, null, null, null, null, null, 
+                        null, null, "", null
+                    );
+                }
 
                 if (renglonCobroProfit != null)
                 {
@@ -160,7 +213,7 @@ namespace PagonetCore.Controllers
                 {
                     profitContext.pInsertarRenglonesDocCobro(
                         renglon.reng_num, renglon.cob_num_pro, renglon.co_tipo_doc, renglon.nro_doc, renglon.mont_cob, 0, renglon.dpcobro_monto, 0, 0, renglon.tipo_doc, renglon.num_doc, 
-                        null, null, null, 0, null, null, "", null, null, null
+                        null, null, Guid.NewGuid(), 0, null, null, "", null, null, null
                     );
                 }
             }

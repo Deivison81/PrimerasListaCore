@@ -197,8 +197,7 @@ namespace PagonetCore.Controllers
             foreach (AdCotizacionreg renglon in renglonesCotizacion)
             {
                 // Tablas de las que depende Renglón de Cotización.
-                // TODO: Falta co_sucur para insertar el almacén.
-                pSeleccionarRenglonesCotizacionCliente_Result renglonesCotizacionProfit = profitContext.pSeleccionarRenglonesCotizacionCliente(renglon.num_doc).FirstOrDefault();
+                saCotizacionClienteReng renglonesCotizacionProfit = profitContext.saCotizacionClienteReng.Where(r => (r.num_doc == renglon.num_doc) && (r.reng_num == renglon.reng_num)).FirstOrDefault();
                 pSeleccionarArticulo_Result articuloProfit = profitContext.pSeleccionarArticulo(renglon.co_art).FirstOrDefault();
                 pSeleccionarAlmacen_Result almacenProfit = profitContext.pSeleccionarAlmacen(renglon.co_alma).FirstOrDefault();
 
@@ -240,8 +239,9 @@ namespace PagonetCore.Controllers
                 }
                 else
                 {
+                    string codigoSucursalPrincipal = profitContext.saSucursal.Where(s => s.sucur_des.Equals("Principal")).First().co_sucur;
                     profitContext.pInsertarAlmacen(
-                        almacen.co_alma, almacen.des_alamacen, "", false, false, false, false, false, null, null, null, null, null, null, null, null, "",
+                        almacen.co_alma, almacen.des_alamacen, codigoSucursalPrincipal, false, false, false, false, false, null, null, null, null, null, null, null, null, "",
                         null, null, null, null
                     );
                 }
@@ -249,7 +249,7 @@ namespace PagonetCore.Controllers
                 if (renglonesCotizacionProfit != null)
                 {
                     profitContext.pActualizarRenglonesCotizacionCliente(
-                        renglon.reng_num, renglon.num_doc, renglon.reng_num, renglon.num_doc, renglon.co_art, renglon.art_des, renglon.cod_unidad, renglonesCotizacionProfit.sco_uni, renglon.co_alma, 
+                        renglon.reng_num, renglon.doc_num, renglon.reng_num, renglon.doc_num, renglon.co_art, renglon.art_des, renglon.cod_unidad, renglonesCotizacionProfit.sco_uni, renglon.co_alma, 
                         renglon.co_precios, renglon.tipo_imp, renglon.tipo_imp2, renglon.tipo_imp3, renglon.total_art, renglon.stotal_art, renglon.prec_vta, renglonesCotizacionProfit.porc_desc, 
                         renglonesCotizacionProfit.monto_desc, renglon.reng_neto, renglonesCotizacionProfit.pendiente, renglon.tipo_doc, renglonesCotizacionProfit.rowguid_doc, renglon.num_doc, 
                         renglon.porc_imp, renglon.porc_imp2, renglon.porc_imp3, renglon.monto_imp, renglon.monto_imp2, renglon.monto_imp3, renglonesCotizacionProfit.otros, renglonesCotizacionProfit.total_dev,
@@ -262,7 +262,7 @@ namespace PagonetCore.Controllers
                 else
                 {
                     profitContext.pInsertarRenglonesCotizacionCliente(
-                        renglon.reng_num, renglon.num_doc, renglon.co_art, renglon.art_des, renglon.cod_unidad, null, renglon.co_alma, renglon.co_precios, renglon.tipo_imp,
+                        renglon.reng_num, renglon.doc_num, renglon.co_art, renglon.art_des, renglon.cod_unidad, null, renglon.co_alma, renglon.co_precios, renglon.tipo_imp,
                         renglon.tipo_imp2, renglon.tipo_imp3, renglon.total_art, renglon.stotal_art, renglon.prec_vta, null, 0, renglon.reng_neto, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, renglon.tipo_doc, null,
                         renglon.num_doc, renglon.porc_imp, renglon.porc_imp2, renglon.porc_imp3, renglon.monto_imp, renglon.monto_imp2, renglon.monto_imp3, 0, 0, 0, null, null, null, "", null, null, null
                     );

@@ -12,28 +12,33 @@ namespace PagonetCore
     using System;
     using System.Collections.Generic;
     
-    public partial class saCobro
+    public partial class saCuentaBancaria
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public saCobro()
+        public saCuentaBancaria()
         {
-            this.saCobroDocReng = new HashSet<saCobroDocReng>();
             this.saCobroTPReng = new HashSet<saCobroTPReng>();
+            this.saMovimientoBanco = new HashSet<saMovimientoBanco>();
         }
     
-        public string cob_num { get; set; }
-        public string recibo { get; set; }
-        public string descrip { get; set; }
-        public string co_cli { get; set; }
-        public string co_ven { get; set; }
+        public string cod_cta { get; set; }
+        public string co_ban { get; set; }
         public string co_mone { get; set; }
-        public decimal tasa { get; set; }
-        public System.DateTime fecha { get; set; }
-        public bool anulado { get; set; }
-        public decimal monto { get; set; }
-        public string dis_cen { get; set; }
-        public Nullable<System.DateTime> feccom { get; set; }
+        public string num_cta { get; set; }
         public Nullable<int> numcom { get; set; }
+        public Nullable<System.DateTime> feccom { get; set; }
+        public string dis_cen { get; set; }
+        public string telefonos { get; set; }
+        public string sucursal { get; set; }
+        public System.DateTime mes_ini { get; set; }
+        public bool inactivo { get; set; }
+        public bool usa_chra { get; set; }
+        public string ejec_cu { get; set; }
+        public string direccion { get; set; }
+        public string email { get; set; }
+        public string tipo_cu { get; set; }
+        public System.DateTime fecini { get; set; }
+        public System.DateTime fec_chra { get; set; }
         public string campo1 { get; set; }
         public string campo2 { get; set; }
         public string campo3 { get; set; }
@@ -52,13 +57,14 @@ namespace PagonetCore
         public string trasnfe { get; set; }
         public byte[] validador { get; set; }
         public System.Guid rowguid { get; set; }
+        public Nullable<decimal> aux_imp01 { get; set; }
+        public Nullable<decimal> aux_imp02 { get; set; }
     
-        public virtual saCliente saCliente { get; set; }
-        public virtual saMoneda saMoneda { get; set; }
-        public virtual saVendedor saVendedor { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saCobroDocReng> saCobroDocReng { get; set; }
+        public virtual saBanco saBanco { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saCobroTPReng> saCobroTPReng { get; set; }
+        public virtual saMoneda saMoneda { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saMovimientoBanco> saMovimientoBanco { get; set; }
     }
 }

@@ -12,25 +12,44 @@ namespace PagonetCore
     using System;
     using System.Collections.Generic;
     
-    public partial class saCuentaIngEgr
+    public partial class saTipoDocumento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public saCuentaIngEgr()
+        public saTipoDocumento()
         {
-            this.saCliente = new HashSet<saCliente>();
-            this.saCotizacionCliente = new HashSet<saCotizacionCliente>();
-            this.saPedidoVenta = new HashSet<saPedidoVenta>();
             this.saDocumentoVenta = new HashSet<saDocumentoVenta>();
-            this.saMovimientoBanco = new HashSet<saMovimientoBanco>();
-            this.saMovimientoCaja = new HashSet<saMovimientoCaja>();
+            this.saDocumentoVenta1 = new HashSet<saDocumentoVenta>();
         }
     
-        public string co_cta_ingr_egr { get; set; }
+        public string co_tipo_doc { get; set; }
         public string descrip { get; set; }
-        public string co_islr { get; set; }
-        public Nullable<int> numcom { get; set; }
-        public Nullable<System.DateTime> feccom { get; set; }
-        public string dis_cen { get; set; }
+        public string tipo_mov { get; set; }
+        public bool usar_ventas { get; set; }
+        public bool usar_compras { get; set; }
+        public bool registro_sistema { get; set; }
+        public bool num_fact_fis_venta { get; set; }
+        public bool num_cont_venta { get; set; }
+        public bool serial_imp_fis_venta { get; set; }
+        public bool reng_venta { get; set; }
+        public bool num_iva_venta { get; set; }
+        public bool reac_doc_Compra { get; set; }
+        public bool reac_doc_Venta { get; set; }
+        public bool anul_doc_venta { get; set; }
+        public bool anul_doc_compra { get; set; }
+        public bool doc_prov_compra { get; set; }
+        public bool num_control_compra { get; set; }
+        public bool reng_compra { get; set; }
+        public bool num_iva_compra { get; set; }
+        public bool manual_venta { get; set; }
+        public bool manual_compra { get; set; }
+        public bool doc_asoc_compra { get; set; }
+        public bool doc_asoc_venta { get; set; }
+        public bool act_prog_pago { get; set; }
+        public bool aplica_dxpp_venta { get; set; }
+        public bool aplica_dxpp_compra { get; set; }
+        public bool aplica_riva_venta { get; set; }
+        public bool aplica_riva_compra { get; set; }
+        public string tipo_imp { get; set; }
         public string campo1 { get; set; }
         public string campo2 { get; set; }
         public string campo3 { get; set; }
@@ -39,6 +58,7 @@ namespace PagonetCore
         public string campo6 { get; set; }
         public string campo7 { get; set; }
         public string campo8 { get; set; }
+        public byte[] validador { get; set; }
         public string co_us_in { get; set; }
         public string co_sucu_in { get; set; }
         public System.DateTime fe_us_in { get; set; }
@@ -47,20 +67,11 @@ namespace PagonetCore
         public System.DateTime fe_us_mo { get; set; }
         public string revisado { get; set; }
         public string trasnfe { get; set; }
-        public byte[] validador { get; set; }
         public System.Guid rowguid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saCliente> saCliente { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saCotizacionCliente> saCotizacionCliente { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saPedidoVenta> saPedidoVenta { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saDocumentoVenta> saDocumentoVenta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saMovimientoBanco> saMovimientoBanco { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saMovimientoCaja> saMovimientoCaja { get; set; }
+        public virtual ICollection<saDocumentoVenta> saDocumentoVenta1 { get; set; }
     }
 }

@@ -191,8 +191,8 @@ namespace PagonetCore.Controllers
                 else
                 {
                     profitContext.pInsertarCobro(
-                        cobro.cob_num_pro, null, cobro.co_cli, cobro.co_ven, cobro.co_mone, cobro.tasa, cobro.fecha, cobro.anulado == "1", cobro.monto, null, null, null, null, null, null, null, null, 
-                        null, null, "", null, null, null, null
+                        cobro.cob_num_pro, null, cobro.co_cli, cobro.co_ven, cobro.co_mone, cobro.tasa, cobro.fecha, cobro.anulado == "1", cobro.monto, null, 
+                        null, null, null, null, null, null, null, null, null, "", null, null, null, null
                     );
                 }
             }

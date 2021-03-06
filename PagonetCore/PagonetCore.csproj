@@ -286,6 +286,9 @@
     <Compile Include="pActualizarBanco_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pActualizarCaja_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pActualizarCliente_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
@@ -298,13 +301,25 @@
     <Compile Include="pActualizarCotizacionCliente_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pActualizarCuentaBancaria_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pActualizarCuentaIngreso_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarDocumentoVenta_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pActualizarImagenArticulo_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pActualizarMoneda_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarMovimientoBanco_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarMovimientoCaja_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pActualizarPais_Result.cs">
@@ -322,6 +337,9 @@
     <Compile Include="pActualizarRenglonesPedidoVenta_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pActualizarRenglonesTPCobro_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pActualizarSegmento_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
@@ -335,6 +353,9 @@
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pActualizarTipoCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pActualizarTipoDocumento_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pActualizarTipoPrecio_Result.cs">
@@ -358,6 +379,9 @@
     <Compile Include="pInsertarBanco_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pInsertarCaja_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pInsertarCliente_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
@@ -370,13 +394,25 @@
     <Compile Include="pInsertarCotizacionCliente_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pInsertarCuentaBancaria_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pInsertarCuentaIngreso_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarDocumentoVenta_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pInsertarImagenArticulo_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pInsertarMoneda_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarMovimientoBanco_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarMovimientoCaja_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pInsertarPais_Result.cs">
@@ -394,10 +430,16 @@
     <Compile Include="pInsertarRenglonesPedidoVenta_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pInsertarRenglonesTPCobro_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pInsertarSegmento_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pInsertarTipoCliente_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pInsertarTipoDocumento_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pInsertarTipoPrecio_Result.cs">
@@ -437,6 +479,9 @@
     <Compile Include="pSeleccionarBanco_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pSeleccionarCaja_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pSeleccionarCliente_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
@@ -449,13 +494,25 @@
     <Compile Include="pSeleccionarCotizacionCliente_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pSeleccionarCuentaBancaria_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pSeleccionarCuentaIngreso_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarDocumentoVenta_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pSeleccionarImagenArticulo_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pSeleccionarMoneda_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarMovimientoBanco_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pSeleccionarMovimientoCaja_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="pSeleccionarPais_Result.cs">
@@ -503,6 +560,9 @@
     <Compile Include="pSeleccionarTipoCliente_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="pSeleccionarTipoDocumento_Result.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="pSeleccionarTipoPrecio_Result.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
@@ -530,6 +590,9 @@
     <Compile Include="saBanco.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="saCaja.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="saCliente.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
@@ -537,6 +600,9 @@
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="saCobroDocReng.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saCobroTPReng.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="saCondicionPago.cs">
@@ -548,10 +614,22 @@
     <Compile Include="saCotizacionClienteReng.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="saCuentaBancaria.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="saCuentaIngEgr.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="saDocumentoVenta.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="saMoneda.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saMovimientoBanco.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saMovimientoCaja.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="saPais.cs">
@@ -572,10 +650,16 @@
     <Compile Include="saStockAlmacen.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="saSucursal.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="saTasa.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="saTipoCliente.cs">
+      <DependentUpon>ProfitModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="saTipoDocumento.cs">
       <DependentUpon>ProfitModel.tt</DependentUpon>
     </Compile>
     <Compile Include="saTipoPrecio.cs">
