@@ -52,7 +52,7 @@ namespace PagonetCore.Migrations
                 "dbo.AdMoneda",
                 c => new
                     {
-                        id_moneda = c.Int(nullable: false),
+                        id_moneda = c.Int(nullable: false, identity: true),
                         co_mone = c.String(maxLength: 6, fixedLength: true, unicode: false),
                         mone_des = c.String(maxLength: 60, unicode: false),
                         importado_web = c.String(maxLength: 1, fixedLength: true),

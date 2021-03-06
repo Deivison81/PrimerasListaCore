@@ -135,7 +135,7 @@ namespace PagonetCore.Controllers
             return Ok(adRenglonesCobro);
         }
 
-        /*[HttpGet]
+        [HttpGet]
         [Route("renglones-cobros/actualizar")]
         public IHttpActionResult ActualizarRenglonesCobrosProfit()
         {
@@ -144,72 +144,29 @@ namespace PagonetCore.Controllers
 
             foreach (AdRenglonesCobro renglon in renglonesCobros)
             {
-                // Tablas de las que depende Renglones de Cobro.
-                // TODO: Incompleto.
-                // TODO: Importar Cobro de Profit (Stored Procedures).
-                // TODO: Esto requiere co_tipo_doc y nro_doc (de saDocumentoVenta).
-                pSeleccionarCliente_Result clienteProfit = profitContext.pSeleccionarCliente(cobro.co_cli).FirstOrDefault();
-                pSeleccionarVendedor_Result vendedorProfit = profitContext.pSeleccionarVendedor(cobro.co_ven).FirstOrDefault();
-                pSeleccionarMoneda_Result monedaProfit = profitContext.pSeleccionarMoneda(cobro.co_mone).FirstOrDefault();
+                // TODO: Falta calcular el IVA en cada renglón al insertar.
+                pSeleccionarRenglonesCobro_Result renglonCobroProfit = profitContext.pSeleccionarRenglonesCobro(renglon.cob_num_pro).FirstOrDefault();
 
-                Adclientes cliente = db.Clientes.Where(c => c.co_cli == cobro.co_cli).FirstOrDefault();
-                Advendedor vendedor = db.Vendedores.Where(v => v.co_ven == cobro.co_ven).FirstOrDefault();
-                AdMoneda moneda = db.Monedas.Where(m => m.co_mone == cobro.co_mone).FirstOrDefault();
-
-                if (clienteProfit != null)
+                if (renglonCobroProfit != null)
                 {
-                    byte[] validador = clienteProfit.validador;
-                    profitContext.pActualizarCliente(
-                        cliente.co_cli, cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, true, false, false, false, false, false, false,
-                        false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, null, null, null,
-                        null, null, null, null, null, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, cliente.juridico == "1", null, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, null, null, null, validador, null, null,
-                        null, null, null
+                    profitContext.pActualizarRenglonesDocCobro(
+                        renglon.reng_num, renglon.cob_num_pro, renglon.reng_num, renglon.cob_num_pro, renglon.co_tipo_doc, renglon.nro_doc, renglon.mont_cob, renglonCobroProfit.dpcobro_porc_desc,
+                        renglon.dpcobro_monto, renglonCobroProfit.monto_retencion_iva, renglonCobroProfit.monto_retencion, renglonCobroProfit.reten_tercero_rowguid_ori, 
+                        renglonCobroProfit.rowguid_reng_ori, renglon.tipo_doc, renglon.num_doc, renglonCobroProfit.tipo_origen, renglonCobroProfit.gen_origen, renglonCobroProfit.co_sucu_mo,
+                        renglonCobroProfit.co_us_mo, renglonCobroProfit.trasnfe, renglonCobroProfit.revisado, null, null, null
                     );
                 }
                 else
                 {
-                    profitContext.pInsertarCliente(
-                        cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, false, false, false, false, false, false, false,
-                        false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, 0, 0, 0, null, null, 0,
-                        0, 0, null, 0, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, "", null, null,
-                        null, null, cliente.juridico == "1", 1, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, false, false, 0, null, null, null, null
-                    );
-                }
-
-                if (vendedorProfit != null)
-                {
-                    byte[] validador = vendedorProfit.validador;
-                    profitContext.pActualizarVendedor(
-                        vendedor.co_ven, vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null, vendedor.co_zon
-                    );
-                }
-                else
-                {
-                    profitContext.pInsertarVendedor(
-                        vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, "", null, null, null, null, vendedor.co_zon
-                    );
-                }
-
-                if (monedaProfit != null)
-                {
-                    byte[] validador = monedaProfit.validador;
-                    profitContext.pActualizarMoneda(
-                        moneda.co_mone, moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null
-                    );
-                }
-                else
-                {
-                    profitContext.pInsertarMoneda(
-                        moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, "", null, null, null, null
+                    profitContext.pInsertarRenglonesDocCobro(
+                        renglon.reng_num, renglon.cob_num_pro, renglon.co_tipo_doc, renglon.nro_doc, renglon.mont_cob, 0, renglon.dpcobro_monto, 0, 0, renglon.tipo_doc, renglon.num_doc, 
+                        null, null, null, 0, null, null, "", null, null, null
                     );
                 }
             }
 
             return Ok(true);
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {

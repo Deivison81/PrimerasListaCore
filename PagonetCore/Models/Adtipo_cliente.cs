@@ -20,6 +20,10 @@ namespace PagonetCore.Models
         [Display(Name = "Descripción")]
         public string des_tipo { get; set; }
 
+        [Required]
+        [StringLength(6)]
+        public string co_precio { get; set; }
+
         [StringLength(1)]
         [Display(Name = "¿Importado Web?")]
         public string importado_web { get; set; }

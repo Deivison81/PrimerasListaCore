@@ -109,13 +109,15 @@ namespace PagonetCore.Migrations
 			var tiposCliente = profitContext.saTipoCliente.Select(t => new
 			{
 				t.tip_cli,
-				t.des_tipo
+				t.des_tipo,
+				t.co_precio
 			}).ToList();
 
 			tiposCliente.ForEach(t => context.TiposCliente.Add(new Adtipo_cliente
 			{
 				tip_cli = t.tip_cli,
 				des_tipo = t.des_tipo,
+				co_precio = t.co_precio,
 				importado_pro = "1",
 				importado_web = "1"
 			}));
@@ -201,13 +203,15 @@ namespace PagonetCore.Migrations
 			var paises = profitContext.saPais.Select(p => new
 			{
 				p.co_pais,
-				p.pais_des
+				p.pais_des,
+				p.co_mone
 			}).ToList();
 
 			paises.ForEach(p => context.Paises.Add(new Adpais
 			{
 				co_pais = p.co_pais,
 				pais_des = p.pais_des,
+				co_mone = p.co_mone,
 				importado_pro = "1",
 				importado_web = "1"
 			}));

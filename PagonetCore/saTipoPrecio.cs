@@ -12,17 +12,18 @@ namespace PagonetCore
     using System;
     using System.Collections.Generic;
     
-    public partial class saTipoCliente
+    public partial class saTipoPrecio
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public saTipoCliente()
+        public saTipoPrecio()
         {
-            this.saCliente = new HashSet<saCliente>();
+            this.saArtPrecio = new HashSet<saArtPrecio>();
+            this.saTipoCliente = new HashSet<saTipoCliente>();
         }
     
-        public string tip_cli { get; set; }
-        public string des_tipo { get; set; }
         public string co_precio { get; set; }
+        public string des_precio { get; set; }
+        public bool incluye_imp { get; set; }
         public string campo1 { get; set; }
         public string campo2 { get; set; }
         public string campo3 { get; set; }
@@ -43,7 +44,8 @@ namespace PagonetCore
         public System.Guid rowguid { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saCliente> saCliente { get; set; }
-        public virtual saTipoPrecio saTipoPrecio { get; set; }
+        public virtual ICollection<saArtPrecio> saArtPrecio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saTipoCliente> saTipoCliente { get; set; }
     }
 }

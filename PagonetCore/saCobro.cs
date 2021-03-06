@@ -12,17 +12,27 @@ namespace PagonetCore
     using System;
     using System.Collections.Generic;
     
-    public partial class saTipoCliente
+    public partial class saCobro
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public saTipoCliente()
+        public saCobro()
         {
-            this.saCliente = new HashSet<saCliente>();
+            this.saCobroDocReng = new HashSet<saCobroDocReng>();
         }
     
-        public string tip_cli { get; set; }
-        public string des_tipo { get; set; }
-        public string co_precio { get; set; }
+        public string cob_num { get; set; }
+        public string recibo { get; set; }
+        public string descrip { get; set; }
+        public string co_cli { get; set; }
+        public string co_ven { get; set; }
+        public string co_mone { get; set; }
+        public decimal tasa { get; set; }
+        public System.DateTime fecha { get; set; }
+        public bool anulado { get; set; }
+        public decimal monto { get; set; }
+        public string dis_cen { get; set; }
+        public Nullable<System.DateTime> feccom { get; set; }
+        public Nullable<int> numcom { get; set; }
         public string campo1 { get; set; }
         public string campo2 { get; set; }
         public string campo3 { get; set; }
@@ -42,8 +52,10 @@ namespace PagonetCore
         public byte[] validador { get; set; }
         public System.Guid rowguid { get; set; }
     
+        public virtual saCliente saCliente { get; set; }
+        public virtual saMoneda saMoneda { get; set; }
+        public virtual saVendedor saVendedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<saCliente> saCliente { get; set; }
-        public virtual saTipoPrecio saTipoPrecio { get; set; }
+        public virtual ICollection<saCobroDocReng> saCobroDocReng { get; set; }
     }
 }

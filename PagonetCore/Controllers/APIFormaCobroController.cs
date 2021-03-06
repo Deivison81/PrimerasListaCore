@@ -135,7 +135,7 @@ namespace PagonetCore.Controllers
             return Ok(adFormasCobro);
         }
 
-        /*[HttpGet]
+        [HttpGet]
         [Route("formas-cobros/actualizar")]
         public IHttpActionResult ActualizarFormasCobrosProfit()
         {
@@ -144,19 +144,11 @@ namespace PagonetCore.Controllers
 
             foreach (AdFormasCobro forma in formasCobros)
             {
-                // Tablas de las que depende Renglones de Cobro.
+                // Tablas de las que depende Formas de Cobro.
                 // TODO: Incompleto.
-                // TODO: Importar Cobro de Profit (Stored Procedures).
-                // TODO: Esto requiere co_tipo_doc y nro_doc (de saDocumentoVenta).
-                pSeleccionarCliente_Result clienteProfit = profitContext.pSeleccionarCliente(cobro.co_cli).FirstOrDefault();
-                pSeleccionarVendedor_Result vendedorProfit = profitContext.pSeleccionarVendedor(cobro.co_ven).FirstOrDefault();
-                pSeleccionarMoneda_Result monedaProfit = profitContext.pSeleccionarMoneda(cobro.co_mone).FirstOrDefault();
+                // TODO: ¿A cuál tabla de Profit se inserta esto?
 
-                Adclientes cliente = db.Clientes.Where(c => c.co_cli == cobro.co_cli).FirstOrDefault();
-                Advendedor vendedor = db.Vendedores.Where(v => v.co_ven == cobro.co_ven).FirstOrDefault();
-                AdMoneda moneda = db.Monedas.Where(m => m.co_mone == cobro.co_mone).FirstOrDefault();
-
-                if (clienteProfit != null)
+                /*if (clienteProfit != null)
                 {
                     byte[] validador = clienteProfit.validador;
                     profitContext.pActualizarCliente(
@@ -175,41 +167,11 @@ namespace PagonetCore.Controllers
                         0, 0, null, 0, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, "", null, null,
                         null, null, cliente.juridico == "1", 1, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, false, false, 0, null, null, null, null
                     );
-                }
-
-                if (vendedorProfit != null)
-                {
-                    byte[] validador = vendedorProfit.validador;
-                    profitContext.pActualizarVendedor(
-                        vendedor.co_ven, vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null, vendedor.co_zon
-                    );
-                }
-                else
-                {
-                    profitContext.pInsertarVendedor(
-                        vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, "", null, null, null, null, vendedor.co_zon
-                    );
-                }
-
-                if (monedaProfit != null)
-                {
-                    byte[] validador = monedaProfit.validador;
-                    profitContext.pActualizarMoneda(
-                        moneda.co_mone, moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null
-                    );
-                }
-                else
-                {
-                    profitContext.pInsertarMoneda(
-                        moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, "", null, null, null, null
-                    );
-                }
+                }*/
             }
 
             return Ok(true);
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {

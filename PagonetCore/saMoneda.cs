@@ -22,6 +22,7 @@ namespace PagonetCore
             this.saPais = new HashSet<saPais>();
             this.saPedidoVenta = new HashSet<saPedidoVenta>();
             this.saTasa = new HashSet<saTasa>();
+            this.saCobro = new HashSet<saCobro>();
         }
     
         public string co_mone { get; set; }
@@ -57,5 +58,7 @@ namespace PagonetCore
         public virtual ICollection<saPedidoVenta> saPedidoVenta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saTasa> saTasa { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saCobro> saCobro { get; set; }
     }
 }

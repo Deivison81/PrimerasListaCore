@@ -9,7 +9,6 @@ namespace PagonetCore.Models
     public partial class AdMoneda
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id_moneda { get; set; }
 
         [StringLength(6)]
