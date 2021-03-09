@@ -18,9 +18,41 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APIStockAlmacen
-        public IQueryable<StockAlma> GetStockAlmacenes()
+        [Route("Stock/listarStock")]
+        public IHttpActionResult GetStockAlmacenes()
         {
-            return db.StockAlmacenes;
+            var listarStock = db.StockAlmacenes.Select(p => new
+            {
+                p.cod_almacen,
+                p.co_alma,
+                p.id_art,
+                p.co_art,
+                p.tipo,
+                p.stock,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarStock);
+        }
+
+        [Route("Stock/listarStocks")]
+        public IHttpActionResult GetStockAlmacenesListarStocks(int idalma, int idart)
+        {
+            var listarStock = db.StockAlmacenes.Where(P => P.cod_almacen.Equals(idalma) && P.id_art.Equals(idart))
+                .Select(p => new
+                {
+                    p.cod_almacen,
+                    p.co_alma,
+                    p.id_art,
+                    p.co_art,
+                    p.tipo,
+                    p.stock,
+                    p.importado_web,
+                    p.importado_pro
+                }).ToList();
+
+            return Ok(listarStock);
         }
 
         // GET: api/APIStockAlmacen/5

@@ -19,9 +19,30 @@ namespace PagonetCore.Controllers
 
         // GET: api/APIVendedor
         [Route("Vendedor/listarVendedor")]
-        public IQueryable<Advendedor> GetVendedores()
+        public IHttpActionResult GetVendedores()
         {
-            return db.Vendedores;
+            var listarVendedor = db.Vendedores.Select(p => new
+            {
+                p.id_vendedor,
+                p.co_ven,
+                p.tipo,
+                p.ven_des,
+                p.id_zona,
+                p.co_zon,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarVendedor);
+        }
+
+        [Route("Vendedor/listarVendedores/{id:int:min(1)}")]
+        public IHttpActionResult GetVendedoresId(int id)
+        {
+            var listarVendedores = db.Vendedores.Where(p => p.id_vendedor.Equals(id))
+                                   .Select(p => new { p.id_vendedor, p.co_ven, p.ven_des }).ToList();
+
+            return Ok(listarVendedores);
         }
 
         // GET: Cotizacion/listarVendedor
@@ -41,7 +62,6 @@ namespace PagonetCore.Controllers
         }
 
         // GET: api/APIVendedor/5
-        [Route("Vendedor/listarVendedores/{id:int:min(1)}")]
         [ResponseType(typeof(Advendedor))]
         public IHttpActionResult GetAdvendedor(int id)
         {

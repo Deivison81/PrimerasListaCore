@@ -16,9 +16,49 @@ namespace PagonetCore.Controllers
 
         // GET: api/APITransporte
         [Route("Transporte/listarTransportes")]
-        public IQueryable<Adtransporte> GetTransportes()
+        public IHttpActionResult GetTransportes()
         {
-            return db.Transportes;
+            var listarTransportes = db.Transportes.Select(p => new
+            {
+                p.idtransporte,
+                p.co_tran,
+                p.des_tran,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarTransportes);
+        }
+
+        [Route("Transporte/listarTransporte/{id:int:min(1)}")]
+        public IHttpActionResult GetTransportesId(int id)
+        {
+            var listarTransporte = db.Transportes.Where(p => p.idtransporte.Equals(id))
+                .Select(p => new
+                {
+                    p.idtransporte,
+                    p.co_tran,
+                    p.des_tran,
+                    p.importado_web,
+                    p.importado_pro
+
+                }).ToList();
+
+            return Ok(listarTransporte);
+        }
+
+        [Route("Transporte/listarTransportecot/{id:int:min(1)}")]
+        public IHttpActionResult GetTransportesCot(int id)
+        {
+            var listarTransporte = db.Transportes.Where(p => p.idtransporte.Equals(id))
+                .Select(p => new
+                {
+                    p.idtransporte,
+                    p.co_tran,
+                    p.des_tran
+                }).ToList();
+
+            return Ok(listarTransporte);
         }
 
         // GET: Cotizacion/listarTransporte

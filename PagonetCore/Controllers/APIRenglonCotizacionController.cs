@@ -20,9 +20,42 @@ namespace PagonetCore.Controllers
         // GET: api/APIRenglonCotizacion
         // GET: cotizacion/listarRenglones
         [Route("cotizacion/listarRenglones")]
-        public IQueryable<AdCotizacionreg> GetRenglonesCotizacion()
+        public IHttpActionResult GetRenglonesCotizacion()
         {
-            return db.RenglonesCotizacion;
+            var listarrenglones = db.RenglonesCotizacion.Select(p => new
+            {
+                p.id_doc_num,
+                p.doc_num,
+                p.reng_num,
+                p.id_art,
+                p.co_art,
+                p.art_des,
+                p.cod_almacen,
+                p.co_alma,
+                p.total_art,
+                p.stotal_art,
+                p.cod_unidad,
+                p.id_preciosart,
+                p.co_precios,
+                p.prec_vta,
+                p.prec_vta_om,
+                p.tipo_imp,
+                p.tipo_imp2,
+                p.tipo_imp3,
+                p.porc_imp,
+                p.porc_imp2,
+                p.porc_imp3,
+                p.monto_imp,
+                p.monto_imp2,
+                p.monto_imp3,
+                p.reng_neto,
+                p.tipo_doc,
+                p.num_doc,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarrenglones);
         }
 
         // GET: api/APIRenglonCotizacion/5
@@ -30,7 +63,39 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(AdCotizacionreg))]
         public IHttpActionResult GetAdCotizacionreg(int id)
         {
-            AdCotizacionreg adCotizacionreg = db.RenglonesCotizacion.Find(id);
+            var adCotizacionreg = db.RenglonesCotizacion.Where(p => p.id_doc_num.Equals(id)).Select(p => new
+            {
+                p.id_doc_num,
+                p.doc_num,
+                p.reng_num,
+                p.id_art,
+                p.co_art,
+                p.art_des,
+                p.cod_almacen,
+                p.co_alma,
+                p.total_art,
+                p.stotal_art,
+                p.cod_unidad,
+                p.id_preciosart,
+                p.co_precios,
+                p.prec_vta,
+                p.prec_vta_om,
+                p.tipo_imp,
+                p.tipo_imp2,
+                p.tipo_imp3,
+                p.porc_imp,
+                p.porc_imp2,
+                p.porc_imp3,
+                p.monto_imp,
+                p.monto_imp2,
+                p.monto_imp3,
+                p.reng_neto,
+                p.tipo_doc,
+                p.num_doc,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
             if (adCotizacionreg == null)
             {
                 return NotFound();

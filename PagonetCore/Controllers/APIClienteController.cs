@@ -19,9 +19,40 @@ namespace PagonetCore.Controllers
 
         // GET: api/APICliente
         [Route("Cliente/listaCliente")]
-        public IQueryable<Adclientes> GetClientes()
+        public IHttpActionResult GetClientes()
         {
-            return db.Clientes;
+            var listaCliente = db.Clientes.Select(p => new {
+                p.id_clientes,
+                p.co_cli,
+                p.id_tipocliente,
+                p.tip_cli,
+                p.cli_des,
+                p.direc1,
+                p.dir_ent2,
+                p.telefonos,
+                p.inactivo,
+                p.respons,
+                p.id_zona,
+                p.co_zon,
+                p.id_segmento,
+                p.co_seg,
+                p.id_vendedor,
+                p.co_ven,
+                p.idingre,
+                p.co_cta_ingr_egr,
+                p.rif,
+                p.email,
+                p.juridico,
+                p.ciudad,
+                p.zip,
+                p.id_pais,
+                p.co_pais,
+                p.cod_comercio,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listaCliente);
         }
 
         
@@ -85,7 +116,7 @@ namespace PagonetCore.Controllers
                 {
                     x.id_clientes,
                     x.co_cli
-                })
+                }).ToList()
             );
         }
 
@@ -110,7 +141,38 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(Adclientes))]
         public IHttpActionResult GetAdclientes(int id)
         {
-            Adclientes adclientes = db.Clientes.Find(id);
+            var adclientes = db.Clientes.Where(p => p.id_clientes.Equals(id))
+                .Select(p => new {
+                    p.id_clientes,
+                    p.co_cli,
+                    p.id_tipocliente,
+                    p.tip_cli,
+                    p.cli_des,
+                    p.direc1,
+                    p.dir_ent2,
+                    p.telefonos,
+                    p.inactivo,
+                    p.respons,
+                    p.id_zona,
+                    p.co_zon,
+                    p.id_segmento,
+                    p.co_seg,
+                    p.id_vendedor,
+                    p.co_ven,
+                    p.idingre,
+                    p.co_cta_ingr_egr,
+                    p.rif,
+                    p.email,
+                    p.juridico,
+                    p.ciudad,
+                    p.zip,
+                    p.id_pais,
+                    p.co_pais,
+                    p.cod_comercio,
+                    p.importado_web,
+                    p.importado_pro
+                }).ToList();
+
             if (adclientes == null)
             {
                 return NotFound();

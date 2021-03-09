@@ -18,9 +18,24 @@ namespace PagonetCore.Controllers
         private PagonetContext db = new PagonetContext();
 
         // GET: api/APITasaIVA
-        public IQueryable<Tasa_IVA> GetTasasIVA()
+        [Route("TasaIVA/ListarIVA")]
+        public IHttpActionResult GetTasasIVA()
         {
-            return db.TasasIVA;
+            var listarIVA = db.TasasIVA.Select(p => new
+            {
+                p.id_impuesto,
+                p.fechapubli,
+                p.nro_reng,
+                p.tip_impu,
+                p.ventas,
+                p.consumosuntuario,
+                p.porcentajetaza,
+                p.porcentajesuntuario,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarIVA);
         }
 
         // GET: api/APITasaIVA/5
