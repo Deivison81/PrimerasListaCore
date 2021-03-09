@@ -1,0 +1,368 @@
+﻿@model PagonetCore.Models.AdMovimientoBanco
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AdMovimientoBanco</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.descrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descrip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_cta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_cta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_cta_ingr_egr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_cta_ingr_egr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tasa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tasa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_op)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_op)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.doc_num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.doc_num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_d)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_d)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto_h)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto_h)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.saldo_ini)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.saldo_ini)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.origen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.origen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cob_pag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cob_pag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dep_num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dep_num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.conciliado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.conciliado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ori_dep)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ori_dep)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anulado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anulado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dep_con)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dep_con)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fec_con)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fec_con)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cod_ingben)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cod_ingben)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_che)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_che)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.feccom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.feccom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numcom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numcom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dis_cen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dis_cen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campo1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campo1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campo2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campo2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campo3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campo3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campo4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campo4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campo5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campo5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campo6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campo6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campo7)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campo7)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.campo8)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.campo8)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_us_in)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_us_in)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_sucu_in)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_sucu_in)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fe_us_in)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fe_us_in)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_us_mo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_us_mo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_sucu_mo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_sucu_mo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fe_us_mo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fe_us_mo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trasnfe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trasnfe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.revisado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.revisado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nro_transf_nomi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nro_transf_nomi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<PagonetCore.Models.AdRenglonesCobro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.reng_num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_cob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cob_num_pro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_tipo_doc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nro_doc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mont_cob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dpcobro_monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_doc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.num_doc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saldo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.reng_num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_cob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cob_num_pro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_tipo_doc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_doc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mont_cob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dpcobro_monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_doc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_doc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.saldo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idrencob }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idrencob }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idrencob })
+        </td>
+    </tr>
+}
+
+</table>

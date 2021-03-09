@@ -1,0 +1,285 @@
+﻿@model IEnumerable<PagonetCore.Models.AdMovimientoBanco>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.descrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cod_cta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_cta_ingr_egr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tasa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipo_op)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.doc_num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_d)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto_h)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.saldo_ini)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.origen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cob_pag)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dep_num)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.conciliado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ori_dep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anulado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dep_con)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fec_con)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cod_ingben)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_che)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.feccom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numcom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dis_cen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.campo1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.campo2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.campo3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.campo4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.campo5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.campo6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.campo7)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.campo8)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_us_in)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_sucu_in)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fe_us_in)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_us_mo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_sucu_mo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fe_us_mo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trasnfe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.revisado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nro_transf_nomi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.descrip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cod_cta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_cta_ingr_egr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tasa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_op)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.doc_num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_d)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto_h)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.saldo_ini)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cob_pag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dep_num)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.conciliado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ori_dep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anulado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dep_con)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fec_con)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cod_ingben)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_che)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.feccom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numcom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dis_cen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.campo1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.campo2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.campo3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.campo4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.campo5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.campo6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.campo7)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.campo8)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_us_in)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_sucu_in)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fe_us_in)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_us_mo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_sucu_mo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fe_us_mo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trasnfe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.revisado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_transf_nomi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.mov_num }) |
+            @Html.ActionLink("Details", "Details", new { id=item.mov_num }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.mov_num })
+        </td>
+    </tr>
+}
+
+</table>
