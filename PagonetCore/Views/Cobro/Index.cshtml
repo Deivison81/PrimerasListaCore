@@ -1,0 +1,99 @@
+﻿@model IEnumerable<PagonetCore.Models.AdCobros>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cob_num_pro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_clientes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_cli)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_mone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_vendedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_ven)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tasa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anulado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cob_num_pro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_clientes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_cli)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_mone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_vendedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_ven)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tasa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.anulado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_web)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.importado_pro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_cob }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_cob }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_cob })
+        </td>
+    </tr>
+}
+
+</table>

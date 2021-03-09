@@ -1,0 +1,50 @@
+﻿@model PagonetCore.Models.AdMoneda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AdMoneda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.co_mone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_mone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mone_des)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mone_des)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_web)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_web)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.importado_pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.importado_pro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_moneda }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
