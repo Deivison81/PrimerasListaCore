@@ -18,29 +18,9 @@ namespace PagonetCore.Controllers
         // GET: api/APICotizacion
         // GET: cotizacion/listarCotizacion
         [Route("cotizacion/listarCotizacion")]
-        public IQueryable<Adcotizacion> GetCotizaciones()
+        public IHttpActionResult GetCotizaciones()
         {
-            return db.Cotizaciones;
-        }
-
-        // GET: api/APICotizacion/5
-        [Route("cotizacion/listarcotizacionid/{id:int:min(1)}")]
-        [ResponseType(typeof(Adcotizacion))]
-        public IHttpActionResult GetAdcotizacion(int id)
-        {
-            Adcotizacion adcotizacion = db.Cotizaciones.Find(id);
-            if (adcotizacion == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(adcotizacion);
-        }
-
-        [Route("cotizacion/listarCotizacioncli/{cliente:int:min(1)}")]
-        public object GetAdcotizacionCliente(int cliente)
-        {
-            return db.Cotizaciones.Where(p => p.id_clientes.Equals(cliente)).Select(p => new
+            var listarcotizacion = db.Cotizaciones.Select(p => new
             {
                 p.id_doc_num,
                 p.doc_num,
@@ -57,6 +37,9 @@ namespace PagonetCore.Controllers
                 p.fec_emis,
                 p.fec_venc,
                 p.fec_reg,
+                // FECHAINI =  ((DateTime) p.fec_emis).ToShortDateString(),
+                // FEVENC =((DateTime)p.fec_venc).ToShortDateString(),
+                // FECREG = ((DateTime)p.fec_reg).ToShortDateString(),
                 p.anulado,
                 p.status,
                 p.total_bruto,
@@ -71,6 +54,97 @@ namespace PagonetCore.Controllers
                 p.nro_pedido,
                 p.vencida
             }).ToList();
+
+            return Ok(listarcotizacion);
+        }
+
+        // GET: api/APICotizacion/5
+        [Route("cotizacion/listarCotizacionid/{id:int:min(1)}")]
+        [ResponseType(typeof(Adcotizacion))]
+        public IHttpActionResult GetAdcotizacion(int id)
+        {
+            var adcotizacion = db.Cotizaciones.Where(p => p.id_doc_num.Equals(id)).Select(p => new
+            {
+                p.id_doc_num,
+                p.doc_num,
+                p.descrip,
+                p.id_clientes,
+                p.co_cli,
+                p.idtransporte,
+                p.co_tran,
+                p.co_mone,
+                p.id_vendedor,
+                p.co_ven,
+                p.id_condicion,
+                p.co_cond,
+                p.fec_emis,
+                p.fec_venc,
+                p.fec_reg,
+                //FECHAINI = ((DateTime)p.fec_emis).ToShortDateString(),
+                //FEVENC = ((DateTime)p.fec_venc).ToShortDateString(),
+                //FECREG = ((DateTime)p.fec_reg).ToShortDateString(),
+                p.anulado,
+                p.status,
+                p.total_bruto,
+                p.monto_imp,
+                p.monto_imp2,
+                p.monto_imp3,
+                p.total_neto,
+                p.saldo,
+                p.importado_web,
+                p.importado_pro,
+                p.Diasvencimiento,
+                p.nro_pedido,
+                p.vencida
+            }).ToList();
+
+            if (adcotizacion == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(adcotizacion);
+        }
+
+        [Route("cotizacion/listarCotizacioncli/{cliente:int:min(1)}")]
+        public IHttpActionResult GetAdcotizacionCliente(int cliente)
+        {
+            var listarcotizacion = db.Cotizaciones.Where(p => p.id_clientes.Equals(cliente)).Select(p => new
+            {
+                p.id_doc_num,
+                p.doc_num,
+                p.descrip,
+                p.id_clientes,
+                p.co_cli,
+                p.idtransporte,
+                p.co_tran,
+                p.co_mone,
+                p.id_vendedor,
+                p.co_ven,
+                p.id_condicion,
+                p.co_cond,
+                p.fec_emis,
+                p.fec_venc,
+                p.fec_reg,
+                //FECHAINI = ((DateTime)p.fec_emis).ToShortDateString(),
+                //FEVENC = ((DateTime)p.fec_venc).ToShortDateString(),
+                //FECREG = ((DateTime)p.fec_reg).ToShortDateString(),
+                p.anulado,
+                p.status,
+                p.total_bruto,
+                p.monto_imp,
+                p.monto_imp2,
+                p.monto_imp3,
+                p.total_neto,
+                p.saldo,
+                p.importado_web,
+                p.importado_pro,
+                p.Diasvencimiento,
+                p.nro_pedido,
+                p.vencida
+            }).ToList();
+
+            return Ok(listarcotizacion);
         }
 
         [Route("cotizacion/listarCotizacionCompleta")]

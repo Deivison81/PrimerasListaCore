@@ -19,9 +19,18 @@ namespace PagonetCore.Controllers
 
         // GET: api/APIPais
         [Route("Adpais/listarPais")]
-        public IQueryable<Adpais> GetPaises()
+        public IHttpActionResult GetPaises()
         {
-            return db.Paises;
+            var paises = db.Paises.Select(p => new
+            {
+                p.id_pais,
+                p.co_pais,
+                p.pais_des,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(paises);
         }
 
         // GET: api/APIPais/5
@@ -29,7 +38,13 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(Adpais))]
         public IHttpActionResult GetAdpais(int id)
         {
-            Adpais adpais = db.Paises.Find(id);
+            var adpais = db.Paises.Where(p => p.id_pais.Equals(id)).Select(p => new
+            {
+                p.id_pais,
+                p.co_pais,
+                p.pais_des
+            });
+
             if (adpais == null)
             {
                 return NotFound();

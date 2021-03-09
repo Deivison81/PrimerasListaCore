@@ -20,9 +20,26 @@ namespace PagonetCore.Controllers
         // GET: api/APIArticulo
         [HttpGet]
         [Route("Articulo/listarArticulos")]
-        public IQueryable<AdArticulo> GetArticulos()
+        public IHttpActionResult GetArticulos()
         {
-            return db.Articulos;
+            var listarArticulos = db.Articulos.Select(p => new
+            {
+                p.id_art,
+                p.co_art,
+                p.art_des,
+                p.co_lin,
+                p.co_subl,
+                p.co_cat,
+                p.co_color,
+                p.co_ubicacion,
+                p.cod_proc,
+                p.cod_unidad,
+                p.referencia,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarArticulos);
         }
 
         [HttpGet]
@@ -169,7 +186,24 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(AdArticulo))]
         public IHttpActionResult GetAdArticulo(int id)
         {
-            AdArticulo adArticulo = db.Articulos.Find(id);
+            var adArticulo = db.Articulos.Where(p => p.id_art.Equals(id))
+                .Select(p => new
+                {
+                    p.id_art,
+                    p.co_art,
+                    p.art_des,
+                    p.co_lin,
+                    p.co_subl,
+                    p.co_cat,
+                    p.co_color,
+                    p.co_ubicacion,
+                    p.cod_proc,
+                    p.cod_unidad,
+                    p.referencia,
+                    p.importado_web,
+                    p.importado_pro
+                }).ToList();
+
             if (adArticulo == null)
             {
                 return NotFound();

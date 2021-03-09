@@ -19,9 +19,17 @@ namespace PagonetCore.Controllers
 
         // GET: api/APISegmento
         [Route("Segmento/listarSegmento")]
-        public IQueryable<AdSegmento> GetSegmentos()
+        public IHttpActionResult GetSegmentos()
         {
-            return db.Segmentos;
+            var listarSegmento = db.Segmentos.Select(p => new {
+                p.id_segmento,
+                p.co_seg,
+                p.seg_des,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarSegmento);
         }
 
         // GET: api/APISegmento/5
@@ -29,7 +37,14 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(AdSegmento))]
         public IHttpActionResult GetAdSegmento(int id)
         {
-            AdSegmento adSegmento = db.Segmentos.Find(id);
+            var adSegmento = db.Segmentos.Where(p => p.id_segmento.Equals(id)).Select(p => new {
+                p.id_segmento,
+                p.co_seg,
+                p.seg_des,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
             if (adSegmento == null)
             {
                 return NotFound();

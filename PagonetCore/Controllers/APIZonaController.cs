@@ -19,9 +19,10 @@ namespace PagonetCore.Controllers
 
         // GET: api/APIZona
         [Route("Zona/listazona")]
-        public IQueryable<Adzona> GetZonas()
+        public IHttpActionResult GetZonas()
         {
-            return db.Zonas;
+            var listazona = db.Zonas.Select(p => new { p.id_zona, p.co_zon, p.zon_des, p.importado_web, p.importado_pro }).ToList();
+            return Ok(listazona);
         }
 
         // GET: api/APIZona/5
@@ -29,13 +30,27 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(Adzona))]
         public IHttpActionResult GetAdzona(int id)
         {
-            Adzona adzona = db.Zonas.Find(id);
+            var adzona = db.Zonas.Where(p => p.id_zona.Equals(id)).Select(p => new { p.id_zona, p.co_zon, p.zon_des }).ToList();
+
             if (adzona == null)
             {
                 return NotFound();
             }
 
             return Ok(adzona);
+        }
+
+        [Route("Zona/listarZonaprofit")]
+        public IHttpActionResult GetZonasProfit()
+        {
+            var listarzonaprofit = db.Zonas.Select(p => new
+            {
+                p.co_zon,
+                p.zon_des,
+                //p.campo1
+            }).ToList();
+
+            return Ok(listarzonaprofit);
         }
 
         // PUT: api/APIZona/5

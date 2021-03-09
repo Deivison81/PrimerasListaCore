@@ -15,9 +15,20 @@ namespace PagonetCore.Controllers
 
         // GET: api/APIAlmacen
         [Route("Almacen/listarAlmacen")]
-        public IQueryable<AdAlmacen> GetAlmacenes()
+        public IHttpActionResult GetAlmacenes()
         {
-            return db.Almacenes;
+            var listarAlmacen = db.Almacenes.Select(p => new
+            {
+                p.cod_almacen,
+                p.co_alma,
+                p.des_alamacen,
+                p.web,
+                p.co_user_prof,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarAlmacen);
         }
 
         // GET: api/APIAlmacen/5
@@ -25,13 +36,20 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(AdAlmacen))]
         public IHttpActionResult GetAdAlmacen(int id)
         {
-            AdAlmacen adAlmacen = db.Almacenes.Find(id);
-            if (adAlmacen == null)
+            var listarAlmacen = db.Almacenes.Where(p => p.cod_almacen.Equals(id))
+                .Select(p => new
+                {
+                    p.cod_almacen,
+                    p.co_alma,
+                    p.des_alamacen
+                }).ToList();
+
+            if (listarAlmacen == null)
             {
                 return NotFound();
             }
 
-            return Ok(adAlmacen);
+            return Ok(listarAlmacen);
         }
 
         // GET: api/APIAlmacen/5
@@ -39,7 +57,14 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(AdAlmacen))]
         public IHttpActionResult GetAdAlmacenB1(string codigoAlmacen)
         {
-            AdAlmacen adAlmacen = db.Almacenes.Where(a => a.co_alma == codigoAlmacen).FirstOrDefault();
+            var adAlmacen = db.Almacenes.Where(a => a.co_alma == codigoAlmacen).Select(p => new
+            {
+                p.cod_almacen,
+                p.co_alma,
+                p.des_alamacen,
+                p.web
+            }).ToList();
+            
             if (adAlmacen == null)
             {
                 return NotFound();

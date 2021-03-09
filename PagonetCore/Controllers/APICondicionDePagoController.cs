@@ -19,9 +19,19 @@ namespace PagonetCore.Controllers
 
         // GET: api/APICondicionDePago
         [Route("Condicion/listarCondiciones")]
-        public IQueryable<Adcondiciondepago> GetCondicionesDePago()
+        public IHttpActionResult GetCondicionesDePago()
         {
-            return db.CondicionesDePago;
+            var listarCondiciones = db.CondicionesDePago.Select(p => new
+            {
+                p.id_condicion,
+                p.co_cond,
+                p.cond_des,
+                p.dias_cred,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listarCondiciones);
         }
 
         // GET: cotizacion/listarCondicion
@@ -46,13 +56,41 @@ namespace PagonetCore.Controllers
         [ResponseType(typeof(Adcondiciondepago))]
         public IHttpActionResult GetAdcondiciondepago(int id)
         {
-            Adcondiciondepago adcondiciondepago = db.CondicionesDePago.Find(id);
+            var adcondiciondepago = db.CondicionesDePago.Where(p => p.id_condicion.Equals(id))
+                .Select(p => new
+                {
+                    p.id_condicion,
+                    p.co_cond,
+                    p.cond_des,
+                    p.dias_cred,
+                    p.importado_web,
+                    p.importado_pro
+
+                });
+
             if (adcondiciondepago == null)
             {
                 return NotFound();
             }
 
             return Ok(adcondiciondepago);
+        }
+
+        [Route("Condicion/listarCondicion3/{id:int:min(1)}")]
+        public IHttpActionResult GetCondicionesDePago3(int id)
+        {
+            var listarCondiciones = db.CondicionesDePago.Where(p => p.id_condicion.Equals(id))
+                .Select(p => new
+                {
+                    p.id_condicion,
+                    p.co_cond,
+                    p.cond_des,
+                    p.dias_cred,
+
+
+                }).ToList();
+
+            return Ok(listarCondiciones);
         }
 
         // PUT: api/APICondicionDePago/5

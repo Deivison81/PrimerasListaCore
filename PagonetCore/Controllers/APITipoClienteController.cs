@@ -19,17 +19,20 @@ namespace PagonetCore.Controllers
 
         // GET: api/APITipoCliente
         [Route("Tipocliente/listatipot")]
-        public IQueryable<Adtipo_cliente> GetTiposCliente()
+        public IHttpActionResult GetTiposCliente()
         {
-            return db.TiposCliente;
+            var listatipo = db.TiposCliente.Select(p => new { p.id_tipocliente, p.tip_cli, p.des_tipo, p.importado_web, p.importado_pro }).ToList();
+            return Ok(listatipo);
         }
 
         // GET: api/APITipoCliente/5
-        [Route("Tipocliente/listatipot/{id:int:min(1)}")]
+        [Route("Tipocliente/listatipo/{id:int:min(1)}")]
         [ResponseType(typeof(Adtipo_cliente))]
         public IHttpActionResult GetAdtipo_cliente(int id)
         {
-            Adtipo_cliente adtipo_cliente = db.TiposCliente.Find(id);
+            var adtipo_cliente = db.TiposCliente.Where(p => p.id_tipocliente.Equals(id))
+            .Select(p => new { p.id_tipocliente, p.tip_cli, p.des_tipo, p.importado_web, p.importado_pro }).ToList();
+
             if (adtipo_cliente == null)
             {
                 return NotFound();

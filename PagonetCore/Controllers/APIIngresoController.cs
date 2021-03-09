@@ -19,17 +19,34 @@ namespace PagonetCore.Controllers
 
         // GET: api/APIIngreso
         [Route("Ingresos/listaIngreso")]
-        public IQueryable<AdIngreso> GetIngresos()
+        public IHttpActionResult GetIngresos()
         {
-            return db.Ingresos;
+            var listaIngreso = db.Ingresos.Select(p => new {
+                p.id,
+                p.co_ctaIng_egr,
+                p.descrip_ingre,
+                p.co_user_prof,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
+            return Ok(listaIngreso);
         }
 
         // GET: api/APIIngreso/5
-        [Route("Ingresos/listaIngreso/{id:int:min(1)}")]
+        [Route("Ingresos/listaIngresos/{id:int:min(1)}")]
         [ResponseType(typeof(AdIngreso))]
         public IHttpActionResult GetAdIngreso(int id)
         {
-            AdIngreso adIngreso = db.Ingresos.Find(id);
+            var adIngreso = db.Ingresos.Where(p => p.id.Equals(id)).Select(p => new {
+                p.id,
+                p.co_ctaIng_egr,
+                p.descrip_ingre,
+                p.co_user_prof,
+                p.importado_web,
+                p.importado_pro
+            }).ToList();
+
             if (adIngreso == null)
             {
                 return NotFound();
