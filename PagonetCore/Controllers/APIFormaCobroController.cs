@@ -135,7 +135,7 @@ namespace PagonetCore.Controllers
             return Ok(adFormasCobro);
         }
 
-        /*[HttpGet]
+        [HttpGet]
         [Route("formas-cobros/actualizar")]
         public IHttpActionResult ActualizarFormasCobrosProfit()
         {
@@ -144,72 +144,51 @@ namespace PagonetCore.Controllers
 
             foreach (AdFormasCobro forma in formasCobros)
             {
-                // Tablas de las que depende Renglones de Cobro.
-                // TODO: Incompleto.
-                // TODO: Importar Cobro de Profit (Stored Procedures).
-                // TODO: Esto requiere co_tipo_doc y nro_doc (de saDocumentoVenta).
-                pSeleccionarCliente_Result clienteProfit = profitContext.pSeleccionarCliente(cobro.co_cli).FirstOrDefault();
-                pSeleccionarVendedor_Result vendedorProfit = profitContext.pSeleccionarVendedor(cobro.co_ven).FirstOrDefault();
-                pSeleccionarMoneda_Result monedaProfit = profitContext.pSeleccionarMoneda(cobro.co_mone).FirstOrDefault();
+                saCobroTPReng formaCobroProfit = profitContext.saCobroTPReng.Where(f => (f.cob_num == forma.cob_num_pro) && (f.reng_num == forma.nro_reng)).FirstOrDefault();
+                pSeleccionarMovimientoBanco_Result movBancoProfit = profitContext.pSeleccionarMovimientoBanco(forma.mov_num_b).FirstOrDefault();
 
-                Adclientes cliente = db.Clientes.Where(c => c.co_cli == cobro.co_cli).FirstOrDefault();
-                Advendedor vendedor = db.Vendedores.Where(v => v.co_ven == cobro.co_ven).FirstOrDefault();
-                AdMoneda moneda = db.Monedas.Where(m => m.co_mone == cobro.co_mone).FirstOrDefault();
-
-                if (clienteProfit != null)
+                if (movBancoProfit != null)
                 {
-                    byte[] validador = clienteProfit.validador;
-                    profitContext.pActualizarCliente(
-                        cliente.co_cli, cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, true, false, false, false, false, false, false,
-                        false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, null, null, null,
-                        null, null, null, null, null, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, cliente.juridico == "1", null, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, null, null, null, validador, null, null,
-                        null, null, null
+                    byte[] validador = movBancoProfit.validador;
+                    profitContext.pActualizarMovimientoBanco(
+                        forma.mov_num_b, forma.mov_num_b, movBancoProfit.descrip, forma.cod_cta, movBancoProfit.fecha, movBancoProfit.tasa, movBancoProfit.tipo_op,
+                        movBancoProfit.doc_num, movBancoProfit.monto, movBancoProfit.co_cta_ingr_egr, movBancoProfit.origen, movBancoProfit.cob_pag, movBancoProfit.idb,
+                        movBancoProfit.dep_num, movBancoProfit.conciliado, movBancoProfit.anulado, movBancoProfit.ori_dep, movBancoProfit.dep_con, movBancoProfit.saldo_ini,
+                        movBancoProfit.fec_con, movBancoProfit.cod_ingben, movBancoProfit.fecha_che, movBancoProfit.dis_cen, movBancoProfit.nro_transf_nomi, movBancoProfit.campo1,
+                        movBancoProfit.campo2, movBancoProfit.campo3, movBancoProfit.campo4, movBancoProfit.campo5, movBancoProfit.campo6, movBancoProfit.campo7, movBancoProfit.campo8,
+                        movBancoProfit.co_us_mo, movBancoProfit.co_sucu_mo, null, null, movBancoProfit.revisado, movBancoProfit.trasnfe, validador, null
                     );
                 }
                 else
                 {
-                    profitContext.pInsertarCliente(
-                        cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, false, false, false, false, false, false, false,
-                        false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, 0, 0, 0, null, null, 0,
-                        0, 0, null, 0, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, "", null, null,
-                        null, null, cliente.juridico == "1", 1, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, false, false, 0, null, null, null, null
+                    AdMovimientoBanco movBanco = db.MovimientosBancos.Where(m => m.mov_num == forma.mov_num_b).FirstOrDefault();
+                    profitContext.pInsertarMovimientoBanco(
+                        movBanco.mov_num, movBanco.descrip, movBanco.cod_cta, movBanco.fecha, movBanco.tasa, movBanco.tipo_op, movBanco.doc_num, movBanco.monto_d, movBanco.co_cta_ingr_egr,
+                        movBanco.origen, movBanco.cob_pag, movBanco.idb, movBanco.dep_num, movBanco.anulado, movBanco.saldo_ini, movBanco.conciliado, movBanco.ori_dep, movBanco.dep_con,
+                        movBanco.fec_con, movBanco.cod_ingben, movBanco.fecha_che, movBanco.dis_cen, movBanco.nro_transf_nomi, movBanco.campo1, movBanco.campo2, movBanco.campo3, movBanco.campo4,
+                        movBanco.campo5, movBanco.campo6, movBanco.campo7, movBanco.campo8, movBanco.co_us_in, movBanco.co_sucu_in, null, movBanco.revisado, movBanco.trasnfe
                     );
                 }
 
-                if (vendedorProfit != null)
+                if (formaCobroProfit != null)
                 {
-                    byte[] validador = vendedorProfit.validador;
-                    profitContext.pActualizarVendedor(
-                        vendedor.co_ven, vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null, vendedor.co_zon
+                    profitContext.pActualizarRenglonesTPCobro(
+                        forma.nro_reng, forma.nro_reng, forma.cob_num_pro, forma.cob_num_pro, forma.forma_pag, forma.cod_cta, forma.co_ban, formaCobroProfit.co_tar, formaCobroProfit.co_vale,
+                        forma.cod_caja, forma.mov_num_c, forma.mov_num_b, formaCobroProfit.num_doc, formaCobroProfit.devuelto, forma.mont_doc, formaCobroProfit.fecha_che, formaCobroProfit.co_sucu_mo,
+                        formaCobroProfit.co_us_mo, formaCobroProfit.trasnfe, formaCobroProfit.revisado, Guid.NewGuid(), null, null
                     );
                 }
                 else
                 {
-                    profitContext.pInsertarVendedor(
-                        vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, "", null, null, null, null, vendedor.co_zon
-                    );
-                }
-
-                if (monedaProfit != null)
-                {
-                    byte[] validador = monedaProfit.validador;
-                    profitContext.pActualizarMoneda(
-                        moneda.co_mone, moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null
-                    );
-                }
-                else
-                {
-                    profitContext.pInsertarMoneda(
-                        moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, "", null, null, null, null
+                    profitContext.pInsertarRenglonesTPCobro(
+                        forma.nro_reng, forma.cob_num_pro, forma.forma_pag, forma.mov_num_c, forma.mov_num_b, null, false, forma.mont_doc, forma.cod_cta, forma.co_ban, null, null,
+                        forma.cod_caja, DateTime.Now, null, "", null, null, null
                     );
                 }
             }
 
             return Ok(true);
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {

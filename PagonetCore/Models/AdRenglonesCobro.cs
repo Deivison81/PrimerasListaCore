@@ -8,9 +8,12 @@ namespace PagonetCore.Models
 
     public partial class AdRenglonesCobro
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int idrencob { get; set; }
+
         public int reng_num { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_cob { get; set; }
 
         [Required]
@@ -40,9 +43,5 @@ namespace PagonetCore.Models
 
         [StringLength(1)]
         public string importado_pro { get; set; }
-
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int idrencob { get; set; }
     }
 }

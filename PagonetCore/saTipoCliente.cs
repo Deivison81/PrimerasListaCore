@@ -44,5 +44,6 @@ namespace PagonetCore
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saCliente> saCliente { get; set; }
+        public virtual saTipoPrecio saTipoPrecio { get; set; }
     }
 }

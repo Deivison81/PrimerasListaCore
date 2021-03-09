@@ -62,6 +62,47 @@
         <AssociationConnector Association="ProfitModel.FK_saPais_saMoneda" />
         <AssociationConnector Association="ProfitModel.FK_saPedidoVenta_saMoneda" />
         <AssociationConnector Association="ProfitModel.FK_saTasa_saMoneda" />
+        <EntityTypeShape EntityType="ProfitModel.saCobro" Width="1.5" PointX="10.25" PointY="24.5" />
+        <EntityTypeShape EntityType="ProfitModel.saCobroDocReng" Width="1.5" PointX="12.5" PointY="25.5" />
+        <AssociationConnector Association="ProfitModel.FK_saCobro_saCliente" />
+        <AssociationConnector Association="ProfitModel.FK_saCobro_saMoneda" />
+        <AssociationConnector Association="ProfitModel.FK_saCobro_saVendedor" />
+        <AssociationConnector Association="ProfitModel.FK_saCobroDocReng_saCobro" />
+        <EntityTypeShape EntityType="ProfitModel.saTipoPrecio" Width="1.5" PointX="3.5" PointY="28.125" />
+        <AssociationConnector Association="ProfitModel.FK_saArtPrecio_saTipoPrecio" />
+        <AssociationConnector Association="ProfitModel.FK_saTipoCliente_saTipoPrecio" />
+        <EntityTypeShape EntityType="ProfitModel.saSucursal" Width="1.5" PointX="1.125" PointY="21.75" />
+        <AssociationConnector Association="ProfitModel.FK_saAlmacen_saSucursal" />
+        <EntityTypeShape EntityType="ProfitModel.saCobroTPReng" Width="1.5" PointX="18.5" PointY="23.125" />
+        <AssociationConnector Association="ProfitModel.FK_saCobroTPReng_saBanco" />
+        <AssociationConnector Association="ProfitModel.FK_saCobroTPReng_saCobro" />
+        <EntityTypeShape EntityType="ProfitModel.saDocumentoVenta" Width="1.5" PointX="20.25" PointY="30.875" />
+        <AssociationConnector Association="ProfitModel.FK_saDocumentoVenta_saCliente" />
+        <AssociationConnector Association="ProfitModel.FK_saCobroDocReng_saDocumentoVenta" />
+        <AssociationConnector Association="ProfitModel.FK_saDocumentoVenta_saCuentaIngEgr" />
+        <AssociationConnector Association="ProfitModel.FK_saDocumentoVenta_saMoneda" />
+        <AssociationConnector Association="ProfitModel.FK_saDocumentoVenta_saVendedor" />
+        <EntityTypeShape EntityType="ProfitModel.saTipoDocumento" Width="1.5" PointX="21.375" PointY="1.375" />
+        <AssociationConnector Association="ProfitModel.FK_saDocumentoVenta_saTipoDocumento" />
+        <AssociationConnector Association="ProfitModel.FK_saDocumentoVenta_saTipoDocumento_Doc_Orig" />
+        <EntityTypeShape EntityType="ProfitModel.saCaja" Width="1.5" PointX="3" PointY="40.125" />
+        <EntityTypeShape EntityType="ProfitModel.saCuentaBancaria" Width="1.5" PointX="13" PointY="0.75" />
+        <EntityTypeShape EntityType="ProfitModel.saMovimientoBanco" Width="1.5" PointX="24.25" PointY="7.875" />
+        <EntityTypeShape EntityType="ProfitModel.saMovimientoCaja" Width="1.5" PointX="8" PointY="32.75" />
+        <AssociationConnector Association="ProfitModel.FK_saCuentaBancaria_saBanco" />
+        <AssociationConnector Association="ProfitModel.FK_saMovimientoCaja_saBanco" />
+        <AssociationConnector Association="ProfitModel.FK_saCaja_saMoneda" />
+        <AssociationConnector Association="ProfitModel.FK_saCobroTPReng_saCaja" />
+        <AssociationConnector Association="ProfitModel.FK_saMovimientoCaja_saCaja" />
+        <AssociationConnector Association="ProfitModel.FK_saCobroTPReng_saCuentaBancaria" />
+        <AssociationConnector Association="ProfitModel.FK_saCobroTPReng_saMovimientoBanco" />
+        <AssociationConnector Association="ProfitModel.FK_saCobroTPReng_saMovimientoCaja" />
+        <AssociationConnector Association="ProfitModel.FK_saCuentaBancaria_saMoneda" />
+        <AssociationConnector Association="ProfitModel.FK_saMovimientoBanco_saCuentaBancaria" />
+        <AssociationConnector Association="ProfitModel.FK_saMovimientoBanco_saCuentaIngEgr" />
+        <AssociationConnector Association="ProfitModel.FK_saMovimientoCaja_saCuentaIngEgr" />
+        <AssociationConnector Association="ProfitModel.FK_saDocumentoVenta_saMovimientoBanco" />
+        <AssociationConnector Association="ProfitModel.FK_saMovimientoCaja_saMovimientoCajaTran" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

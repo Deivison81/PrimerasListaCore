@@ -73,7 +73,7 @@ namespace PagonetCore.Models
         [Required]
         [StringLength(18)]
         [Display(Name = "RIF")]
-        [RegularExpression(@"^(j|J|v|V)[-]{1}[0-9]{9}[-]{1}[0-9]{1}$", ErrorMessage = "El RIF debe tener el formato: J-123456789-0.")]
+        [RegularExpression(@"^(J|V)[-]{1}[0-9]{9}[-]{1}[0-9]{1}$", ErrorMessage = "El RIF debe tener el formato: J-123456789-0 o V-123456789-0.")]
         public string rif { get; set; }
 
         [Required]

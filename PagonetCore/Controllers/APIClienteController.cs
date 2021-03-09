@@ -204,7 +204,7 @@ namespace PagonetCore.Controllers
             return Ok(adclientes);
         }
 
-        /*[HttpGet]
+        [HttpGet]
         [Route("clientes/actualizar")]
         public IHttpActionResult ActualizarClientesProfit()
         {
@@ -229,21 +229,18 @@ namespace PagonetCore.Controllers
                 AdIngreso ingreso = cliente.Ingreso;
                 Adpais pais = cliente.Pais;
 
-                // TODO: Colocar cada uno en su controlador correspondiente.
-                // TODO: Agregar fechas de modificación donde corresponda.
-                // TODO: TipoCliente requiere co_precio para insertar/actualizar, ¿dónde tenemos este campo en nuestro proyecto?
-                // TODO: Falta co_mone para insertar/actualizar país.
                 if (tipoClienteProfit != null)
                 {
                     byte[] validador = tipoClienteProfit.validador;
                     profitContext.pActualizarTipoCliente(
-                        tipoCliente.tip_cli, tipoCliente.tip_cli, tipoCliente.des_tipo, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, null, validador, null
+                        tipoCliente.tip_cli, tipoCliente.tip_cli, tipoCliente.des_tipo, tipoCliente.co_precio, tipoClienteProfit.campo1, tipoClienteProfit.campo2, tipoClienteProfit.campo3,
+                        tipoClienteProfit.campo4, tipoClienteProfit.campo5, tipoClienteProfit.campo6, tipoClienteProfit.campo7, tipoClienteProfit.campo8, tipoClienteProfit.co_us_mo,
+                        tipoClienteProfit.co_sucu_mo, null, null, tipoClienteProfit.revisado, tipoClienteProfit.trasnfe, validador, null
                     );
                 } else
                 {
                     profitContext.pInsertarTipoCliente(
-                        tipoCliente.tip_cli, tipoCliente.des_tipo, null, null, null, null, null, null, null, null, null, "", null ,null, null, null
+                        tipoCliente.tip_cli, tipoCliente.des_tipo, tipoCliente.co_precio, null, null, null, null, null, null, null, null, "", null ,null, null, null
                     );
                 }
 
@@ -251,8 +248,8 @@ namespace PagonetCore.Controllers
                 {
                     byte[] validador = zonaProfit.validador;
                     profitContext.pActualizarZona(
-                        zona.co_zon, zona.co_zon, zona.zon_des, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, null, validador, null
+                        zona.co_zon, zona.co_zon, zona.zon_des, zonaProfit.dis_cen, zonaProfit.campo1, zonaProfit.campo2, zonaProfit.campo3, zonaProfit.campo4, zonaProfit.campo5,
+                        zonaProfit.campo6, zonaProfit.campo7, zonaProfit.campo8, zonaProfit.co_us_mo, zonaProfit.co_sucu_mo, null, null, zonaProfit.revisado, zonaProfit.trasnfe, validador, null
                     );
                 }
                 else
@@ -266,8 +263,9 @@ namespace PagonetCore.Controllers
                 {
                     byte[] validador = segmentoProfit.validador;
                     profitContext.pActualizarSegmento(
-                        segmento.co_seg, segmento.co_seg, segmento.seg_des, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, validador, null
+                        segmento.co_seg, segmento.co_seg, segmento.seg_des, segmentoProfit.c_cuenta, segmentoProfit.p_cuenta, segmentoProfit.dis_cen, segmentoProfit.campo1, segmentoProfit.campo2,
+                        segmentoProfit.campo3, segmentoProfit.campo4, segmentoProfit.campo5, segmentoProfit.campo6, segmentoProfit.campo7, segmentoProfit.campo8, segmentoProfit.co_us_mo,
+                        segmentoProfit.co_sucu_mo, null, null, segmentoProfit.revisado, segmentoProfit.trasnfe, validador, null
                     );
                 }
                 else
@@ -281,8 +279,11 @@ namespace PagonetCore.Controllers
                 {
                     byte[] validador = vendedorProfit.validador;
                     profitContext.pActualizarVendedor(
-                        vendedor.co_ven, vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null, vendedor.co_zon
+                        vendedor.co_ven, vendedor.co_ven, vendedor.tipo, vendedor.ven_des, vendedorProfit.dis_cen, vendedorProfit.cedula, vendedorProfit.direc1, vendedorProfit.direc2, 
+                        vendedorProfit.telefonos, vendedorProfit.fecha_reg, vendedorProfit.inactivo, vendedorProfit.comision, vendedorProfit.comentario, vendedorProfit.fun_cob,
+                        vendedorProfit.fun_ven, vendedorProfit.comisionv, vendedorProfit.login, vendedorProfit.password, vendedorProfit.email, vendedorProfit.PSW_M, vendedorProfit.campo1, 
+                        vendedorProfit.campo2, vendedorProfit.campo3, vendedorProfit.campo4, vendedorProfit.campo5, vendedorProfit.campo6, vendedorProfit.campo7, vendedorProfit.campo8,
+                        vendedorProfit.co_us_mo, vendedorProfit.co_sucu_mo, null, null, vendedorProfit.revisado, vendedorProfit.trasnfe, validador, null, vendedor.co_zon
                     );
                 }
                 else
@@ -298,14 +299,15 @@ namespace PagonetCore.Controllers
                     byte[] validador = cuentaIngresoProfit.validador;
                     profitContext.pActualizarCuentaIngreso(
                         ingreso.co_ctaIng_egr, ingreso.co_ctaIng_egr, ingreso.descrip_ingre, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, null, null, null, validador, null
+                        "", null, null, null, null, null, validador, null
                     );
                 }
                 else
                 {
                     profitContext.pInsertarCuentaIngreso(
-                        ingreso.co_ctaIng_egr, ingreso.descrip_ingre, null, null, null, null, null, null, null, null, null, null,
-                        "", null, null, null, null
+                        ingreso.co_ctaIng_egr, ingreso.descrip_ingre, cuentaIngresoProfit.co_islr, cuentaIngresoProfit.dis_cen, cuentaIngresoProfit.campo1, cuentaIngresoProfit.campo2,
+                        cuentaIngresoProfit.campo3, cuentaIngresoProfit.campo4, cuentaIngresoProfit.campo5, cuentaIngresoProfit.campo6, cuentaIngresoProfit.campo7, cuentaIngresoProfit.campo8, 
+                        cuentaIngresoProfit.co_us_in, null, cuentaIngresoProfit.revisado, cuentaIngresoProfit.trasnfe, cuentaIngresoProfit.co_sucu_in
                     );
                 }
 
@@ -313,14 +315,14 @@ namespace PagonetCore.Controllers
                 {
                     byte[] validador = paisProfit.validador;
                     profitContext.pActualizarPais(
-                        pais.co_pais, pais.co_pais, null, pais.pais_des, null, null, null, null, null, null, null, null,
-                        null, null, null, null, null, null, validador, null
+                        pais.co_pais, pais.co_pais, pais.co_mone, pais.pais_des, paisProfit.campo1, paisProfit.campo2, paisProfit.campo3, paisProfit.campo4, paisProfit.campo5, paisProfit.campo6,
+                        paisProfit.campo7, paisProfit.campo8, paisProfit.co_us_mo, paisProfit.co_sucu_mo, null, null, paisProfit.revisado, paisProfit.trasnfe, validador, null
                     );
                 }
                 else
                 {
                     profitContext.pInsertarPais(
-                        pais.co_pais, pais.pais_des, null, null, null, null, null, null, null, null,
+                        pais.co_pais, pais.pais_des, pais.co_mone, null, null, null, null, null, null, null,
                         null, "", null, null, null, null
                     );
                 }
@@ -329,11 +331,16 @@ namespace PagonetCore.Controllers
                 {
                     byte[] validador = clienteProfit.validador;
                     profitContext.pActualizarCliente(
-                        cliente.co_cli, cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, false, false, false, false, false, false, 
-                        false, false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, null, null, null, 
-                        null, null, null, null, null, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, cliente.juridico == "1", null, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, null, null, null, validador, null, null, 
-                        null, null, null
+                        cliente.co_cli, cliente.co_cli, clienteProfit.login, clienteProfit.password, clienteProfit.salestax, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, 
+                        clienteProfit.estado, clienteProfit.inactivo, clienteProfit.valido, clienteProfit.sincredito, clienteProfit.lunes, clienteProfit.martes, clienteProfit.miercoles,
+                        clienteProfit.jueves, clienteProfit.viernes, clienteProfit.sabado, clienteProfit.domingo, clienteProfit.direc1, clienteProfit.direc2, cliente.dir_ent2, clienteProfit.horar_caja,
+                        clienteProfit.frecu_vist, cliente.telefonos, clienteProfit.fax, cliente.respons, clienteProfit.fecha_reg, cliente.tip_cli, clienteProfit.serialp, clienteProfit.puntaje,
+                        clienteProfit.Id, clienteProfit.mont_cre, clienteProfit.co_mone, clienteProfit.cond_pag, clienteProfit.plaz_pag, clienteProfit.desc_ppago, clienteProfit.desc_glob,
+                        cliente.rif, clienteProfit.contrib, clienteProfit.dis_cen, clienteProfit.nit, cliente.email, cliente.co_cta_ingr_egr, clienteProfit.comentario, clienteProfit.campo1,
+                        clienteProfit.campo2, clienteProfit.campo3, clienteProfit.campo4, clienteProfit.campo5, clienteProfit.campo6, clienteProfit.campo7, clienteProfit.campo8, clienteProfit.co_us_mo,
+                        clienteProfit.co_sucu_mo, null, null, clienteProfit.revisado, clienteProfit.trasnfe, cliente.juridico == "1", clienteProfit.tipo_adi, clienteProfit.matriz, clienteProfit.co_tab,
+                        clienteProfit.tipo_per, cliente.co_pais, cliente.ciudad, cliente.zip, clienteProfit.website, clienteProfit.contribu_e, clienteProfit.rete_regis_doc, clienteProfit.porc_esp,
+                        validador, null, clienteProfit.N_CR, clienteProfit.N_DB, clienteProfit.TCOMP, clienteProfit.email_alterno
                     );
                 } else
                 {
@@ -347,7 +354,7 @@ namespace PagonetCore.Controllers
             }
 
             return Ok(true);
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {

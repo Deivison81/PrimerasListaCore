@@ -135,7 +135,7 @@ namespace PagonetCore.Controllers
             return Ok(adRenglonesCobro);
         }
 
-        /*[HttpGet]
+        [HttpGet]
         [Route("renglones-cobros/actualizar")]
         public IHttpActionResult ActualizarRenglonesCobrosProfit()
         {
@@ -144,72 +144,82 @@ namespace PagonetCore.Controllers
 
             foreach (AdRenglonesCobro renglon in renglonesCobros)
             {
-                // Tablas de las que depende Renglones de Cobro.
-                // TODO: Incompleto.
-                // TODO: Importar Cobro de Profit (Stored Procedures).
-                // TODO: Esto requiere co_tipo_doc y nro_doc (de saDocumentoVenta).
-                pSeleccionarCliente_Result clienteProfit = profitContext.pSeleccionarCliente(cobro.co_cli).FirstOrDefault();
-                pSeleccionarVendedor_Result vendedorProfit = profitContext.pSeleccionarVendedor(cobro.co_ven).FirstOrDefault();
-                pSeleccionarMoneda_Result monedaProfit = profitContext.pSeleccionarMoneda(cobro.co_mone).FirstOrDefault();
+                saCobroDocReng renglonCobroProfit = profitContext.saCobroDocReng.Where(r => (r.cob_num == renglon.cob_num_pro) && (r.reng_num == renglon.reng_num)).FirstOrDefault();
+                pSeleccionarDocumentoVenta_Result documentoVentaProfit = profitContext.pSeleccionarDocumentoVenta(renglon.co_tipo_doc, renglon.nro_doc).FirstOrDefault();
+                pSeleccionarTipoDocumento_Result tipoDocumentoProfit = profitContext.pSeleccionarTipoDocumento(renglon.co_tipo_doc).FirstOrDefault();
+                pSeleccionarCobro_Result cobroProfit = profitContext.pSeleccionarCobro(renglon.cob_num_pro).First();
 
-                Adclientes cliente = db.Clientes.Where(c => c.co_cli == cobro.co_cli).FirstOrDefault();
-                Advendedor vendedor = db.Vendedores.Where(v => v.co_ven == cobro.co_ven).FirstOrDefault();
-                AdMoneda moneda = db.Monedas.Where(m => m.co_mone == cobro.co_mone).FirstOrDefault();
-
-                if (clienteProfit != null)
+                if (tipoDocumentoProfit != null)
                 {
-                    byte[] validador = clienteProfit.validador;
-                    profitContext.pActualizarCliente(
-                        cliente.co_cli, cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, true, false, false, false, false, false, false,
-                        false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, null, null, null,
-                        null, null, null, null, null, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, cliente.juridico == "1", null, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, null, null, null, validador, null, null,
-                        null, null, null
+                    byte[] validador = tipoDocumentoProfit.validador;
+                    profitContext.pActualizarTipoDocumento(
+                        renglon.co_tipo_doc, renglon.co_tipo_doc, tipoDocumentoProfit.descrip, tipoDocumentoProfit.tipo_mov, tipoDocumentoProfit.usar_ventas, tipoDocumentoProfit.usar_compras,
+                        tipoDocumentoProfit.registro_sistema, tipoDocumentoProfit.num_fact_fis_venta, tipoDocumentoProfit.num_cont_venta, tipoDocumentoProfit.serial_imp_fis_venta,
+                        tipoDocumentoProfit.num_iva_venta, tipoDocumentoProfit.reac_doc_Compra, tipoDocumentoProfit.reac_doc_Venta, tipoDocumentoProfit.anul_doc_venta, tipoDocumentoProfit.anul_doc_compra,
+                        tipoDocumentoProfit.doc_prov_compra, tipoDocumentoProfit.num_control_compra, tipoDocumentoProfit.reng_compra, tipoDocumentoProfit.reng_venta, tipoDocumentoProfit.num_iva_compra,
+                        tipoDocumentoProfit.manual_venta, tipoDocumentoProfit.manual_compra, tipoDocumentoProfit.doc_asoc_compra, tipoDocumentoProfit.doc_asoc_venta, tipoDocumentoProfit.act_prog_pago,
+                        tipoDocumentoProfit.aplica_dxpp_venta, tipoDocumentoProfit.aplica_dxpp_compra, tipoDocumentoProfit.aplica_riva_venta, tipoDocumentoProfit.aplica_riva_compra,
+                        tipoDocumentoProfit.tipo_imp, tipoDocumentoProfit.campo1, tipoDocumentoProfit.campo2, tipoDocumentoProfit.campo3, tipoDocumentoProfit.campo4, tipoDocumentoProfit.campo5,
+                        tipoDocumentoProfit.campo6, tipoDocumentoProfit.campo7, tipoDocumentoProfit.campo8, tipoDocumentoProfit.co_us_mo, tipoDocumentoProfit.co_sucu_mo, null, null, null,
+                        tipoDocumentoProfit.trasnfe, validador, null
                     );
                 }
                 else
                 {
-                    profitContext.pInsertarCliente(
-                        cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, false, false, false, false, false, false, false,
-                        false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, 0, 0, 0, null, null, 0,
-                        0, 0, null, 0, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, "", null, null,
-                        null, null, cliente.juridico == "1", 1, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, false, false, 0, null, null, null, null
+                    profitContext.pInsertarTipoDocumento(
+                        renglon.co_tipo_doc, "", "CR", false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, 
+                        false, false, false, false, false, false, false, false, "", null, null, null, null, null, null, null, null, "", null, null, null, null
                     );
                 }
 
-                if (vendedorProfit != null)
+                if (documentoVentaProfit != null)
                 {
-                    byte[] validador = vendedorProfit.validador;
-                    profitContext.pActualizarVendedor(
-                        vendedor.co_ven, vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null, vendedor.co_zon
+                    byte[] validador = documentoVentaProfit.validador;
+                    profitContext.pActualizarDocumentoVenta(
+                        renglon.co_tipo_doc, renglon.co_tipo_doc, renglon.nro_doc, renglon.nro_doc, documentoVentaProfit.co_cli, documentoVentaProfit.co_ven, documentoVentaProfit.co_mone,
+                        documentoVentaProfit.co_cta_ingr_egr, documentoVentaProfit.mov_ban, documentoVentaProfit.tasa, documentoVentaProfit.observa, documentoVentaProfit.fec_reg,
+                        documentoVentaProfit.fec_emis, documentoVentaProfit.fec_venc, documentoVentaProfit.anulado, documentoVentaProfit.aut, documentoVentaProfit.contrib, documentoVentaProfit.doc_orig,
+                        documentoVentaProfit.nro_orig, documentoVentaProfit.nro_che, documentoVentaProfit.monto_imp, renglon.saldo, documentoVentaProfit.total_bruto, documentoVentaProfit.monto_desc_glob,
+                        documentoVentaProfit.porc_desc_glob, documentoVentaProfit.porc_reca, documentoVentaProfit.monto_reca, documentoVentaProfit.total_neto, documentoVentaProfit.monto_imp2,
+                        documentoVentaProfit.monto_imp3, documentoVentaProfit.tipo_imp, documentoVentaProfit.porc_imp, documentoVentaProfit.porc_imp2, documentoVentaProfit.porc_imp3,
+                        documentoVentaProfit.num_comprobante, documentoVentaProfit.tipo_origen, documentoVentaProfit.n_control, documentoVentaProfit.dis_cen, documentoVentaProfit.comis1,
+                        documentoVentaProfit.comis2, documentoVentaProfit.comis3, documentoVentaProfit.comis4, documentoVentaProfit.comis5, documentoVentaProfit.comis6, documentoVentaProfit.adicional,
+                        documentoVentaProfit.salestax, documentoVentaProfit.ven_ter, documentoVentaProfit.impfis, documentoVentaProfit.impfisfac, documentoVentaProfit.imp_nro_z, documentoVentaProfit.otros1,
+                        documentoVentaProfit.otros2, documentoVentaProfit.otros3, documentoVentaProfit.campo1, documentoVentaProfit.campo2, documentoVentaProfit.campo3, documentoVentaProfit.campo4,
+                        documentoVentaProfit.campo5, documentoVentaProfit.campo6, documentoVentaProfit.campo7, documentoVentaProfit.campo8, documentoVentaProfit.co_us_mo, documentoVentaProfit.co_sucu_mo,
+                        documentoVentaProfit.revisado, documentoVentaProfit.trasnfe, null, null, validador, null
                     );
                 }
                 else
                 {
-                    profitContext.pInsertarVendedor(
-                        vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, "", null, null, null, null, vendedor.co_zon
+                    profitContext.pInsertarDocumentoVenta(
+                        renglon.co_tipo_doc, renglon.nro_doc, cobroProfit.co_cli, cobroProfit.co_ven, cobroProfit.co_mone, null, cobroProfit.co_cta_ingr_egr, cobroProfit.tasa, 
+                        null, DateTime.Now, DateTime.Now, DateTime.Now, cobroProfit.anulado, false, false, renglon.co_tipo_doc, null, null, 0, renglon.saldo, 0, 0, null, null, 0, 
+                        renglon.saldo, 0, 0, null, 0, 0, 0, 0, null, null, null, 0, 0, 0, 0, 0, 0, 0, null, false, null, null, null, 0, 0, 0, null, null, null, null, null, null, null, null, null, 
+                        null, null, "", null
                     );
                 }
 
-                if (monedaProfit != null)
+                if (renglonCobroProfit != null)
                 {
-                    byte[] validador = monedaProfit.validador;
-                    profitContext.pActualizarMoneda(
-                        moneda.co_mone, moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null
+                    profitContext.pActualizarRenglonesDocCobro(
+                        renglon.reng_num, renglon.cob_num_pro, renglon.reng_num, renglon.cob_num_pro, renglon.co_tipo_doc, renglon.nro_doc, renglon.mont_cob, renglonCobroProfit.dpcobro_porc_desc,
+                        renglon.dpcobro_monto, renglonCobroProfit.monto_retencion_iva, renglonCobroProfit.monto_retencion, renglonCobroProfit.reten_tercero_rowguid_ori, 
+                        renglonCobroProfit.rowguid_reng_ori, renglon.tipo_doc, renglon.num_doc, renglonCobroProfit.tipo_origen, renglonCobroProfit.gen_origen, renglonCobroProfit.co_sucu_mo,
+                        renglonCobroProfit.co_us_mo, renglonCobroProfit.trasnfe, renglonCobroProfit.revisado, null, null, null
                     );
                 }
                 else
                 {
-                    profitContext.pInsertarMoneda(
-                        moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, "", null, null, null, null
+                    profitContext.pInsertarRenglonesDocCobro(
+                        renglon.reng_num, renglon.cob_num_pro, renglon.co_tipo_doc, renglon.nro_doc, renglon.mont_cob, 0, renglon.dpcobro_monto, 0, 0, renglon.tipo_doc, renglon.num_doc, 
+                        null, null, Guid.NewGuid(), 0, null, null, "", null, null, null
                     );
                 }
             }
 
             return Ok(true);
-        }*/
+        }
 
         protected override void Dispose(bool disposing)
         {

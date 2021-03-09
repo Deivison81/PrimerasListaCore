@@ -11,8 +11,9 @@ namespace PagonetCore.Models
         [Key]
         public int id_doc_num { get; set; }
 
+        [StringLength(20)]
         [Display(Name = "Número de Documento")]
-        public int? doc_num { get; set; }
+        public string doc_num { get; set; }
 
         [StringLength(60)]
         [Display(Name = "Descripción")]

@@ -61,5 +61,6 @@ namespace PagonetCore
         public virtual ICollection<saSeriales> saSeriales { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saStockAlmacen> saStockAlmacen { get; set; }
+        public virtual saSucursal saSucursal { get; set; }
     }
 }

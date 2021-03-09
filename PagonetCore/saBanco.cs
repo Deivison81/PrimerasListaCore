@@ -14,6 +14,14 @@ namespace PagonetCore
     
     public partial class saBanco
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public saBanco()
+        {
+            this.saCobroTPReng = new HashSet<saCobroTPReng>();
+            this.saCuentaBancaria = new HashSet<saCuentaBancaria>();
+            this.saMovimientoCaja = new HashSet<saMovimientoCaja>();
+        }
+    
         public string co_ban { get; set; }
         public string des_ban { get; set; }
         public string telefonos { get; set; }
@@ -41,5 +49,12 @@ namespace PagonetCore
         public System.Guid rowguid { get; set; }
         public Nullable<decimal> comisMismoBanco { get; set; }
         public Nullable<decimal> comisOtrosBancos { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saCobroTPReng> saCobroTPReng { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saCuentaBancaria> saCuentaBancaria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saMovimientoCaja> saMovimientoCaja { get; set; }
     }
 }

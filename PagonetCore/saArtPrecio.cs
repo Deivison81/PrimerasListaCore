@@ -42,5 +42,6 @@ namespace PagonetCore
     
         public virtual saAlmacen saAlmacen { get; set; }
         public virtual saArticulo saArticulo { get; set; }
+        public virtual saTipoPrecio saTipoPrecio { get; set; }
     }
 }

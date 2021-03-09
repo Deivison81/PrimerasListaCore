@@ -20,6 +20,9 @@ namespace PagonetCore
             this.saCliente = new HashSet<saCliente>();
             this.saCotizacionCliente = new HashSet<saCotizacionCliente>();
             this.saPedidoVenta = new HashSet<saPedidoVenta>();
+            this.saDocumentoVenta = new HashSet<saDocumentoVenta>();
+            this.saMovimientoBanco = new HashSet<saMovimientoBanco>();
+            this.saMovimientoCaja = new HashSet<saMovimientoCaja>();
         }
     
         public string co_cta_ingr_egr { get; set; }
@@ -53,5 +56,11 @@ namespace PagonetCore
         public virtual ICollection<saCotizacionCliente> saCotizacionCliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<saPedidoVenta> saPedidoVenta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saDocumentoVenta> saDocumentoVenta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saMovimientoBanco> saMovimientoBanco { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<saMovimientoCaja> saMovimientoCaja { get; set; }
     }
 }

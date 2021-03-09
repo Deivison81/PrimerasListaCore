@@ -15,6 +15,11 @@ namespace PagonetCore.Models
         [Display(Name = "Código País")]
         public string co_pais { get; set; }
 
+        [Required]
+        [StringLength(6)]
+        [Display(Name = "Código Moneda")]
+        public string co_mone { get; set; }
+
         [StringLength(60)]
         [Display(Name = "Descripción")]
         public string pais_des { get; set; }

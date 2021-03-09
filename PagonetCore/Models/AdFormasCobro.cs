@@ -9,16 +9,12 @@ namespace PagonetCore.Models
     public partial class AdFormasCobro
     {
         [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int forma_cob_id { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int nro_reng { get; set; }
 
-        public int? id_cob { get; set; }
+        public int id_cob { get; set; }
 
         [StringLength(15)]
         public string cob_num_pro { get; set; }

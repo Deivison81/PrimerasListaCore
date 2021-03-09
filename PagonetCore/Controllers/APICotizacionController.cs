@@ -130,7 +130,7 @@ namespace PagonetCore.Controllers
         {
             return (from cabezas in db.Cotizaciones
                     join renglones in db.RenglonesCotizacion
-                    on cabezas.id_doc_num equals (renglones.doc_num)
+                    on cabezas.doc_num equals renglones.doc_num
                     where cabezas.id_doc_num.Equals(codigo)
                     select new
                     {
@@ -352,48 +352,25 @@ namespace PagonetCore.Controllers
             ProfitEntities profitContext = new ProfitEntities();
             IQueryable<Adcotizacion> cotizaciones = db.Cotizaciones;
 
-            // TODO: Actualizar Renglones de Cotización.
             foreach (Adcotizacion cotizacion in cotizaciones)
             {
                 // Tablas de las que depende Cotización.
-                pSeleccionarCliente_Result clienteProfit = profitContext.pSeleccionarCliente(cotizacion.co_cli).FirstOrDefault();
+                saCotizacionCliente cotizacionProfit = profitContext.saCotizacionCliente.Where(c => c.doc_num == cotizacion.doc_num).FirstOrDefault();
                 pSeleccionarTransporte_Result transporteProfit = profitContext.pSeleccionarTransporte(cotizacion.co_tran).FirstOrDefault();
                 pSeleccionarMoneda_Result monedaProfit = profitContext.pSeleccionarMoneda(cotizacion.co_mone).FirstOrDefault();
-                pSeleccionarVendedor_Result vendedorProfit = profitContext.pSeleccionarVendedor(cotizacion.co_ven).FirstOrDefault();
                 pSeleccionarCondicionPago_Result condicionPagoProfit = profitContext.pSeleccionarCondicionPago(cotizacion.co_cond).FirstOrDefault();
 
-                Adclientes cliente = cotizacion.Cliente;
                 Adtransporte transporte = cotizacion.Transporte;
                 AdMoneda moneda = db.Monedas.Where(m => m.co_mone == cotizacion.co_mone).FirstOrDefault();
-                Advendedor vendedor = cotizacion.Vendedor;
                 Adcondiciondepago condicionPago = cotizacion.CondicionDePago;
-
-                if (clienteProfit != null)
-                {
-                    byte[] validador = clienteProfit.validador;
-                    profitContext.pActualizarCliente(
-                        cliente.co_cli, cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, true, false, false, false, false, false, false,
-                        false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, null, null, null,
-                        null, null, null, null, null, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, cliente.juridico == "1", null, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, null, null, null, validador, null, null,
-                        null, null, null
-                    );
-                }
-                else
-                {
-                    profitContext.pInsertarCliente(
-                        cliente.co_cli, null, null, null, cliente.cli_des, cliente.co_seg, cliente.co_zon, cliente.co_ven, null, false, false, false, false, false, false, false, false,
-                        false, false, cliente.direc1, null, cliente.dir_ent2, null, null, cliente.telefonos, null, cliente.respons, DateTime.Now, cliente.tip_cli, null, 0, 0, 0, null, null, 0,
-                        0, 0, null, 0, cliente.rif, false, null, null, cliente.email, cliente.co_cta_ingr_egr, null, null, null, null, null, null, null, null, null, "", null, null,
-                        null, null, cliente.juridico == "1", 1, null, null, null, cliente.co_pais, cliente.ciudad, cliente.zip, null, false, false, 0, null, null, null, null
-                    );
-                }
 
                 if (transporteProfit != null)
                 {
                     byte[] validador = transporteProfit.validador;
                     profitContext.pActualizarTransporte(
-                        transporte.co_tran, transporte.co_tran, transporte.des_tran, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null
+                        transporte.co_tran, transporte.co_tran, transporte.des_tran, transporteProfit.resp_tra, transporteProfit.dis_cen, transporteProfit.campo1, transporteProfit.campo2,
+                        transporteProfit.campo3, transporteProfit.campo4, transporteProfit.campo5, transporteProfit.campo6, transporteProfit.campo7, transporteProfit.campo8, transporteProfit.co_us_mo,
+                        transporteProfit.co_sucu_mo, null, null, transporteProfit.revisado, transporteProfit.trasnfe, validador, null
                     );
                 }
                 else
@@ -407,7 +384,9 @@ namespace PagonetCore.Controllers
                 {
                     byte[] validador = monedaProfit.validador;
                     profitContext.pActualizarMoneda(
-                        moneda.co_mone, moneda.co_mone, moneda.mone_des, 0, false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null
+                        moneda.co_mone, moneda.co_mone, moneda.mone_des, monedaProfit.cambio, monedaProfit.relacion, monedaProfit.campo1, monedaProfit.campo2, monedaProfit.campo3, monedaProfit.campo4,
+                        monedaProfit.campo5, monedaProfit.campo6, monedaProfit.campo7, monedaProfit.campo8, monedaProfit.co_us_mo, monedaProfit.co_sucu_mo, null, null, monedaProfit.revisado,
+                        monedaProfit.trasnfe, validador, null
                     );
                 }
                 else
@@ -417,28 +396,13 @@ namespace PagonetCore.Controllers
                     );
                 }
 
-                if (vendedorProfit != null)
-                {
-                    byte[] validador = vendedorProfit.validador;
-                    profitContext.pActualizarVendedor(
-                        vendedor.co_ven, vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, null, null, null, null, null, null, validador, null, vendedor.co_zon
-                    );
-                }
-                else
-                {
-                    profitContext.pInsertarVendedor(
-                        vendedor.co_ven, vendedor.tipo, vendedor.ven_des, null, null, null, null, null, DateTime.Now, false, 0, null, false, false, 0, null, null, null, null,
-                        null, null, null, null, null, null, null, null, "", null, null, null, null, vendedor.co_zon
-                    );
-                }
-
                 if (condicionPagoProfit != null)
                 {
                     byte[] validador = condicionPagoProfit.validador;
                     profitContext.pActualizarCondicionPago(
-                        condicionPago.co_cond, condicionPago.co_cond, condicionPago.cond_des, condicionPago.dias_cred, null, null, null, null, null, null, null, null, null, null,
-                        null, null, null, null, null, validador, null
+                        condicionPago.co_cond, condicionPago.co_cond, condicionPago.cond_des, condicionPago.dias_cred, condicionPagoProfit.dis_cen, condicionPagoProfit.campo1, condicionPagoProfit.campo2,
+                        condicionPagoProfit.campo3, condicionPagoProfit.campo4, condicionPagoProfit.campo5, condicionPagoProfit.campo6, condicionPagoProfit.campo7, condicionPagoProfit.campo8,
+                        condicionPagoProfit.co_us_mo, condicionPagoProfit.co_sucu_mo, null, null, condicionPagoProfit.revisado, condicionPagoProfit.trasnfe, validador, null
                     );
                 }
                 else
@@ -448,7 +412,34 @@ namespace PagonetCore.Controllers
                         null, null, null, null
                     );
                 }
+
+                if (cotizacionProfit != null)
+                {
+                    byte[] validador = cotizacionProfit.validador;
+                    profitContext.pActualizarCotizacionCliente(
+                        cotizacion.doc_num, cotizacion.doc_num, cotizacion.descrip, cotizacion.co_cli, cotizacionProfit.co_cta_ingr_egr, cotizacion.co_tran, cotizacion.co_mone, cotizacion.co_ven,
+                        cotizacion.co_cond, cotizacion.fec_emis, cotizacion.fec_venc, cotizacion.fec_reg, cotizacion.anulado == "1", cotizacion.status, cotizacionProfit.tasa, cotizacionProfit.n_control,
+                        cotizacion.doc_num, cotizacionProfit.porc_desc_glob, cotizacionProfit.monto_desc_glob, cotizacionProfit.porc_reca, cotizacionProfit.monto_reca, cotizacion.saldo, cotizacion.total_bruto,
+                        cotizacion.monto_imp, cotizacion.monto_imp2, cotizacion.monto_imp3, cotizacionProfit.otros1, cotizacionProfit.otros2, cotizacionProfit.otros3, cotizacion.total_neto, cotizacionProfit.comentario,
+                        cotizacionProfit.dir_ent, cotizacionProfit.contrib, cotizacionProfit.impresa, cotizacionProfit.salestax, cotizacionProfit.impfis, cotizacionProfit.impfisfac, cotizacionProfit.ven_ter,
+                        cotizacionProfit.dis_cen, cotizacionProfit.campo1, cotizacionProfit.campo2, cotizacionProfit.campo3, cotizacionProfit.campo4, cotizacionProfit.campo5, cotizacionProfit.campo6,
+                        cotizacionProfit.campo7, cotizacionProfit.campo8, cotizacionProfit.co_us_mo, cotizacionProfit.co_sucu_mo, cotizacionProfit.revisado, cotizacionProfit.trasnfe, null, validador, null, null
+                    );
+                }
+                else
+                {
+                    profitContext.pInsertarCotizacionCliente(
+                        cotizacion.doc_num, cotizacion.descrip, cotizacion.co_cli, null, cotizacion.co_tran, cotizacion.co_mone, cotizacion.co_ven,
+                        cotizacion.co_cond, cotizacion.fec_emis, cotizacion.fec_venc, cotizacion.fec_reg, cotizacion.anulado == "1", cotizacion.status, 1, null,
+                        cotizacion.doc_num, null, 0, null, 0, cotizacion.saldo, cotizacion.total_bruto, cotizacion.monto_imp, cotizacion.monto_imp2, 
+                        cotizacion.monto_imp3, 0, 0, 0, cotizacion.total_neto, null, null, null, false, false, null, null, null, false, null, 
+                        null, null, null, null, null, null, null, "", null, null, null, null
+                    );
+                }
             }
+
+            APIRenglonCotizacionController apiRenglonCotizacion = new APIRenglonCotizacionController();
+            apiRenglonCotizacion.ActualizarRenglonesCotizacionesProfit();
 
             return Ok(true);
         }
