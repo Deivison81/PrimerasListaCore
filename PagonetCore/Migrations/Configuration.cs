@@ -64,7 +64,8 @@ namespace PagonetCore.Migrations
 				a.@ref,
 				a.tipo_imp,
 				a.tipo_imp2,
-				a.tipo_imp3
+				a.tipo_imp3,
+				a.campo1
 			}).ToList();
 
 			articulos.ForEach(a => context.Articulos.Add(new AdArticulo
@@ -295,7 +296,7 @@ namespace PagonetCore.Migrations
 			context.SaveChanges();
 
 			// Imágenes Artículo.
-			var imagenesArticulo = profitContext.saArtImagen.Select(i => new
+			/*var imagenesArticulo = profitContext.saArtImagen.Select(i => new
 			{
 				i.co_art,
 				i.tip,
@@ -303,9 +304,9 @@ namespace PagonetCore.Migrations
 				i.picture,
 				i.campo1,
 				i.saArticulo
-			}).ToList();
+			}).ToList();*//
 
-			imagenesArticulo.ForEach(i => context.ImagenesArticulo.Add(new Adimg_art
+			articulos.ForEach(i => context.ImagenesArticulo.Add(new Adimg_art
 			{
 				id_art = context.Articulos.Where(a => a.co_art.Equals(i.co_art)).Select(a => a.id_art).First(),
 				co_art = i.co_art,
