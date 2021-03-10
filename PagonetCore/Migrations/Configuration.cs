@@ -304,7 +304,7 @@ namespace PagonetCore.Migrations
 				i.picture,
 				i.campo1,
 				i.saArticulo
-			}).ToList();*//
+			}).ToList();*/
 
 			articulos.ForEach(i => context.ImagenesArticulo.Add(new Adimg_art
 			{
