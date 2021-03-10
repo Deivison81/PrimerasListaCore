@@ -359,6 +359,8 @@ namespace PagonetCore.Controllers
 
             foreach (AdCotizacionreg renglon in renglonesCotizacion)
             {
+                renglon.doc_num = cotizacion.doc_num;
+                renglon.reng_num = renglon.reng_num +1;
                 baseNeta = (decimal)(renglon.total_art * renglon.prec_vta);
                 valorIva = (decimal)(renglon.porc_imp);
                 renglon.monto_imp = baseNeta * (valorIva / 100);
