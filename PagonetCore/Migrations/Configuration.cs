@@ -318,6 +318,44 @@ namespace PagonetCore.Migrations
 			}));
 
 			context.SaveChanges();
+
+			// Moneda.
+			var monedas = profitContext.saMoneda.Select(m => new
+			{
+				m.co_mone,
+				m.mone_des
+			}).ToList();
+
+			monedas.ForEach(m => context.Monedas.Add(new AdMoneda
+			{
+				co_mone = m.co_mone,
+				mone_des = m.mone_des,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
+			context.SaveChanges();
+
+			// Tasa.
+			var tasas = profitContext.saTasa.Select(t => new
+			{
+				t.co_mone,
+				t.fecha,
+				t.tasa_c,
+				t.tasa_v
+			}).ToList();
+
+			tasas.ForEach(t => context.Tasas.Add(new AdTasa
+			{
+				co_mone = t.co_mone,
+				fecha = t.fecha,
+				tasa_c = t.tasa_c,
+				tasa_v = t.tasa_v,
+				importado_pro = "1",
+				importado_web = "1"
+			}));
+
+			context.SaveChanges();
 		}
     }
 }
