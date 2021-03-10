@@ -163,6 +163,7 @@
     <Compile Include="Controllers\APIImagenArticuloController.cs" />
     <Compile Include="Controllers\APIIngresoController.cs" />
     <Compile Include="Controllers\APIMonedaController.cs" />
+    <Compile Include="Controllers\APIMovimientoBancoController.cs" />
     <Compile Include="Controllers\APIPaisController.cs" />
     <Compile Include="Controllers\APIPedidoController.cs" />
     <Compile Include="Controllers\APIPrecioArticuloController.cs" />
