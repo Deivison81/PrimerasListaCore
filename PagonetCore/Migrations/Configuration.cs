@@ -287,6 +287,7 @@ namespace PagonetCore.Migrations
 				montoadi4 = p.montoadi4,
 				montoadi5 = p.montoadi5,
 				precioOm = profitContext.saArtPrecio.Where(pa => pa.co_art.Equals(p.co_art)).Select(pa => pa.precioOm).First() == true ? "1" : "0",
+				id_art = context.Articulos.Where(a => a.co_art.Equals(p.co_art)).Select(a => a.id_art).First(),
 				importado_pro = "1",
 				importado_web = "1"
 			}));
@@ -300,6 +301,7 @@ namespace PagonetCore.Migrations
 				i.tip,
 				i.imagen_des,
 				i.picture,
+				i.campo1,
 				i.saArticulo
 			}).ToList();
 
@@ -307,9 +309,9 @@ namespace PagonetCore.Migrations
 			{
 				id_art = context.Articulos.Where(a => a.co_art.Equals(i.co_art)).Select(a => a.id_art).First(),
 				co_art = i.co_art,
-				tip = i.tip,
-				imagen_des = i.imagen_des,
-				picture = Encoding.UTF8.GetString(i.picture),
+				tip = "PNG",
+				imagen_des = i.campo1,
+				picture = "Imgp",
 				importado_pro = "1",
 				importado_web = "1"
 			}));
