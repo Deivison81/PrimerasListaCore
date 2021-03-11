@@ -61,9 +61,9 @@ namespace PagonetCore.Controllers
         // GET: api/APIRenglonCotizacion/5
         [Route("cotizacion/listarRenglonesid/{id:int:min(1)}")]
         [ResponseType(typeof(AdCotizacionreg))]
-        public IHttpActionResult GetAdCotizacionreg(int id)
+        public IHttpActionResult GetAdCotizacionreg(string id)
         {
-            var adCotizacionreg = db.RenglonesCotizacion.Where(p => p.id_doc_num.Equals(id)).Select(p => new
+            var adCotizacionreg = db.RenglonesCotizacion.Where(p => p.doc_num.Equals(id)).Select(p => new
             {
                 p.id_doc_num,
                 p.doc_num,
@@ -73,7 +73,7 @@ namespace PagonetCore.Controllers
                 p.art_des,
                 p.cod_almacen,
                 p.co_alma,
-                p.total_art,
+                p.total_art, 
                 p.stotal_art,
                 p.cod_unidad,
                 p.id_preciosart,
@@ -92,6 +92,7 @@ namespace PagonetCore.Controllers
                 p.reng_neto,
                 p.tipo_doc,
                 p.num_doc,
+                p.tasa_v,
                 p.importado_web,
                 p.importado_pro
             }).ToList();

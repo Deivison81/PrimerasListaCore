@@ -194,6 +194,7 @@ namespace PagonetCore.Controllers
                         renglones.reng_neto,
                         renglones.tipo_doc,
                         renglones.num_doc,
+                        renglones.tasa_v,
                         renglones.importado_pro,
                         renglones.importado_web
                     }).OrderBy(p => p.reng_num).ToList();

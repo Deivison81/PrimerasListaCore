@@ -173,6 +173,7 @@
     <Compile Include="Controllers\APISegmentoController.cs" />
     <Compile Include="Controllers\APISerialController.cs" />
     <Compile Include="Controllers\APIStockAlmacenController.cs" />
+    <Compile Include="Controllers\APITasaController.cs" />
     <Compile Include="Controllers\APITasaIVAController.cs" />
     <Compile Include="Controllers\APITipoClienteController.cs" />
     <Compile Include="Controllers\APITransporteController.cs" />
