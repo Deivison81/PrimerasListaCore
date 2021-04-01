@@ -12,7 +12,9 @@ namespace PagonetCore.DAL
 {
 	public class PagonetContext : DbContext
 	{
-		public PagonetContext() : base("PagonetContext")
+        internal object Cajas;
+
+        public PagonetContext() : base("PagonetContext")
 		{
 		}
 

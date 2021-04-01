@@ -259,6 +259,7 @@
     <Compile Include="Models\AdAlmacen.cs" />
     <Compile Include="Models\AdArticulo.cs" />
     <Compile Include="Models\AdBanco.cs" />
+    <Compile Include="Models\AdCajas.cs" />
     <Compile Include="Models\Adclientes.cs" />
     <Compile Include="Models\Adcondiciondepago.cs" />
     <Compile Include="Models\Adcotizacion.cs" />

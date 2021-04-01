@@ -104,6 +104,13 @@ namespace PagonetCore.Migrations
 				importado_web = "1"
 			}));
 
+			var cajas = profitContext.saCaja.Select(b => new
+			{
+				b.cod_caja,
+				b.descrip
+			}).ToList();
+		
+
 			context.SaveChanges();
 
 			// Tipo de Cliente.

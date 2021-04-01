@@ -100,6 +100,8 @@ namespace PagonetCore.Controllers
         [Route("Articulo/listarartwebDisponibles/{disponible}")]
         public object GetAdArticuloArtWebDisponibles(string disponible)
         {
+            const int IVA = 16;
+            
             return (from stock in db.StockAlmacenes
                     join alma in db.Almacenes
                     on stock.cod_almacen equals alma.cod_almacen
@@ -117,22 +119,28 @@ namespace PagonetCore.Controllers
                         descripcionproducto = Art.art_des,
                         adreferencia = Art.referencia,
                         unidad = Art.cod_unidad,
+                        tipoimput = Art.tipo_imp,
                         idprecio = precio.id_preciosart,
                         codigoprecioprofit = precio.co_precios,
                         pdesde = precio.desde,
                         phasta = precio.hasta,
+                        //precio en bs
                         montoprecio = precio.monto,
+                        //Precio en $$
+                        // no modificar estas estructuras
                         precio1 = precio.montoadi1,
                         precio2 = precio.montoadi2,
                         precio3 = precio.montoadi3,
                         precio4 = precio.montoadi4,
                         precio5 = precio.montoadi5,
                         precioOM = precio.precioOm,
+                        montoiva = (precio.monto * IVA) / 100,
+                        porcentaje = IVA,
                         idimagen = img.id_imgart,
                         adtip = img.tip,
                         nombreimagen = img.imagen_des,
                         ruta = img.picture,
-                        cod_almacen = alma.cod_almacen,
+                        codi_almacen = alma.cod_almacen,
                         almacenprofit = alma.co_alma,
                         desalma = alma.des_alamacen,
                         codigoartprof = stock.co_art,

@@ -41,6 +41,24 @@ namespace PagonetCore.Controllers
         public IHttpActionResult GetAdTasaid(int id)
         {
             var listarTasa = db.Tasas.Where(p => p.idmone.Equals(id))
+              .Select(p => new
+              {
+                  p.idmone,
+                  p.co_mone,
+                  p.fecha,
+                  p.tasa_v
+              }).ToList();
+
+
+            return Ok(listarTasa);
+        }
+        // GET: api/APITasa/5
+        [ResponseType(typeof(AdTasa))]
+        [Route("Tasa/listarTasafecha/{fechact:DateTime:min(1)}")]
+        public IHttpActionResult GetAdTasaid(DateTime fechaact)
+        {
+            //var listarTasa = db.Tasas.Where(p => p.idmone.Equals(id))
+              var listarTasa = db.Tasas.Where(p => p.fecha.Equals(fechaact))
                 .Select(p => new
                 {
                     p.idmone,
@@ -52,6 +70,7 @@ namespace PagonetCore.Controllers
 
             return Ok(listarTasa);
         }
+        
         // GET: api/APITasa/5
         /*[ResponseType(typeof(AdTasa))]
         [Route("Tasa/listarTasamoneda/{codigo:string:min(1)}")]
