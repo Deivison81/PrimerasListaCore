@@ -367,5 +367,7 @@ namespace PagonetCore.DAL
                 .Property(e => e.importado_pro)
                 .IsFixedLength();
         }
+
+        public System.Data.Entity.DbSet<PagonetCore.Models.AdCajas> AdCajas { get; set; }
     }
 }

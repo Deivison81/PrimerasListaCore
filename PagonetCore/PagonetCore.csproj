@@ -151,6 +151,7 @@
     <Compile Include="App_Start\FontAwesomeBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdCajasController.cs" />
     <Compile Include="Controllers\AlmacenController.cs" />
     <Compile Include="Controllers\APIAlmacenController.cs" />
     <Compile Include="Controllers\APIArticuloController.cs" />
@@ -254,6 +255,10 @@
     <Compile Include="Migrations\202103060129096_CorreccionDocNumCotizacion.cs" />
     <Compile Include="Migrations\202103060129096_CorreccionDocNumCotizacion.Designer.cs">
       <DependentUpon>202103060129096_CorreccionDocNumCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104041902553_Caja.cs" />
+    <Compile Include="Migrations\202104041902553_Caja.Designer.cs">
+      <DependentUpon>202104041902553_Caja.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
@@ -1161,6 +1166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103060129096_CorreccionDocNumCotizacion.resx">
       <DependentUpon>202103060129096_CorreccionDocNumCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104041902553_Caja.resx">
+      <DependentUpon>202104041902553_Caja.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
