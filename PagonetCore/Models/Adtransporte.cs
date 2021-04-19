@@ -21,6 +21,10 @@ namespace PagonetCore.Models
         public string des_tran { get; set; }
 
         [StringLength(1)]
+        [Display(Name = "¿Transporte Local?")]
+        public string transporte_local { get; set; }
+
+        [StringLength(1)]
         [Display(Name = "¿Importado Web?")]
         public string importado_web { get; set; }
 

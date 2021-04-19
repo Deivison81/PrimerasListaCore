@@ -182,6 +182,7 @@ namespace PagonetCore.Controllers
         }
 
         // PUT: api/APICliente/5
+        [Route("Cliente/ModificarDatos/{id:int:min(1)}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdclientes(int id, Adclientes adclientes)
         {

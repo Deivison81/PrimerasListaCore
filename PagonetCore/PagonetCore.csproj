@@ -260,6 +260,10 @@
     <Compile Include="Migrations\202104041902553_Caja.Designer.cs">
       <DependentUpon>202104041902553_Caja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104181733579_ACTUALIZARCOTI.cs" />
+    <Compile Include="Migrations\202104181733579_ACTUALIZARCOTI.Designer.cs">
+      <DependentUpon>202104181733579_ACTUALIZARCOTI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
     <Compile Include="Models\AdArticulo.cs" />
@@ -1169,6 +1173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104041902553_Caja.resx">
       <DependentUpon>202104041902553_Caja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104181733579_ACTUALIZARCOTI.resx">
+      <DependentUpon>202104181733579_ACTUALIZARCOTI.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

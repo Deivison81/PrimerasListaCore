@@ -48,6 +48,7 @@ namespace PagonetCore.Controllers
                 p.monto_imp3,
                 p.total_neto,
                 p.saldo,
+                p.Direcionop,
                 p.importado_web,
                 p.importado_pro,
                 p.Diasvencimiento,
@@ -91,6 +92,7 @@ namespace PagonetCore.Controllers
                 p.monto_imp3,
                 p.total_neto,
                 p.saldo,
+                p.Direcionop,
                 p.importado_web,
                 p.importado_pro,
                 p.Diasvencimiento,
@@ -137,6 +139,7 @@ namespace PagonetCore.Controllers
                 p.monto_imp3,
                 p.total_neto,
                 p.saldo,
+                p.Direcionop,
                 p.importado_web,
                 p.importado_pro,
                 p.Diasvencimiento,
@@ -175,6 +178,7 @@ namespace PagonetCore.Controllers
                         cabezas.monto_imp,
                         cabezas.total_neto,
                         cabezas.saldo,
+                        cabezas.Direcionop,
                         renglones.reng_num,
                         renglones.id_art,
                         renglones.co_art,
@@ -229,6 +233,7 @@ namespace PagonetCore.Controllers
                         cabezas.monto_imp,
                         cabezas.total_neto,
                         cabezas.saldo,
+                        cabezas.Direcionop,
                         renglones.reng_num,
                         renglones.id_art,
                         renglones.co_art,
@@ -335,6 +340,7 @@ namespace PagonetCore.Controllers
             cotizacion.monto_imp3 = cotizacionRenglon.monto_imp3;
             cotizacion.total_neto = cotizacionRenglon.total_neto;
             cotizacion.saldo = cotizacionRenglon.saldo;
+            cotizacion.Direcionop = cotizacionRenglon.Direcionop;
             cotizacion.importado_web = cotizacionRenglon.importado_web;
             cotizacion.importado_pro = cotizacionRenglon.importado_pro;
             cotizacion.Diasvencimiento = cotizacionRenglon.Diasvencimiento;
@@ -344,7 +350,7 @@ namespace PagonetCore.Controllers
             cotizacion.idtransporte = cotizacionRenglon.idtransporte;
             cotizacion.id_vendedor = cotizacionRenglon.id_vendedor;
             cotizacion.id_condicion = cotizacionRenglon.id_condicion;
-
+            
             ICollection<AdCotizacionreg> renglonesCotizacion = cotizacionRenglon.RenglonesCotizacion;
 
             int numeroRegistrosAfectados = 0;

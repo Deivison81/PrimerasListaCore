@@ -37,7 +37,6 @@ namespace PagonetCore.Models
         [Required]
         [StringLength(60)]
         [Display(Name = "Telefóno")]
-        [RegularExpression(@"^[0]{1}[0-9]{3}[-]{1}[0-9]{7}$", ErrorMessage = "El Número de Teléfono debe tener el formato: 0XXX-1234567.")]
         public string telefonos { get; set; }
 
         [Required]

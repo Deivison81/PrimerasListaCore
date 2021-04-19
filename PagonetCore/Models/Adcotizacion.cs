@@ -80,6 +80,11 @@ namespace PagonetCore.Models
         [Display(Name = "Saldo")]
         public decimal? saldo { get; set; }
 
+        [StringLength(60)]
+        [Display(Name = "Direccion de Entega")]
+        public string Direcionop { get; set; }
+
+
         [StringLength(1)]
         [Display(Name = "¿Importado Web?")]
         public string importado_web { get; set; }

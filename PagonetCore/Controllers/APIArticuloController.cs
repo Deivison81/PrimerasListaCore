@@ -74,7 +74,7 @@ namespace PagonetCore.Controllers
                         montoprecio = precio.monto,
                         //Precio en $$
                         // no modificar estas estructuras
-                        precio1 = precio.montoadi1,
+                        precio1 = precio.monto * precio.tasa_v,
                         precio2 = precio.montoadi2,
                         precio3 = precio.montoadi3,
                         precio4 = precio.montoadi4,
@@ -82,6 +82,7 @@ namespace PagonetCore.Controllers
                         precioOM = precio.precioOm,
                         montoiva = (precio.monto * IVA) / 100,
                         porcentaje = IVA,
+                        tasahoy = precio.tasa_v,
                         idimagen = img.id_imgart,
                         adtip = img.tip,
                         nombreimagen = img.imagen_des,
@@ -101,7 +102,8 @@ namespace PagonetCore.Controllers
         public object GetAdArticuloArtWebDisponibles(string disponible)
         {
             const int IVA = 16;
-            
+          
+
             return (from stock in db.StockAlmacenes
                     join alma in db.Almacenes
                     on stock.cod_almacen equals alma.cod_almacen
@@ -110,7 +112,7 @@ namespace PagonetCore.Controllers
                     join precio in db.PreciosArticulo
                     on Art.id_art equals precio.id_art
                     join img in db.ImagenesArticulo
-                    on Art.id_art equals img.id_art
+                    on Art.id_art equals img.id_art           
                     where stock.tipo.Equals(disponible)
                     select new
                     {
@@ -128,14 +130,16 @@ namespace PagonetCore.Controllers
                         montoprecio = precio.monto,
                         //Precio en $$
                         // no modificar estas estructuras
-                        precio1 = precio.montoadi1,
+                        precio1 = precio.monto * precio.tasa_v,
                         precio2 = precio.montoadi2,
                         precio3 = precio.montoadi3,
                         precio4 = precio.montoadi4,
                         precio5 = precio.montoadi5,
                         precioOM = precio.precioOm,
                         montoiva = (precio.monto * IVA) / 100,
+                        tasahoy = precio.tasa_v,
                         porcentaje = IVA,
+
                         idimagen = img.id_imgart,
                         adtip = img.tip,
                         nombreimagen = img.imagen_des,
