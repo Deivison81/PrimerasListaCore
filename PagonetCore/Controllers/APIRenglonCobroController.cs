@@ -16,7 +16,7 @@ namespace PagonetCore.Controllers
     public class APIRenglonCobroController : ApiController
     {
         private PagonetContext db = new PagonetContext();
-
+       
         // GET: api/APIRenglonCobro
         public IQueryable<AdRenglonesCobro> GetRenglonesCobro()
         {
@@ -24,18 +24,56 @@ namespace PagonetCore.Controllers
         }
 
         // GET: api/APIRenglonCobro/5
+
+      
         [ResponseType(typeof(AdRenglonesCobro))]
         public IHttpActionResult GetAdRenglonesCobro(int id)
         {
+             
             AdRenglonesCobro adRenglonesCobro = db.RenglonesCobro.Find(id);
             if (adRenglonesCobro == null)
             {
                 return NotFound();
             }
-
+           
             return Ok(adRenglonesCobro);
         }
+        [HttpGet]
+        [Route("cobros/listarrenglonescobro/{id_cob:int:min(1)}")]
+        public object GetAdRenglonesCobroxcobro(int id_cob) 
+        
+        {
+            int cantidadrenglon = db.RenglonesCobro.Where(p=> p.id_cob.Equals(id_cob)).Select(p => new { p.reng_num }).Count();
 
+
+            var listarrenglonescobros= db.RenglonesCobro.Where(p => p.id_cob.Equals(id_cob)).Select(p => new {
+                p.idrencob,
+                p.reng_num,
+                p.id_cob,
+                p.cob_num_pro,
+                p.co_tipo_doc,
+                p.nro_doc,
+                p.mont_cob,
+                p.dpcobro_monto,
+                p.tipo_doc,
+                p.num_doc,
+                p.saldo,
+                p.importado_web,
+                p.importado_pro
+
+            }).OrderByDescending(p => p.reng_num).ToList();
+
+
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+                
+                
+            }
+
+            return listarrenglonescobros;
+        
+        }
         // PUT: api/APIRenglonCobro/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdRenglonesCobro(int id, AdRenglonesCobro adRenglonesCobro)

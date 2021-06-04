@@ -9,7 +9,9 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using PagonetCore.DAL;
+
 using PagonetCore.Models;
+
 
 namespace PagonetCore.Controllers
 {
@@ -17,6 +19,7 @@ namespace PagonetCore.Controllers
     {
         private PagonetContext db = new PagonetContext();
 
+        
         // GET: api/APICobro
         public IQueryable<AdCobros> GetCobros()
         {
@@ -24,16 +27,106 @@ namespace PagonetCore.Controllers
         }
 
         // GET: api/APICobro/5
+        [Route("cobros/listarcobro/{id_cob:int:min(1)}")]
         [ResponseType(typeof(AdCobros))]
-        public IHttpActionResult GetAdCobros(int id)
+        public IHttpActionResult GetAdCobros(int id_cob)
         {
-            AdCobros adCobros = db.Cobros.Find(id);
+            AdCobros adCobros = db.Cobros.Find(id_cob);
             if (adCobros == null)
             {
                 return NotFound();
             }
+          
+           return Ok(adCobros);
+        }
+        //cuerpo
+        [HttpGet]
+        [Route("cobros/listarrenglonescobro/{id_cob:int:min(1)}")]
+        public object GetAdRenglonesCobroxcobro(int id_cob)
 
-            return Ok(adCobros);
+        {
+            int cantidadrenglon = db.RenglonesCobro.Where(p => p.id_cob.Equals(id_cob)).Select(p => new { p.reng_num }).Count();
+
+
+            var listarrenglonescobros = db.RenglonesCobro.Where(p => p.id_cob.Equals(id_cob)).Select(p => new {
+                p.idrencob,
+                p.reng_num,
+                p.id_cob,
+                p.cob_num_pro,
+                p.co_tipo_doc,
+                p.nro_doc,
+                p.mont_cob,
+                p.dpcobro_monto,
+                p.tipo_doc,
+                p.num_doc,
+                p.saldo,
+                p.importado_web,
+                p.importado_pro
+
+            }).OrderByDescending(p => p.reng_num).ToList();
+
+
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+
+
+            }
+
+            return listarrenglonescobros;
+
+        }
+        //forma de pago
+
+        [HttpGet]
+        [Route("cobros/listarrenglonesformadecobro/{id_cob:int:min(1)}")]
+        public object GetAdFormasCobroxcobro(int id_cob)
+        {
+            var listarformadepagos = db.FormasCobro.Where(p => p.id_cob.Equals(id_cob)).Select(p => new
+            {
+
+                p.forma_cob_id,
+                p.nro_reng,
+                p.id_cob,
+                p.cob_num_pro,
+                p.co_ban,
+                p.forma_pag,
+                p.cod_cta,
+                p.cod_caja,
+                p.mov_num_c,
+                p.mov_num_b,
+                p.mont_doc,
+                p.dolar,
+                p.importado_web,
+                p.importado_pro
+
+            }).OrderByDescending(p => p.id_cob).ToList();
+
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+
+
+            }
+
+            return listarformadepagos;
+
+        }
+
+        [HttpGet]
+        [Route("cobros/listarcobrocompleto/{id_cob:int:min(1)}")]
+        public object GetAdCobroscompletos(int id_cob) 
+        {
+            var Cabecera =  this.GetAdCobros(id_cob);
+            var Cuerpo = this.GetAdRenglonesCobroxcobro(id_cob);
+            var forma = this.GetAdFormasCobroxcobro(id_cob);
+            //var cobrototal = 0;
+           
+            
+
+            //return cobrototal;
+
+            return 0 ;
         }
 
         // PUT: api/APICobro/5
@@ -117,7 +210,7 @@ namespace PagonetCore.Controllers
             db.Cobros.Add(cobro);
             db.SaveChanges();
 
-            return 1;
+            return cobro.id_cob;
         }
 
         // Nota: Este método retorna el número de registros afectados por la petición.

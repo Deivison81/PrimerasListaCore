@@ -226,8 +226,10 @@ namespace PagonetCore.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return 0;
+                return  0;
             }
+
+           
 
             db.Clientes.Add(adclientes);
             db.SaveChanges();

@@ -36,6 +36,41 @@ namespace PagonetCore.Controllers
             return Ok(adFormasCobro);
         }
 
+        [HttpGet]
+        [Route("cobros/listarrenglonesformadecobro/{id_cob:int:min(1)}")]
+        public object GetAdFormasCobroxcobro(int id_cob) 
+        {
+            var listarformadepagos = db.FormasCobro.Where(p => p.id_cob.Equals(id_cob)).Select(p => new
+            {
+
+                p.forma_cob_id,
+                p.nro_reng,
+                p.id_cob,
+                p.cob_num_pro,
+                p.co_ban,
+                p.forma_pag,
+                p.cod_cta,
+                p.cod_caja,
+                p.mov_num_c,
+                p.mov_num_b,
+                p.mont_doc,
+                p.dolar,
+                p.importado_web,
+                p.importado_pro
+
+            }).OrderByDescending(p => p.id_cob).ToList();
+
+            if (!ModelState.IsValid)
+            {
+                return NotFound();
+
+
+            }
+
+            return listarformadepagos;
+        
+        } 
+
         // PUT: api/APIFormaCobro/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAdFormasCobro(int id, AdFormasCobro adFormasCobro)
