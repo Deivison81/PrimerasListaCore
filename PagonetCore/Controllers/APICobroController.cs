@@ -115,18 +115,67 @@ namespace PagonetCore.Controllers
 
         [HttpGet]
         [Route("cobros/listarcobrocompleto/{id_cob:int:min(1)}")]
-        public object GetAdCobroscompletos(int id_cob) 
+        [ResponseType(typeof(IHttpActionResult))]
+        public IHttpActionResult GetAdCobroscompletos(int id_cob) 
         {
-            var Cabecera =  this.GetAdCobros(id_cob);
-            var Cuerpo = this.GetAdRenglonesCobroxcobro(id_cob);
-            var forma = this.GetAdFormasCobroxcobro(id_cob);
+            //var Cabecera = GetAdCobros(id_cob);
+            //var Cuerpo = GetAdRenglonesCobroxcobro(id_cob);
+            //var forma = GetAdFormasCobroxcobro(id_cob);
             //var cobrototal = 0;
-           
-            
-
             //return cobrototal;
 
-            return 0 ;
+            var CobroCompleto = (from cabezas in db.Cobros
+             join renglones in db.RenglonesCobro
+             on cabezas.id_cob equals renglones.id_cob
+             join formas in db.FormasCobro
+             on cabezas.id_cob equals formas.id_cob
+             select new
+             {
+                 cabezas.id_cob,
+                 cabezas.cob_num_pro,
+                 cabezas.id_clientes,
+                 cabezas.co_cli,
+                 cabezas.co_mone,
+                 cabezas.id_vendedor,
+                 cabezas.co_ven,
+                 cabezas.tasa,
+                 cabezas.fecha,
+                 cabezas.anulado,
+                 cabezas.monto,
+                 cabezas.importado_web,
+                 cabezas.importado_pro,
+                 renglones.idrencob,
+                 renglones.reng_num,
+                 renglon_id_cob = renglones.id_cob,
+                 renglon_cob_num_pro = renglones.cob_num_pro,
+                 renglones.co_tipo_doc,
+                 renglones.nro_doc,
+                 renglones.mont_cob,
+                 renglones.dpcobro_monto,
+                 renglones.tipo_doc,
+                 renglones.num_doc,
+                 renglones.saldo,
+                 renglones_importado_web = renglones.importado_web,
+                 renglones_importado_pro = renglones.importado_pro,
+                 formas.forma_cob_id,
+                 formas.nro_reng,
+                 forma_id_cob = formas.id_cob,
+                 forma_cob_num_pro = formas.cob_num_pro,
+                 formas.co_ban,
+                 formas.forma_pag,
+                 formas.cod_cta,
+                 formas.cod_caja,
+                 formas.mov_num_c,
+                 formas.mov_num_b,
+                 formas.mont_doc,
+                 formas.dolar,
+                 forma_importado_web = formas.importado_web,
+                 forma_importado_pro = formas.importado_pro
+             })
+             .OrderByDescending(cobro => cobro.id_cob)
+             .ToList();
+
+            return Ok(CobroCompleto);
         }
 
         // PUT: api/APICobro/5
