@@ -207,7 +207,17 @@ namespace PagonetCore.Controllers
         [Route("cotizacion/listarCotizacionCompletaco/{codigo:int:min(1)}")]
         public object GetAdcotizacionCompletaCodigo(int codigo)
         {
-            return (from cabezas in db.Cotizaciones
+            var CotizacionCompleta = db.Cotizaciones.Find(codigo);
+            if (CotizacionCompleta == null)
+            {
+                return NotFound();
+            }
+
+            var RenglonesCotizacion = db.RenglonesCotizacion.Where(r => r.doc_num == CotizacionCompleta.doc_num).ToList();
+            CotizacionCompleta.RenglonesCotizacion = RenglonesCotizacion;
+
+            return Ok(CotizacionCompleta);
+            /*return (from cabezas in db.Cotizaciones
                     join renglones in db.RenglonesCotizacion
                     on cabezas.doc_num equals renglones.doc_num
                     where cabezas.id_doc_num.Equals(codigo)
@@ -255,7 +265,7 @@ namespace PagonetCore.Controllers
                         renglones.num_doc,
                         renglones.importado_pro,
                         renglones.importado_web
-                    }).OrderBy(p => p.reng_num).ToList();
+                    }).OrderBy(p => p.reng_num).ToList();*/
         }
 
         // PUT: api/APICotizacion/5

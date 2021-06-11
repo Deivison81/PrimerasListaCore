@@ -64,6 +64,7 @@ namespace PagonetCore.DAL
 			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.Transporte).WithMany().WillCascadeOnDelete(false);
 			modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.Vendedor).WithMany().WillCascadeOnDelete(false);
             modelBuilder.Entity<Adcotizacion>().HasRequired(c => c.CondicionDePago);
+            modelBuilder.Entity<Adcotizacion>().HasMany(c => c.RenglonesCotizacion);
 
             // Claves Foráneas para Renglones de Cotización.
             modelBuilder.Entity<AdCotizacionreg>().HasRequired(c => c.Articulo).WithMany().WillCascadeOnDelete(false);
@@ -129,6 +130,12 @@ namespace PagonetCore.DAL
             modelBuilder.Entity<AdCobros>()
                 .Property(e => e.importado_pro)
                 .IsFixedLength();
+
+            modelBuilder.Entity<AdCobros>()
+                .HasMany(e => e.RenglonesCobro);
+
+            modelBuilder.Entity<AdCobros>()
+                .HasMany(e => e.FormasCobro);
 
             modelBuilder.Entity<AdRenglonesCobro>()
                 .Property(e => e.cob_num_pro)

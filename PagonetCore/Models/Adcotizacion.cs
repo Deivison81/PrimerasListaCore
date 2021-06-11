@@ -118,7 +118,6 @@ namespace PagonetCore.Models
 
         public virtual Adcondiciondepago CondicionDePago { get; set; }
 
-        [NotMapped]
         public virtual ICollection<AdCotizacionreg> RenglonesCotizacion { get; set; }
     }
 }

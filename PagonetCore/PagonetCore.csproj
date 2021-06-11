@@ -264,6 +264,14 @@
     <Compile Include="Migrations\202104181733579_ACTUALIZARCOTI.Designer.cs">
       <DependentUpon>202104181733579_ACTUALIZARCOTI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106110114093_PropiedadRenglonesFormasCobros.cs" />
+    <Compile Include="Migrations\202106110114093_PropiedadRenglonesFormasCobros.Designer.cs">
+      <DependentUpon>202106110114093_PropiedadRenglonesFormasCobros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106110216569_PropiedadNavegacionAdCobros.cs" />
+    <Compile Include="Migrations\202106110216569_PropiedadNavegacionAdCobros.Designer.cs">
+      <DependentUpon>202106110216569_PropiedadNavegacionAdCobros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdAlmacen.cs" />
     <Compile Include="Models\AdArticulo.cs" />
@@ -1176,6 +1184,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104181733579_ACTUALIZARCOTI.resx">
       <DependentUpon>202104181733579_ACTUALIZARCOTI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106110114093_PropiedadRenglonesFormasCobros.resx">
+      <DependentUpon>202106110114093_PropiedadRenglonesFormasCobros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106110216569_PropiedadNavegacionAdCobros.resx">
+      <DependentUpon>202106110216569_PropiedadNavegacionAdCobros.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
